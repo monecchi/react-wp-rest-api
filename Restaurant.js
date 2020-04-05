@@ -4,8 +4,8 @@ import useFetch from './src/useFetch';
 
 export default function RestaurantData() {
     const restaurantData = useFetch('https://pizzariameurancho.com.br/wp-json/mrp/v1/stores/');
-    let storedata = []
-    let city
+    let storedata = [];
+    let city;
     
     storedata.push(restaurantData)
 
