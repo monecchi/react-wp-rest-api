@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
-import { render } from 'react-dom';
+import { ReactDOM, render } from 'react-dom';
 import Hello from './Hello';
 import RestaurantData from './Restaurant';
 import './style.css';
@@ -20,6 +19,8 @@ class App extends Component {
         <p>
           Start editing to see some magic happen :)
         </p>
+      </div>
+      <div className="restaurant-info">
         <RestaurantData />
       </div>
     );

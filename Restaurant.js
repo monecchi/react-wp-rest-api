@@ -12,9 +12,8 @@ export default function RestaurantData() {
   return (
     <div className="container">
       {restaurantInfo && restaurantInfo.map((store, index) => (
-
         city = store.slug,
-
+        
       <div className={'row'} key={index}>
               
             { console.log(storedata) }
