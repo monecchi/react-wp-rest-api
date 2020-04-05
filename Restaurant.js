@@ -3,15 +3,15 @@ import React, { useEffect, useState } from 'react';
 import useFetch from './src/useFetch';
 
 export default function RestaurantData() {
-    const restaurantData = useFetch('https://pizzariameurancho.com.br/wp-json/mrp/v1/stores/');
+    const restaurantInfo = useFetch('https://pizzariameurancho.com.br/wp-json/mrp/v1/stores/');
     let storedata = [];
     let city;
     
-    storedata.push(restaurantData)
+    storedata.push(restaurantInfo)
 
   return (
     <div className="container">
-      {restaurantData && restaurantData.map((store, index) => (
+      {restaurantInfo && restaurantInfo.map((store, index) => (
 
         city = store.slug,
 
