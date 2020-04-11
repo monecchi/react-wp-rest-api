@@ -20,7 +20,7 @@ export default function RestaurantData() {
 
             <div className={'col-12'}>
                 <div>
-                  <h4>Store Slug: <span className="textSecondary" dangerouslySetInnerHTML={{ __html:store.slug }}></span></h4>
+                  <h4>Store Slug: <span><code className="textSecondary" dangerouslySetInnerHTML={{ __html:store.slug }}></code></span></h4>
                   <h4>StoreID: <span dangerouslySetInnerHTML={{ __html: store.id }} /></h4>
                   <ul>
                     <li>Telefone: {store[city].formatted_phone}</li>
