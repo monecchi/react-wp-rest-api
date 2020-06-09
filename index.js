@@ -17,7 +17,8 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      name: "Meu Rancho"
+      name: "Meu Rancho P",
+      customClass: "custom-title"
     };
   }
 
@@ -47,9 +48,13 @@ class App extends Component {
             </Nav>
           </Navbar.Collapse>
         </Navbar>
-        <Hello name={this.state.name} />
+
+        <Container>
         <p>Start editing to see some magic happen :)</p>
+        <Hello name={this.state.name} className={this.state.customClass} />
         <RestaurantData />
+        </Container>
+
       </div>
     );
   }
