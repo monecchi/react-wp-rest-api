@@ -2,7 +2,9 @@ import React, { Component } from "react";
 import { ReactDOM, render } from "react-dom";
 // Bootstrap stuff
 import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
 import Nav from "react-bootstrap/Nav";
+import Col from "react-bootstrap/Col";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import Navbar from "react-bootstrap/Navbar";
 
@@ -50,11 +52,14 @@ class App extends Component {
         </Navbar>
 
         <Container>
-        <p>Start editing to see some magic happen :)</p>
-        <Hello name={this.state.name} className={this.state.customClass} />
-        <RestaurantData />
+        <Row>
+        <Col>
+          <p>Start editing to see some magic happen :)</p>
+          <Hello name={this.state.name} className={this.state.customClass} />
+          <RestaurantData />
+          </Col>
+          </Row>
         </Container>
-
       </div>
     );
   }
