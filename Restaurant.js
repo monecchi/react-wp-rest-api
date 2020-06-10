@@ -42,7 +42,7 @@ export default function RestaurantData() {
                   <Card.Body>
                     <Card.Title
                       className="text-capitalize mb-4"
-                      dangerouslySetInnerHTML={{ __html: "Loja " + store.slug }}
+                      dangerouslySetInnerHTML={{ __html: store.slug }}
                     />
                     <Card.Subtitle
                       className="mb-2 text-muted"
