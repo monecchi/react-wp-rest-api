@@ -8,7 +8,10 @@ import Col from "react-bootstrap/Col";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import Navbar from "react-bootstrap/Navbar";
 
+// Custom component test
 import Hello from "./Hello";
+
+// WP REST API data
 import RestaurantData from "./Restaurant";
 
 // Importing the Bootstrap CSS
