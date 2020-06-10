@@ -20,7 +20,7 @@ class App extends Component {
     super();
     this.state = {
       name: "Meu Rancho",
-      customClass: "custom-title"
+      customClass: "text-muted"
     };
   }
 
