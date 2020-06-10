@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types';
 import axios from 'axios';
-export class BookItems extends Component {
+export class FoodMenuItems extends Component {
 
    state = {
        imgUrl: '',
@@ -10,13 +10,13 @@ export class BookItems extends Component {
    }
 
    static propTypes = {
-       food_menu: PropTypes.object.isRequired
+       foods: PropTypes.object.isRequired
    }
 
    componentDidMount () {
-       const {featured_media, author} = this.props.food_menu;
-       const getImageUrl = axios.get(`https://pizzariameurancho.com.br/wp-json/wp/v2/media/${featured_media}`);
-       const getAuthor = axios.get(`https://pizzariameurancho.com.br/wp-json/wp/v2/users/${author}`);
+       const {featured_media, author} = this.props.foods;
+       const getImageUrl = axios.get(`https://pizzariameurancho.com.br//wp-json/wp/v2/media/${featured_media}`);
+       const getAuthor = axios.get(`https://pizzariameurancho.com.br//wp-json/wp/v2/users/${author}`);
       
        Promise.all([getImageUrl, getAuthor]).then(res => {
 
@@ -31,7 +31,7 @@ export class BookItems extends Component {
     }
  
    render() {
-       const { title, excerpt } = this.props.food_menu;
+       const { title, excerpt } = this.props.foods;
        const {author, imgUrl, isLoaded} = this.state;
        return (
            <div>
@@ -44,4 +44,4 @@ export class BookItems extends Component {
    }
 }
 
-export default BookItems
+export default FoodMenuItems

@@ -10,7 +10,7 @@ import Navbar from "react-bootstrap/Navbar";
 
 // Custom component test
 import Hello from "./Hello";
-import BookItems from "./HomePage";
+import FoodMenu from './FoodMenu';
 
 // WP REST API data
 import RestaurantData from "./Restaurant";
@@ -61,6 +61,7 @@ class App extends Component {
               <p className="my-3">Unidades Meu Rancho Pizzaria</p>
               <Hello name={this.state.name} className={this.state.customClass} />
               <RestaurantData />
+              <FoodMenu/>
             </Col>
           </Row>
         </Container>
