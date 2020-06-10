@@ -9,6 +9,10 @@ import Col from "react-bootstrap/Col";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import Navbar from "react-bootstrap/Navbar";
 
+// Importing the Bootstrap CSS
+// Import Custom CSS
+import "./App.scss";
+
 class Sobre extends Component {
  render() {
  return (

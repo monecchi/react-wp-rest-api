@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import { ReactDOM, render } from "react-dom";
+import { BrowserRouter, Switch, Route } from "react-router-dom"; // importando o BrowserRouter
+
 // Bootstrap stuff
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
@@ -81,4 +83,13 @@ class App extends Component {
   }
 }
 
-render(<App />, document.getElementById("root"));
+//render(<App />, document.getElementById("root"));
+
+ReactDOM.render(
+    <BrowserRouter>
+        <Switch>
+            <Route path="/" exact={true} component={App} />
+            <Route path="/sobre" component={Sobre} />
+        </Switch>
+    </ BrowserRouter>
+    , document.getElementById('root'));
