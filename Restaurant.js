@@ -2,6 +2,10 @@ import React, { useEffect, useState } from "react";
 
 import useFetch from "./src/useFetch";
 
+// Bootstrap stuff
+import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card';
+
 export default function RestaurantData() {
   const restaurantInfo = useFetch(
     "https://pizzariameurancho.com.br/wp-json/mrp/v1/stores/"
@@ -13,11 +17,8 @@ export default function RestaurantData() {
 
   return (
     <div className="container">
-      {restaurantInfo &&
-        restaurantInfo.map(
-          (store, index) => (
-            (city = store.slug),
-            (
+      { restaurantInfo && restaurantInfo.map( (store, index) => ( city = store.slug, (
+        
               <div className={"row"} key={index}>
                 {console.log(storedata)}
 
@@ -45,7 +46,8 @@ export default function RestaurantData() {
               </div>
             )
           )
-        )}
+        )
+      }
     </div>
   );
 }

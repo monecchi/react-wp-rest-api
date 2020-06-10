@@ -52,7 +52,7 @@ class App extends Component {
 
         <Container>
           <Row>
-            <Col>
+            <Col sm={12}>
               <p className="my-3">Lojas Meu Rancho Pizzaria</p>
               <Hello name="Meu Rancho" />
               <RestaurantData />
