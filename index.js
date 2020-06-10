@@ -1,6 +1,8 @@
 import React, { Component } from "react";
-import { ReactDOM, render } from "react-dom";
+import { ReactDOM } from "react-dom";
 import { BrowserRouter, Switch, Route } from "react-router-dom"; // importando o BrowserRouter
+
+import Sobre from './pages/Sobre';
 
 // Bootstrap stuff
 import Container from "react-bootstrap/Container";
@@ -88,7 +90,7 @@ class App extends Component {
 ReactDOM.render(
     <BrowserRouter>
         <Switch>
-            <Route path="/" exact={true} component={App} />
+            <Route path="/" exact={true} component={} />
             <Route path="/sobre" component={Sobre} />
         </Switch>
     </ BrowserRouter>
