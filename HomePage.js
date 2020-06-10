@@ -15,8 +15,8 @@ export class BookItems extends Component {
 
    componentDidMount () {
        const {featured_media, author} = this.props.book;
-       const getImageUrl = axios.get(`https://wordpress-179008-1030625.cloudwaysapps.com//wp-json/wp/v2/media/${featured_media}`);
-       const getAuthor = axios.get(`https://wordpress-179008-1030625.cloudwaysapps.com//wp-json/wp/v2/users/${author}`);
+       const getImageUrl = axios.get(`https://pizzariameurancho.com.br//wp-json/wp/v2/media/${featured_media}`);
+       const getAuthor = axios.get(`https://pizzariameurancho.com.br//wp-json/wp/v2/users/${author}`);
       
        Promise.all([getImageUrl, getAuthor]).then(res => {
 
