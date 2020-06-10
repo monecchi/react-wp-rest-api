@@ -21,6 +21,7 @@ function HomeCarousel() {
       <img src="./assets/images/ifood-bebidas-50-2.png" />
       <img src="./assets/images/ifood-capas-novas-retirar.png" />
       <img src="./assets/images/ifood-capas-novas-selecao-ifood.png" />
+      
     </Flickity>
   );
 }
