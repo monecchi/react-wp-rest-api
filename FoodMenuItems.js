@@ -10,11 +10,11 @@ export class FoodMenuItems extends Component {
    }
 
    static propTypes = {
-       foods: PropTypes.object.isRequired
+       food: PropTypes.object.isRequired
    }
 
    componentDidMount () {
-       const {featured_media, author} = this.props.foods;
+       const {featured_media, author} = this.props.food;
        const getImageUrl = axios.get(`https://pizzariameurancho.com.br//wp-json/wp/v2/media/${featured_media}`);
        const getAuthor = axios.get(`https://pizzariameurancho.com.br//wp-json/wp/v2/users/${author}`);
       
@@ -31,7 +31,7 @@ export class FoodMenuItems extends Component {
     }
  
    render() {
-       const { title, excerpt } = this.props.foods;
+       const { title, excerpt } = this.props.food;
        const {author, imgUrl, isLoaded} = this.state;
        return (
            <div>

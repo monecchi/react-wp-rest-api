@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios';
+import FoodMenuItems from './FoodMenuItems';
 
 export class FoodMenu extends Component {
    state = {
@@ -18,10 +19,13 @@ export class FoodMenu extends Component {
 
 
    render() {
+     const {foods, isLoaded} = this.state;
       console.log(this.state);
        return (
            <div>
-              
+               {foods.map(food =>
+               <FoodMenuItems key={food.id} food={food}/>
+               )}
            </div>
        )
    }
