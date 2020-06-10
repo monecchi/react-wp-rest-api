@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { ReactDOM, Render } from "react-dom";
+import { ReactDOM, render } from "react-dom";
 
 // Bootstrap stuff
 import Container from "react-bootstrap/Container";
@@ -11,7 +11,7 @@ import Navbar from "react-bootstrap/Navbar";
 
 // Importing the Bootstrap CSS
 // Import Custom CSS
-import "../App.scss";
+//import "../App.scss";
 
 class Sobre extends Component {
  render() {

@@ -1,8 +1,10 @@
 import React, { Component } from "react";
-import { ReactDOM } from "react-dom";
+import { ReactDOM, render } from "react-dom";
 import { BrowserRouter, Switch, Route } from "react-router-dom"; // importando o BrowserRouter
+import { Link } from "react-router-dom";
 
-import Sobre from './pages/Sobre';
+//import App from "./App";
+import Sobre from "./Sobre";
 
 // Bootstrap stuff
 import Container from "react-bootstrap/Container";
@@ -14,8 +16,8 @@ import Navbar from "react-bootstrap/Navbar";
 
 // Custom components import
 import Hello from "./Hello";
-import HomeCarousel from './FeaturedSlider';
-import FoodMenu from './FoodMenu';
+import HomeCarousel from "./FeaturedSlider";
+import FoodMenu from "./FoodMenu";
 
 // WP REST API data
 import RestaurantData from "./Restaurant";
@@ -60,23 +62,26 @@ class App extends Component {
           </Navbar.Collapse>
         </Navbar>
 
-        <section className={'bg-light py-4'}>
-        <Container>
-          <Row>
-            <Col sm={12} className={'p-0'}>
-              <HomeCarousel />
-            </Col>
-          </Row>
-        </Container>
+        <section className={"bg-light py-4"}>
+          <Container>
+            <Row>
+              <Col sm={12} className={"p-0"}>
+                <HomeCarousel />
+              </Col>
+            </Row>
+          </Container>
         </section>
 
         <Container>
           <Row>
             <Col sm={12}>
               <p className="my-3">Unidades Meu Rancho Pizzaria</p>
-              <Hello name={this.state.name} className={this.state.customClass} />
+              <Hello
+                name={this.state.name}
+                className={this.state.customClass}
+              />
               <RestaurantData />
-              <FoodMenu/>
+              <FoodMenu />
             </Col>
           </Row>
         </Container>
@@ -85,13 +90,6 @@ class App extends Component {
   }
 }
 
-//render(<App />, document.getElementById("root"));
+//export default App;
 
-ReactDOM.render(
-    <BrowserRouter>
-        <Switch>
-            <Route path="/" exact={true} component={} />
-            <Route path="/sobre" component={Sobre} />
-        </Switch>
-    </ BrowserRouter>
-    , document.getElementById('root'));
+render(<App />, document.getElementById("root"));
