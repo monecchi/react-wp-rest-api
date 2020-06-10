@@ -5,7 +5,13 @@ import Flickity from "react-flickity-component";
 import "flickity/css/flickity.css";
 
 const flickityOptions = {
-  initialIndex: 2
+  initialIndex: 2,
+  freeScroll: true,
+  wrapAround: true,
+  contain: true,
+  // disable previous & next buttons and dots
+  prevNextButtons: false,
+  pageDots: false
 };
 
 function HomeCarousel() {
@@ -18,30 +24,45 @@ function HomeCarousel() {
       reloadOnUpdate // default false
       static // default false
     >
+    <div className="carousel-cell">
+      <div className="highlights-carousel__container">
+        <a href="#">
+          <figure class="highlights-carousel__figure">
+            <img src="https://static-images.ifood.com.br/image/upload//discoveries/ifood-capas-almoco10-app-v01-feb2020.png" alt="Almoço bom e barato" className="highlights-carousel__image" />
+          </figure>
+        </a>
+      </div>
+    </div>
 
-    <a href="#">
-      <figure class="highlights-carousel__figure">
-        <img src="https://static-images.ifood.com.br/image/upload//discoveries/ifood-capas-almoco10-app-v01-feb2020.png" alt="Almoço bom e barato" className="highlights-carousel__image" />
-      </figure>
-    </a>
+    <div className="carousel-cell">
+      <div className="highlights-carousel__container">
+        <a href="#">
+          <figure class="highlights-carousel__figure">
+            <img src="https://cdn.jsdelivr.net/gh/monecchi/react-wp-rest-api@master/assets/images/ifood-bebidas-50-2.png" alt="Almoço bom e barato" className="highlights-carousel__image" />
+          </figure>
+        </a>
+      </div>
+    </div>
 
-    <a href="#">
-      <figure class="highlights-carousel__figure">
-        <img src="https://cdn.jsdelivr.net/gh/monecchi/react-wp-rest-api@master/assets/images/ifood-bebidas-50-2.png" alt="Almoço bom e barato" className="highlights-carousel__image" />
-      </figure>
-    </a>
+    <div className="carousel-cell">
+      <div className="highlights-carousel__container">   
+        <a href="#">
+          <figure class="highlights-carousel__figure">
+            <img src="https://cdn.jsdelivr.net/gh/monecchi/react-wp-rest-api@master/assets/images/ifood-capas-novas-selecao-ifood.png" alt="Almoço bom e barato" className="highlights-carousel__image" />
+          </figure>
+        </a>
+      </div>
+    </div>
 
-    <a href="#">
-      <figure class="highlights-carousel__figure">
-        <img src="https://cdn.jsdelivr.net/gh/monecchi/react-wp-rest-api@master/assets/images/ifood-capas-novas-selecao-ifood.png" alt="Almoço bom e barato" className="highlights-carousel__image" />
-      </figure>
-    </a>
-
-    <a href="#">
-      <figure class="highlights-carousel__figure">
-        <img src="https://cdn.jsdelivr.net/gh/monecchi/react-wp-rest-api@master/assets/images/mercado_ifood.png" alt="Almoço bom e barato" className="highlights-carousel__image" />
-      </figure>
-    </a>
+    <div className="carousel-cell">
+      <div className="highlights-carousel__container">      
+        <a href="#">
+          <figure class="highlights-carousel__figure">
+            <img src="https://cdn.jsdelivr.net/gh/monecchi/react-wp-rest-api@master/assets/images/mercado_ifood.png" alt="Almoço bom e barato" className="highlights-carousel__image" />
+          </figure>
+        </a>
+      </div>
+    </div>
 
     </Flickity>
   );

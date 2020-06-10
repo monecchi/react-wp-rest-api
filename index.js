@@ -57,7 +57,13 @@ class App extends Component {
         </Navbar>
 
         <section className={'bg-light py-4'}>
-        <HomeCarousel />
+        <Container>
+          <Row>
+            <Col sm={12}>
+              <HomeCarousel />
+            </Col>
+          </Row>
+        </Container>
         </section>
 
         <Container>
