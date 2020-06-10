@@ -59,7 +59,7 @@ class App extends Component {
         <section className={'bg-light py-4'}>
         <Container>
           <Row>
-            <Col sm={12}>
+            <Col sm={12} className={'p-0'}>
               <HomeCarousel />
             </Col>
           </Row>

@@ -5,10 +5,11 @@ import Flickity from "react-flickity-component";
 import "flickity/css/flickity.css";
 
 const flickityOptions = {
-  initialIndex: 2,
+  initialIndex: 1,
+  cellAlign: 'left',
   freeScroll: true,
   wrapAround: true,
-  contain: true,
+  contain: false,
   // disable previous & next buttons and dots
   prevNextButtons: false,
   pageDots: false
