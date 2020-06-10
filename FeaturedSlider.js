@@ -39,7 +39,7 @@ function HomeCarousel() {
 
     <a href="#">
       <figure class="highlights-carousel__figure">
-        <img src="https://cdn.jsdelivr.net/gh/monecchi/react-wp-rest-api@master/assets/images/GROC_ifood.png" alt="Almoço bom e barato" className="highlights-carousel__image" />
+        <img src="https://cdn.jsdelivr.net/gh/monecchi/react-wp-rest-api@master/assets/images/mercado_ifood.png" alt="Almoço bom e barato" className="highlights-carousel__image" />
       </figure>
     </a>
 
