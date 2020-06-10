@@ -4,10 +4,7 @@ import { ReactDOM } from "react-dom";
 // Bootstrap stuff
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
-import Nav from "react-bootstrap/Nav";
 import Col from "react-bootstrap/Col";
-import NavDropdown from "react-bootstrap/NavDropdown";
-import Navbar from "react-bootstrap/Navbar";
 
 // Custom components import
 import NavbarNav from "./components/navbar/Navbar.js"; // custom component uses Bootstrap navbar
@@ -20,8 +17,25 @@ class Sobre extends Component {
   render() {
     return (
       <div className="App">
-        <NavbarNav />
-        <p className="App-intro">Exemplo de Página Sobre :)</p>
+      <NavbarNav />
+      <section className={"bg-light py-4"}>
+        <Container>
+          <Row className={"justify-content-center align-items-center"}>
+            <Col sm={12} className={"p-0 py-4"}>
+              <h4 className="text-dark text-center">Sobre</h4>
+            </Col>
+          </Row>
+        </Container>
+      </section>
+
+      <Container>
+        <Row className={"justify-content-center align-items-center"}>
+          <Col sm={12} className={"p-0 py-4"}>
+            <p className="page-intro">Exemplo de Página Sobre :)</p>
+          </Col>
+        </Row>
+      </Container>
+        
       </div>
     );
   }

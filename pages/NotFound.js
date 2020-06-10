@@ -1,6 +1,11 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 
+// Bootstrap stuff
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+
 // Custom components import
 import NavbarNav from "../components/navbar/Navbar.js"; // custom component uses Bootstrap navbar
 
@@ -14,7 +19,7 @@ class NotFound extends Component {
 
   render() {
     return (
-      <View>
+      <div>
        <NavbarNav />
         <Container>
           <Row>
@@ -23,7 +28,7 @@ class NotFound extends Component {
             </Col>
           </Row>
         </Container>
-        </View>
+        </div>
     );
   }
 }

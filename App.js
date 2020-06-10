@@ -36,6 +36,7 @@ class App extends Component {
     return (
       <div>
         <NavbarNav />
+
         <section className={"bg-light py-4"}>
           <Container>
             <Row>
@@ -59,6 +60,7 @@ class App extends Component {
             </Col>
           </Row>
         </Container>
+        
       </div>
     );
   }
