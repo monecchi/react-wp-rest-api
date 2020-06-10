@@ -3,10 +3,11 @@
 .bg-brand {
   background-color: #ef2840 !important;
 }
-// Importing the Bootstrap SCSS
-@import "~bootstrap/scss/bootstrap";
 
 .custom-title {
   font-weight: 800;
   color: red !important;
 }
+
+// Importing the Bootstrap SCSS
+@import "~bootstrap/scss/bootstrap";
