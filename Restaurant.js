@@ -47,6 +47,7 @@ export default function RestaurantData() {
                     <Badge pill variant="danger">
                       { isOpen }
                     </Badge>{' '}
+                    <Button href="tel:{store[city].phone_raw}" variant="primary">{store[city].formatted_phone}</Button>
                     <Card.Link href="#">Card Link</Card.Link>
                     <Card.Link href="#">Another Link</Card.Link>
                   </Card.Body>
