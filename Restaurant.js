@@ -5,6 +5,7 @@ import useFetch from "./src/useFetch";
 // Bootstrap stuff
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
+import Badge from "react-bootstrap/Badge";
 
 // Modifying BS components - https://github.com/react-bootstrap/react-bootstrap/blob/v1.0.1/src/Card.json
 import createWithBsPrefix from 'react-bootstrap/createWithBsPrefix';
@@ -22,6 +23,7 @@ export default function RestaurantData() {
   );
   let storedata = [];
   let city;
+  let isOpen = '';
 
   storedata.push(restaurantInfo);
 
@@ -30,7 +32,7 @@ export default function RestaurantData() {
       {restaurantInfo &&
         restaurantInfo.map(
           (store, index) => (
-            (city = store.slug),
+            (city = store.slug, isOpen = ( store[city].is_open ) == 1 ? "Aberto" : "Fechado"),
             (
               <div className="col p-0 m-0">
                 {console.log(storedata)}
@@ -40,9 +42,11 @@ export default function RestaurantData() {
                     <Card.Title className="text-capitalize mb-4" dangerouslySetInnerHTML={{ __html: 'Loja ' + store.slug }} />
                     <Card.Subtitle className="mb-2 text-muted" dangerouslySetInnerHTML={{ __html: 'StoreID: ' + store.id }} />
                     <Card.Text>
-                      Some quick example text to build on the card title and
-                      make up the bulk of the card's content.
+                      { store[city].formatted_address }
                     </Card.Text>
+                    <Badge pill variant="danger">
+                      { isOpen }
+                    </Badge>{' '}
                     <Card.Link href="#">Card Link</Card.Link>
                     <Card.Link href="#">Another Link</Card.Link>
                   </Card.Body>
