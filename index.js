@@ -54,7 +54,7 @@ class App extends Component {
         <Container>
         <Row>
         <Col>
-          <p>Start editing to see some magic happen :)</p>
+          <p className="my-3">Start editing to see some magic happen :)</p>
           <Hello name={this.state.name} className={this.state.customClass} />
           <RestaurantData />
           </Col>
