@@ -1,3 +1,3 @@
 import React from "react";
 
-export default ({ name, className }) => <h1 className={className}>{name}</h1>;
+export default ({ name, className }) => <h5 className={className}>{name}</h5>;

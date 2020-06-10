@@ -19,7 +19,7 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      name: "Meu Rancho",
+      name: "Nossas Lojas",
       customClass: "text-muted"
     };
   }
@@ -54,7 +54,7 @@ class App extends Component {
         <Container>
           <Row>
             <Col sm={12}>
-              <p className="my-3">Lojas Meu Rancho Pizzaria</p>
+              <p className="my-3">Unidades Meu Rancho Pizzaria</p>
               <Hello name={this.state.name} className={this.state.customClass} />
               <RestaurantData />
             </Col>
