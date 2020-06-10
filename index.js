@@ -8,8 +8,9 @@ import Col from "react-bootstrap/Col";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import Navbar from "react-bootstrap/Navbar";
 
-// Custom component test
+// Custom components import
 import Hello from "./Hello";
+import HomeCarousel from './FeaturedSlider';
 import FoodMenu from './FoodMenu';
 
 // WP REST API data
@@ -54,6 +55,10 @@ class App extends Component {
             </Nav>
           </Navbar.Collapse>
         </Navbar>
+
+        <section className={'bg-light py-4'}>
+        <HomeCarousel />
+        </section>
 
         <Container>
           <Row>
