@@ -17,15 +17,13 @@ import NavbarNav from "./components/navbar/Navbar.js"; // custom component uses 
 import "./App.scss";
 
 class Sobre extends Component {
- render() {
- return (
-    <div className="App">
-      <NavbarNav />
-      <p className="App-intro">
-            Exemplo de Página Sobre :)
-       </p>
-    </div>
- );
- }
+  render() {
+    return (
+      <div className="App">
+        <NavbarNav />
+        <p className="App-intro">Exemplo de Página Sobre :)</p>
+      </div>
+    );
+  }
 }
 export default Sobre;
