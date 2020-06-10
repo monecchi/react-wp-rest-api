@@ -10,13 +10,13 @@ export class BookItems extends Component {
    }
 
    static propTypes = {
-       book: PropTypes.object.isRequired
+       food_menu: PropTypes.object.isRequired
    }
 
    componentDidMount () {
-       const {featured_media, author} = this.props.book;
-       const getImageUrl = axios.get(`https://pizzariameurancho.com.br//wp-json/wp/v2/media/${featured_media}`);
-       const getAuthor = axios.get(`https://pizzariameurancho.com.br//wp-json/wp/v2/users/${author}`);
+       const {featured_media, author} = this.props.food_menu;
+       const getImageUrl = axios.get(`https://pizzariameurancho.com.br/wp-json/wp/v2/media/${featured_media}`);
+       const getAuthor = axios.get(`https://pizzariameurancho.com.br/wp-json/wp/v2/users/${author}`);
       
        Promise.all([getImageUrl, getAuthor]).then(res => {
 
@@ -31,7 +31,7 @@ export class BookItems extends Component {
     }
  
    render() {
-       const { title, excerpt } = this.props.book;
+       const { title, excerpt } = this.props.food_menu;
        const {author, imgUrl, isLoaded} = this.state;
        return (
            <div>

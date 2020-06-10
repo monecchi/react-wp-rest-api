@@ -10,6 +10,7 @@ import Navbar from "react-bootstrap/Navbar";
 
 // Custom component test
 import Hello from "./Hello";
+import BookItems from "./HomePage";
 
 // WP REST API data
 import RestaurantData from "./Restaurant";
