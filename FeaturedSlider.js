@@ -5,7 +5,7 @@ import Flickity from "react-flickity-component";
 import "flickity/css/flickity.css";
 
 const flickityOptions = {
-  initialIndex: 0
+  initialIndex: 2
 };
 
 function HomeCarousel() {
