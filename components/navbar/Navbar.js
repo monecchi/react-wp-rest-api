@@ -24,17 +24,17 @@ class NavbarNav extends Component {
             <Nav className="mr-auto">
               <Link className="nav-link" to="/" role="button">Home</Link>
               <Link className="nav-link" to="/sobre" role="button">Sobre</Link>
-              <NavDropdown title="Dropdown" id="basic-nav-dropdown">
-                <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
+              <NavDropdown title="Cardápio" id="basic-nav-dropdown">
+                <NavDropdown.Item href="#action/3.1">Pizzas</NavDropdown.Item>
                 <NavDropdown.Item href="#action/3.2">
-                  Another action
+                  Massas
                 </NavDropdown.Item>
                 <NavDropdown.Item href="#action/3.3">
-                  Something
+                  Bebidas
                 </NavDropdown.Item>
                 <NavDropdown.Divider />
-                <NavDropdown.Item href="#action/3.4">
-                  Separated link
+                <NavDropdown.Item href="googlechrome://navigate?url=https://www.ifood.com.br/delivery/betim-mg/pizzaria-meu-rancho-angola/442ea04f-571b-4af6-8666-ea62bb63c1d8">
+                  Pedir online no iFood
                 </NavDropdown.Item>
               </NavDropdown>
             </Nav>
