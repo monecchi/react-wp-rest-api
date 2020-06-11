@@ -13,7 +13,7 @@ import Col from "react-bootstrap/Col";
 // Custom components import
 import NavbarNav from "./components/navbar/Navbar.js"; // custom component uses Bootstrap navbar
 import Hello from "./Hello";
-import HomeCarousel from "./FeaturedSlider";
+import DestaquesCarousel from "./src/components/HomeCarousel/DestaquesCarousel";
 import FoodMenu from "./FoodMenu";
 
 // WP REST API data
@@ -41,7 +41,7 @@ class App extends Component {
           <Container>
             <Row>
               <Col sm={12} className={"p-0"}>
-                <HomeCarousel />
+                <DestaquesCarousel />
               </Col>
             </Row>
           </Container>
