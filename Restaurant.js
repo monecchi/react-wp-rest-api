@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import { StyleSheet } from "react-native";
+
 // Custom cacheable fetch api service
 import useFetch from "./src/useFetch";
 
@@ -25,6 +27,12 @@ export default function RestaurantData() {
   let city;
   let isOpen = "";
 
+  let styles = {
+    card__places: {
+      boxShadow: "0 0.75rem 1.5rem rgba(18,38,63,.03)"
+    }
+  }
+
   storedata.push(restaurantInfo);
 
   return (
@@ -38,7 +46,7 @@ export default function RestaurantData() {
               <div className="col p-0 m-0">
                 {console.log(storedata)}
 
-                <Card key={index}>
+                <Card key={index} className="lift border-0" style={styles.card__places}>
                   <Card.Body>
                     <Card.Title
                       className="text-capitalize mb-4"
@@ -72,3 +80,4 @@ export default function RestaurantData() {
     </div>
   );
 }
+
