@@ -40,7 +40,15 @@ export class RestaurantStores extends Component {
       .catch(err => console.log(err));
   }
 
+  htmlDecode(input) {
+    var e = document.createElement("div");
+    e.innerHTML = input;
+    return e.childNodes.length === 0 ? "" : e.childNodes[0].nodeValue;
+  }
+
   render() {
+    isLoaded: true;
+
     let storedata = [];
     storedata.push(stores);
 
@@ -77,12 +85,8 @@ export class RestaurantStores extends Component {
                       <Card.Title
                         className="text-capitalize mb-4"
                         dangerouslySetInnerHTML={{
-                          __html: store.slug
+                          __html: this.htmlDecode(store.slug) || <Skeleton />
                         }}
-                      />
-                      <Skeleton
-                        className="mb-4"
-                        style={{ display: isHidden }}
                       />
                       <Card.Subtitle
                         className="mb-2 text-muted"
@@ -101,7 +105,7 @@ export class RestaurantStores extends Component {
                       <div className="mb-2">Ligar na loja</div>
 
                       <Button
-                        href="tel:{store[city].phone_raw}"
+                        href={'tel:' + store[city].phone_raw }
                         variant="primary"
                       >
                         {store[city].formatted_phone}
