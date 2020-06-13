@@ -9,6 +9,9 @@ import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import Badge from "react-bootstrap/Badge";
 
+// react-loading-skeleton
+import Skeleton from 'react-loading-skeleton';
+
 // Modifying BS components - https://github.com/react-bootstrap/react-bootstrap/blob/v1.0.1/src/Card.json
 import createWithBsPrefix from "react-bootstrap/createWithBsPrefix";
 import divWithClassName from "react-bootstrap/divWithClassName";
@@ -50,7 +53,7 @@ export default function RestaurantData() {
                   <Card.Body>
                     <Card.Title
                       className="text-capitalize mb-4"
-                      dangerouslySetInnerHTML={{ __html: store.slug }}
+                      dangerouslySetInnerHTML={{ __html: store.slug || <Skeleton /> }}
                     />
                     <Card.Subtitle
                       className="mb-2 text-muted"
