@@ -52,10 +52,10 @@ export class RestaurantStores extends Component {
         boxShadow: "0 0.75rem 1.5rem rgba(18,38,63,.03)"
       }
     };
-    
+
     const { stores, isLoaded } = this.state;
 
-    let isHidden = ( !this.state.isLoaded ) ? "block" : "none";
+    let isHidden = !this.state.isLoaded ? "block" : "none";
 
     return (
       <div className="card-deck">
@@ -80,7 +80,10 @@ export class RestaurantStores extends Component {
                           __html: store.slug
                         }}
                       />
-                      <Skeleton className="mb-4" style={{display: isHidden}} />
+                      <Skeleton
+                        className="mb-4"
+                        style={{ display: isHidden }}
+                      />
                       <Card.Subtitle
                         className="mb-2 text-muted"
                         dangerouslySetInnerHTML={{
