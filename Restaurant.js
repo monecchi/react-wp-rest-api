@@ -82,12 +82,9 @@ export class RestaurantStores extends Component {
                     style={styles.card__places}
                   >
                     <Card.Body>
-                      <Card.Title
-                        className="text-capitalize mb-4"
-                        dangerouslySetInnerHTML={{
-                          __html: this.htmlDecode(store.slug) || <Skeleton />
-                        }}
-                      />
+                      <Card.Title className="text-capitalize mb-4">
+                        {store.slug || <Skeleton />}
+                      </Card.Title>
                       <Card.Subtitle
                         className="mb-2 text-muted"
                         dangerouslySetInnerHTML={{
@@ -105,7 +102,7 @@ export class RestaurantStores extends Component {
                       <div className="mb-2">Ligar na loja</div>
 
                       <Button
-                        href={'tel:' + store[city].phone_raw }
+                        href={"tel:" + store[city].phone_raw}
                         variant="primary"
                       >
                         {store[city].formatted_phone}
