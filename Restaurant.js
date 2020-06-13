@@ -91,7 +91,7 @@ export class RestaurantStores extends Component {
                           __html: "StoreID: " + store.id
                         }}
                       />
-                      <Card.Text>{store[city].formatted_address}</Card.Text>
+                      <Card.Text>{store[city].formatted_address || <Skeleton count={3} /> }</Card.Text>
 
                       <div className="d-flex justify-content-start align-items-center">
                         <Badge className={"mb-3"} pill variant="danger">
