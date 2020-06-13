@@ -17,7 +17,7 @@ import DestaquesCarousel from "./src/components/HomeCarousel/DestaquesCarousel";
 import FoodMenu from "./FoodMenu";
 
 // WP REST API data
-import RestaurantData from "./Restaurant";
+import RestaurantStores from "./Restaurant";
 
 // Importing the Bootstrap CSS
 // Import Custom CSS
@@ -55,7 +55,7 @@ class App extends Component {
                 name={this.state.name}
                 className={this.state.customClass}
               />
-              <RestaurantData />
+              <RestaurantStores />
               <FoodMenu />
             </Col>
           </Row>
