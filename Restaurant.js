@@ -189,9 +189,9 @@ export class RestaurantStores extends Component {
                                 color="brand"
                                 m={{ l: "1rem" }}
                                 hoverColor="#ffffff"
-                                className={
-                                  ( store[city].is_open ) == 1 ? "disabled" : null
-                                }
+                                className={`${
+                                  ( store[city].is_open == 1 ) ? "disabled" : null
+                                 }`}
                               />
                             }
                             textDecor="none"
