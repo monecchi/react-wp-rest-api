@@ -43,7 +43,7 @@ import useFetch from "./src/useFetch";
 // Bootstrap stuff
 //import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
-import Badge from "react-bootstrap/Badge";
+//import Badge from "react-bootstrap/Badge";
 
 // react-loading-skeleton
 import Skeleton from "react-loading-skeleton";
@@ -142,30 +142,68 @@ export class RestaurantStores extends Component {
                           <Div d="flex" flexWrap="wrap">
                             <Tag
                               bg={tagBg}
-                              textColor={`${tagBg == 'softSuccess' ? 'successDark' : 'brand' }`}
-                              className={`${store[city].is_open == 1 ? 'badge-status-opened' : 'badge-status-closed' }`}
+                              textColor={`${
+                                tagBg == "softSuccess" ? "successDark" : "brand"
+                              }`}
+                              className={`${
+                                store[city].is_open == 1
+                                  ? "badge-status-opened"
+                                  : "badge-status-closed"
+                              }`}
                               rounded="circle"
                               p={{ x: "0.75rem", y: "0.25rem" }}
                               m={{ r: "0.5rem", b: "0.5rem" }}
+                              tag="span"
                               textSize="caption"
                               shadow="0"
                             >
                               {isOpen}
-                            </Tag> {" "}
+                            </Tag>{" "}
                           </Div>
                         </div>
 
                         <div className="mb-2">Ligar na loja</div>
-
-                        <Button
-                          href={"tel:55" + store[city].phone_raw}
-                          variant="primary"
+                        <Anchor
+                          href={"tel:" + store[city].phone_raw}
+                          hoverColor="white"
+                          textDecor="none"
+                          className={`${
+                            store[city].is_open == 1
+                              ? "text-decoration-none disabled"
+                              : "text-decoration-none"
+                          }`}
+                          disabled={`${
+                            store[city].is_open == 1 ? "disabled" : null
+                          }`}
                         >
-                          {store[city].formatted_phone}
-                        </Button>
-
-
-  
+                          <Button
+                            textColor="brand"
+                            hoverTextColor="white"
+                            textWeight="700"
+                            bg="softDanger"
+                            hoverBg="brand"
+                            suffix={
+                              <Icon
+                                name="LongRight"
+                                size="20px"
+                                color="brand"
+                                m={{ l: "1rem" }}
+                                hoverColor="#ffffff"
+                                className={
+                                  ( store[city].is_open ) == 1 ? "disabled" : null
+                                }
+                              />
+                            }
+                            textDecor="none"
+                            cursor="pointer"
+                            rounded="md"
+                            disabled={`${
+                              store[city].is_open == 1 ? "disabled" : null
+                            }`}
+                          >
+                            {store[city].formatted_phone}
+                          </Button>
+                        </Anchor>
                       </Card.Body>
                     </Card>
                   </div>

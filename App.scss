@@ -11,6 +11,10 @@
   color: #ef2840 !important;
 }
 
+.disabled {
+  pointer-events: none;
+}
+
 .card {
     display: flex;
     flex-direction: column;
