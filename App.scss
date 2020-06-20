@@ -1,6 +1,9 @@
 // Main App Styles
 
 .bg-brand {
+  background-color: #FC0E36 !important;
+}
+.bg-brand-alt {
   background-color: #ef2840 !important;
 }
 
@@ -123,8 +126,76 @@
   }
 }
 
+
+// 
+// Badge status - store opening hours
+// apply .opening status to badge, js tweaks does the rest
+//
+
+%badge-circle-before, .badge-circle-before {
+    &:before {
+        content: "";
+        display: inline-block;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background-color: #c0ccda;
+        margin: 0 .4rem 0 auto;
+    }
+}
+
+.badge-status {
+    color: #273444;
+    background-color: #f8f8fb;
+
+    &:before {
+        @extend %badge-circle-before;
+        @extend %flashing;
+    }
+
+    &.is-opened {
+        &:before {
+            background-color: #36b37e;
+            box-shadow: 0 0 0 #36b37e;
+        }
+    }
+
+    &.is-closed {
+        &:before {
+            background-color: #f91942;
+            box-shadow: 0 0 0 #ef2840;
+        }
+    }
+
+}
+
+.badge-status-opened {
+    color: #36b37e;
+    background-color: #d7f0e5;
+
+    &:before {
+        @extend %badge-circle-before;
+        background-color: #36b37e;
+        box-shadow: 0 0 0 #36b37e;
+        @extend %flashing;
+    }
+
+}
+
+.badge-status-closed {
+    color: #fc4349;
+    background-color: #fed9db;
+
+    &:before {
+        @extend %badge-circle-before;
+        background-color: #f91942;
+        box-shadow: 0 0 0 #ef2840;
+        @extend %flashing;
+    }
+}
+
 // Importing the Bootstrap SCSS
 @import "~bootstrap/scss/bootstrap";
 
 // Animation custom
-//@import "~/src/styles/Animations";
+@import "./src/styles/Animations";

@@ -48,7 +48,7 @@ function HomeCarousel() {
     <div className="carousel-cell">
       <div className="highlights-carousel__container">   
         <a href="#">
-          <figure class="highlights-carousel__figure">
+          <figure className="highlights-carousel__figure">
             <img src="https://cdn.jsdelivr.net/gh/monecchi/react-wp-rest-api@master/assets/images/ifood-capas-novas-selecao-ifood.png" alt="Almoço bom e barato" className="highlights-carousel__image" />
           </figure>
         </a>

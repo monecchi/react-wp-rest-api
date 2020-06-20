@@ -139,13 +139,11 @@ export class RestaurantStores extends Component {
                         </Card.Text>
 
                         <div className="d-flex justify-content-start align-items-center">
-                          <Badge className={"mb-3"} pill variant="danger">
-                            {isOpen}
-                          </Badge>{" "}
                           <Div d="flex" flexWrap="wrap">
                             <Tag
                               bg={tagBg}
                               textColor={`${tagBg == 'softSuccess' ? 'successDark' : 'brand' }`}
+                              className={`${store[city].is_open == 1 ? 'badge-status-opened' : 'badge-status-closed' }`}
                               rounded="circle"
                               p={{ x: "0.75rem", y: "0.25rem" }}
                               m={{ r: "0.5rem", b: "0.5rem" }}
@@ -153,37 +151,21 @@ export class RestaurantStores extends Component {
                               shadow="0"
                             >
                               {isOpen}
-                            </Tag>
+                            </Tag> {" "}
                           </Div>
                         </div>
 
                         <div className="mb-2">Ligar na loja</div>
 
                         <Button
-                          href={"tel:" + store[city].phone_raw}
+                          href={"tel:55" + store[city].phone_raw}
                           variant="primary"
                         >
                           {store[city].formatted_phone}
                         </Button>
 
-                        <Button
-                          prefix={
-                            <Icon
-                              name="EyeSolid"
-                              size="16px"
-                              color="white"
-                              m={{ r: "0.5rem" }}
-                            />
-                          }
-                          bg="warning700"
-                          hoverBg="warning800"
-                          rounded="circle"
-                          p={{ r: "1.5rem", l: "1rem" }}
-                          shadow="3"
-                          hoverShadow="4"
-                        >
-                          Preview
-                        </Button>
+
+  
                       </Card.Body>
                     </Card>
                   </div>
