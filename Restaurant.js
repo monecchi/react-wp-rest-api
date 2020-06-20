@@ -105,7 +105,7 @@ export class RestaurantStores extends Component {
     return (
       <ThemeProvider theme={theme}>
         <StyleReset />
-        <div className="card-deck">
+        <div className="store-cards card-deck">
           {stores &&
             stores.map(
               (store, index) => (
@@ -117,98 +117,103 @@ export class RestaurantStores extends Component {
                   <div className="col p-0 m-0">
                     {console.log(storedata)}
 
-                    <Card
+                    <Div
                       key={index}
-                      className="lift border-0"
-                      style={styles.card__places}
+                      bg="white"
+                      d="flex"
+                      flexWrap="nowrap"
+                      flexDir={{ xs: "column", lg: "column" }}
+                      align="auto"
+                      m={{ l: "1rem", r: "1rem", y: "1rem" }}
+                      p="1.5rem"
+                      rounded="sm"
+                      shadow="2"
+                      hoverShadow="3"
                     >
-                      <Card.Body>
-                        <Card.Title className="text-capitalize mb-4">
-                          {store.slug || <Skeleton />}
-                        </Card.Title>
-                        <Card.Subtitle
-                          className="mb-2 text-muted"
-                          dangerouslySetInnerHTML={{
-                            __html: "StoreID: " + store.id
-                          }}
-                        />
-                        <Card.Text>
-                          {store[city].formatted_address || (
-                            <Skeleton count={3} />
-                          )}
-                        </Card.Text>
+                      <Text
+                        tag="h5"
+                        textSize="h5"
+                        m={{ b: "1rem" }}
+                        className="text-capitalize"
+                      >
+                        {store.slug || <Skeleton />}
+                      </Text>
 
-                        <div className="d-flex justify-content-start align-items-center">
-                          <Div d="flex" flexWrap="wrap">
-                            <Tag
-                              bg={tagBg}
-                              textColor={`${
-                                tagBg == "softSuccess" ? "successDark" : "brand"
-                              }`}
-                              className={`${
-                                store[city].is_open == 1
-                                  ? "badge-status-opened"
-                                  : "badge-status-closed"
-                              }`}
-                              rounded="circle"
-                              p={{ x: "0.75rem", y: "0.25rem" }}
-                              m={{ r: "0.5rem", b: "0.5rem" }}
-                              tag="span"
-                              textSize="caption"
-                              shadow="0"
-                            >
-                              {isOpen}
-                            </Tag>{" "}
-                          </Div>
-                        </div>
+                      <Text tag="p" textSize="body" m={{ b: "1rem" }}>
+                        {store[city].formatted_address || (
+                          <Skeleton count={3} />
+                        )}
+                      </Text>
 
-                        <div className="mb-2">Ligar na loja</div>
-                        <Anchor
-                          href={"tel:" + store[city].phone_raw}
+                      <Div d="flex" flexWrap="wrap">
+                        <Tag
+                          bg={tagBg}
+                          textColor={`${
+                            tagBg == "softSuccess" ? "successDark" : "brand"
+                          }`}
+                          className={`${
+                            store[city].is_open == 1
+                              ? "badge-status-opened"
+                              : "badge-status-closed"
+                          }`}
+                          rounded="circle"
+                          p={{ x: "0.75rem", y: "0.25rem" }}
+                          m={{ r: "0.5rem", b: "0.5rem" }}
+                          tag="span"
+                          textSize="caption"
+                          shadow="0"
+                        >
+                          {isOpen}
+                        </Tag>{" "}
+                      </Div>
+
+                      <div className="d-flex flex-column mb-2">
+                        Ligar na loja
+                      </div>
+
+                      <Anchor
+                        href={"tel:" + store[city].phone_raw}
+                        hoverColor="white"
+                        textDecor="none"
+                        className={
+                          store[city].is_open == 0
+                            ? "text-decoration-none disabled"
+                            : "text-decoration-none"
+                        }
+                        disabled={store[city].is_open == 0 ? "disabled" : null}
+                      >
+                        <Button
+                          textColor="brand"
                           hoverColor="white"
-                          textDecor="none"
-                          className={
-                            store[city].is_open == 0
-                              ? "text-decoration-none disabled"
-                              : "text-decoration-none"
+                          hoverTextColor="white"
+                          textWeight="700"
+                          bg="softDanger"
+                          hoverBg="brand"
+                          suffix={
+                            <Icon
+                              name="LongRight"
+                              size="20px"
+                              color="brand"
+                              m={{ l: "1rem" }}
+                              className={
+                                store[city].is_open == 0
+                                  ? "fill-white text-decoration-none disabled"
+                                  : "text-decoration-none"
+                              }
+                              hoverColor="white"
+                            />
                           }
+                          textDecor="none"
+                          cursor="pointer"
+                          rounded="md"
                           disabled={
                             store[city].is_open == 0 ? "disabled" : null
                           }
                         >
-                          <Button
-                            textColor="brand"
-                            hoverColor="white"
-                            hoverTextColor="white"
-                            textWeight="700"
-                            bg="softDanger"
-                            hoverBg="brand"
-                            suffix={
-                              <Icon
-                                name="LongRight"
-                                size="20px"
-                                color="brand"
-                                m={{ l: "1rem" }}
-                                className={
-                                  store[city].is_open == 0
-                                    ? "fill-white text-decoration-none disabled"
-                                    : "text-decoration-none"
-                                }
-                                 hoverColor="white"
-                              />
-                            }
-                            textDecor="none"
-                            cursor="pointer"
-                            rounded="md"
-                            disabled={
-                              store[city].is_open == 0 ? "disabled" : null
-                            }
-                          >
-                            {store[city].formatted_phone}
-                          </Button>
-                        </Anchor>
-                      </Card.Body>
-                    </Card>
+                          {store[city].formatted_phone}
+                        </Button>
+                      </Anchor>
+                    </Div>
                   </div>
                 )
               )
