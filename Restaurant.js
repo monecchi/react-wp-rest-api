@@ -118,13 +118,18 @@ export class RestaurantStores extends Component {
                     {console.log(storedata)}
 
                     <Div
-                      key={index}
                       bg="white"
                       d="flex"
                       flexWrap="nowrap"
                       flexDir={{ xs: "column", lg: "column" }}
                       align="auto"
-                      m={{ l: "1rem", r: "1rem", y: "1rem" }}
+                      w="auto"
+                      m={{
+                        l: { xs: "0", md: ".5rem", lg: "1rem" },
+                        r: { xs: "0", md: ".5rem", lg: "1rem" },
+                        t: { xs: "0", md: "0", lg: "0" },
+                        y: "1rem"
+                      }}
                       p="1.5rem"
                       rounded="sm"
                       shadow="2"
