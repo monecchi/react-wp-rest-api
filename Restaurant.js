@@ -167,17 +167,18 @@ export class RestaurantStores extends Component {
                           href={"tel:" + store[city].phone_raw}
                           hoverColor="white"
                           textDecor="none"
-                          className={`${
-                            store[city].is_open == 1
+                          className={
+                            store[city].is_open == 0
                               ? "text-decoration-none disabled"
                               : "text-decoration-none"
-                          }`}
-                          disabled={`${
-                            store[city].is_open == 1 ? "disabled" : null
-                          }`}
+                          }
+                          disabled={
+                            store[city].is_open == 0 ? "disabled" : null
+                          }
                         >
                           <Button
                             textColor="brand"
+                            hoverColor="white"
                             hoverTextColor="white"
                             textWeight="700"
                             bg="softDanger"
@@ -188,18 +189,20 @@ export class RestaurantStores extends Component {
                                 size="20px"
                                 color="brand"
                                 m={{ l: "1rem" }}
-                                hoverColor="#ffffff"
-                                className={`${
-                                  ( store[city].is_open == 1 ) ? "disabled" : null
-                                 }`}
+                                className={
+                                  store[city].is_open == 0
+                                    ? "fill-white text-decoration-none disabled"
+                                    : "text-decoration-none"
+                                }
+                                 hoverColor="white"
                               />
                             }
                             textDecor="none"
                             cursor="pointer"
                             rounded="md"
-                            disabled={`${
-                              store[city].is_open == 1 ? "disabled" : null
-                            }`}
+                            disabled={
+                              store[city].is_open == 0 ? "disabled" : null
+                            }
                           >
                             {store[city].formatted_phone}
                           </Button>

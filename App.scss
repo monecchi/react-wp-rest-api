@@ -15,6 +15,22 @@
   pointer-events: none;
 }
 
+button[hovercolor="white"]:hover {
+  path {
+    transition: color 2s ease-out;
+    fill: #fff !important;
+  } 
+}
+
+svg {
+  &.fill-white {
+     fill: #fff !important;
+    & path {
+        fill: #fff !important;
+    } 
+  }
+}
+
 .card {
     display: flex;
     flex-direction: column;
