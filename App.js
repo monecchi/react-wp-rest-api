@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+
 //import logo from "./logo.svg";
 // Importing the Bootstrap CSS
 // Import Custom CSS
@@ -34,7 +35,7 @@ class App extends Component {
 
   render() {
     return (
-      <div>
+      <>
         <NavbarNav />
 
         <section className={"bg-light py-4"}>
@@ -60,8 +61,7 @@ class App extends Component {
             </Col>
           </Row>
         </Container>
-        
-      </div>
+      </>
     );
   }
 }

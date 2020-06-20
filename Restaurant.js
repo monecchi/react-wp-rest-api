@@ -1,12 +1,47 @@
 import React, { useEffect, useState, Component } from "react";
 import axios from "axios";
-import { StyleSheet } from "react-native";
+
+// Atomize
+import {
+  ThemeProvider,
+  DefaultTheme,
+  StyleReset,
+  Div,
+  Tag,
+  Anchor,
+  Button,
+  Text,
+  Icon
+} from "react-atomize";
+
+const theme = {
+  ...DefaultTheme,
+  colors: {
+    ...DefaultTheme.colors,
+    white: "#ffffff",
+    dark: "#141b24",
+    brand: "#FC0E36",
+    brandAlt: "#EF2840",
+    success: "#1BC160",
+    successDark: "#36b37e",
+    danger: "#FC0E36",
+    softDanger: "#FED9DB",
+    softSuccess: "#D7f0E5",
+    warning: "#FCC246",
+    info: "#3366FF",
+    brand800: "#671de1"
+  },
+  rounded: {
+    ...DefaultTheme.rounded,
+    brandRadius: "20px"
+  }
+};
 
 // Custom cacheable fetch api service
 import useFetch from "./src/useFetch";
 
 // Bootstrap stuff
-import Button from "react-bootstrap/Button";
+//import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import Badge from "react-bootstrap/Badge";
 
@@ -54,6 +89,8 @@ export class RestaurantStores extends Component {
 
     let city;
     let isOpen = "";
+    let tagColor = theme.colors.dark;
+    let tagBg = theme.colors.white;
 
     let styles = {
       card__places: {
@@ -66,54 +103,95 @@ export class RestaurantStores extends Component {
     let isHidden = !this.state.isLoaded ? "block" : "none";
 
     return (
-      <div className="card-deck">
-        {stores &&
-          stores.map(
-            (store, index) => (
-              ((city = store.slug),
-              (isOpen = store[city].is_open == 1 ? "Aberto" : "Fechado")),
-              (
-                <div className="col p-0 m-0">
-                  {console.log(storedata)}
+      <ThemeProvider theme={theme}>
+        <StyleReset />
+        <div className="card-deck">
+          {stores &&
+            stores.map(
+              (store, index) => (
+                ((city = store.slug),
+                (isOpen = store[city].is_open == 1 ? "Aberto" : "Fechado"),
+                (tagBg =
+                  store[city].is_open == 1 ? "softSuccess" : "softDanger")),
+                (
+                  <div className="col p-0 m-0">
+                    {console.log(storedata)}
 
-                  <Card
-                    key={index}
-                    className="lift border-0"
-                    style={styles.card__places}
-                  >
-                    <Card.Body>
-                      <Card.Title className="text-capitalize mb-4">
-                        {store.slug || <Skeleton />}
-                      </Card.Title>
-                      <Card.Subtitle
-                        className="mb-2 text-muted"
-                        dangerouslySetInnerHTML={{
-                          __html: "StoreID: " + store.id
-                        }}
-                      />
-                      <Card.Text>{store[city].formatted_address || <Skeleton count={3} /> }</Card.Text>
+                    <Card
+                      key={index}
+                      className="lift border-0"
+                      style={styles.card__places}
+                    >
+                      <Card.Body>
+                        <Card.Title className="text-capitalize mb-4">
+                          {store.slug || <Skeleton />}
+                        </Card.Title>
+                        <Card.Subtitle
+                          className="mb-2 text-muted"
+                          dangerouslySetInnerHTML={{
+                            __html: "StoreID: " + store.id
+                          }}
+                        />
+                        <Card.Text>
+                          {store[city].formatted_address || (
+                            <Skeleton count={3} />
+                          )}
+                        </Card.Text>
 
-                      <div className="d-flex justify-content-start align-items-center">
-                        <Badge className={"mb-3"} pill variant="danger">
-                          {isOpen}
-                        </Badge>{" "}
-                      </div>
+                        <div className="d-flex justify-content-start align-items-center">
+                          <Badge className={"mb-3"} pill variant="danger">
+                            {isOpen}
+                          </Badge>{" "}
+                          <Div d="flex" flexWrap="wrap">
+                            <Tag
+                              bg={tagBg}
+                              textColor={`${tagBg == 'softSuccess' ? 'successDark' : 'brand' }`}
+                              rounded="circle"
+                              p={{ x: "0.75rem", y: "0.25rem" }}
+                              m={{ r: "0.5rem", b: "0.5rem" }}
+                              textSize="caption"
+                              shadow="0"
+                            >
+                              {isOpen}
+                            </Tag>
+                          </Div>
+                        </div>
 
-                      <div className="mb-2">Ligar na loja</div>
+                        <div className="mb-2">Ligar na loja</div>
 
-                      <Button
-                        href={"tel:" + store[city].phone_raw}
-                        variant="primary"
-                      >
-                        {store[city].formatted_phone}
-                      </Button>
-                    </Card.Body>
-                  </Card>
-                </div>
+                        <Button
+                          href={"tel:" + store[city].phone_raw}
+                          variant="primary"
+                        >
+                          {store[city].formatted_phone}
+                        </Button>
+
+                        <Button
+                          prefix={
+                            <Icon
+                              name="EyeSolid"
+                              size="16px"
+                              color="white"
+                              m={{ r: "0.5rem" }}
+                            />
+                          }
+                          bg="warning700"
+                          hoverBg="warning800"
+                          rounded="circle"
+                          p={{ r: "1.5rem", l: "1rem" }}
+                          shadow="3"
+                          hoverShadow="4"
+                        >
+                          Preview
+                        </Button>
+                      </Card.Body>
+                    </Card>
+                  </div>
+                )
               )
-            )
-          )}
-      </div>
+            )}
+        </div>
+      </ThemeProvider>
     );
   }
 }
