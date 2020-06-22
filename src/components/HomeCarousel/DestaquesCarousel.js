@@ -3,6 +3,8 @@ import React from "react";
 import Flickity from "react-flickity-component";
 
 import "flickity/css/flickity.css";
+import "DestaquesCarousel.scss";
+
 
 const flickityOptions = {
   initialIndex: 2,
@@ -10,7 +12,7 @@ const flickityOptions = {
   freeScroll: false,
   wrapAround: true,
   contain: false,
-  lazyLoad: 2,
+  lazyLoad: 1,
   imagesLoaded: true,
   percentPosition: false,
   // disable previous & next buttons and dots
@@ -18,10 +20,15 @@ const flickityOptions = {
   pageDots: false
 };
 
+// enable prev/next buttons at 1200px
+if ( matchMedia('screen and (min-width: 1200px)').matches ) {
+  flickityOptions.prevNextButtons = true;
+}
+
 function DestaquesCarousel() {
   return (
     <Flickity
-      className={"carousel"} // default ''
+      className={"carousel nav-outside"} // default ''
       elementType={"div"} // default 'div'
       options={flickityOptions} // takes flickity options {}
       disableImagesLoaded={false} // default false
@@ -47,7 +54,7 @@ function DestaquesCarousel() {
           <a href="#">
             <figure className="highlights-carousel__figure">
               <img
-                src="https://cdn.jsdelivr.net/gh/monecchi/react-wp-rest-api@master/assets/images/ifood-bebidas-50-2.png"
+                data-flickity-lazyload="https://cdn.jsdelivr.net/gh/monecchi/react-wp-rest-api@master/assets/images/ifood-bebidas-50-2.png"
                 alt="Almoço bom e barato"
                 className="highlights-carousel__image"
               />

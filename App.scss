@@ -71,6 +71,18 @@ svg {
   overflow: hidden;
 }
 
+/* fade in image when loaded */
+.highlights-carousel__image {
+  transition: opacity 0.4s;
+  opacity: 0;
+  min-width: 140px;
+}
+
+.highlights-carousel__image.flickity-lazyloaded,
+.highlights-carousel__image.flickity-lazyerror {
+  opacity: 1;
+}
+
 .highlights-carousel__container {
     display: flex;
     flex-direction: column;
