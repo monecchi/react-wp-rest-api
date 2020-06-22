@@ -9,7 +9,7 @@ export class FoodMenu extends Component {
    }
 
  componentDidMount () {
-   axios.get('https://pizzariameurancho.com.br//wp-json/wp/v2/food_menu/')
+   axios.get('https://pizzariameurancho.com.br/wp-json/wp/v2/food_menu/')
        .then(res => this.setState({
            foods: res.data,
            isLoaded: true
@@ -23,7 +23,7 @@ export class FoodMenu extends Component {
       console.log(this.state);
        return (
            <div>
-               {foods.map(food =>
+               {foods && foods.map(food =>
                <FoodMenuItems key={food.id} food={food}/>
                )}
            </div>
