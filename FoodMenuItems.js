@@ -4,7 +4,7 @@ import axios from "axios";
 export class FoodMenuItems extends Component {
   state = {
     imgUrl: "",
-    slug: "",
+    slug: String,
     isLoaded: false
   };
 
@@ -31,17 +31,18 @@ export class FoodMenuItems extends Component {
   render() {
     const { title, excerpt, slug } = this.props.food;
     const { imgUrl, hasImg, isLoaded } = this.state;
-    if ((slug && slug != "vazio") || (slug && slug != "empty")) {
-      return (
-        <div>
-          <h2>{title.rendered}</h2>
-          <img src={imgUrl ? imgUrl : undefined} alt={title.rendered} />
-          <strong>{slug}</strong>
-          <br />
-          <p dangerouslySetInnerHTML={{ __html: excerpt.rendered }} />
-        </div>
-      );
-    }
+  if (slug && slug == "vazio") {
+    return <> </>;
+  }
+    return (
+      <div>
+        <h2>{title.rendered}</h2>
+        <img src={imgUrl ? imgUrl : undefined} alt={title.rendered} />
+        <strong>{slug}</strong>
+        <br />
+        <p dangerouslySetInnerHTML={{ __html: excerpt.rendered }} />
+      </div>
+    );
   }
 }
 
