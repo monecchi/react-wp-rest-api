@@ -10,7 +10,7 @@ const flickityOptions = {
   freeScroll: false,
   wrapAround: true,
   contain: false,
-  lazyLoad: true,
+  lazyLoad: 2,
   imagesLoaded: true,
   percentPosition: false,
   // disable previous & next buttons and dots
@@ -33,7 +33,7 @@ function DestaquesCarousel() {
           <a href="#">
             <figure className="highlights-carousel__figure">
               <img
-                src="https://static-images.ifood.com.br/image/upload//discoveries/ifood-capas-almoco10-app-v01-feb2020.png"
+                data-flickity-lazyload="https://static-images.ifood.com.br/image/upload//discoveries/ifood-capas-almoco10-app-v01-feb2020.png"
                 alt="Almoço bom e barato"
                 className="highlights-carousel__image"
               />
@@ -61,7 +61,7 @@ function DestaquesCarousel() {
           <a href="#">
             <figure className="highlights-carousel__figure">
               <img
-                src="https://cdn.jsdelivr.net/gh/monecchi/react-wp-rest-api@master/assets/images/ifood-capas-novas-selecao-ifood.png"
+                data-flickity-lazyload="https://cdn.jsdelivr.net/gh/monecchi/react-wp-rest-api@master/assets/images/ifood-capas-novas-selecao-ifood.png"
                 alt="Almoço bom e barato"
                 className="highlights-carousel__image"
               />
@@ -75,7 +75,7 @@ function DestaquesCarousel() {
           <a href="#">
             <figure className="highlights-carousel__figure">
               <img
-                src="https://cdn.jsdelivr.net/gh/monecchi/react-wp-rest-api@master/assets/images/mercado_ifood.png"
+                data-flickity-lazyload="https://cdn.jsdelivr.net/gh/monecchi/react-wp-rest-api@master/assets/images/mercado_ifood.png"
                 alt="Almoço bom e barato"
                 className="highlights-carousel__image"
               />
