@@ -117,7 +117,8 @@ export class RestaurantStores extends Component {
                   <div className="col p-0 m-0">
                     {console.log(storedata)}
 
-                    <Div
+                    <Div 
+                      key={index}
                       bg="white"
                       d="flex"
                       flexWrap="nowrap"
