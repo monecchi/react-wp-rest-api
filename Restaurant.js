@@ -115,9 +115,7 @@ export class RestaurantStores extends Component {
                   store[city].is_open == 1 ? "softSuccess" : "softDanger")),
                 (
                   <div className="col p-0 m-0" key={index}>
-                    // debug
                     {console.log(store)}
-
                     <Div
                       key={index}
                       bg="white"
