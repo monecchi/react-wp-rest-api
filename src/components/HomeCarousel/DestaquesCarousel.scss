@@ -1,7 +1,22 @@
 // Flickity Carousel Custom Styles
 
-// position prev /next buttons outside
+// prev / next styles - https://flickity.metafizzy.co/style.html
 
+.flickity-button:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+.flickity-prev-next-button {
+  width: 39px;
+  height: 39px;
+  background: white;
+  border: 1px solid #c4c4c4;
+  border-radius: 100%;
+}
+
+
+// position prev /next buttons outside
 .carousel {
   &.nav-outside {
     .flickity-prev-next-button.previous {

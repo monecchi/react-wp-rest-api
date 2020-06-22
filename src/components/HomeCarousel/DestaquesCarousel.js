@@ -4,7 +4,7 @@ import Flickity from "react-flickity-component";
 
 import "flickity/css/flickity.css";
 // Flickity custom scss
-import "DestaquesCarousel.scss";
+import "./DestaquesCarousel.scss";
 
 
 const flickityOptions = {
