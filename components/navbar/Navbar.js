@@ -17,7 +17,7 @@ class NavbarNav extends Component {
 
   render() {
     return (
-        <Navbar bg="brand" expand="lg" variant="dark">
+        <Navbar bg="brand" expand="lg" variant="dark" className="responsive-header">
           <Navbar.Brand href="/">Meu Rancho</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">

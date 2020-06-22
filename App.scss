@@ -66,6 +66,9 @@ svg {
   width: 421px;
   height: 200px;
   margin-right: 10px;
+  background: #fff;
+  border-radius: 4px;
+  overflow: hidden;
 }
 
 .highlights-carousel__container {
@@ -216,6 +219,9 @@ svg {
 
 // Importing the Bootstrap SCSS
 @import "~bootstrap/scss/bootstrap";
+
+// iFood styles
+@import "./src/styles/Ifood";
 
 // Animation custom
 @import "./src/styles/Animations";

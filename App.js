@@ -12,6 +12,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 
 // Custom components import
+import NavbarIfood from "./components/navbar/NavbarIfood"; // custom component uses Bootstrap navbar
 import NavbarNav from "./components/navbar/Navbar.js"; // custom component uses Bootstrap navbar
 import Hello from "./Hello";
 import DestaquesCarousel from "./src/components/HomeCarousel/DestaquesCarousel";
@@ -36,7 +37,7 @@ class App extends Component {
   render() {
     return (
       <>
-        <NavbarNav />
+        <NavbarIfood />
 
         <section className={"bg-light py-4"}>
           <Container>

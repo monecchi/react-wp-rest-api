@@ -75,7 +75,7 @@ export class RestaurantStores extends Component {
       .catch(err => console.log(err));
   }
 
-  htmlDecode(input) {
+  htmlDecode = (input) => {
     var e = document.createElement("div");
     e.innerHTML = input;
     return e.childNodes.length === 0 ? "" : e.childNodes[0].nodeValue;
