@@ -30,16 +30,18 @@ export class FoodMenuItems extends Component {
 
   render() {
     const { title, excerpt, slug } = this.props.food;
-    const { imgUrl, isLoaded } = this.state;
-    return (
-      <div>
-        <h2>{title.rendered}</h2>
-        <img src={imgUrl != "" && imgUrl} alt={title.rendered} />
-        <strong>{slug}</strong>
-        <br />
-        <p dangerouslySetInnerHTML={{ __html: excerpt.rendered }} />
-      </div>
-    );
+    const { imgUrl, hasImg, isLoaded } = this.state;
+    if ((slug && slug != "vazio") || (slug && slug != "empty")) {
+      return (
+        <div>
+          <h2>{title.rendered}</h2>
+          <img src={imgUrl ? imgUrl : undefined} alt={title.rendered} />
+          <strong>{slug}</strong>
+          <br />
+          <p dangerouslySetInnerHTML={{ __html: excerpt.rendered }} />
+        </div>
+      );
+    }
   }
 }
 

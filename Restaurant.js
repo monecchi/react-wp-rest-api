@@ -114,10 +114,10 @@ export class RestaurantStores extends Component {
                 (tagBg =
                   store[city].is_open == 1 ? "softSuccess" : "softDanger")),
                 (
-                  <div className="col p-0 m-0">
+                  <div className="col p-0 m-0" key={index}>
                     {console.log(storedata)}
 
-                    <Div 
+                    <Div
                       key={index}
                       bg="white"
                       d="flex"
