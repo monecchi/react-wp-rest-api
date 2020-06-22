@@ -10,6 +10,7 @@ const flickityOptions = {
   freeScroll: false,
   wrapAround: true,
   contain: false,
+  lazyLoad: true,
   imagesLoaded: true,
   percentPosition: false,
   // disable previous & next buttons and dots
