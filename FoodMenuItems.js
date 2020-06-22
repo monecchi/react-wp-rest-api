@@ -4,7 +4,7 @@ import axios from "axios";
 export class FoodMenuItems extends Component {
   state = {
     imgUrl: "",
-    author: "",
+    slug: "",
     isLoaded: false
   };
 
@@ -13,7 +13,7 @@ export class FoodMenuItems extends Component {
   };
 
   componentDidMount() {
-    const { id, author } = this.props.food;
+    const { id, slug } = this.props.food;
     const getImageUrl = axios.get(
       `https://pizzariameurancho.com.br/wp-json/wp/v2/food_menu/${id}`
     );
@@ -22,20 +22,20 @@ export class FoodMenuItems extends Component {
       console.log(res);
       this.setState({
         imgUrl: res[0].data.featured_image_src.thumbnail,
-        author: res[0].data.title.rendered,
+        slug: res[0].data.slug,
         isLoaded: true
       });
     });
   }
 
   render() {
-    const { title, excerpt } = this.props.food;
-    const { author, imgUrl, isLoaded } = this.state;
+    const { title, excerpt, slug } = this.props.food;
+    const { imgUrl, isLoaded } = this.state;
     return (
       <div>
         <h2>{title.rendered}</h2>
         <img src={imgUrl != "" && imgUrl} alt={title.rendered} />
-        <strong>{author}</strong>
+        <strong>{slug}</strong>
         <br />
         <p dangerouslySetInnerHTML={{ __html: excerpt.rendered }} />
       </div>
