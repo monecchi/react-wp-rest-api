@@ -99,7 +99,7 @@ export class RestaurantStores extends Component {
                       flexDir={{ xs: "column", lg: "column" }}
                       align="auto"
                       w="auto"
-
+                      m={{ b: "1rem" }}
                       p="1.5rem"
                       rounded="sm"
                       shadow="2"

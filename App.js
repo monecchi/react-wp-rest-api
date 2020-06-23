@@ -88,25 +88,25 @@ class App extends Component {
         <NavbarIfood />
 
         <section className={"bg-light py-4"}>
-          <DestaquesCarousel />
+          <div className="highlights-carousel">
+            <div className="highlights-carousel__wrapper">
+              <div className="carousel__wrapper">
+                <DestaquesCarousel />
+              </div>
+            </div>
+          </div>
         </section>
 
-        <Container>
-          <Row>
-            <Col size="12">
-              <p className="my-3">Unidades Meu Rancho Pizzaria</p>
-              <h5 className="text-muted mb-3"> Nossas Lojas</h5>
-            </Col>
-          </Row>
-        </Container>
-
         <Container className="stores-card__container">
+          <p className="my-3">Unidades Meu Rancho Pizzaria</p>
+          <h5 className="text-muted mb-3"> Nossas Lojas</h5>
+
           <Row flexWrap={{ xs: "wrap", md: "nowrap", lg: "nowrap" }}>
             <RestaurantStores />
           </Row>
         </Container>
 
-        <Container>
+        <Container className="stores-card__container">
           <Row>
             <Col size={12}>
               <FoodMenu />

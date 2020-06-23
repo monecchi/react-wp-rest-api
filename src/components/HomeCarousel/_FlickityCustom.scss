@@ -72,7 +72,21 @@
   }
 }
 
-// prev / next styles - https://flickity.metafizzy.co/style.html
+//
+// prev - next styles - https://flickity.metafizzy.co/style.html
+//
+
+// position prev - next buttons outside
+.carousel {
+  &.nav-outside {
+    .flickity-prev-next-button.previous {
+      left: -40px;
+    }
+    .flickity-prev-next-button.next {
+      right: -40px;
+    }
+  }
+}
 
 .flickity-button:focus {
     outline: none;
@@ -93,16 +107,4 @@
     top: 35%;
     width: 30%;
     height: 30%;
-}
-
-// position prev - next buttons outside
-.carousel {
-  &.nav-outside {
-    .flickity-prev-next-button.previous {
-      left: -40px;
-    }
-    .flickity-prev-next-button.next {
-      right: -40px;
-    }
-  }
 }
