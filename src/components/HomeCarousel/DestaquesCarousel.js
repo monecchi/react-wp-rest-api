@@ -23,8 +23,8 @@ const flickityOptions = {
     x1: 60,
     y1: 50,
     x2: 70,
-    y2: 50,
-    x3: 20
+    y2: 40,
+    x3: 30
   }
 };
 

@@ -87,8 +87,15 @@
   border-radius: 100%;
 }
 
+// prev - next button svg arrow icon
+.flickity-prev-next-button .flickity-button-icon {
+    left: 35%;
+    top: 35%;
+    width: 30%;
+    height: 30%;
+}
 
-// position prev /next buttons outside
+// position prev - next buttons outside
 .carousel {
   &.nav-outside {
     .flickity-prev-next-button.previous {
