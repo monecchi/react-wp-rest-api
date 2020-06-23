@@ -34,12 +34,13 @@ const theme = {
     info: "#3366FF",
     brand800: "#671de1"
   },
+  colCount: 12,
   grid: {
     containerWidth: {
       xs: "540px",
       sm: "720px",
       md: "960px",
-      lg: "1156px",
+      lg: "1200px",
       xl: "1366px"
     },
     gutterWidth: "16px"
@@ -51,9 +52,9 @@ const theme = {
 };
 
 // Bootstrap
-import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
+//import Container from "react-bootstrap/Container";
+//import Row from "react-bootstrap/Row";
+//import Col from "react-bootstrap/Col";
 
 // WP REST API data
 import RestaurantStores from "./Restaurant";
@@ -101,18 +102,18 @@ class App extends Component {
           <p className="mt-3 mb-1">Unidades Meu Rancho Pizzaria</p>
           <h6 className="text-muted mb-3">Nossas Lojas</h6>
 
-          <Row flexWrap={{ xs: "wrap", md: "nowrap", lg: "nowrap" }}>
+          <Row flexWrap={{ xs: "wrap", md: "nowrap", lg: "nowrap" }} className="row">
             <RestaurantStores />
           </Row>
         </Container>
 
-        <div className="stores-card__container">
+        <Container className="stores-card__container">
           <p className="mt-3 mb-1">do Cardápio</p>
           <h6 className="text-muted mb-4">Pizzas e outras delícias</h6>
           <Row>
             <FoodMenu />
           </Row>
-        </div>
+        </Container>
       </ThemeProvider>
     );
   }

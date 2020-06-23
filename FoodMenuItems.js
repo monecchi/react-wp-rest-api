@@ -4,17 +4,53 @@ import axios from "axios";
 
 // Atomize
 import {
-  Image,
+  ThemeProvider,
+  DefaultTheme,
+  StyleReset,
+  Div,
   Container,
   Row,
   Col,
-  Div,
   Tag,
   Anchor,
   Button,
   Text,
   Icon
 } from "react-atomize";
+
+const theme = {
+  ...DefaultTheme,
+  colors: {
+    ...DefaultTheme.colors,
+    white: "#ffffff",
+    dark: "#141b24",
+    brand: "#FC0E36",
+    brandAlt: "#EF2840",
+    success: "#1BC160",
+    successDark: "#36b37e",
+    danger: "#FC0E36",
+    softDanger: "#FED9DB",
+    softSuccess: "#D7f0E5",
+    warning: "#FCC246",
+    info: "#3366FF",
+    brand800: "#671de1"
+  },
+  colCount: 12,
+  grid: {
+    containerWidth: {
+      xs: "540px",
+      sm: "720px",
+      md: "960px",
+      lg: "1200px",
+      xl: "1366px"
+    },
+    gutterWidth: "16px"
+  },
+  rounded: {
+    ...DefaultTheme.rounded,
+    brandRadius: "20px"
+  }
+};
 
 export class FoodMenuItems extends Component {
   state = {
@@ -53,7 +89,9 @@ export class FoodMenuItems extends Component {
     }
 
     return (
-        <Col size="4" className="store-card" key={id}>
+      <ThemeProvider theme={theme}>
+      <StyleReset />
+        <Col size={{ xs: 12, md: 3, lg: 4 }} className="store-card" key={id}>
           <Div
             key={id}
             bg="white"
@@ -62,10 +100,8 @@ export class FoodMenuItems extends Component {
             rounded="sm"
             m={{ b: "1rem" }}
             p="1.5rem"
-            w="100%"
-            minW="222px"
             data-slug={slug}
-            className="lift"
+            className="food-card"
           >
             <Div
               d="flex"
@@ -138,7 +174,7 @@ export class FoodMenuItems extends Component {
             </Button>
           </Div>
         </Col>
-  
+    </ThemeProvider>
     );
   }
 }
