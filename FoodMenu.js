@@ -25,7 +25,7 @@ export class FoodMenu extends Component {
 
   componentDidMount() {
     axios
-      .get("https://pizzariameurancho.com.br/wp-json/wp/v2/food_menu/?per_page=32")
+      .get("https://pizzariameurancho.com.br/wp-json/wp/v2/food_menu/?per_page=24")
       .then(res =>
         this.setState({
           foods: res.data,

@@ -56,7 +56,7 @@ export class RestaurantStores extends Component {
 
     let tagColor = "";
     let tagBg = "";
-    const { store, city, isOpen } = "undefined";
+    let { store, city, isOpen } = "undefined";
 
     let styles = {
       card__places: {
@@ -72,16 +72,16 @@ export class RestaurantStores extends Component {
       <>
         {stores &&
           stores.map(
-            (store, index) => (
+            store => (
               ((city = store.slug),
               (isOpen = store[city].is_open == 1 ? "Aberto" : "Fechado"),
               (tagBg =
                 store[city].is_open == 1 ? "softSuccess" : "softDanger")),
               (
-                <Col size="4" className="store-card" key={index}>
+                <Col size="4" className="store-card" key={store.id}>
                   {console.log(store)}
                   <Div
-                    key={index}
+                    key={store.id}
                     bg="white"
                     d="flex"
                     flexWrap="nowrap"

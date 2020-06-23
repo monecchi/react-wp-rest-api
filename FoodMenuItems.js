@@ -52,6 +52,11 @@ const theme = {
   }
 };
 
+//
+// react-loading-skeleton
+//
+import Skeleton from "react-loading-skeleton";
+
 export class FoodMenuItems extends Component {
   state = {
     imgUrl: "",
@@ -90,17 +95,20 @@ export class FoodMenuItems extends Component {
 
     return (
       <ThemeProvider theme={theme}>
-      <StyleReset />
-        <Col size={{ xs: 12, md: 3, lg: 4 }} className="store-card" key={id}>
+        <StyleReset />
+        <Col size={{ xs: 12, md: 4, lg: 6 }} className="store-card" key={id}>
           <Div
             key={id}
+            d="flex"
+            flexWrap="nowrap"
+            flexDir={{ xs: "column", lg: "column" }}
+            w="100%"
             bg="white"
-            shadow="4"
-            hoverShadow="3"
+            shadow="3"
+            hoverShadow="4"
             rounded="sm"
             m={{ b: "1rem" }}
             p="1.5rem"
-            data-slug={slug}
             className="food-card"
           >
             <Div
@@ -120,11 +128,17 @@ export class FoodMenuItems extends Component {
               borderColor="gray300"
               p={{ b: "0.75rem" }}
             >
-              <Text tag="h6" textSize="title" textWeight="500" textAlign="center" flexWrap="wrap">
-                {title.rendered}
+              <Text
+                tag="h6"
+                textSize="title"
+                textWeight="500"
+                textAlign="center"
+                flexWrap="wrap"
+              >
+                {title.rendered || <Skeleton count={2} />}
               </Text>
               <Text textSize="caption" textColor="light">
-                pizza
+                {'pizza' || <Skeleton count={1} />}
               </Text>
             </Div>
 
@@ -134,8 +148,27 @@ export class FoodMenuItems extends Component {
               p={{ t: "1rem", b: "1.5rem" }}
             >
               <Div>
-              {/* simula items mais pedidos */}
-                {[1, 2, 3, 7, 9, 10, 11, 13, 14, 16, 18, 23, 26, 27, 28, 30, 31, 36].map(num => (
+                {/* simula items mais pedidos */}
+                {[
+                  1,
+                  2,
+                  3,
+                  7,
+                  9,
+                  10,
+                  11,
+                  13,
+                  14,
+                  16,
+                  18,
+                  23,
+                  26,
+                  27,
+                  28,
+                  30,
+                  31,
+                  36
+                ].map(num => (
                   <Text textSize="caption" textColor="success700">
                     {num === menu_order ? "Mais pedido" : ""}
                   </Text>
@@ -144,6 +177,7 @@ export class FoodMenuItems extends Component {
                   Component
                 </Text>
               </Div>
+
               <Div>
                 <Div d="flex" h="20px">
                   {[1, 2, 3, 4, 5].map(num => (
@@ -174,7 +208,7 @@ export class FoodMenuItems extends Component {
             </Button>
           </Div>
         </Col>
-    </ThemeProvider>
+      </ThemeProvider>
     );
   }
 }
