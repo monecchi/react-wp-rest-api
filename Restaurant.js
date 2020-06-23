@@ -64,10 +64,9 @@ export class RestaurantStores extends Component {
     let storedata = [];
     storedata.push(stores);
 
-    let city;
-    let isOpen = "";
     let tagColor = "";
     let tagBg = "";
+    const { store, city, isOpen } = "undefined";
 
     let styles = {
       card__places: {
