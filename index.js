@@ -9,7 +9,7 @@ import NotFound from "./pages/NotFound";
 //import registerServiceWorker from './registerServiceWorker';
 
 // App Main Styles
-import "./App.scss";
+//import "./App.scss";
 
 ReactDOM.render(
   <BrowserRouter>

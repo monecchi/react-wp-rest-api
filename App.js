@@ -1,16 +1,19 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 
-//import logo from "./logo.svg";
-// Importing the Bootstrap CSS
-// Import Custom CSS
-import "./App.scss";
-
-
-// Bootstrap stuff
+// Bootstrap
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+
+// WP REST API data
+import RestaurantStores from "./Restaurant";
+
+// App Main Styles
+//import logo from "./logo.svg";
+
+// Importing the Bootstrap CSS
+import "./App.scss";
 
 // Custom components import
 import NavbarIfood from "./components/navbar/NavbarIfood"; // custom component uses Bootstrap navbar
@@ -18,13 +21,6 @@ import NavbarNav from "./components/navbar/Navbar.js"; // custom component uses 
 import Hello from "./Hello";
 import DestaquesCarousel from "./src/components/HomeCarousel/DestaquesCarousel";
 import FoodMenu from "./FoodMenu";
-
-// WP REST API data
-import RestaurantStores from "./Restaurant";
-
-// Importing the Bootstrap CSS
-// Import Custom CSS
-import "./App.scss";
 
 class App extends Component {
   constructor() {
