@@ -1,10 +1,11 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 
 //import logo from "./logo.svg";
 // Importing the Bootstrap CSS
 // Import Custom CSS
 import "./App.scss";
-import { Link } from "react-router-dom";
+
 
 // Bootstrap stuff
 import Container from "react-bootstrap/Container";

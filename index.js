@@ -1,11 +1,15 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import "./App.scss";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
+
+// App Stuff
 import App from "./App";
 import Sobre from "./Sobre";
 import NotFound from "./pages/NotFound";
 //import registerServiceWorker from './registerServiceWorker';
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+
+// App Main Styles
+import "./App.scss";
 
 ReactDOM.render(
   <BrowserRouter>
