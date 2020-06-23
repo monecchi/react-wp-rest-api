@@ -1,5 +1,5 @@
 //
-// Flickity Carousel Custom Styles
+// Flickity Carousel Custom Styles mixed with styles from iFood
 //
 
 .carousel__slide {
@@ -9,13 +9,26 @@
 .carousel-cell {
   width: 421px;
   height: 200px;
-  margin-right: 10px;
+  margin-right: 20px;
   background: #fff;
   border-radius: 4px;
   overflow: hidden;
 }
 
-/* fade in image when loaded */
+@media only screen and (max-width: 767px) {
+    .carousel-cell {
+        width: 84%;
+        height: 140px;
+        margin-right: 10px;
+    }
+    .highlights-carousel__figure {
+        height: 140px;
+    }  
+}
+
+//
+// Fade in carousel image when loaded
+//
 .highlights-carousel__image {
   transition: opacity 0.4s;
   opacity: 0;
@@ -25,11 +38,6 @@
 .highlights-carousel__image.flickity-lazyloaded,
 .highlights-carousel__image.flickity-lazyerror {
   opacity: 1;
-}
-
-.highlights-carousel__container {
-    display: flex;
-    flex-direction: column;
 }
 
 .highlights-carousel__figure {
@@ -47,27 +55,11 @@
 }
 
 .highlights-carousel__figure img {
-    left: 0;
-    top: 0;
-    display: block;
-    width: 100%;
-    height: 100%;
-    -o-object-fit: cover;
-    object-fit: cover;
-    -webkit-transform: none;
     transform: none;
 }
 
 @media only screen and (min-width: 960px) {
   .highlights-carousel__figure img {
-      left: 0;
-      top: 0;
-      display: block;
-      width: 100%;
-      height: 100%;
-      -o-object-fit: cover;
-      object-fit: cover;
-      -webkit-transform: none;
       transform: none;
   }
 }
@@ -76,21 +68,28 @@
 // prev - next styles - https://flickity.metafizzy.co/style.html
 //
 
-// position prev - next buttons outside
+// next/prev button buttons - position buttons outside
 .carousel {
   &.nav-outside {
     .flickity-prev-next-button.previous {
-      left: -40px;
+      left: -20px;
     }
     .flickity-prev-next-button.next {
-      right: -40px;
+      right: -20px;
     }
   }
 }
 
-.flickity-button:focus {
+// next/prev button - remove focus and active state
+.flickity-button {
+  &:active{
+    opacity: 1;
+  }
+  &:focus {
     outline: none;
     box-shadow: none;
+  }
+    
 }
 
 .flickity-prev-next-button {
@@ -101,7 +100,7 @@
   border-radius: 100%;
 }
 
-// prev - next button svg arrow icon
+// next/prev button svg arrow icon
 .flickity-prev-next-button .flickity-button-icon {
     left: 35%;
     top: 35%;

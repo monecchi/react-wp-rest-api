@@ -1,5 +1,20 @@
 import React, { Component } from "react";
 import axios from "axios";
+
+// Atomize
+import {
+  Image,
+  Container,
+  Row,
+  Col,
+  Div,
+  Tag,
+  Anchor,
+  Button,
+  Text,
+  Icon
+} from "react-atomize";
+
 import FoodMenuItems from "./FoodMenuItems";
 
 export class FoodMenu extends Component {
@@ -10,7 +25,7 @@ export class FoodMenu extends Component {
 
   componentDidMount() {
     axios
-      .get("https://pizzariameurancho.com.br/wp-json/wp/v2/food_menu/")
+      .get("https://pizzariameurancho.com.br/wp-json/wp/v2/food_menu/?per_page=32")
       .then(res =>
         this.setState({
           foods: res.data,
@@ -24,12 +39,10 @@ export class FoodMenu extends Component {
     const { foods, isLoaded } = this.state;
     console.log(this.state);
     return (
-      <div>
+      <>
         {foods &&
-          foods.map((food, index) => (
-            <FoodMenuItems key={index} food={food} />
-          ))}
-      </div>
+          foods.map((food, index) => <FoodMenuItems key={index} food={food} />)}
+      </>
     );
   }
 }

@@ -66,7 +66,7 @@ import "./App.scss";
 
 // Custom components import
 import NavbarIfood from "./components/navbar/NavbarIfood"; // custom component uses Bootstrap navbar
-import NavbarNav from "./components/navbar/Navbar.js"; // custom component uses Bootstrap navbar
+//import NavbarNav from "./components/navbar/Navbar.js"; // custom component uses Bootstrap navbar
 //import Hello from "./Hello";
 import DestaquesCarousel from "./src/components/HomeCarousel/DestaquesCarousel";
 import FoodMenu from "./FoodMenu";
@@ -91,28 +91,28 @@ class App extends Component {
           <div className="highlights-carousel">
             <div className="highlights-carousel__wrapper">
               {/*<div className="carousel__wrapper">*/}
-                <DestaquesCarousel />
-              </div>
+              <DestaquesCarousel />
+              {/*</div>*/}
             </div>
-          {/*</div>*/}
+          </div>
         </section>
 
         <Container className="stores-card__container">
-          <p className="my-3">Unidades Meu Rancho Pizzaria</p>
-          <h5 className="text-muted mb-3"> Nossas Lojas</h5>
+          <p className="mt-3 mb-1">Unidades Meu Rancho Pizzaria</p>
+          <h6 className="text-muted mb-3">Nossas Lojas</h6>
 
           <Row flexWrap={{ xs: "wrap", md: "nowrap", lg: "nowrap" }}>
             <RestaurantStores />
           </Row>
         </Container>
 
-        <Container className="stores-card__container">
+        <div className="stores-card__container">
+          <p className="mt-3 mb-1">do Cardápio</p>
+          <h6 className="text-muted mb-4">Pizzas e outras delícias</h6>
           <Row>
-            <Col size={12}>
-              <FoodMenu />
-            </Col>
+            <FoodMenu />
           </Row>
-        </Container>
+        </div>
       </ThemeProvider>
     );
   }
