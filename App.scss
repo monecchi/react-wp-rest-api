@@ -1,4 +1,22 @@
-// Main App Styles
+//
+// App Main Styles
+//
+
+//
+// Custom Containers
+//
+.stores-card__container {
+    padding: 0 20px;
+}
+
+@media only screen and (min-width: 960px) {
+  .stores-card__container {
+    width: 100%;
+    max-width: 1366px !important;
+    margin: auto;
+    padding: 0 30px;
+  }
+}
 
 .bg-brand {
   background-color: #FC0E36 !important;

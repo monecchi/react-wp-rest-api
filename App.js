@@ -7,6 +7,9 @@ import {
   DefaultTheme,
   StyleReset,
   Div,
+  Container,
+  Row,
+  Col,
   Tag,
   Anchor,
   Button,
@@ -64,7 +67,7 @@ import "./App.scss";
 // Custom components import
 import NavbarIfood from "./components/navbar/NavbarIfood"; // custom component uses Bootstrap navbar
 import NavbarNav from "./components/navbar/Navbar.js"; // custom component uses Bootstrap navbar
-import Hello from "./Hello";
+//import Hello from "./Hello";
 import DestaquesCarousel from "./src/components/HomeCarousel/DestaquesCarousel";
 import FoodMenu from "./FoodMenu";
 
@@ -81,27 +84,31 @@ class App extends Component {
     return (
       <ThemeProvider theme={theme}>
         <StyleReset />
+
         <NavbarIfood />
 
         <section className={"bg-light py-4"}>
-          <Container>
-            <Row>
-              <Col sm={12} className={"p-0"}>
-                <DestaquesCarousel />
-              </Col>
-            </Row>
-          </Container>
+          <DestaquesCarousel />
         </section>
 
         <Container>
           <Row>
-            <Col sm={12}>
+            <Col size="12">
               <p className="my-3">Unidades Meu Rancho Pizzaria</p>
-              <Hello
-                name={this.state.name}
-                className={this.state.customClass}
-              />
-              <RestaurantStores />
+              <h5 className="text-muted mb-3"> Nossas Lojas</h5>
+            </Col>
+          </Row>
+        </Container>
+
+        <Container className="stores-card__container">
+          <Row flexWrap={{ xs: "wrap", md: "nowrap", lg: "nowrap" }}>
+            <RestaurantStores />
+          </Row>
+        </Container>
+
+        <Container>
+          <Row>
+            <Col size={12}>
               <FoodMenu />
             </Col>
           </Row>

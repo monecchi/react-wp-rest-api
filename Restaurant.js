@@ -3,9 +3,9 @@ import axios from "axios";
 
 // Atomize
 import {
-  ThemeProvider,
-  DefaultTheme,
-  StyleReset,
+  Container,
+  Row,
+  Col,
   Div,
   Tag,
   Anchor,
@@ -13,29 +13,6 @@ import {
   Text,
   Icon
 } from "react-atomize";
-
-const theme = {
-  ...DefaultTheme,
-  colors: {
-    ...DefaultTheme.colors,
-    white: "#ffffff",
-    dark: "#141b24",
-    brand: "#FC0E36",
-    brandAlt: "#EF2840",
-    success: "#1BC160",
-    successDark: "#36b37e",
-    danger: "#FC0E36",
-    softDanger: "#FED9DB",
-    softSuccess: "#D7f0E5",
-    warning: "#FCC246",
-    info: "#3366FF",
-    brand800: "#671de1"
-  },
-  rounded: {
-    ...DefaultTheme.rounded,
-    brandRadius: "20px"
-  }
-};
 
 // Custom cacheable fetch api service
 import useFetch from "./src/useFetch";
@@ -89,8 +66,8 @@ export class RestaurantStores extends Component {
 
     let city;
     let isOpen = "";
-    let tagColor = theme.colors.dark;
-    let tagBg = theme.colors.white;
+    let tagColor = "";
+    let tagBg = "";
 
     let styles = {
       card__places: {
@@ -103,9 +80,7 @@ export class RestaurantStores extends Component {
     let isHidden = !this.state.isLoaded ? "block" : "none";
 
     return (
-      <ThemeProvider theme={theme}>
-        <StyleReset />
-        <div className="store-cards card-deck">
+      <>
           {stores &&
             stores.map(
               (store, index) => (
@@ -114,7 +89,7 @@ export class RestaurantStores extends Component {
                 (tagBg =
                   store[city].is_open == 1 ? "softSuccess" : "softDanger")),
                 (
-                  <div className="col p-0 m-0" key={index}>
+                  <Col size="4" className="store-card" key={index}>
                     {console.log(store)}
                     <Div
                       key={index}
@@ -124,12 +99,7 @@ export class RestaurantStores extends Component {
                       flexDir={{ xs: "column", lg: "column" }}
                       align="auto"
                       w="auto"
-                      m={{
-                        l: { xs: "0", md: ".5rem", lg: "1rem" },
-                        r: { xs: "0", md: ".5rem", lg: "1rem" },
-                        t: { xs: "0", md: "0", lg: "0" },
-                        y: "1rem"
-                      }}
+
                       p="1.5rem"
                       rounded="sm"
                       shadow="2"
@@ -219,12 +189,11 @@ export class RestaurantStores extends Component {
                         </Button>
                       </Anchor>
                     </Div>
-                  </div>
+                  </Col>
                 )
               )
             )}
-        </div>
-      </ThemeProvider>
+      </>
     );
   }
 }

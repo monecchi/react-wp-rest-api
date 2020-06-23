@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 
 // Atomize
-import { StyleReset } from "atomize";
+//import { StyleReset } from "atomize";
 
 // App
 import App from "./App";
@@ -15,15 +15,12 @@ import NotFound from "./pages/NotFound";
 //import "./App.scss";
 
 ReactDOM.render(
-  <>
-    <StyleReset />
-    <BrowserRouter>
+  <BrowserRouter>
       <Switch>
         <Route path="/" exact={true} component={App} />
         <Route path="/sobre" component={Sobre} />
         <Route path="*" component={NotFound} />
       </Switch>
-    </BrowserRouter>
-  </>,
+  </BrowserRouter>,
   document.getElementById("root")
 );
