@@ -48,7 +48,7 @@ function DestaquesCarousel() {
           <a href="#">
             <figure className="highlights-carousel__figure">
               <img
-                data-flickity-lazyload="https://cdn.jsdelivr.net/gh/monecchi/react-wp-rest-api@master/assets/images/ifood-capas-almoco10-app-v01-feb2020.png"
+                data-flickity-lazyload="https://cdn.jsdelivr.net/gh/monecchi/react-wp-rest-api@master/assets/images/ifood-capas-almoco10.png"
                 alt="Almoço bom e barato"
                 className="highlights-carousel__image"
               />
