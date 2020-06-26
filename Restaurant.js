@@ -2,11 +2,15 @@ import React, { useEffect, useState, Component } from "react";
 import axios from "axios";
 
 // Atomize
+// Atomize
 import {
+  ThemeProvider,
+  DefaultTheme,
+  StyleReset,
+  Div,
   Container,
   Row,
   Col,
-  Div,
   Tag,
   Anchor,
   Button,
@@ -14,6 +18,39 @@ import {
   Icon
 } from "react-atomize";
 
+const theme = {
+  ...DefaultTheme,
+  colors: {
+    ...DefaultTheme.colors,
+    white: "#ffffff",
+    dark: "#141b24",
+    brand: "#FC0E36",
+    brandAlt: "#EF2840",
+    success: "#1BC160",
+    successDark: "#36b37e",
+    danger: "#FC0E36",
+    softDanger: "#FED9DB",
+    softSuccess: "#D7f0E5",
+    warning: "#FCC246",
+    info: "#3366FF",
+    brand800: "#671de1"
+  },
+  colCount: 12,
+  grid: {
+    containerWidth: {
+      xs: "540px",
+      sm: "720px",
+      md: "960px",
+      lg: "1200px",
+      xl: "1366px"
+    },
+    gutterWidth: "16px"
+  },
+  rounded: {
+    ...DefaultTheme.rounded,
+    brandRadius: "20px"
+  }
+};
 // Custom cacheable fetch api service
 import useFetch from "./src/useFetch";
 
@@ -69,7 +106,8 @@ export class RestaurantStores extends Component {
     let isHidden = !this.state.isLoaded ? "block" : "none";
 
     return (
-      <>
+           <ThemeProvider theme={theme}>
+        <StyleReset />
         {stores &&
           stores.map(
             store => (
@@ -133,8 +171,7 @@ export class RestaurantStores extends Component {
 
                     <Anchor
                       href={"tel:" + store[city].phone_raw}
-                      hoverColor="white"
-                      textDecor="none"
+                      hoverTextColor="white"
                       className={
                         store[city].is_open == 0
                           ? "text-decoration-none disabled"
@@ -144,11 +181,12 @@ export class RestaurantStores extends Component {
                     >
                       <Button
                         textColor="brand"
-                        hoverColor="white"
                         hoverTextColor="white"
                         textWeight="700"
                         bg="softDanger"
                         hoverBg="brand"
+                        cursor="pointer"
+                        rounded="sm"
                         suffix={
                           <Icon
                             name="LongRight"
@@ -163,9 +201,7 @@ export class RestaurantStores extends Component {
                             hoverColor="white"
                           />
                         }
-                        textDecor="none"
-                        cursor="pointer"
-                        rounded="sm"
+
                         disabled={store[city].is_open == 0 ? "disabled" : null}
                       >
                         {store[city].formatted_phone}
@@ -176,7 +212,7 @@ export class RestaurantStores extends Component {
               )
             )
           )}
-      </>
+      </ThemeProvider>
     );
   }
 }

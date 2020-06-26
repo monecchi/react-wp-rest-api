@@ -25,7 +25,9 @@ export class FoodMenu extends Component {
 
   componentDidMount() {
     axios
-      .get("https://pizzariameurancho.com.br/wp-json/wp/v2/food_menu/?per_page=24")
+      .get(
+        "https://pizzariameurancho.com.br/wp-json/wp/v2/food_menu/?per_page=24"
+      )
       .then(res =>
         this.setState({
           foods: res.data,
@@ -41,7 +43,7 @@ export class FoodMenu extends Component {
     return (
       <>
         {foods &&
-          foods.map((food, index) => <FoodMenuItems key={index} food={food} />)}
+          foods.map(food => <FoodMenuItems key={food.id} food={food} />)}
       </>
     );
   }

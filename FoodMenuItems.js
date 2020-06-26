@@ -59,6 +59,7 @@ import Skeleton from "react-loading-skeleton";
 
 export class FoodMenuItems extends Component {
   state = {
+    id: Number,
     imgUrl: "",
     slug: String,
     menuOrder: Number,
@@ -78,6 +79,7 @@ export class FoodMenuItems extends Component {
     Promise.all([getImageUrl]).then(res => {
       console.log(res);
       this.setState({
+        id: res[0].data.id,
         imgUrl: res[0].data.featured_image_src.thumbnail,
         slug: res[0].data.slug,
         isLoaded: true
@@ -86,19 +88,20 @@ export class FoodMenuItems extends Component {
   }
 
   render() {
-    const { title, excerpt, id, slug, menu_order } = this.props.food;
+    const { id, title, excerpt, slug, menu_order } = this.props.food;
     const { imgUrl, hasImg, isLoaded } = this.state;
 
-    if (slug && slug == "vazio") {
+    if (slug && slug == "vazio" || slug && slug == "empty" ) {
       return <> </>;
     }
+
+    console.log(id);
 
     return (
       <ThemeProvider theme={theme}>
         <StyleReset />
         <Col size={{ xs: 12, md: 4, lg: 6 }} className="store-card" key={id}>
           <Div
-            key={id}
             d="flex"
             flexWrap="nowrap"
             flexDir={{ xs: "column", lg: "column" }}
@@ -179,7 +182,7 @@ export class FoodMenuItems extends Component {
               </Div>
 
               <Div>
-                <Div d="flex" h="20px">
+                <Div d="flex" h="20px" key={id}>
                   {[1, 2, 3, 4, 5].map(num => (
                     <Icon
                       key={num}

@@ -109,6 +109,19 @@ svg {
   }
 }
 
+//
+// Resets
+//
+button {
+  text-decoration: none;
+}
+button[bg]:hover {
+  svg {
+    path {
+      fill: #fff;
+    }
+  }
+}
 
 // 
 // Badge status - store opening hours
