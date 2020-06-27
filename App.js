@@ -110,7 +110,7 @@ class App extends Component {
         <Container className="stores-card__container">
           <p className="mt-3 mb-1">do Cardápio</p>
           <h6 className="text-muted mb-4">Pizzas e outras delícias</h6>
-          <Row d="flex" flexWrap={{ xs: "nowrap", md: "nowrap", lg: "wrap" }} className="row">
+          <Row d="flex" flexWrap={{ xs: "wrap", md: "wrap", lg: "wrap" }} className="row">
             <FoodMenu />
           </Row>
         </Container>

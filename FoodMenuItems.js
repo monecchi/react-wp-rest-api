@@ -100,12 +100,14 @@ export class FoodMenuItems extends Component {
     return (
       <ThemeProvider theme={theme}>
         <StyleReset />
-        <Col size={{ xs: 12, md: 4, lg: 6 }} className="store-card" key={id}>
+        <Col size={{ xs: 6, md: 4, lg: 6 }} className="store-card p-0">
           <Div
+            key={id}
             d="flex"
-            flexWrap="nowrap"
-            flexDir={{ xs: "column", lg: "column" }}
-            w="100%"
+            flexWrap="wrap"
+            flexDir="column"
+            w={{ xs: '155px', md: '294px', lg: '294px' }}
+            minW="160px"
             bg="white"
             shadow="3"
             hoverShadow="4"
