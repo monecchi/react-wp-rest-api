@@ -97,6 +97,33 @@ export class FoodMenuItems extends Component {
       return <> </>;
     }
 
+    if (!isLoaded) {
+      return (
+        <Col size={{ xs: 6, md: 4, lg: 6 }} className="store-card">
+          <Div
+            key={id}
+            d="flex"
+            flexWrap="wrap"
+            flexDir="column"
+            w={{ xs: "155px", md: "226px", lg: "317px" }}
+            h="3px"
+            minW="155px"
+            bg="white"
+            shadow="3"
+            hoverShadow="4"
+            rounded="sm"
+            m={{ b: "1rem" }}
+            p={{ xs: "0.75rem", md: "0.75rem", lg: "1.5rem", xl: "1.5rem" }}
+            className="food-card"
+          >
+        <Skeleton circle={true} height={60} width={60} />
+        <Skeleton/>
+        <Skeleton count={5}/>
+        </Div>
+        </Col>
+      );
+    }
+
     return (
       <ThemeProvider theme={theme}>
         <StyleReset />
