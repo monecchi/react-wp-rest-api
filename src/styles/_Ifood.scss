@@ -4922,6 +4922,39 @@
     }
 }
 
+//
+// responsive header meurancho
+// meu rancho app logo
+.responsive-header__logo {
+
+  &.meurancho-logo {
+
+    .btn-icon {
+      width: auto;
+      height: auto;
+    }
+
+    .App-logo {
+      width: auto;
+      height: 35px;
+    }
+
+  }
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+@media only screen and (max-width: 960px) {
+  .responsive-header__logo {
+    &.meurancho-logo {
+      .App-logo {
+        height: 20px;
+      }
+    }
+  }  
+}
+
 .ifood-box-code {
     margin: 10px 0 24px;
 }
