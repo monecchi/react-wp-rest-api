@@ -91,11 +91,11 @@ export class FoodMenuItems extends Component {
     const { id, title, excerpt, slug, menu_order } = this.props.food;
     const { imgUrl, hasImg, isLoaded } = this.state;
 
+    console.log(id);
+    
     if (slug && slug == "vazio" || slug && slug == "empty" ) {
       return <> </>;
     }
-
-    console.log(id);
 
     return (
       <ThemeProvider theme={theme}>
@@ -106,14 +106,14 @@ export class FoodMenuItems extends Component {
             d="flex"
             flexWrap="wrap"
             flexDir="column"
-            w={{ xs: '155px', md: '294px', lg: '294px' }}
-            minW="160px"
+            w={{ xs: "155px", md: "314px", lg: "314px" }}
+            minW="155px"
             bg="white"
             shadow="3"
             hoverShadow="4"
             rounded="sm"
             m={{ b: "1rem" }}
-            p="1.5rem"
+            p={{ xs: "0.75rem", md: "0.75rem", lg: "1.5rem", xl: "1.5rem" }}
             className="food-card"
           >
             <Div
