@@ -92,7 +92,7 @@ export class FoodMenuItems extends Component {
     const { imgUrl, hasImg, isLoaded } = this.state;
 
     console.log(id);
-    
+
     if (slug && slug == "vazio" || slug && slug == "empty" ) {
       return <> </>;
     }
@@ -100,13 +100,13 @@ export class FoodMenuItems extends Component {
     return (
       <ThemeProvider theme={theme}>
         <StyleReset />
-        <Col size={{ xs: 6, md: 4, lg: 6 }} className="store-card p-0">
+        <Col size={{ xs: 6, md: 4, lg: 6 }} className="store-card">
           <Div
             key={id}
             d="flex"
             flexWrap="wrap"
             flexDir="column"
-            w={{ xs: "155px", md: "314px", lg: "314px" }}
+            w={{ xs: "155px", md: "226px", lg: "317px" }}
             minW="155px"
             bg="white"
             shadow="3"
