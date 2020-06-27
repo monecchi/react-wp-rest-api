@@ -86,8 +86,6 @@ export class RestaurantStores extends Component {
   };
 
   render() {
-    isLoaded: true;
-
     let storedata = [];
     storedata.push(stores);
 
@@ -106,7 +104,7 @@ export class RestaurantStores extends Component {
     let isHidden = !this.state.isLoaded ? "block" : "none";
 
     return (
-           <ThemeProvider theme={theme}>
+      <ThemeProvider theme={theme}>
         <StyleReset />
         {stores &&
           stores.map(
@@ -138,7 +136,7 @@ export class RestaurantStores extends Component {
                       m={{ b: "1rem" }}
                       className="text-capitalize"
                     >
-                      {store.slug || <Skeleton />}
+                      {store.slug  <Skeleton /> }
                     </Text>
 
                     <Text tag="p" textSize="body" m={{ b: "1rem" }}>
@@ -201,7 +199,6 @@ export class RestaurantStores extends Component {
                             hoverColor="white"
                           />
                         }
-
                         disabled={store[city].is_open == 0 ? "disabled" : null}
                       >
                         {store[city].formatted_phone}

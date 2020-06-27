@@ -106,7 +106,7 @@ export class FoodMenuItems extends Component {
             flexWrap="wrap"
             flexDir="column"
             w={{ xs: "155px", md: "226px", lg: "317px" }}
-            h="3px"
+            h="320px"
             minW="155px"
             bg="white"
             shadow="3"
