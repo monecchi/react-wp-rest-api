@@ -7,6 +7,7 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 
 // App
 import App from "./App";
+//import * as serviceWorker from './serviceWorker';
 import Sobre from "./Sobre";
 import NotFound from "./pages/NotFound";
 //import registerServiceWorker from './registerServiceWorker';

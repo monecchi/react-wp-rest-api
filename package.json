@@ -1,6 +1,6 @@
 {
-  "name": "react",
-  "version": "0.0.0",
+  "name": "meurancho",
+  "version": "0.1.0",
   "private": true,
   "dependencies": {
     "@callstack/react-theme-provider": ">= 3.0.0",
