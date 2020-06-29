@@ -136,7 +136,7 @@ export class RestaurantStores extends Component {
                       m={{ b: "1rem" }}
                       className="text-capitalize"
                     >
-                      {store.slug  <Skeleton /> }
+                      {store.slug  || <Skeleton /> }
                     </Text>
 
                     <Text tag="p" textSize="body" m={{ b: "1rem" }}>
