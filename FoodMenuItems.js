@@ -4,9 +4,6 @@ import axios from "axios";
 
 // Atomize
 import {
-  ThemeProvider,
-  DefaultTheme,
-  StyleReset,
   Div,
   Container,
   Row,
@@ -17,40 +14,6 @@ import {
   Text,
   Icon
 } from "react-atomize";
-
-const theme = {
-  ...DefaultTheme,
-  colors: {
-    ...DefaultTheme.colors,
-    white: "#ffffff",
-    dark: "#141b24",
-    brand: "#FC0E36",
-    brandAlt: "#EF2840",
-    success: "#1BC160",
-    successDark: "#36b37e",
-    danger: "#FC0E36",
-    softDanger: "#FED9DB",
-    softSuccess: "#D7f0E5",
-    warning: "#FCC246",
-    info: "#3366FF",
-    brand800: "#671de1"
-  },
-  colCount: 12,
-  grid: {
-    containerWidth: {
-      xs: "540px",
-      sm: "720px",
-      md: "960px",
-      lg: "1200px",
-      xl: "1366px"
-    },
-    gutterWidth: "16px"
-  },
-  rounded: {
-    ...DefaultTheme.rounded,
-    brandRadius: "20px"
-  }
-};
 
 //
 // react-loading-skeleton
@@ -112,21 +75,20 @@ export class FoodMenuItems extends Component {
             shadow="3"
             hoverShadow="4"
             rounded="sm"
+            textAlign="center"
             m={{ b: "1rem" }}
             p={{ xs: "0.75rem", md: "0.75rem", lg: "1.5rem", xl: "1.5rem" }}
             className="food-card"
           >
-        <Skeleton circle={true} height={60} width={60} />
-        <Skeleton/>
-        <Skeleton count={5}/>
+        <Skeleton circle={true} height={"6rem"} width={"6rem"} className="align-self-center" />
+        <Skeleton />
+        <Skeleton count={3}/>
         </Div>
         </Col>
       );
     }
 
     return (
-      <ThemeProvider theme={theme}>
-        <StyleReset />
         <Col size={{ xs: 6, md: 4, lg: 6 }} className="store-card">
           <Div
             key={id}
@@ -145,7 +107,7 @@ export class FoodMenuItems extends Component {
           >
             <Div
               d="flex"
-              className="mb-2"
+              className="justify-content-center mb-2"
               bgImg={imgUrl ? imgUrl : undefined}
               bgSize="cover"
               bgPos="center"
@@ -240,7 +202,6 @@ export class FoodMenuItems extends Component {
             </Button>
           </Div>
         </Col>
-      </ThemeProvider>
     );
   }
 }
