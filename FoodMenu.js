@@ -12,16 +12,21 @@ import {
   Anchor,
   Button,
   Text,
-  Icon
+  Icon,
+  Modal
 } from "react-atomize";
 
 import FoodMenuItems from "./FoodMenuItems";
 
 export class FoodMenu extends Component {
-  state = {
-    foods: [],
-    isLoaded: false
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      foods: [],
+      isLoaded: false,
+      showModal: false
+    };
+  }
 
   componentDidMount() {
     axios
@@ -33,12 +38,13 @@ export class FoodMenu extends Component {
           foods: res.data,
           isLoaded: true
         })
+        //this.setState({ isLoaded: true })}
       )
       .catch(err => console.log(err));
   }
 
   render() {
-    const { foods, isLoaded } = this.state;
+    const { foods, isLoaded, showModal } = this.state;
     console.log(this.state);
     return (
       <>

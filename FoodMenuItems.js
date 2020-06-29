@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, useState } from "react";
 import PropTypes from "prop-types";
 import axios from "axios";
 
@@ -12,7 +12,8 @@ import {
   Anchor,
   Button,
   Text,
-  Icon
+  Icon,
+  Modal
 } from "react-atomize";
 
 //
@@ -20,14 +21,55 @@ import {
 //
 import Skeleton from "react-loading-skeleton";
 
+const ModalSize = ({ isOpen, onClose }) => {
+  return (
+    <Modal
+      isOpen={isOpen}
+      onClose={onClose}
+      rounded="md"
+      maxW="48rem"
+    >
+      <Icon
+        name="Cross"
+        pos="absolute"
+        top="1rem"
+        right="1rem"
+        size="16px"
+        onClick={onClose}
+        cursor="pointer"
+      />
+      <Text
+        p={{ l: "0.5rem", t: "0.25rem" }}
+        m={{ b: "2rem" }}
+      >
+        This modal has maxW of 48rem
+      </Text>
+      <Div d="flex" justify="flex-end">
+        <Button
+          onClick={onClose}
+          bg="gray200"
+          textColor="medium"
+          m={{ r: "1rem" }}
+        >
+          Close
+        </Button>
+        <Button onClick={onClose} bg="info700">
+          OK
+        </Button>
+      </Div>
+    </Modal>
+  );
+};
+
 export class FoodMenuItems extends Component {
-  state = {
-    id: Number,
-    imgUrl: "",
-    slug: String,
-    menuOrder: Number,
-    isLoaded: false
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      food: PropTypes.object.isRequired,
+      isLoaded: false,
+      showModal: false
+    };
+  }
 
   static propTypes = {
     food: PropTypes.object.isRequired
@@ -52,11 +94,11 @@ export class FoodMenuItems extends Component {
 
   render() {
     const { id, title, excerpt, slug, menu_order } = this.props.food;
-    const { imgUrl, hasImg, isLoaded } = this.state;
+    const { imgUrl, hasImg, isLoaded, showModal } = this.state;
 
     console.log(id);
 
-    if (slug && slug == "vazio" || slug && slug == "empty" ) {
+    if ((slug && slug == "vazio") || (slug && slug == "empty")) {
       return <> </>;
     }
 
@@ -80,15 +122,21 @@ export class FoodMenuItems extends Component {
             p={{ xs: "0.75rem", md: "0.75rem", lg: "1.5rem", xl: "1.5rem" }}
             className="food-card"
           >
-        <Skeleton circle={true} height={"6rem"} width={"6rem"} className="align-self-center" />
-        <Skeleton />
-        <Skeleton count={3}/>
-        </Div>
+            <Skeleton
+              circle={true}
+              height={"6rem"}
+              width={"6rem"}
+              className="align-self-center"
+            />
+            <Skeleton />
+            <Skeleton count={3} />
+          </Div>
         </Col>
       );
     }
 
     return (
+      <>
         <Col size={{ xs: 6, md: 4, lg: 6 }} className="store-card">
           <Div
             key={id}
@@ -132,7 +180,7 @@ export class FoodMenuItems extends Component {
                 {title.rendered || <Skeleton count={2} />}
               </Text>
               <Text textSize="caption" textColor="light">
-                {'pizza' || <Skeleton count={1} />}
+                {"pizza" || <Skeleton count={1} />}
               </Text>
             </Div>
 
@@ -197,11 +245,17 @@ export class FoodMenuItems extends Component {
               textColor="danger"
               hoverTextColor="danger200"
               textWeight="500"
+              onClick={() => this.setState({ showModal: true })}
             >
               ver mais
             </Button>
           </Div>
         </Col>
+        <ModalSize
+          isOpen={showModal}
+          onClose={() => this.setState({ showModal: false })}
+        />
+      </>
     );
   }
 }

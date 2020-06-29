@@ -4,9 +4,6 @@ import axios from "axios";
 // Atomize
 // Atomize
 import {
-  ThemeProvider,
-  DefaultTheme,
-  StyleReset,
   Div,
   Container,
   Row,
@@ -18,39 +15,6 @@ import {
   Icon
 } from "react-atomize";
 
-const theme = {
-  ...DefaultTheme,
-  colors: {
-    ...DefaultTheme.colors,
-    white: "#ffffff",
-    dark: "#141b24",
-    brand: "#FC0E36",
-    brandAlt: "#EF2840",
-    success: "#1BC160",
-    successDark: "#36b37e",
-    danger: "#FC0E36",
-    softDanger: "#FED9DB",
-    softSuccess: "#D7f0E5",
-    warning: "#FCC246",
-    info: "#3366FF",
-    brand800: "#671de1"
-  },
-  colCount: 12,
-  grid: {
-    containerWidth: {
-      xs: "540px",
-      sm: "720px",
-      md: "960px",
-      lg: "1200px",
-      xl: "1366px"
-    },
-    gutterWidth: "16px"
-  },
-  rounded: {
-    ...DefaultTheme.rounded,
-    brandRadius: "20px"
-  }
-};
 // Custom cacheable fetch api service
 import useFetch from "./src/useFetch";
 
@@ -104,8 +68,7 @@ export class RestaurantStores extends Component {
     let isHidden = !this.state.isLoaded ? "block" : "none";
 
     return (
-      <ThemeProvider theme={theme}>
-        <StyleReset />
+      <>
         {stores &&
           stores.map(
             store => (
@@ -209,7 +172,7 @@ export class RestaurantStores extends Component {
               )
             )
           )}
-      </ThemeProvider>
+      </>
     );
   }
 }
