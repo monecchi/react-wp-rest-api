@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import logo from '../../src/components/UI/logo/meurancho-logo-red.min.svg';
+import logo from "../../src/components/UI/logo/meurancho-logo-red.min.svg";
 
 
 class NavbarIfood extends Component {

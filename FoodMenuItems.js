@@ -19,7 +19,7 @@ import {
 //
 // react-loading-skeleton
 //
-import ImagePlaceholder from "../../src/assets/images/mr-pattern-light.png";
+import ImagePlaceholder from "./src/components/ImagePlaceholder/ImagePlaceholder";
 
 import Skeleton from "react-loading-skeleton";
 
@@ -158,7 +158,7 @@ export class FoodMenuItems extends Component {
             <Div
               d="flex"
               className="justify-content-center mb-2"
-              bgImg={imgUrl ? imgUrl : <ImagePlaceholder />}
+              bgImg={imgUrl ? imgUrl : undefined}
               bgSize="cover"
               bgPos="center"
               w="6rem"
@@ -166,6 +166,8 @@ export class FoodMenuItems extends Component {
               m="auto"
               rounded="circle"
             />
+
+            <ImagePlaceholder />
 
             <Div
               border={{ b: "1px solid" }}

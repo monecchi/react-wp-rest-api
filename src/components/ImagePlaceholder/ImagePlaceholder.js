@@ -1,27 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Image from "./src/assets/images/mr-pattern-light.png";
+import Image from "../../src/assets/images/mr-pattern-light.png";
 
-// Atomize
-import {
-  Div
-} from "react-atomize";
-
-import "./styles.css";
+import "styles.css";
 
 const ImagePlacehoder = props => (
-
-  <Div
-    d="flex"
-    className="justify-content-center mb-2"
-    bgImg={props.src || Image}
-    bgSize="cover"
-    bgPos="center"
-    w={props.width}
-    h={props.height}
-    m="auto"
-    rounded="circle"
-  />
 
   <img
     className="circular-image"
@@ -36,13 +19,13 @@ const ImagePlacehoder = props => (
   />
 );
 
-CircularImage.propTypes = {
+ImagePlaceholder.propTypes = {
   src: PropTypes.string,
   width: PropTypes.number,
   height: PropTypes.number
 };
 
-CircularImage.defaultProps = {
+ImagePlaceholder.defaultProps = {
   src: "",
   width: 80,
   height: 80
