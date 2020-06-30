@@ -1,4 +1,5 @@
 import React, { Component, useState } from "react";
+import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import axios from "axios";
 
@@ -13,6 +14,7 @@ import {
   Button,
   Text,
   Icon,
+  Image,
   Modal
 } from "react-atomize";
 
@@ -29,10 +31,11 @@ const ImgHolder = axios
   .then(data => {
     let imgUrl = data.request.responseURL;
     console.log(imgUrl);
-    return imgUrl;  
+    return imgUrl;
   });
 
-let ImgPlaceholder = "https://raw.githubusercontent.com/monecchi/react-wp-rest-api/master/src/assets/images/mr-pattern-light.png";
+let ImgPlaceholder =
+  "https://raw.githubusercontent.com/monecchi/react-wp-rest-api/master/src/assets/images/mr-pattern-light.png";
 
 import Skeleton from "react-loading-skeleton";
 
@@ -103,6 +106,14 @@ export class FoodMenuItems extends Component {
     const { id, title, excerpt, slug, menu_order } = this.props.food;
     const { imgUrl, hasImg, isLoaded, showModal } = this.state;
 
+    const htmlDecode = input => {
+      var e = document.createElement("div");
+      e.innerHTML = input;
+      return e.childNodes.length === 0 ? "" : e.childNodes[0].nodeValue;
+    };
+
+    const renderHTML = (rawHTML) => React.createElement("div", { dangerouslySetInnerHTML: { __html: rawHTML } });
+
     console.log(id);
 
     if ((slug && slug == "vazio") || (slug && slug == "empty")) {
@@ -144,120 +155,159 @@ export class FoodMenuItems extends Component {
 
     return (
       <>
-        <Col size={{ xs: 6, md: 4, lg: 6 }} className="store-card">
-          <Div
-            key={id}
-            d="flex"
-            flexWrap="wrap"
-            flexDir="column"
-            w={{ xs: "155px", md: "226px", lg: "317px" }}
-            minW="155px"
-            bg="white"
-            shadow="3"
-            hoverShadow="4"
-            rounded="sm"
-            m={{ b: "1rem" }}
-            p={{ xs: "0.75rem", md: "0.75rem", lg: "1.5rem", xl: "1.5rem" }}
-            className="food-card"
-          >
+        <Col size={{ xs: 12, sm: 6, lg: 3 }}>
+          <Div m={{ b: { xs: "1rem", lg: "0" } }}>
             <Div
               d="flex"
-              className="justify-content-center mb-2"
-              bgImg={imgUrl ? imgUrl : ImgPlaceholder}
-              bgSize={imgUrl ? "cover" : "300%"}
-              bgPos={imgUrl ? "center" : "28% 35%"}
-              w="6rem"
-              h="6rem"
-              m="auto"
-              rounded="circle"
-            />
-
-            <Div
-              border={{ b: "1px solid" }}
-              borderColor="gray300"
-              p={{ b: "0.75rem" }}
-            >
-              <Text
-                tag="h6"
-                textSize="title"
-                textWeight="500"
-                textAlign="center"
-                flexWrap="wrap"
-              >
-                {title.rendered || <Skeleton count={2} />}
-              </Text>
-              <Text textSize="caption" textColor="light">
-                {"pizza" || <Skeleton count={1} />}
-              </Text>
-            </Div>
-
-            <Div
-              d="flex"
-              justify="space-between"
-              p={{ t: "1rem", b: "1.5rem" }}
-            >
-              <Div>
-                {/* simula items mais pedidos */}
-                {[
-                  1,
-                  2,
-                  3,
-                  7,
-                  9,
-                  10,
-                  11,
-                  13,
-                  14,
-                  16,
-                  18,
-                  23,
-                  26,
-                  27,
-                  28,
-                  30,
-                  31,
-                  36
-                ].map(num => (
-                  <Text textSize="caption" textColor="success700">
-                    {num === menu_order ? "Mais pedido" : ""}
-                  </Text>
-                ))}
-                <Text textSize="caption" textColor="light">
-                  Component
-                </Text>
-              </Div>
-
-              <Div>
-                <Div d="flex" h="20px" key={id}>
-                  {[1, 2, 3, 4, 5].map(num => (
-                    <Icon
-                      key={num}
-                      name="StarSolid"
-                      size="14px"
-                      color={num === 5 ? "gray400" : "warning700"}
-                      m={{ r: "0.125rem" }}
-                    />
-                  ))}
-                </Div>
-                <Text textSize="caption" textColor="light">
-                  Nota 4.0/5
-                </Text>
-              </Div>
-            </Div>
-            <Button
-              w="100%"
+              flexDir="column"
+              maxW="25rem"
+              h="100%"
+              p={{ xs: "0.75rem", md: "0.75rem", lg: "1.5rem", xl: "1.5rem" }}
+              border="1px solid"
+              borderColor="gray200"
+              shadow="3"
+              hoverShadow="4"
               rounded="sm"
-              bg="softDanger"
-              hoverBg="danger"
-              textColor="danger"
-              hoverTextColor="danger200"
-              textWeight="500"
-              onClick={() => this.setState({ showModal: true })}
             >
-              ver mais
-            </Button>
+              <Div flexGrow="1">
+                <Image
+                  src={imgUrl ? imgUrl : ImgPlaceholder}
+                  m={{ t: "auto", b: "0.75rem" }}
+                  w="6rem"
+                  h="6rem"
+                  rounded="circle"
+                />
+
+                <Text textSize="title" textWeight="500" m={{ b: "1rem" }}>
+                  {title.rendered}
+                </Text>
+                <Div textSize="caption" textColor="medium" m={{ b: "2rem" }} className="text-ellipsis">
+                 {renderHTML(excerpt.rendered)}
+                </Div>
+              </Div>
+              <Link to={""}>
+                <Text
+                  textColor="info700"
+                  hoverTextColor="info800"
+                  textWeight="500"
+                >
+                  Ver Mais
+                </Text>
+              </Link>
+            </Div>
           </Div>
         </Col>
+
+        <Div
+          key={id}
+          d="flex"
+          flexWrap="wrap"
+          flexDir="column"
+          w={{ xs: "155px", md: "226px", lg: "317px" }}
+          minW="155px"
+          maxW="25rem"
+          bg="white"
+          shadow="3"
+          hoverShadow="4"
+          rounded="sm"
+          m={{ b: "1rem" }}
+          p={{ xs: "0.75rem", md: "0.75rem", lg: "1.5rem", xl: "1.5rem" }}
+          className="food-card"
+        >
+          <Div
+            d="flex"
+            className="justify-content-center mb-2"
+            bgImg={imgUrl ? imgUrl : ImgPlaceholder}
+            bgSize={imgUrl ? "cover" : "300%"}
+            bgPos={imgUrl ? "center" : "28% 35%"}
+            w="6rem"
+            h="6rem"
+            m="auto"
+            rounded="circle"
+          />
+
+          <Div
+            border={{ b: "1px solid" }}
+            borderColor="gray300"
+            p={{ b: "0.75rem" }}
+          >
+            <Text
+              tag="h6"
+              textSize="title"
+              textWeight="500"
+              textAlign="center"
+              flexWrap="wrap"
+            >
+              {title.rendered || <Skeleton count={2} />}
+            </Text>
+            <Text textSize="caption" textColor="light">
+              {"pizza" || <Skeleton count={1} />}
+            </Text>
+          </Div>
+
+          <Div d="flex" justify="space-between" p={{ t: "1rem", b: "1.5rem" }}>
+            <Div>
+              {/* simula items mais pedidos */}
+              {[
+                1,
+                2,
+                3,
+                7,
+                9,
+                10,
+                11,
+                13,
+                14,
+                16,
+                18,
+                23,
+                26,
+                27,
+                28,
+                30,
+                31,
+                36
+              ].map(num => (
+                <Text textSize="caption" textColor="success700">
+                  {num === menu_order ? "Mais pedido" : ""}
+                </Text>
+              ))}
+              <Text textSize="caption" textColor="light">
+                Component
+              </Text>
+            </Div>
+
+            <Div>
+              <Div d="flex" h="20px" key={id}>
+                {[1, 2, 3, 4, 5].map(num => (
+                  <Icon
+                    key={num}
+                    name="StarSolid"
+                    size="14px"
+                    color={num === 5 ? "gray400" : "warning700"}
+                    m={{ r: "0.125rem" }}
+                  />
+                ))}
+              </Div>
+              <Text textSize="caption" textColor="light">
+                Nota 4.0/5
+              </Text>
+            </Div>
+          </Div>
+          <Button
+            w="100%"
+            rounded="sm"
+            bg="softDanger"
+            hoverBg="danger"
+            textColor="danger"
+            hoverTextColor="danger200"
+            textWeight="500"
+            onClick={() => this.setState({ showModal: true })}
+          >
+            ver mais
+          </Button>
+        </Div>
+
         <ModalSize
           isOpen={showModal}
           onClose={() => this.setState({ showModal: false })}

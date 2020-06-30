@@ -65,6 +65,18 @@ svg {
     transition: box-shadow .25s ease,transform .25s ease;
 }
 
+//
+// Text Transformations
+//
+.text-ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-box-orient: vertical;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  word-break: break-word;
+}
+
 // Flickity carousel custom, also borrowed stylkes from iFood
 .carousel {
   width: 100%;
