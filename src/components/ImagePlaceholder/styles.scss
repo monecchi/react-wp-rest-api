@@ -1,5 +1,13 @@
 .circular-image {
+  display: flex !important;
+  margin: auto;
   background-size: cover !important;
   background-position: 50% !important;
-  display: inline-block !important;
+  border-radius: 50%;
+
+  &.placeholder-image {
+    overflow: hidden;
+    background-size: 300% !important;
+    background-position: 28% 35% !important;   
+  }
 }

@@ -19,21 +19,26 @@ import {
 //
 // react-loading-skeleton
 //
-import ImagePlaceholder from "./src/components/ImagePlaceholder/ImagePlaceholder";
-import placeholder from "./src/assets/images/mr-pattern-light.png";
+//import ImagePlaceholder from "./src/components/ImagePlaceholder/ImagePlaceholder";
+//import placeholder from "./src/assets/images/mr-pattern-light.png";
 
-//<ImagePlaceholder src={placeholder} width="96px" height="96px" />
+const ImgHolder = axios
+  .get(
+    "https://raw.githubusercontent.com/monecchi/react-wp-rest-api/master/src/assets/images/mr-pattern-light.png"
+  )
+  .then(data => {
+    let imgUrl = data.request.responseURL;
+    console.log(imgUrl);
+    return imgUrl;  
+  });
+
+let ImgPlaceholder = "https://raw.githubusercontent.com/monecchi/react-wp-rest-api/master/src/assets/images/mr-pattern-light.png";
 
 import Skeleton from "react-loading-skeleton";
 
 const ModalSize = ({ isOpen, onClose }) => {
   return (
-    <Modal
-      isOpen={isOpen}
-      onClose={onClose}
-      rounded="md"
-      maxW="48rem"
-    >
+    <Modal isOpen={isOpen} onClose={onClose} rounded="md" maxW="48rem">
       <Icon
         name="Cross"
         pos="absolute"
@@ -43,10 +48,7 @@ const ModalSize = ({ isOpen, onClose }) => {
         onClick={onClose}
         cursor="pointer"
       />
-      <Text
-        p={{ l: "0.5rem", t: "0.25rem" }}
-        m={{ b: "2rem" }}
-      >
+      <Text p={{ l: "0.5rem", t: "0.25rem" }} m={{ b: "2rem" }}>
         This modal has maxW of 48rem
       </Text>
       <Div d="flex" justify="flex-end">
@@ -161,16 +163,14 @@ export class FoodMenuItems extends Component {
             <Div
               d="flex"
               className="justify-content-center mb-2"
-              bgImg={imgUrl ? imgUrl : undefined}
-              bgSize="cover"
-              bgPos="center"
+              bgImg={imgUrl ? imgUrl : ImgPlaceholder}
+              bgSize={imgUrl ? "cover" : "300%"}
+              bgPos={imgUrl ? "center" : "28% 35%"}
               w="6rem"
               h="6rem"
               m="auto"
               rounded="circle"
             />
-
-            <ImagePlaceholder src={placeholder} width="96px" height="96px" />
 
             <Div
               border={{ b: "1px solid" }}

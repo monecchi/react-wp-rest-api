@@ -5,7 +5,7 @@ import "./styles.scss";
 
 const ImagePlaceholder = props => (
   <div
-    className="circular-image"
+    className="circular-image placeholder-image"
     style={{
       backgroundImage: `url(${props.src})`,
       width: props.width,
@@ -22,8 +22,8 @@ ImagePlaceholder.propTypes = {
 
 ImagePlaceholder.defaultProps = {
   src: '',
-  width: 80,
-  height: 80,
+  width: 96,
+  height: 96,
 };
 
 export default ImagePlaceholder;
