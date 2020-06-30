@@ -20,7 +20,9 @@ import {
 // react-loading-skeleton
 //
 import ImagePlaceholder from "./src/components/ImagePlaceholder/ImagePlaceholder";
-import placeholder from "https://github.com/monecchi/react-wp-rest-api/blob/master/src/assets/images/mr-pattern-light.png";
+//import placeholder from "./src/assets/images/mr-pattern-light.png";
+
+//<ImagePlaceholder src={placeholder} width="96px" height="96px" />
 
 import Skeleton from "react-loading-skeleton";
 
