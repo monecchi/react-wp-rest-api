@@ -19,6 +19,7 @@ import {
 //
 // react-loading-skeleton
 //
+import ImagePlaceholder from "./src/components/ImagePlaceholder"; // custom image placeholder
 import Skeleton from "react-loading-skeleton";
 
 const ModalSize = ({ isOpen, onClose }) => {
@@ -156,7 +157,7 @@ export class FoodMenuItems extends Component {
             <Div
               d="flex"
               className="justify-content-center mb-2"
-              bgImg={imgUrl ? imgUrl : undefined}
+              bgImg={imgUrl ? imgUrl : <ImagePlaceholder src="" />}
               bgSize="cover"
               bgPos="center"
               w="6rem"
