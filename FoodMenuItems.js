@@ -20,6 +20,7 @@ import {
 // react-loading-skeleton
 //
 import ImagePlaceholder from "./src/components/ImagePlaceholder/ImagePlaceholder";
+import placeholder from "https://github.com/monecchi/react-wp-rest-api/blob/master/src/assets/images/mr-pattern-light.png";
 
 import Skeleton from "react-loading-skeleton";
 
@@ -167,7 +168,7 @@ export class FoodMenuItems extends Component {
               rounded="circle"
             />
 
-            <ImagePlaceholder />
+            <ImagePlaceholder src={placeholder} width="96px" height="96px" />
 
             <Div
               border={{ b: "1px solid" }}
