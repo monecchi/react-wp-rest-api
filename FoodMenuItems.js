@@ -93,8 +93,8 @@ export class FoodMenuItems extends Component {
   };
 
   componentDidMount() {
-    const { id, slug, menuOrder } = this.props.food;
-    const getImageUrl = axios.get(
+    const { id, slug, menuOrder, imgUrl } = this.props.food;
+    const getDishes = axios.get(
       `https://pizzariameurancho.com.br/wp-json/wp/v2/food_menu/${id}`
     );
     const getIngredients = axios.get(
@@ -104,11 +104,14 @@ export class FoodMenuItems extends Component {
     // "food tags" ingredients endpoint
     //https://pizzariameurancho.com.br/wp-json/wp/v2/ingrediente?post=822
 
-    Promise.all([getImageUrl, getIngredients]).then(res => {
+    this.setState({
+      imgUrl: this.props.food.featured_image_src.thumbnail,
+    });
+
+    Promise.all([getDishes, getIngredients]).then(res => {
       console.log(res);
       this.setState({
         id: res[0].data.id,
-        imgUrl: res[0].data.featured_image_src.thumbnail,
         slug: res[0].data.slug,
         ingredients: res[1].data,
         isLoaded: true
@@ -156,11 +159,13 @@ export class FoodMenuItems extends Component {
               circle={true}
               height={"6rem"}
               width={"6rem"}
-              className="align-self-center"
+              style={{marginTop: "auto", marginRight: "auto", marginBottom: "1rem", marginleft: "auto"}}
             />
             </Div>
-            <Skeleton />
-            <Skeleton count={3} />
+            <Skeleton style={{height: "1.2rem", marginBottom: "0.5rem"}} />
+            <Skeleton style={{height: "1.8rem", marginBottom: "1.5rem"}} />
+            <Skeleton style={{height: "0.9rem", marginBottom: "0.5rem"}} count={2} />
+            <Skeleton style={{width: "40%", marginTop: "1rem", marginBottom: "0.75rem"}} />
             </Div>
           </Div>
         </Col>
@@ -189,7 +194,7 @@ export class FoodMenuItems extends Component {
                 <Div
                   d="flex"
                   className="food-pic"
-                  bgImg={imgUrl}
+                  bgImg={bgImg}
                   bgSize={imgUrl ? "cover" : "300%"}
                   bgPos={imgUrl ? "center" : "28% 35%"}
                   w="6rem"
@@ -267,7 +272,7 @@ export class FoodMenuItems extends Component {
                   </Div>
 
                   <Div>
-                    <Div d="flex" h="20px" key={id}>
+                    <Div d="flex" h="20px">
                       {[1, 2, 3, 4, 5].map(num => (
                         <Icon
                           key={num}
