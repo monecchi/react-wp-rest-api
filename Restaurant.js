@@ -1,4 +1,4 @@
-import React, { useEffect, useState, Component } from "react";
+import React, { Component, useState } from "react";
 import axios from "axios";
 import PropTypes from "prop-types";
 
@@ -74,7 +74,6 @@ export class RestaurantStores extends Component {
                 key={store.id}
                 d="flex"
                 flexDir="column"
-                bg="white"
                 w="16.5rem"
                 m={{ b: "1rem" }}
                 p="1.5rem"
@@ -94,7 +93,7 @@ export class RestaurantStores extends Component {
             })}
         </>
       );
-    }
+    } else {
 
     return (
       <>
@@ -106,16 +105,14 @@ export class RestaurantStores extends Component {
               (tagBg =
                 store[city].is_open == 1 ? "softSuccess" : "softDanger")),
               (
-                <Col size="4" className="store-card" key={store.id}>
+                <Col size={{ xs: 12, md: 6, lg: 3, xl: 3 }} className="store-card" key={store.id}>
                   {console.log(store)}
                   <Div
                     key={store.id}
                     bg="white"
                     d="flex"
-                    flexWrap="nowrap"
-                    flexDir={{ xs: "column", lg: "column" }}
-                    align="auto"
-                    w="auto"
+                    flexDir="column"
+                    w="25.5rem"
                     m={{ b: "1rem" }}
                     p="1.5rem"
                     rounded="sm"
@@ -203,6 +200,10 @@ export class RestaurantStores extends Component {
           )}
       </>
     );
+
+    }
+
+
   }
 }
 

@@ -102,7 +102,7 @@ class App extends Component {
           <p className="mt-3 mb-1">Unidades Meu Rancho Pizzaria</p>
           <h6 className="text-muted mb-3">Nossas Lojas</h6>
 
-          <Row>
+          <Row flexWrap={{ xs: "wrap", md: "wrap", lg: "wrap" }} className="restaurants-row">
             <RestaurantStores />
           </Row>
         </Container>
@@ -112,7 +112,7 @@ class App extends Component {
             <Div className="stores-card__container">
               <p className="mt-3 mb-1">do Cardápio</p>
               <h6 className="text-muted mb-4">Pizzas e outras delícias</h6>
-              <Row  flexWrap={{ xs: "wrap", md: "wrap", lg: "wrap" }} className="dishes-row">
+              <Row flexWrap={{ xs: "wrap", md: "wrap", lg: "wrap" }} className="dishes-row">
                 <FoodMenu />
               </Row>
             </Div>
