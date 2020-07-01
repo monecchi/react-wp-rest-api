@@ -49,7 +49,7 @@ export class FoodMenu extends Component {
     return (
       <>
         {foods &&
-          foods.map(food => <FoodMenuItems key={food.id} food={food} />)}
+          foods.map(food => <FoodMenuItems food={food} key={id} />)}
       </>
     );
   }

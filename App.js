@@ -25,14 +25,14 @@ const theme = {
     dark: "#141b24",
     brand: "#FC0E36",
     brandAlt: "#EF2840",
+    brandHover: "#ea1d2c",
     success: "#1BC160",
     successDark: "#36b37e",
     danger: "#FC0E36",
     softDanger: "#FED9DB",
     softSuccess: "#D7f0E5",
     warning: "#FCC246",
-    info: "#3366FF",
-    brand800: "#671de1"
+    info: "#3366FF"
   },
   colCount: 12,
   grid: {
@@ -107,13 +107,21 @@ class App extends Component {
           </Row>
         </Container>
 
-        <Container className="stores-card__container">
-          <p className="mt-3 mb-1">do Cardápio</p>
-          <h6 className="text-muted mb-4">Pizzas e outras delícias</h6>
-          <Row d="flex" flexWrap={{ xs: "wrap", md: "wrap", lg: "wrap" }} className="fooditems-row">
-            <FoodMenu />
-          </Row>
-        </Container>
+        <Div tag="section" id="cardapio-menu" p={{ t: "3rem" }}>
+          <Container>
+            <Div className="stores-card__container">
+              <p className="mt-3 mb-1">do Cardápio</p>
+              <h6 className="text-muted mb-4">Pizzas e outras delícias</h6>
+              <Row
+                d="flex"
+                flexWrap={{ xs: "wrap", md: "wrap", lg: "wrap" }}
+                className="fooditems-row"
+              >
+                <FoodMenu />
+              </Row>
+            </Div>
+          </Container>
+        </Div>
       </ThemeProvider>
     );
   }

@@ -124,6 +124,12 @@ svg {
 //
 // Resets
 //
+
+a:hover {
+    color: #FC0E36;
+    text-decoration: none !important;
+}
+
 button {
   text-decoration: none;
 }
