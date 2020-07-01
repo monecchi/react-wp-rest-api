@@ -31,7 +31,7 @@ export class FoodMenu extends Component {
   componentDidMount() {
     axios
       .get(
-        "https://pizzariameurancho.com.br/wp-json/wp/v2/food_menu/?per_page=24"
+        "https://pizzariameurancho.com.br/wp-json/wp/v2/food_menu/?per_page=25"
       )
       .then(res =>
         this.setState({
@@ -49,7 +49,7 @@ export class FoodMenu extends Component {
     return (
       <>
         {foods &&
-          foods.map(food => <FoodMenuItems food={food} key={id} />)}
+          foods.map(food => <FoodMenuItems key={food.id} food={food} />)}
       </>
     );
   }
