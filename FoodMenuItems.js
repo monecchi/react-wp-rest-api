@@ -133,13 +133,15 @@ export class FoodMenuItems extends Component {
       return <> </>;
     }
 
+    const bgImg = imgUrl ? imgUrl : ImgPlaceholder;
+
     if (!isLoaded) {
       return (
-         <Col size={{ xs: 6, sm: 6, md: 4, lg: 3, xl: 3 }} key={id}>
+         <Col size={{ xs: 6, md: 6, lg: 3, xl: 3 }} key={id}>
             <Div
               d="flex"
               flexDir="column"
-              w={{ xs: "18.5rem", md:"25rem", lg: "19.5rem" }}
+              w={{ xs: "18.5rem", sm:"16.5rem", lg: "18.5rem", xl: "19.5rem" }}
               h="380px"
               p={{ xs: "0.75rem", md: "0.75rem", lg: "1.5rem", xl: "1.5rem" }}
               border="1px solid"
@@ -149,12 +151,14 @@ export class FoodMenuItems extends Component {
               rounded="sm"
             >
             <Div flexGrow="1">
+            <Div d="flex" justify="center" align="center" m={{ t: "auto", r: "auto", b: "1rem", l: "auto" }}>
             <Skeleton
               circle={true}
               height={"6rem"}
               width={"6rem"}
               className="align-self-center"
             />
+            </Div>
             <Skeleton />
             <Skeleton count={3} />
             </Div>
@@ -165,12 +169,12 @@ export class FoodMenuItems extends Component {
 
     return (
       <>
-        <Col size={{ xs: 6, sm: 6, md: 4, lg: 3, xl: 3 }} key={id}>
+        <Col size={{ xs: 6, md: 6, lg: 3, xl: 3 }} key={id}>
           <Div m={{ b: { xs: "1rem", lg: "1rem" } }} className="food-card food-card--vertical">
             <Div
               d="flex"
               flexDir="column"
-              w={{ xs: "18.5rem", md:"25rem", lg: "19.5rem" }}
+              w={{ xs: "18.5rem", md:"22rem", lg: "19.5rem" }}
               h="100%"
               p={{ xs: "0.75rem", md: "0.75rem", lg: "1.5rem", xl: "1.5rem" }}
               border="1px solid"
@@ -179,25 +183,29 @@ export class FoodMenuItems extends Component {
               hoverShadow="4"
               rounded="sm"
             >
-              <Div flexGrow="1">
+              <Div
+                flexGrow="1"
+              >
                 <Div
                   d="flex"
-                  align="center"
-                  className="food-pic justify-content-center"
-                  bgImg={imgUrl ? imgUrl : ImgPlaceholder}
+                  className="food-pic"
+                  bgImg={imgUrl}
                   bgSize={imgUrl ? "cover" : "300%"}
                   bgPos={imgUrl ? "center" : "28% 35%"}
                   w="6rem"
                   h="6rem"
-                  m={{ b: "1rem" }}
+                  m={{ t: "auto", r: "auto", b: "1rem", l: "auto" }}
                   rounded="circle"
                 />
 
                 <Div
+                  d="flex"
+                  flexWrap="wrap"
                   textSize="title"
                   textWeight="500"
+                  align="center"
+                  justify="center"
                   m={{ b: "0.5rem" }}
-                  flexWrap="wrap"
                 >
                   {/*{title.rendered}*/}
                   {renderHTML(title.rendered)}

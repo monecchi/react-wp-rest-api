@@ -40,10 +40,10 @@ const theme = {
       xs: "540px",
       sm: "720px",
       md: "960px",
-      lg: "1200px",
-      xl: "1366px"
+      lg: "1156px",
+      xl: "1200px"
     },
-    gutterWidth: "16px"
+    gutterWidth: "12px"
   },
   rounded: {
     ...DefaultTheme.rounded,
@@ -112,7 +112,7 @@ class App extends Component {
             <Div className="stores-card__container">
               <p className="mt-3 mb-1">do Cardápio</p>
               <h6 className="text-muted mb-4">Pizzas e outras delícias</h6>
-              <Row>
+              <Row  flexWrap={{ xs: "wrap", md: "wrap", lg: "wrap" }} className="dishes-row">
                 <FoodMenu />
               </Row>
             </Div>
