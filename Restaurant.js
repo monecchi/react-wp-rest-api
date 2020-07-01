@@ -27,7 +27,6 @@ import {
 import Skeleton from "react-loading-skeleton";
 
 export class RestaurantStores extends Component {
-
   constructor(props) {
     super(props);
     this.state = {
@@ -43,7 +42,6 @@ export class RestaurantStores extends Component {
       .then(res =>
         this.setState({
           stores: res.data,
-          id: this.state.stores[0].id,
           isLoaded: true
         })
       )
@@ -52,6 +50,7 @@ export class RestaurantStores extends Component {
 
   render() {
     const { stores, isLoaded, showModal } = this.state;
+
     let tagColor = "";
     let tagBg = "";
     let { store, city, isOpen } = "undefined";
@@ -62,44 +61,38 @@ export class RestaurantStores extends Component {
       }
     };
 
-    const { stores, isLoaded } = this.state;
-
     let isHidden = !this.state.isLoaded ? "block" : "none";
 
     if (!isLoaded) {
       return (
-         <Col size={4} key={store.id}>
-            <Div
-              key={store.id}
-              bg="white"
-              d="flex"
-              flexWrap="nowrap"
-              flexDir={{ xs: "column", lg: "column" }}
-              align="auto"
-              w="auto"
-              m={{ b: "1rem" }}
-              p="1.5rem"
-              rounded="sm"
-              shadow="2"
-              hoverShadow="3"
-            >
-            <Div flexGrow="1">
-            <Div d="flex" justify="center" align="center" m={{ t: "auto", r: "auto", b: "1rem", l: "auto" }}>
-            <Skeleton
-              circle={true}
-              height={"6rem"}
-              width={"6rem"}
-              duration={2}
-              style={{marginTop: "auto", marginRight: "auto", marginBottom: "1rem", marginleft: "auto"}}
-            />
-            </Div>
-            <Skeleton style={{height: "1.2rem", marginBottom: "0.5rem"}} />
-            <Skeleton style={{height: "1.8rem", marginBottom: "1.5rem"}} />
-            <Skeleton style={{height: "0.9rem", marginBottom: "0.5rem"}} count={2} />
-            <Skeleton style={{width: "40%", marginTop: "1rem", marginBottom: "0.75rem"}} />
-            </Div>
-          </Div>
-        </Col>
+        <>
+          {stores &&
+            stores.map(store => {
+
+            <Col size={3} key={store.id}>
+              <Div
+                key={store.id}
+                d="flex"
+                flexDir="column"
+                bg="white"
+                w="16.5rem"
+                m={{ b: "1rem" }}
+                p="1.5rem"
+                rounded="sm"
+                shadow="2"
+                hoverShadow="3"
+              >
+                <Div flexGrow="1">
+                  <Skeleton style={{height: "1.2rem", marginBottom: "0.5rem"}} duration={2} />
+                  <Skeleton style={{height: "1.8rem", marginBottom: "1.5rem"}} />
+                  <Skeleton style={{height: "0.9rem", marginBottom: "0.5rem"}} count={2} />
+                  <Skeleton style={{width: "40%", marginTop: "1rem", marginBottom: "0.75rem"}} />
+                </Div>
+              </Div>
+            </Col>
+
+            })}
+        </>
       );
     }
 
@@ -135,7 +128,7 @@ export class RestaurantStores extends Component {
                       m={{ b: "1rem" }}
                       className="text-capitalize"
                     >
-                      {store.slug  || <Skeleton /> }
+                      {store.slug || <Skeleton />}
                     </Text>
 
                     <Text tag="p" textSize="body" m={{ b: "1rem" }}>

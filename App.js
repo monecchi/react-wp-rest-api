@@ -102,7 +102,7 @@ class App extends Component {
           <p className="mt-3 mb-1">Unidades Meu Rancho Pizzaria</p>
           <h6 className="text-muted mb-3">Nossas Lojas</h6>
 
-          <Row flexWrap={{ xs: "wrap", md: "nowrap", lg: "nowrap" }}>
+          <Row>
             <RestaurantStores />
           </Row>
         </Container>
