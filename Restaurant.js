@@ -4,15 +4,15 @@ import PropTypes from "prop-types";
 
 // Atomize
 import {
-  Div,
-  Container,
-  Row,
-  Col,
-  Tag,
-  Anchor,
-  Button,
-  Text,
-  Icon
+	Div,
+	Container,
+	Row,
+	Col,
+	Tag,
+	Anchor,
+	Button,
+	Text,
+	Icon
 } from "react-atomize";
 
 // Custom cacheable fetch api service
@@ -27,184 +27,148 @@ import {
 import Skeleton from "react-loading-skeleton";
 
 export class RestaurantStores extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      stores: [],
-      isLoaded: false,
-      showModal: false
-    };
-  }
+	constructor(props) {
+		super(props);
+		this.state = {
+			stores: [],
+			isLoaded: false,
+			showModal: false
+		};
+	}
 
-  componentDidMount() {
-    axios
-      .get("https://pizzariameurancho.com.br/wp-json/mrp/v1/stores/")
-      .then(res =>
-        this.setState({
-          stores: res.data,
-          isLoaded: true
-        })
-      )
-      .catch(err => console.log(err));
-  }
+	componentDidMount() {
+		axios
+			.get("https://pizzariameurancho.com.br/wp-json/mrp/v1/stores/")
+			.then(res =>
+				this.setState({
+					stores: res.data,
+					isLoaded: true
+				})
+			)
+			.catch(err => console.log(err));
+	}
 
-  render() {
-    const { stores, isLoaded, showModal } = this.state;
+	render() {
+		const { stores, isLoaded, showModal } = this.state;
 
-    let tagColor = "";
-    let tagBg = "";
-    let { store, city, isOpen } = "undefined";
+		let tagColor = "";
+		let tagBg = "";
+		let { store, city, isOpen } = "undefined";
 
-    let styles = {
-      card__places: {
-        boxShadow: "0 0.75rem 1.5rem rgba(18,38,63,.03)"
-      }
-    };
+		let styles = {
+			card__places: {
+				boxShadow: "0 0.75rem 1.5rem rgba(18,38,63,.03)"
+			}
+		};
 
-    let isHidden = !this.state.isLoaded ? "block" : "none";
+		let isHidden = !this.state.isLoaded ? "block" : "none";
 
-    if (!isLoaded) {
-      return (
-        <>
-          {stores &&
-            stores.map(store => {
+		return (
+			<>
+				{stores &&
+					stores.map(
+						store => (
+							((city = store.slug),
+								(isOpen = store[city].is_open == 1 ? "Aberto" : "Fechado"),
+								(tagBg =
+									store[city].is_open == 1 ? "softSuccess" : "softDanger")),
+							(
+								<Col size={{ xs: 12, md: 4, lg: 3, xl: 3 }} className="store-card" key={store.id}>
+									{console.log(store)}
+									<Div
+										key={store.id}
+										bg="white"
+										d="flex"
+										flexDir="column"
+										w="26.5rem"
+										m={{ b: "1rem" }}
+										p="1.5rem"
+										rounded="sm"
+										shadow="2"
+										hoverShadow="3"
+									>
+										<Text
+											tag="h5"
+											textSize="h5"
+											m={{ b: "1rem" }}
+											className="text-capitalize"
+										>
+											{store.slug || <Skeleton />}
+										</Text>
 
-            <Col size={3} key={store.id}>
-              <Div
-                key={store.id}
-                d="flex"
-                flexDir="column"
-                w="16.5rem"
-                m={{ b: "1rem" }}
-                p="1.5rem"
-                rounded="sm"
-                shadow="2"
-                hoverShadow="3"
-              >
-                <Div flexGrow="1">
-                  <Skeleton style={{height: "1.2rem", marginBottom: "0.5rem"}} duration={2} />
-                  <Skeleton style={{height: "1.8rem", marginBottom: "1.5rem"}} />
-                  <Skeleton style={{height: "0.9rem", marginBottom: "0.5rem"}} count={2} />
-                  <Skeleton style={{width: "40%", marginTop: "1rem", marginBottom: "0.75rem"}} />
-                </Div>
-              </Div>
-            </Col>
+										<Text tag="p" textSize="body" m={{ b: "1rem" }}>
+											{store[city].formatted_address || <Skeleton count={3} />}
+										</Text>
 
-            })}
-        </>
-      );
-    } else {
+										<Div d="flex" flexWrap="wrap">
+											<Tag
+												bg={tagBg}
+												textColor={`${
+													tagBg == "softSuccess" ? "successDark" : "brand"
+													}`}
+												className={`${
+													store[city].is_open == 1
+														? "badge-status-opened"
+														: "badge-status-closed"
+													}`}
+												rounded="circle"
+												p={{ x: "0.75rem", y: "0.25rem" }}
+												m={{ r: "0.5rem", b: "0.5rem" }}
+												tag="span"
+												textSize="caption"
+												shadow="0"
+											>
+												{isOpen}
+											</Tag>{" "}
+										</Div>
 
-    return (
-      <>
-        {stores &&
-          stores.map(
-            store => (
-              ((city = store.slug),
-              (isOpen = store[city].is_open == 1 ? "Aberto" : "Fechado"),
-              (tagBg =
-                store[city].is_open == 1 ? "softSuccess" : "softDanger")),
-              (
-                <Col size={{ xs: 12, md: 6, lg: 3, xl: 3 }} className="store-card" key={store.id}>
-                  {console.log(store)}
-                  <Div
-                    key={store.id}
-                    bg="white"
-                    d="flex"
-                    flexDir="column"
-                    w="25.5rem"
-                    m={{ b: "1rem" }}
-                    p="1.5rem"
-                    rounded="sm"
-                    shadow="2"
-                    hoverShadow="3"
-                  >
-                    <Text
-                      tag="h5"
-                      textSize="h5"
-                      m={{ b: "1rem" }}
-                      className="text-capitalize"
-                    >
-                      {store.slug || <Skeleton />}
-                    </Text>
+										<div className="d-flex flex-column mb-2">Ligar na loja</div>
 
-                    <Text tag="p" textSize="body" m={{ b: "1rem" }}>
-                      {store[city].formatted_address || <Skeleton count={3} />}
-                    </Text>
-
-                    <Div d="flex" flexWrap="wrap">
-                      <Tag
-                        bg={tagBg}
-                        textColor={`${
-                          tagBg == "softSuccess" ? "successDark" : "brand"
-                        }`}
-                        className={`${
-                          store[city].is_open == 1
-                            ? "badge-status-opened"
-                            : "badge-status-closed"
-                        }`}
-                        rounded="circle"
-                        p={{ x: "0.75rem", y: "0.25rem" }}
-                        m={{ r: "0.5rem", b: "0.5rem" }}
-                        tag="span"
-                        textSize="caption"
-                        shadow="0"
-                      >
-                        {isOpen}
-                      </Tag>{" "}
-                    </Div>
-
-                    <div className="d-flex flex-column mb-2">Ligar na loja</div>
-
-                    <Anchor
-                      href={"tel:" + store[city].phone_raw}
-                      hoverTextColor="white"
-                      className={
-                        store[city].is_open == 0
-                          ? "text-decoration-none disabled"
-                          : "text-decoration-none"
-                      }
-                      disabled={store[city].is_open == 0 ? "disabled" : null}
-                    >
-                      <Button
-                        textColor="brand"
-                        hoverTextColor="white"
-                        textWeight="700"
-                        bg="softDanger"
-                        hoverBg="brand"
-                        cursor="pointer"
-                        rounded="sm"
-                        suffix={
-                          <Icon
-                            name="LongRight"
-                            size="20px"
-                            color="brand"
-                            m={{ l: "1rem" }}
-                            className={
-                              store[city].is_open == 0
-                                ? "fill-white text-decoration-none disabled"
-                                : "text-decoration-none"
-                            }
-                            hoverColor="white"
-                          />
-                        }
-                        disabled={store[city].is_open == 0 ? "disabled" : null}
-                      >
-                        {store[city].formatted_phone}
-                      </Button>
-                    </Anchor>
-                  </Div>
-                </Col>
-              )
-            )
-          )}
-      </>
-    );
-
-    }
-
-
-  }
+										<Anchor
+											href={"tel:" + store[city].phone_raw}
+											hoverTextColor="white"
+											className={
+												store[city].is_open == 0
+													? "text-decoration-none disabled"
+													: "text-decoration-none"
+											}
+											disabled={store[city].is_open == 0 ? "disabled" : null}
+										>
+											<Button
+												textColor="brand"
+												hoverTextColor="white"
+												textWeight="700"
+												bg="softDanger"
+												hoverBg="brand"
+												cursor="pointer"
+												rounded="sm"
+												suffix={
+													<Icon
+														name="LongRight"
+														size="20px"
+														color="brand"
+														m={{ l: "1rem" }}
+														className={
+															store[city].is_open == 0
+																? "fill-white text-decoration-none disabled"
+																: "text-decoration-none"
+														}
+														hoverColor="white"
+													/>
+												}
+												disabled={store[city].is_open == 0 ? "disabled" : null}
+											>
+												{store[city].formatted_phone}
+											</Button>
+										</Anchor>
+									</Div>
+								</Col>
+							)
+						)
+					)}
+			</>
+		);
+	}
 }
 
 export default RestaurantStores;

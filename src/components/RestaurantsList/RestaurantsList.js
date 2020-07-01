@@ -1,4 +1,4 @@
-import React, { Component, useState } from "react";
+import React, { Component } from "react";
 import axios from "axios";
 
 // Atomize
@@ -16,13 +16,13 @@ import {
   Modal
 } from "react-atomize";
 
-import FoodMenuItems from "./FoodMenuItems";
+import RestaurantsList__Cards from "./RestaurantsList";
 
-export class FoodMenu extends Component {
+export class RestaurantsList extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      foods: [],
+      stores: [],
       isLoaded: false,
       showModal: false
     };
@@ -31,11 +31,11 @@ export class FoodMenu extends Component {
   componentDidMount() {
     axios
       .get(
-        "https://pizzariameurancho.com.br/wp-json/wp/v2/food_menu/?per_page=25"
+        "https://pizzariameurancho.com.br/wp-json/mrp/v1/stores/"
       )
       .then(res =>
         this.setState({
-          foods: res.data,
+          stores: res.data,
           isLoaded: true
         })
         //this.setState({ isLoaded: true })}
@@ -44,15 +44,15 @@ export class FoodMenu extends Component {
   }
 
   render() {
-    const { foods, isLoaded, showModal } = this.state;
+    const { stores, isLoaded, showModal } = this.state;
     console.log(this.state);
     return (
       <>
-        {foods &&
-          foods.map(food => <FoodMenuItems key={food.id} food={food} /> )}      
+        {stores &&
+          stores.map(store => <RestaurantsListCards key={store.id} store={store} />)}      
       </>
     );
   }
 }
 
-export default FoodMenu;
+export default RestaurantsList;

@@ -23,55 +23,16 @@ import {
 //
 import Skeleton from "react-loading-skeleton";
 
-
-//import placeholder from "./src/assets/images/mr-pattern-light.png";
-let ImgPlaceholder =
-  "https://raw.githubusercontent.com/monecchi/react-wp-rest-api/master/src/assets/images/mr-pattern-light.png";
-
 //
-// Modal
+// RestaurantsList__Cards component
 //
-const ModalSize = ({ isOpen, onClose }) => {
-  return (
-    <Modal isOpen={isOpen} onClose={onClose} rounded="md" maxW="48rem">
-      <Icon
-        name="Cross"
-        pos="absolute"
-        top="1rem"
-        right="1rem"
-        size="16px"
-        onClick={onClose}
-        cursor="pointer"
-      />
-      <Text p={{ l: "0.5rem", t: "0.25rem" }} m={{ b: "2rem" }}>
-        This modal has maxW of 48rem
-      </Text>
-      <Div d="flex" justify="flex-end">
-        <Button
-          onClick={onClose}
-          bg="gray200"
-          textColor="medium"
-          m={{ r: "1rem" }}
-        >
-          Close
-        </Button>
-        <Button onClick={onClose} bg="info700">
-          OK
-        </Button>
-      </Div>
-    </Modal>
-  );
-};
-
-//
-// FoodMenuItems component
-//
-export class FoodMenuItems extends Component {
+export class RestaurantsListCards extends Component {
 
   constructor(props) {
     super(props);
     this.state = {
       food: PropTypes.object.isRequired,
+      id: PropTypes.number.isRequired,
       isLoaded: false,
       showModal: false
     };
@@ -82,9 +43,7 @@ export class FoodMenuItems extends Component {
   };
 
   componentDidMount() {
-    
-    const { id, slug } = this.props.food;
-
+    const { id, slug, menuOrder, imgUrl } = this.props.food;
     const getDishes = axios.get(
       `https://pizzariameurancho.com.br/wp-json/wp/v2/food_menu/${id}`
     );
@@ -95,11 +54,14 @@ export class FoodMenuItems extends Component {
     // "food tags" ingredients endpoint
     //https://pizzariameurancho.com.br/wp-json/wp/v2/ingrediente?post=822
 
+    this.setState({
+      imgUrl: this.props.food.featured_image_src.thumbnail,
+    });
+
     Promise.all([getDishes, getIngredients]).then(res => {
       console.log(res);
       this.setState({
         id: res[0].data.id,
-        imgUrl: res[0].data.featured_image_src.thumbnail,
         slug: res[0].data.slug,
         ingredients: res[1].data,
         isLoaded: true
@@ -108,7 +70,7 @@ export class FoodMenuItems extends Component {
   }
 
   render() {
-    const { id, title, excerpt, slug, menu_order } = this.props.food;
+    const { id, title, excerpt, slug, menu_order, ingredient } = this.props.food;
     const { imgUrl, ingredients, isLoaded, showModal } = this.state;
 
     // decode render html - https://stackoverflow.com/questions/42361689/implement-html-entity-decode-in-react-js
@@ -117,7 +79,7 @@ export class FoodMenuItems extends Component {
         dangerouslySetInnerHTML: { __html: rawHTML }
       });
 
-    //console.log(id);
+    console.log(id);
 
     // hide items if slug is "vazio" or "empty"
     if ((slug && slug == "vazio") || (slug && slug == "empty")) {
@@ -143,13 +105,13 @@ export class FoodMenuItems extends Component {
             >
             <Div flexGrow="1">
             <Div d="flex" justify="center" align="center" m={{ t: "auto", r: "auto", b: "1rem", l: "auto" }}>
-              <Skeleton
-                circle={true}
-                height={"6rem"}
-                width={"6rem"}
-                duration={3}
-                style={{marginTop: "auto", marginRight: "auto", marginBottom: "1rem", marginleft: "auto"}}
-              />
+            <Skeleton
+              circle={true}
+              height={"6rem"}
+              width={"6rem"}
+              duration={3}
+              style={{marginTop: "auto", marginRight: "auto", marginBottom: "1rem", marginleft: "auto"}}
+            />
             </Div>
             <Skeleton style={{height: "1.2rem", marginBottom: "0.5rem"}} />
             <Skeleton style={{height: "1.8rem", marginBottom: "1.5rem"}} />
@@ -312,4 +274,4 @@ export class FoodMenuItems extends Component {
   }
 }
 
-export default FoodMenuItems;
+export default RestaurantsListCards;

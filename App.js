@@ -43,7 +43,7 @@ const theme = {
       lg: "1200px",
       xl: "1366px"
     },
-    gutterWidth: "12px"
+    gutterWidth: "16px"
   },
   rounded: {
     ...DefaultTheme.rounded,
