@@ -1,5 +1,6 @@
 import React, { useEffect, useState, Component } from "react";
 import axios from "axios";
+import PropTypes from "prop-types";
 
 // Atomize
 import {
@@ -15,7 +16,7 @@ import {
 } from "react-atomize";
 
 // Custom cacheable fetch api service
-import useFetch from "./src/useFetch";
+// import useFetch from "./src/useFetch";
 
 // Bootstrap stuff
 //import Button from "react-bootstrap/Button";
@@ -26,32 +27,31 @@ import useFetch from "./src/useFetch";
 import Skeleton from "react-loading-skeleton";
 
 export class RestaurantStores extends Component {
-  state = {
-    stores: [],
-    isLoaded: false
-  };
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      stores: [],
+      isLoaded: false,
+      showModal: false
+    };
+  }
+
   componentDidMount() {
     axios
       .get("https://pizzariameurancho.com.br/wp-json/mrp/v1/stores/")
       .then(res =>
         this.setState({
           stores: res.data,
+          id: this.state.stores[0].id,
           isLoaded: true
         })
       )
       .catch(err => console.log(err));
   }
 
-  htmlDecode = input => {
-    var e = document.createElement("div");
-    e.innerHTML = input;
-    return e.childNodes.length === 0 ? "" : e.childNodes[0].nodeValue;
-  };
-
   render() {
-    let storedata = [];
-    storedata.push(stores);
-
+    const { stores, isLoaded, showModal } = this.state;
     let tagColor = "";
     let tagBg = "";
     let { store, city, isOpen } = "undefined";
@@ -65,6 +65,43 @@ export class RestaurantStores extends Component {
     const { stores, isLoaded } = this.state;
 
     let isHidden = !this.state.isLoaded ? "block" : "none";
+
+    if (!isLoaded) {
+      return (
+         <Col size={4} key={store.id}>
+            <Div
+              key={store.id}
+              bg="white"
+              d="flex"
+              flexWrap="nowrap"
+              flexDir={{ xs: "column", lg: "column" }}
+              align="auto"
+              w="auto"
+              m={{ b: "1rem" }}
+              p="1.5rem"
+              rounded="sm"
+              shadow="2"
+              hoverShadow="3"
+            >
+            <Div flexGrow="1">
+            <Div d="flex" justify="center" align="center" m={{ t: "auto", r: "auto", b: "1rem", l: "auto" }}>
+            <Skeleton
+              circle={true}
+              height={"6rem"}
+              width={"6rem"}
+              duration={2}
+              style={{marginTop: "auto", marginRight: "auto", marginBottom: "1rem", marginleft: "auto"}}
+            />
+            </Div>
+            <Skeleton style={{height: "1.2rem", marginBottom: "0.5rem"}} />
+            <Skeleton style={{height: "1.8rem", marginBottom: "1.5rem"}} />
+            <Skeleton style={{height: "0.9rem", marginBottom: "0.5rem"}} count={2} />
+            <Skeleton style={{width: "40%", marginTop: "1rem", marginBottom: "0.75rem"}} />
+            </Div>
+          </Div>
+        </Col>
+      );
+    }
 
     return (
       <>

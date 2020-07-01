@@ -40,8 +40,8 @@ const theme = {
       xs: "540px",
       sm: "720px",
       md: "960px",
-      lg: "1156px",
-      xl: "1200px"
+      lg: "1200px",
+      xl: "1366px"
     },
     gutterWidth: "12px"
   },

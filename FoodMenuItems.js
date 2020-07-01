@@ -159,6 +159,7 @@ export class FoodMenuItems extends Component {
               circle={true}
               height={"6rem"}
               width={"6rem"}
+              duration={2}
               style={{marginTop: "auto", marginRight: "auto", marginBottom: "1rem", marginleft: "auto"}}
             />
             </Div>
