@@ -71,7 +71,6 @@ export class FoodMenuItems extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      food: PropTypes.object.isRequired,
       isLoaded: false,
       showModal: false
     };
@@ -83,7 +82,7 @@ export class FoodMenuItems extends Component {
 
   componentDidMount() {
     
-    const { id, slug } = this.props.food;
+    const { id, title, excerpt, slug, menu_order, dish_prices } = this.props.food;
 
     const getDishes = axios.get(
       `https://pizzariameurancho.com.br/wp-json/wp/v2/food_menu/${id}`
@@ -95,12 +94,10 @@ export class FoodMenuItems extends Component {
     // "food tags" ingredients endpoint
     //https://pizzariameurancho.com.br/wp-json/wp/v2/ingrediente?post=822
 
-    Promise.all([getDishes, getIngredients]).then(res => {
+    Promise.all([getDishes, getIngredients] ).then(res => {
       console.log(res);
       this.setState({
-        id: res[0].data.id,
         imgUrl: res[0].data.featured_image_src.thumbnail,
-        slug: res[0].data.slug,
         ingredients: res[1].data,
         isLoaded: true
       });
@@ -108,8 +105,12 @@ export class FoodMenuItems extends Component {
   }
 
   render() {
-    const { id, title, excerpt, slug, menu_order } = this.props.food;
+    const { id, title, excerpt, slug, menu_order, dish_prices } = this.props.food;
     const { imgUrl, ingredients, isLoaded, showModal } = this.state;
+
+    const precos = [];
+    precos = dish_prices;
+    //console.log(precos);
 
     // decode render html - https://stackoverflow.com/questions/42361689/implement-html-entity-decode-in-react-js
     const renderHTML = rawHTML =>
@@ -131,8 +132,7 @@ export class FoodMenuItems extends Component {
          <Col size={{ xs: 6, md: 6, lg: 3, xl: 3 }} key={id}>
             <Div
               d="flex"
-              flexDir="column"
-              w={{ xs: "18.5rem", sm:"16.5rem", lg: "18.5rem", xl: "19.5rem" }}
+              w={{ xs: "20rem", md:"17.5rem", lg: "18.5rem", xl: "19.5rem" }}
               h="380px"
               p={{ xs: "0.75rem", md: "0.75rem", lg: "1.5rem", xl: "1.5rem" }}
               border="1px solid"
@@ -163,19 +163,21 @@ export class FoodMenuItems extends Component {
 
     return (
       <>
-        <Col size={{ xs: 6, md: 6, lg: 3, xl: 3 }} key={id}>
-          <Div m={{ b: { xs: "1rem", lg: "1rem" } }} className="food-card food-card--vertical">
+        <Col size={{ xs: 6, md: 3, lg: 3, xl: 3 }} key={id}>
+          <Div className="food-card food-card--vertical">
             <Div
               d="flex"
               flexDir="column"
-              w={{ xs: "18.5rem", md:"22rem", lg: "19.5rem" }}
+              w={{ xs: "20rem", md:"18.5rem", lg: "18.5rem", xl: "19.5rem" }}
               h="100%"
               p={{ xs: "0.75rem", md: "0.75rem", lg: "1.5rem", xl: "1.5rem" }}
               border="1px solid"
               borderColor="gray200"
-              shadow="3"
-              hoverShadow="4"
+              shadow="2"
+              hoverShadow="3"
               rounded="sm"
+              m={{ b: { xs: "1.3rem", lg: "1.3rem" } }}
+              className="food-card__wrapper"
             >
               <Div
                 flexGrow="1"
@@ -283,7 +285,7 @@ export class FoodMenuItems extends Component {
                     className="dish-card__price"
                     data-test-id="dish-card-price"
                   >
-                    <span className="dish-card__price--discount">R$ 16,50</span>
+                    <span className="dish-card__price--discount">{ precos[0].preco } R$ 16,50</span>
                     <span className="dish-card__price--original">R$ 23,00</span>
                   </span>
                 </Div>

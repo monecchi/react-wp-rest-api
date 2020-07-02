@@ -88,6 +88,30 @@ svg {
   }
 }
 
+//
+// Card prices
+//
+
+// Food item price
+
+.preco-box {
+    text-align: center;
+    color: #8d97ad;
+    user-select: none;
+    bottom: 0;
+    
+    .preco {
+        display: block;
+        align-self: center;
+    }
+
+    .tamanho-preco {
+        display: block;
+        color: #32325d;
+        font-weight: 700;
+    }
+}
+
 // .card-deck group like .card-group but cards are not connected
 .card-deck {
   display: -ms-flexbox;

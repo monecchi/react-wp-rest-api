@@ -1,6 +1,22 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 
+// Atomize
+import {
+  ThemeProvider,
+  DefaultTheme,
+  StyleReset,
+  Div,
+  Container,
+  Row,
+  Col,
+  Tag,
+  Anchor,
+  Button,
+  Text,
+  Icon
+} from "react-atomize";
+
 // Bootstrap stuff
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";

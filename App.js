@@ -73,11 +73,11 @@ import DestaquesCarousel from "./src/components/HomeCarousel/DestaquesCarousel";
 import FoodMenu from "./FoodMenu";
 
 //
-// Restaurants (stores) listing components
+// Restaurants (stores) Listing components
 //
-import RestaurantsList from "./src/components/RestaurantsLists/RestaurantsList";
-import List from "./src/components/RestaurantsLists";
-import withListLoading from "./src/components/RestaurantsLists";
+import RestaurantsList from "./src/components/RestaurantsList/RestaurantsList";
+import List from "./src/components/RestaurantsList";
+import withListLoading from "./src/components/RestaurantsList";
 
 class App extends Component {
   constructor() {
@@ -95,37 +95,65 @@ class App extends Component {
 
         <NavbarIfood />
 
-        <section className={"bg-light py-4"}>
-          <div className="highlights-carousel">
-            <div className="highlights-carousel__wrapper">
-              {/*<div className="carousel__wrapper">*/}
-              <DestaquesCarousel />
-              {/*</div>*/}
-            </div>
-          </div>
-        </section>
+        <main className="main-layout">
+          <div className="home-page">
+            <section className={"bg-light py-4"}>
+              <div className="highlights-carousel">
+                <div className="highlights-carousel__wrapper">
+                  {/*<div className="carousel__wrapper">*/}
+                  <DestaquesCarousel />
+                  {/*</div>*/}
+                </div>
+              </div>
+            </section>
 
-        <Container className="stores-card__container">
-          <p className="mt-3 mb-1">Unidades Meu Rancho Pizzaria</p>
-          <h6 className="text-muted mb-3">Nossas Lojas</h6>
+            <Div
+              tag="section"
+              id="restaurants"
+              p={{ t: "3rem" }}
+              className="stores-card__container"
+            >
+              <Container className="p-0">
+                <Text
+                  textSize="paragraph"
+                  textColor="medium"
+                  m={{ b: "0.25rem" }}
+                >
+                  Unidades Meu Rancho Pizzaria
+                </Text>
+                <Text
+                  tag="h5"
+                  textSize="subheader"
+                  textWeight="500"
+                  fontFamily="secondary"
+                  m={{ b: "1rem" }}
+                >
+                  Nossas Lojas
+                </Text>
+                <Div
+                  p={{ b: "6rem" }}
+                  border={{ b: "1px solid" }}
+                  borderColor="gray300"
+                >
+                  <Row>
+                    <RestaurantsList />
+                  </Row>
+                </Div>
+              </Container>
+            </Div>
 
-          <Row flexWrap={{ xs: "wrap", md: "wrap", lg: "wrap" }} className="restaurants-row">
-            <RestaurantStores />
-             <RestaurantsList />
-          </Row>
-        </Container>
-
-        <Div tag="section" id="cardapio-menu" p={{ t: "3rem" }}>
-          <Container>
-            <Div className="stores-card__container">
+            <Container
+              className="stores-card__container"
+              p={{ l: "0", r: "0" }}
+            >
               <p className="mt-3 mb-1">do Cardápio</p>
               <h6 className="text-muted mb-4">Pizzas e outras delícias</h6>
-              <Row flexWrap={{ xs: "wrap", md: "wrap", lg: "wrap" }} className="dishes-row">
+              <Row className="dishes-row" p={{ l: "0", r: "0" }}>
                 <FoodMenu />
               </Row>
-            </Div>
-          </Container>
-        </Div>
+            </Container>
+          </div>
+        </main>
       </ThemeProvider>
     );
   }
