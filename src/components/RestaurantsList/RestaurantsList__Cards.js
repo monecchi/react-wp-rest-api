@@ -23,6 +23,7 @@ import {
 //
 import Skeleton from "react-loading-skeleton";
 
+
 //
 // RestaurantsList__Cards component
 //

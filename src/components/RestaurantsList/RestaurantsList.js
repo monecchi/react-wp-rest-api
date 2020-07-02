@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, useEffect, useState } from "react";
 import axios from "axios";
 
 // Atomize
@@ -16,43 +16,45 @@ import {
   Modal
 } from "react-atomize";
 
-import RestaurantsList__Cards from "./RestaurantsList";
+import List from "./List";
+import withListLoading from "./withListLoading";
 
-export class RestaurantsList extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      stores: [],
-      isLoaded: false,
-      showModal: false
-    };
-  }
+const RestaurantsList = () => {
+  this.state = {
+    stores: [],
+    isLoaded: false,
+    showModal: false
+  };
 
-  componentDidMount() {
+  const ListLoading = withListLoading(List);
+
+  const [appState, setAppState] = useState({
+    loading: false,
+    stores: null
+  });
+
+  useEffect(() => {
+    setAppState({ loading: true });
+
+    const apiUrl = "https://pizzariameurancho.com.br/wp-json/mrp/v1/stores/";
+
     axios
-      .get(
-        "https://pizzariameurancho.com.br/wp-json/mrp/v1/stores/"
-      )
-      .then(res =>
-        this.setState({
-          stores: res.data,
-          isLoaded: true
-        })
-        //this.setState({ isLoaded: true })}
-      )
+      .get(apiUrl)
+      .then(res => {
+        const allStores = res.data;
+        setAppState({ loading: false, stores: allStores });
+      })
       .catch(err => console.log(err));
-  }
+  }, [setAppState]);
 
-  render() {
-    const { stores, isLoaded, showModal } = this.state;
-    console.log(this.state);
-    return (
-      <>
-        {stores &&
-          stores.map(store => <RestaurantsListCards key={store.id} store={store} />)}      
-      </>
-    );
-  }
-}
+  const { stores, isLoaded, showModal } = this.state;
+  console.log(this.state);
+
+  return (
+    <>
+    <ListLoading isLoading={appState.loading} stores={appState.stores} />
+    </>
+  );
+};
 
 export default RestaurantsList;

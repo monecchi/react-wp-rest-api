@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 // Atomize
@@ -72,6 +72,13 @@ import NavbarIfood from "./components/navbar/NavbarIfood"; // custom component u
 import DestaquesCarousel from "./src/components/HomeCarousel/DestaquesCarousel";
 import FoodMenu from "./FoodMenu";
 
+//
+// Restaurants (stores) listing components
+//
+import RestaurantsList from "./src/components/RestaurantsLists/RestaurantsList";
+import List from "./src/components/RestaurantsLists";
+import withListLoading from "./src/components/RestaurantsLists";
+
 class App extends Component {
   constructor() {
     super();
@@ -104,6 +111,7 @@ class App extends Component {
 
           <Row flexWrap={{ xs: "wrap", md: "wrap", lg: "wrap" }} className="restaurants-row">
             <RestaurantStores />
+             <RestaurantsList />
           </Row>
         </Container>
 
