@@ -66,7 +66,7 @@ import RestaurantStores from "./Restaurant";
 import "./App.scss";
 
 // Custom components import
-import NavbarIfood from "./components/navbar/NavbarIfood"; // custom component uses Bootstrap navbar
+import NavbarIfood from "./src/components/Navbar/NavbarIfood"; // custom component uses Bootstrap navbar
 //import NavbarNav from "./components/navbar/Navbar.js"; // custom component uses Bootstrap navbar
 //import Hello from "./Hello";
 import DestaquesCarousel from "./src/components/HomeCarousel/DestaquesCarousel";
