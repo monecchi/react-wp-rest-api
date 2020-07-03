@@ -64,8 +64,8 @@ import "./App.scss";
 
 // UI components
 import NavbarIfood from "./src/components/Navbar/NavbarIfood"; // iFood alike custom Navbar
-import DestaquesCarousel from "./src/components/HomeCarousel/DestaquesCarousel"; // Featured Carousel Items (Flickity)
-import FoodMenu from "./FoodMenu";
+import DestaquesCarousel from "./src/components/Carousel/DestaquesCarousel"; // Featured Carousel Items (Flickity)
+import FoodMenu from "./src/components/FoodMenu/CardsList/";
 
 //
 // Restaurants (stores) listing components

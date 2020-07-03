@@ -236,7 +236,7 @@ button[bg]:hover {
 @import "~bootstrap/scss/bootstrap";
 
 // iFood styles
-@import "./src/styles/Ifood";
+@import "./src/assets/scss/vendor/ifood/Ifood";
 
 // Animation custom
-@import "./src/styles/Animations";
+@import "./src/assets/scss/utilities/Animations";

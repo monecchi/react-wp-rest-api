@@ -2,9 +2,10 @@ import React from "react";
 // Import Flickity
 import Flickity from "react-flickity-component";
 
+// Flickity default css
 import "flickity/css/flickity.css";
-// Flickity custom scss
-import "./_FlickityCustom.scss";
+// Component custom scss
+import "./styles.scss";
 
 const flickityOptions = {
   initialIndex: 2,
