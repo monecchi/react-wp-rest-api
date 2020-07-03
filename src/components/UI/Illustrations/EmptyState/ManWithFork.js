@@ -13,7 +13,7 @@ function ManWithFork() {
           <path d="M0 0H500V300H0z"></path>
         </clipPath>
       </defs>
-      <g clip-path="url(#clip-mr-not-found-fork)">
+      <g clipPath="url(#clip-mr-not-found-fork)">
         <path fill="#fff" d="M0 0H500V300H0z"></path>
         <path
           fill="#fef9f9"
