@@ -24,7 +24,7 @@ import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 
 // Custom components import
-import NavbarIfood from "../../components/navbar/NavbarIfood.js"; // custom component uses Bootstrap navbar
+import NavbarIfood from "../../src/components/Navbar/NavbarIfood.js"; // custom component uses Bootstrap navbar
 import ManWithFork from "../../src/components/UI/Illustrations/EmptyState/ManWithFork";
 import MeuSvg from "../src/components/UI/Illustrations/mr-not-found-fork.svg";
 

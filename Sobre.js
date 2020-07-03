@@ -7,7 +7,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 
 // Custom components import
-import NavbarNav from "./components/navbar/Navbar.js"; // custom component uses Bootstrap navbar
+import NavbarNav from "./src/components/Navbar/Navbar.js"; // custom component uses Bootstrap navbar
 
 // Importing the Bootstrap CSS
 // Import Custom CSS
