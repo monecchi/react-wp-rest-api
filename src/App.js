@@ -63,16 +63,16 @@ const theme = {
 import "./App.scss";
 
 // UI components
-import NavbarIfood from "./src/components/Navbar/NavbarIfood"; // iFood alike custom Navbar
-import DestaquesCarousel from "./src/components/Carousel/DestaquesCarousel"; // Featured Carousel Items (Flickity)
-import FoodMenu from "./src/components/FoodMenu/CardsList/";
+import NavbarIfood from "./components/Navbar/NavbarIfood"; // iFood alike custom Navbar
+import DestaquesCarousel from "./components/Carousel/DestaquesCarousel"; // Featured Carousel Items (Flickity)
+import FoodMenu from "./components/FoodMenu/CardsList/FoodMenu";
 
 //
 // Restaurants (stores) listing components
 //
-import RestaurantsList from "./src/components/RestaurantsList/RestaurantsList";
-import List from "./src/components/RestaurantsList";
-import withListLoading from "./src/components/RestaurantsList";
+import RestaurantsList from "./components/RestaurantsList/RestaurantsList";
+import List from "./components/RestaurantsList";
+import withListLoading from "./components/RestaurantsList";
 
 class App extends Component {
   constructor() {

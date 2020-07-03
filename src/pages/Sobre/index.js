@@ -11,7 +11,7 @@ import NavbarNav from "../../components/Navbar/Navbar.js"; // custom component u
 
 // Importing the Bootstrap CSS
 // Import Custom CSS
-import "../../../App.scss";
+//import "../../App.scss";
 
 class Sobre extends Component {
   render() {

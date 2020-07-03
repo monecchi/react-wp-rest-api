@@ -8,8 +8,8 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 // App
 import App from "./App";
 //import * as serviceWorker from './serviceWorker';
-import Sobre from "./src/pages/Sobre";
-import NotFound from "./src/pages/NotFound";
+import Sobre from "./pages/Sobre";
+import NotFound from "./pages/NotFound";
 //import registerServiceWorker from './registerServiceWorker';
 
 // App Main Styles

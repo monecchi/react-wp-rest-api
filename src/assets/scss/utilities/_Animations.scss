@@ -1,0 +1,444 @@
+//
+// Meu Rancho Custom animations
+// 
+
+// 
+// Header "telephone ringing" icon animation
+//
+@-webkit-keyframes header-phone {
+  0%,
+  30% {
+    opacity: 0;
+    -webkit-transform: translate3d(-20px, 20px, 0);
+    transform: translate3d(-20px, 20px, 0);
+  }
+
+  80% {
+    opacity: 1;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes header-phone {
+  0%,
+  30% {
+    opacity: 0;
+    -webkit-transform: translate3d(-20px, 20px, 0);
+    transform: translate3d(-20px, 20px, 0);
+  }
+
+  80% {
+    opacity: 1;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+@-webkit-keyframes header-phone2 {
+  0% {
+    opacity: 0;
+    -webkit-transform: translate3d(-20px, 20px, 0);
+    transform: translate3d(-20px, 20px, 0);
+  }
+
+  70%,
+  90% {
+    opacity: 1;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes header-phone2 {
+  0% {
+    opacity: 0;
+    -webkit-transform: translate3d(-20px, 20px, 0);
+    transform: translate3d(-20px, 20px, 0);
+  }
+
+  70%,
+  90% {
+    opacity: 1;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+// 
+// Flash animation
+//
+@-webkit-keyframes flash {
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
+}
+@-moz-keyframes flash {
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
+}
+@keyframes flash {
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
+}
+
+// 
+// Flashing animation properties
+//
+%flashing, .flashing {
+  -webkit-animation-name: flash;
+  animation-name: flash;
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+}
+
+//
+// Pulse "radar" animation - ( ported from iFood website order status )
+//
+@-webkit-keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(101, 9, 16, 0.4);
+  }
+
+  70% {
+    box-shadow: 0 0 0 10px rgba(101, 9, 16, 0);
+  }
+
+  100% {
+    box-shadow: 0 0 0 0 rgba(101, 9, 16, 0);
+  }
+}
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(101, 9, 16, 0.4);
+  }
+
+  70% {
+    box-shadow: 0 0 0 10px rgba(101, 9, 16, 0);
+  }
+
+  100% {
+    box-shadow: 0 0 0 0 rgba(101, 9, 16, 0);
+  }
+}
+
+%pulsing, .pulsing {
+  border-radius: 50%;
+  -webkit-animation-name: pulse;
+  animation-name: pulse;
+  -webkit-animation-duration: 2s;
+  animation-duration: 2s;
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+}
+
+// 
+// bubble like animation
+//
+
+@keyframes bubble {
+  0%,100% {
+      -webkit-transform: scale(0);
+      transform: scale(0);
+  }
+
+  50% {
+      -webkit-transform: scale(1);
+      transform: scale(1);
+  }
+}
+
+@-webkit-keyframes bubble {
+  0%,100% {
+      -webkit-transform: scale(0);
+      transform: scale(0);
+  }
+
+  50% {
+      -webkit-transform: scale(1);
+      transform: scale(1);
+  }
+}
+
+// 
+// Ordinary spin animation
+//
+
+.mr-spin {
+  -webkit-animation: spin 1s infinite linear;
+  animation: spin 1s infinite linear;
+  display: inline-block;
+}
+
+@-webkit-keyframes spin {
+  from {
+      -webkit-transform: rotate(0deg);
+  }
+
+  to {
+      -webkit-transform: rotate(360deg);
+  }
+}
+
+@keyframes spin {
+  from {
+      -webkit-transform: rotate(0deg);
+      transform: rotate(0deg);
+  }
+
+  to {
+      -webkit-transform: rotate(360deg);
+      transform: rotate(360deg);
+  }
+}
+
+
+// 
+// mr-spin-fas -fast spinning animation for loader
+// 
+.mr-loader-fast {
+  position: relative;
+}
+
+.mr-loader-fast:after {
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+  background-image: none;
+  z-index: 999;
+  color: transparent !important;
+  font-size: 0;
+  border-width: 1px;
+  border-color: #f91a43 #f91a43 #f91a43 transparent;
+  border-style: solid;
+  -webkit-animation: mr-spin-fast 1.5s linear infinite;
+  animation: mr-spin-fast 1.5s linear infinite;
+  content: "";
+  width: 20px;
+  height: 20px;
+  font-weight: 400;
+}
+
+// 
+// mr-spin-fast - Fast spinning animation for .mr-loader-fast
+// 
+@keyframes mr-spin-fast {
+  0% {
+      -webkit-transform: rotate(0);
+      transform: rotate(0);
+      -webkit-animation-timing-function: cubic-bezier(.55,.055,.675,.19);
+      animation-timing-function: cubic-bezier(.55,.055,.675,.19);
+  }
+
+  50% {
+      -webkit-transform: rotate(900deg);
+      transform: rotate(900deg);
+      -webkit-animation-timing-function: cubic-bezier(.215,.61,.355,1);
+      animation-timing-function: cubic-bezier(.215,.61,.355,1);
+  }
+
+  to {
+      -webkit-transform: rotate(1800deg);
+      transform: rotate(1800deg);
+  }
+}
+
+@-webkit-keyframes mr-spin-fast {
+  0% {
+      -webkit-transform: rotate(0);
+      transform: rotate(0);
+      -webkit-animation-timing-function: cubic-bezier(.55,.055,.675,.19);
+      animation-timing-function: cubic-bezier(.55,.055,.675,.19);
+  }
+
+  50% {
+      -webkit-transform: rotate(900deg);
+      transform: rotate(900deg);
+      -webkit-animation-timing-function: cubic-bezier(.215,.61,.355,1);
+      animation-timing-function: cubic-bezier(.215,.61,.355,1);
+  }
+
+  to {
+      -webkit-transform: rotate(1800deg);
+      transform: rotate(1800deg);
+  }
+}
+
+// 
+// mrFadeInUp "Fade In Up" animation
+//
+@-webkit-keyframes mrFadeInUp {
+  from {
+      opacity: 0;
+      -webkit-transform: translate3d(0,50px,0);
+      transform: translate3d(0,50px,0);
+  }
+
+  to {
+      opacity: 1;
+      -webkit-transform: none;
+      transform: none;
+  }
+}
+
+@keyframes mrFadeInUp {
+  from {
+      opacity: 0;
+      -webkit-transform: translate3d(0,50px,0);
+      transform: translate3d(0,50px,0);
+  }
+
+  to {
+      opacity: 1;
+      -webkit-transform: none;
+      transform: none;
+  }
+}
+// 
+// mrFadeInUp animation properties
+//
+.mrFadeInUp {
+  -webkit-animation-name: mrFadeInUp;
+  animation-name: mrFadeInUp;
+}
+
+// 
+// mrFadeIn "Fade In" animation
+//
+@-webkit-keyframes mrFadeIn {
+  from {
+      opacity: 0;
+  }
+
+  to {
+      opacity: 1;
+  }
+}
+
+@keyframes mrFadeIn {
+  from {
+      opacity: 0;
+  }
+
+  to {
+      opacity: 1;
+  }
+}
+
+.mrFadeIn {
+  -webkit-animation-name: mrFadeIn;
+  animation-name: mrFadeIn;
+}
+
+// 
+// mr default animation properties
+//
+.mrAnimation {
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+// 
+// mrFadeInDown "Fade In Down" animation
+//
+@-webkit-keyframes mrfadeInDown {
+  from {
+      opacity: 0;
+      -webkit-transform: translate3d(0,-100%,0);
+      transform: translate3d(0,-100%,0)
+  }
+
+  to {
+      opacity: 1;
+      -webkit-transform: none;
+      transform: none
+  }
+}
+
+@keyframes mrfadeInDown {
+  from {
+      opacity: 0;
+      -webkit-transform: translate3d(0,-100%,0);
+      transform: translate3d(0,-100%,0)
+  }
+
+  to {
+      opacity: 1;
+      -webkit-transform: none;
+      transform: none
+  }
+}
+
+// 
+// simple fade in animation
+//
+@keyframes fadein {
+  from {
+      opacity: 0
+  }
+
+  to {
+      opacity: 1
+  }
+}
+
+@-webkit-keyframes fadein {
+  from {
+      opacity: 0
+  }
+
+  to {
+      opacity: 1
+  }
+}
+
+@keyframes spinInfinity {
+  0%    { transform: rotate(0deg); }
+  100%  { transform: rotate(360deg); }
+}
+
+.animation-spin {
+  animation: spinInfinity 800ms infinite linear;
+}
+
+.animation-rotate {
+  animation: spinInfinity 3000ms 1000ms infinite cubic-bezier(0.075, 0.82, 0.165, 1);
+}
