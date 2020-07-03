@@ -56,24 +56,19 @@ const theme = {
 //import Row from "react-bootstrap/Row";
 //import Col from "react-bootstrap/Col";
 
-// WP REST API data
-import RestaurantStores from "./Restaurant";
-
-// App Main Styles
-//import logo from "./logo.svg";
+// Restaurants (stores) WP REST API data
+//import RestaurantStores from "./Restaurant";
 
 // Importing the Bootstrap CSS
 import "./App.scss";
 
-// Custom components import
-import NavbarIfood from "./src/components/Navbar/NavbarIfood"; // custom component uses Bootstrap navbar
-//import NavbarNav from "./components/navbar/Navbar.js"; // custom component uses Bootstrap navbar
-//import Hello from "./Hello";
-import DestaquesCarousel from "./src/components/HomeCarousel/DestaquesCarousel";
+// UI components
+import NavbarIfood from "./src/components/Navbar/NavbarIfood"; // iFood alike custom Navbar
+import DestaquesCarousel from "./src/components/HomeCarousel/DestaquesCarousel"; // Featured Carousel Items (Flickity)
 import FoodMenu from "./FoodMenu";
 
 //
-// Restaurants (stores) Listing components
+// Restaurants (stores) listing components
 //
 import RestaurantsList from "./src/components/RestaurantsList/RestaurantsList";
 import List from "./src/components/RestaurantsList";
