@@ -19,6 +19,7 @@ const flickityOptions = {
   // disable previous & next buttons and dots
   prevNextButtons: false,
   pageDots: false,
+  // custom arrows shape
   arrowShape: {
     x0: 10,
     x1: 60,
@@ -29,7 +30,7 @@ const flickityOptions = {
   }
 };
 
-// enable prev/next buttons at 1200px
+// enable prev/next buttons at 1200px only
 if (matchMedia("screen and (min-width: 1200px)").matches) {
   flickityOptions.prevNextButtons = true;
 }

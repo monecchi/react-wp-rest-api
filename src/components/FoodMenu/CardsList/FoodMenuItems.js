@@ -25,8 +25,7 @@ import Skeleton from "react-loading-skeleton";
 
 
 //import placeholder from "./src/assets/images/mr-pattern-light.png";
-let ImgPlaceholder =
-  "https://raw.githubusercontent.com/monecchi/react-wp-rest-api/master/src/assets/images/mr-pattern-light.png";
+let ImgPlaceholder = "../../components/assets/images/mr-pattern-light.png";
 
 //
 // Modal

@@ -83,6 +83,14 @@ class App extends Component {
     };
   }
 
+  componentDidMount() {
+    document.getElementsByTagName("body")[0].className = "scroll-smooth";
+  }
+
+  componentWillUnmount() {
+    document.getElementsByTagName("body")[0].className = "";
+  }
+
   render() {
     return (
       <ThemeProvider theme={theme}>
