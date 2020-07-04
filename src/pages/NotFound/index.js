@@ -15,7 +15,7 @@ import {
   Button,
   Text,
   Icon
-} from "react-atomize";
+} from "atomize";
 
 // Bootstrap stuff
 import Container from "react-bootstrap/Container";
