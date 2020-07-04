@@ -110,7 +110,8 @@ class App extends Component {
   render() {
     return (
       <ThemeProvider theme={theme}>
-
+        <StyleReset />
+        
         <NavbarIfood />
 
         <main className="main-layout">
