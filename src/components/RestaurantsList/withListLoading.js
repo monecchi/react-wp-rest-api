@@ -16,6 +16,10 @@ import {
 // react-loading-skeleton
 import Skeleton from "react-loading-skeleton";
 
+//
+// Restaurants (Stores) Cards Skeleton Loading Component
+//
+
 function WithListLoading(Component) {
   return function WithLoadingComponent({ isLoading, ...props }) {
     if (!isLoading) return <Component {...props} />;

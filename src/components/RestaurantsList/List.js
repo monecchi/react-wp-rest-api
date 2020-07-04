@@ -13,9 +13,9 @@ import {
   Icon
 } from "react-atomize";
 
-// react-loading-skeleton
-import Skeleton from "react-loading-skeleton";
-
+//
+// Restaurants (Stores) Cards List Component
+//
 const List = props => {
   const { stores } = props;
   if (!stores || stores.length === 0)
@@ -55,11 +55,11 @@ const List = props => {
                 m={{ b: "1rem" }}
                 className="text-capitalize"
               >
-                {store.slug || <Skeleton />}
+                {store.slug}
               </Text>
 
               <Text tag="p" textSize="body" m={{ b: "1rem" }}>
-                {store[city].formatted_address || <Skeleton count={3} />}
+                {store[city].formatted_address}
               </Text>
 
               <Div d="flex" flexWrap="wrap">

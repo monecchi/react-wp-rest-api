@@ -95,6 +95,7 @@ export class FoodMenuItems extends Component {
     Promise.all([getDishes, getIngredients] ).then(res => {
       console.log(res);
       this.setState({
+        id: res[0].id,
         imgUrl: res[0].data.featured_image_src.thumbnail,
         ingredients: res[1].data,
         isLoaded: true

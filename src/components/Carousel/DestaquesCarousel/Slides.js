@@ -45,7 +45,6 @@ if (matchMedia("screen and (min-width: 1200px)").matches) {
 // Featured Carousel Component
 //
 const DestaquesCarousel = (...props) => {
-
   props.options = flickityOptions;
 
   const CarouselsLoading = WithLoadingCarousel();
@@ -56,7 +55,6 @@ const DestaquesCarousel = (...props) => {
   });
 
   useEffect(() => {
-    
     this.flkty.on("lazyLoad", function(event, cellElement) {
       var img = event.target;
       console.log(event.type, img.src);
@@ -64,9 +62,7 @@ const DestaquesCarousel = (...props) => {
       if (img.src) {
         setComponentState({ loading: true, loadingClass: "ph-loading" });
       }
-
     });
-
   }, [setComponentState]);
 
   return (

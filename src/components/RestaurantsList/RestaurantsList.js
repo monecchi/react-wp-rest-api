@@ -16,25 +16,27 @@ import {
   Modal
 } from "react-atomize";
 
+// react-loading-skeleton
+import Skeleton from "react-loading-skeleton";
+
 import List from "./List";
 import withListLoading from "./withListLoading";
 
-const RestaurantsList = () => {
-  this.state = {
-    stores: [],
-    isLoaded: false,
-    showModal: false
-  };
+//
+// Functional components using React Hooks, don't need "this.state"
+// see https://pt-br.reactjs.org/docs/hooks-state.html
+//
+const RestaurantsList = (props) => {
 
   const ListLoading = withListLoading(List);
 
-  const [appState, setAppState] = useState({
+  const [componentState, setComponentState] = useState({
     loading: false,
     stores: null
   });
 
   useEffect(() => {
-    setAppState({ loading: true });
+    setComponentState({ loading: true });
 
     const apiUrl = "https://pizzariameurancho.com.br/wp-json/mrp/v1/stores/";
 
@@ -42,17 +44,14 @@ const RestaurantsList = () => {
       .get(apiUrl)
       .then(res => {
         const allStores = res.data;
-        setAppState({ loading: false, stores: allStores });
+        setComponentState({ loading: false, stores: allStores });
       })
       .catch(err => console.log(err));
-  }, [setAppState]);
-
-  const { stores, isLoaded, showModal } = this.state;
-  console.log(this.state);
+  }, [setComponentState]);
 
   return (
     <>
-    <ListLoading isLoading={appState.loading} stores={appState.stores} />
+    <ListLoading isLoading={componentState.loading} stores={componentState.stores} />
     </>
   );
 };
