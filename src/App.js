@@ -1,6 +1,15 @@
 import React, { Component, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
+import { Provider as StyletronProvider, DebugEngine } from "styletron-react";
+import { Client as Styletron } from "styletron-engine-atomic";
+
+const debug =
+  process.env.NODE_ENV === "production" ? void 0 : new DebugEngine();
+
+// 1. Create a client engine instance
+const engine = new Styletron();
+
 // Atomize
 import {
   ThemeProvider,
@@ -108,6 +117,7 @@ class App extends Component {
 
   render() {
     return (
+      <StyletronProvider value={engine} debug={debug} debugAfterHydration>
       <ThemeProvider theme={theme}>
         <StyleReset />
 
@@ -173,6 +183,7 @@ class App extends Component {
           </div>
         </main>
       </ThemeProvider>
+      </StyletronProvider>
     );
   }
 }
