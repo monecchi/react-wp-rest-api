@@ -17,14 +17,13 @@ import {
   Icon
 } from "atomize";
 
-
 const theme = {
   fontFamily: {
     primary:
       '"SF Pro Text",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji"',
     secondary:
       '"SF Pro Display",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji"',
-    code: "'Fira Mono','Roboto Mono', monospace",
+    code: "'Fira Mono','Roboto Mono', monospace"
   },
   colCount: 12,
   grid: {
@@ -36,16 +35,16 @@ const theme = {
       xl: "1366px"
     },
     containerMaxWidth: {
-      xl: "1366px",
-    },
+      xl: "1366px"
+    }
   },
   textSize: {
     size: {
-      display3: "48px",
+      display3: "48px"
     },
     height: {
-      display3: "56px",
-    },
+      display3: "56px"
+    }
   },
   colors: {
     brandgray: "#F7F5F4",
@@ -65,7 +64,7 @@ const theme = {
   rounded: {
     brandRadius: "20px"
   }
-}
+};
 
 // Bootstrap
 //import Container from "react-bootstrap/Container";
@@ -111,7 +110,7 @@ class App extends Component {
     return (
       <ThemeProvider theme={theme}>
         <StyleReset />
-        
+
         <NavbarIfood />
 
         <main className="main-layout">
