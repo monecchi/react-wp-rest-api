@@ -24,7 +24,8 @@ import {
 import Skeleton from "react-loading-skeleton";
 
 // Food item image placeholder
-let ImgPlaceholder = "https://raw.githubusercontent.com/monecchi/react-wp-rest-api/master/src/assets/images/mr-pattern-light.png";
+let ImgPlaceholder =
+  "https://raw.githubusercontent.com/monecchi/react-wp-rest-api/master/src/assets/images/mr-pattern-light.png";
 
 //
 // Modal
@@ -65,7 +66,6 @@ const ModalSize = ({ isOpen, onClose }) => {
 // FoodMenuItems component
 //
 export class FoodMenuItems extends Component {
-
   constructor(props) {
     super(props);
     this.state = {
@@ -79,8 +79,14 @@ export class FoodMenuItems extends Component {
   };
 
   componentDidMount() {
-    
-    const { id, title, excerpt, slug, menu_order, dish_prices } = this.props.food;
+    const {
+      id,
+      title,
+      excerpt,
+      slug,
+      menu_order,
+      dish_prices
+    } = this.props.food;
 
     const getDishes = axios.get(
       `https://pizzariameurancho.com.br/wp-json/wp/v2/food_menu/${id}`
@@ -92,7 +98,7 @@ export class FoodMenuItems extends Component {
     // "food tags" ingredients endpoint
     //https://pizzariameurancho.com.br/wp-json/wp/v2/ingrediente?post=822
 
-    Promise.all([getDishes, getIngredients] ).then(res => {
+    Promise.all([getDishes, getIngredients]).then(res => {
       console.log(res);
       this.setState({
         id: res[0].id,
@@ -104,7 +110,14 @@ export class FoodMenuItems extends Component {
   }
 
   render() {
-    const { id, title, excerpt, slug, menu_order, dish_prices } = this.props.food;
+    const {
+      id,
+      title,
+      excerpt,
+      slug,
+      menu_order,
+      dish_prices
+    } = this.props.food;
     const { imgUrl, ingredients, isLoaded, showModal } = this.state;
 
     const precos = [];
@@ -128,11 +141,12 @@ export class FoodMenuItems extends Component {
 
     if (!isLoaded) {
       return (
-         <Col size={{ xs: 6, md: 6, lg: 3, xl: 3 }} key={id}>
+        <Col size={{ xs: 6, md: 4, lg: 3, xl: 3 }} key={id}>
+          <Div m={{ b: { xs: "1rem", lg: "0" } }}>
             <Div
               d="flex"
-              w={{ xs: "20rem", md:"17.5rem", lg: "18.5rem", xl: "19.5rem" }}
-              h="380px"
+              flexDir="column"
+              h="100%"
               p={{ xs: "0.75rem", md: "0.75rem", lg: "1.5rem", xl: "1.5rem" }}
               border="1px solid"
               borderColor="gray200"
@@ -140,20 +154,44 @@ export class FoodMenuItems extends Component {
               hoverShadow="4"
               rounded="sm"
             >
-            <Div flexGrow="1">
-            <Div d="flex" justify="center" align="center" m={{ t: "auto", r: "auto", b: "1rem", l: "auto" }}>
-              <Skeleton
-                circle={true}
-                height={"6rem"}
-                width={"6rem"}
-                duration={3}
-                style={{marginTop: "auto", marginRight: "auto", marginBottom: "1rem", marginleft: "auto"}}
-              />
-            </Div>
-            <Skeleton style={{height: "1.2rem", marginBottom: "0.5rem"}} />
-            <Skeleton style={{height: "1.8rem", marginBottom: "1.5rem"}} />
-            <Skeleton style={{height: "0.9rem", marginBottom: "0.5rem"}} count={2} />
-            <Skeleton style={{width: "40%", marginTop: "1rem", marginBottom: "0.75rem"}} />
+              <Div flexGrow="1">
+                <Div
+                  d="flex"
+                  justify="center"
+                  align="center"
+                  m={{ t: "auto", r: "auto", b: "1rem", l: "auto" }}
+                >
+                  <Skeleton
+                    circle={true}
+                    height={"6rem"}
+                    width={"6rem"}
+                    duration={3}
+                    style={{
+                      marginTop: "auto",
+                      marginRight: "auto",
+                      marginBottom: "1rem",
+                      marginleft: "auto"
+                    }}
+                  />
+                </Div>
+                <Skeleton
+                  style={{ height: "1.2rem", marginBottom: "0.5rem" }}
+                />
+                <Skeleton
+                  style={{ height: "1.8rem", marginBottom: "1.5rem" }}
+                />
+                <Skeleton
+                  style={{ height: "0.9rem", marginBottom: "0.5rem" }}
+                  count={2}
+                />
+                <Skeleton
+                  style={{
+                    width: "40%",
+                    marginTop: "1rem",
+                    marginBottom: "0.75rem"
+                  }}
+                />
+              </Div>
             </Div>
           </Div>
         </Col>
@@ -162,25 +200,23 @@ export class FoodMenuItems extends Component {
 
     return (
       <>
-        <Col size={{ xs: 6, md: 3, lg: 3, xl: 3 }} key={id}>
-          <Div className="food-card food-card--vertical">
+        <Col size={{ xs: 6, md: 4, lg: 3, xl: 3 }} key={id}>
+           <Div m={{ b: { xs: "1rem", lg: "0" } }} className="food-card food-card--vertical">
             <Div
               d="flex"
               flexDir="column"
-              w={{ xs: "20rem", md:"18.5rem", lg: "18.5rem", xl: "19.5rem" }}
               h="100%"
               p={{ xs: "0.75rem", md: "0.75rem", lg: "1.5rem", xl: "1.5rem" }}
+              bg="white"
               border="1px solid"
               borderColor="gray200"
-              shadow="2"
-              hoverShadow="3"
+              shadow="3"
+              hoverShadow="4"
               rounded="sm"
               m={{ b: { xs: "1.3rem", lg: "1.3rem" } }}
               className="food-card__wrapper"
             >
-              <Div
-                flexGrow="1"
-              >
+              <Div flexGrow="1">
                 <Div
                   d="flex"
                   className="food-pic"
@@ -206,8 +242,6 @@ export class FoodMenuItems extends Component {
                   {renderHTML(title.rendered)}
                 </Div>
 
-
-
                 {/*<Div
                   textSize="caption"
                   textColor="medium"
@@ -217,19 +251,25 @@ export class FoodMenuItems extends Component {
                   {renderHTML(excerpt.rendered)}
                 </Div>*/}
 
-                <Div
-                  textSize="caption"
-                  textColor="medium"
-                  m={{ b: "0.45rem" }}
-                > 
-                  {/* separate by comma https://stackoverflow.com/a/40276830/1152876*/}  
+                <Div textSize="caption" textColor="medium" m={{ b: "0.45rem" }}>
+                  {/* separate by comma https://stackoverflow.com/a/40276830/1152876*/}
                   {ingredients.map((ingredient, i) => [
-                      i > 0 && ", ",
-                      <Div key={i} tag="span" className={'ingredient ' + `${ingredient.slug}`}>{ingredient.name}</Div>
+                    i > 0 && ", ",
+                    <Div
+                      key={i}
+                      tag="span"
+                      className={"ingredient " + `${ingredient.slug}`}
+                    >
+                      {ingredient.name}
+                    </Div>
                   ])}
                 </Div>
 
-                <Div d="flex" justify="space-between" p={{ t: "1rem", b: "1.5rem" }}>
+                <Div
+                  d="flex"
+                  justify="space-between"
+                  p={{ t: "1rem", b: "1.5rem" }}
+                >
                   <Div>
                     {/* simula items mais pedidos */}
                     {[
@@ -257,7 +297,7 @@ export class FoodMenuItems extends Component {
                       </Text>
                     ))}
                     <Text textSize="caption" textColor="light">
-                     {"pizza"}
+                      {"pizza"}
                     </Text>
                   </Div>
 
@@ -284,7 +324,9 @@ export class FoodMenuItems extends Component {
                     className="dish-card__price"
                     data-test-id="dish-card-price"
                   >
-                    <span className="dish-card__price--discount">{ precos[0].preco } R$ 16,50</span>
+                    <span className="dish-card__price--discount">
+                      {precos[0].preco} R$ 16,50
+                    </span>
                     <span className="dish-card__price--original">R$ 23,00</span>
                   </span>
                 </Div>

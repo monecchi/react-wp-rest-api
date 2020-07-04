@@ -45,6 +45,13 @@ const theme = {
     },
     containerMaxWidth: {
       xl: "1366px"
+    },
+    breakpoints: {
+      xs: 0,
+      sm: 576,
+      md: 768,
+      lg: 992, // 992
+      xl: 1200
     }
   },
   textSize: {
@@ -118,71 +125,68 @@ class App extends Component {
   render() {
     return (
       <StyletronProvider value={engine} debug={debug} debugAfterHydration>
-      <ThemeProvider theme={theme}>
-        <StyleReset />
+        <ThemeProvider theme={theme}>
+          <StyleReset />
 
-        <NavbarIfood />
+          <NavbarIfood />
 
-        <main className="main-layout">
-          <div className="home-page">
-            <section className={"bg-light py-4"}>
-              <div className="highlights-carousel">
-                <div className="highlights-carousel__wrapper">
-                  {/*<div className="carousel__wrapper">*/}
-                  <DestaquesCarousel />
-                  {/*</div>*/}
+          <main className="main-layout">
+            <div className="home-page">
+              <section className={"bg-light py-4"}>
+                <div className="highlights-carousel">
+                  <div className="highlights-carousel__wrapper">
+                    {/*<div className="carousel__wrapper">*/}
+                    <DestaquesCarousel />
+                    {/*</div>*/}
+                  </div>
                 </div>
-              </div>
-            </section>
+              </section>
 
-            <Div
-              tag="section"
-              id="restaurants"
-              p={{ t: "3rem" }}
-              className="stores-card__container"
-            >
-              <Container className="p-0">
-                <Text
-                  textSize="paragraph"
-                  textColor="medium"
-                  m={{ b: "0.25rem" }}
-                >
-                  Unidades Meu Rancho Pizzaria
-                </Text>
-                <Text
-                  tag="h5"
-                  textSize="subheader"
-                  textWeight="500"
-                  fontFamily="secondary"
-                  m={{ b: "1rem" }}
-                >
-                  Nossas Lojas
-                </Text>
-                <Div
-                  p={{ b: "6rem" }}
-                  border={{ b: "1px solid" }}
-                  borderColor="gray300"
-                >
-                  <Row>
-                    <RestaurantsList />
-                  </Row>
-                </Div>
+              <Div
+                tag="section"
+                id="restaurants"
+                p={{ t: "3rem" }}
+                className="stores-card__container"
+              >
+                <Container>
+                  <Text
+                    textSize="paragraph"
+                    textColor="medium"
+                    m={{ b: "0.25rem" }}
+                  >
+                    Unidades Meu Rancho Pizzaria
+                  </Text>
+                  <Text
+                    tag="h5"
+                    textSize="subheader"
+                    textWeight="500"
+                    fontFamily="secondary"
+                    m={{ b: "1rem" }}
+                  >
+                    Nossas Lojas
+                  </Text>
+                  <Div
+                    p={{ b: "6rem" }}
+                    border={{ b: "1px solid" }}
+                    borderColor="gray300"
+                  >
+                    <Row>
+                      <RestaurantsList />
+                    </Row>
+                  </Div>
+                </Container>
+              </Div>
+
+              <Container className="stores-card__container">
+                <p className="mt-3 mb-1">do Cardápio</p>
+                <h6 className="text-muted mb-4">Pizzas e outras delícias</h6>
+                <Row className="dishes-row" p={{ l: "0", r: "0" }}>
+                  <FoodMenu />
+                </Row>
               </Container>
-            </Div>
-
-            <Container
-              className="stores-card__container"
-              p={{ l: "0", r: "0" }}
-            >
-              <p className="mt-3 mb-1">do Cardápio</p>
-              <h6 className="text-muted mb-4">Pizzas e outras delícias</h6>
-              <Row className="dishes-row" p={{ l: "0", r: "0" }}>
-                <FoodMenu />
-              </Row>
-            </Container>
-          </div>
-        </main>
-      </ThemeProvider>
+            </div>
+          </main>
+        </ThemeProvider>
       </StyletronProvider>
     );
   }

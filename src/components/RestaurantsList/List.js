@@ -38,7 +38,6 @@ const List = props => {
           >
             {console.log(store)}
             <Div
-              key={store.id}
               bg="white"
               d="flex"
               flexDir="column"
