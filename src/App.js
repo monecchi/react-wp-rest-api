@@ -15,12 +15,40 @@ import {
   Button,
   Text,
   Icon
-} from "react-atomize";
+} from "atomize";
+
 
 const theme = {
-  ...DefaultTheme,
+  fontFamily: {
+    primary:
+      '"SF Pro Text",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji"',
+    secondary:
+      '"SF Pro Display",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji"',
+    code: "'Fira Mono','Roboto Mono', monospace",
+  },
+  colCount: 12,
+  grid: {
+    containerWidth: {
+      xs: "540px",
+      sm: "720px",
+      md: "960px",
+      lg: "1200px",
+      xl: "1366px"
+    },
+    containerMaxWidth: {
+      xl: "1366px",
+    },
+  },
+  textSize: {
+    size: {
+      display3: "48px",
+    },
+    height: {
+      display3: "56px",
+    },
+  },
   colors: {
-    ...DefaultTheme.colors,
+    brandgray: "#F7F5F4",
     white: "#ffffff",
     dark: "#141b24",
     brand: "#FC0E36",
@@ -34,22 +62,10 @@ const theme = {
     warning: "#FCC246",
     info: "#3366FF"
   },
-  colCount: 12,
-  grid: {
-    containerWidth: {
-      xs: "540px",
-      sm: "720px",
-      md: "960px",
-      lg: "1200px",
-      xl: "1366px"
-    },
-    gutterWidth: "16px"
-  },
   rounded: {
-    ...DefaultTheme.rounded,
     brandRadius: "20px"
   }
-};
+}
 
 // Bootstrap
 //import Container from "react-bootstrap/Container";

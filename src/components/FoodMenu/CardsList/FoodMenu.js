@@ -14,7 +14,7 @@ import {
   Text,
   Icon,
   Modal
-} from "react-atomize";
+} from "atomize";
 
 import FoodMenuItems from "./FoodMenuItems";
 

@@ -11,7 +11,7 @@ import {
   Button,
   Text,
   Icon
-} from "react-atomize";
+} from "atomize";
 
 //
 // Restaurants (Stores) Cards List Component

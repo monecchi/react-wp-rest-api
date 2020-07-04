@@ -4,7 +4,7 @@
   "private": true,
   "dependencies": {
     "@callstack/react-theme-provider": ">= 3.0.0",
-    "atomize": "1.0.26",
+    "atomize": "^1.0.26",
     "axios": "0.19.2",
     "bootstrap": "4.5.0",
     "flickity": "2.2.1",
@@ -12,7 +12,6 @@
     "popper.js": "1.16.1",
     "prop-types": "15.7.2",
     "react": "16.13.1",
-    "react-atomize": "^1.0.33",
     "react-bootstrap": "1.0.1",
     "react-dom": "16.13.1",
     "react-flickity-component": "3.5.0",

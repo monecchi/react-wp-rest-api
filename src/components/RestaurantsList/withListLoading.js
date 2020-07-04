@@ -11,7 +11,7 @@ import {
   Button,
   Text,
   Icon
-} from "react-atomize";
+} from "atomize";
 
 // react-loading-skeleton
 import Skeleton from "react-loading-skeleton";

@@ -14,7 +14,7 @@ import {
   Text,
   Icon,
   Modal
-} from "react-atomize";
+} from "atomize";
 
 // react-loading-skeleton
 import Skeleton from "react-loading-skeleton";
