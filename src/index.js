@@ -18,8 +18,8 @@ import Sobre from "./pages/Sobre";
 import NotFound from "./pages/NotFound";
 //import registerServiceWorker from './registerServiceWorker';
 
-// App Main Styles
-//import "./App.scss";
+// Index styles
+//import "./index.scss";
 
 ReactDOM.render(
   <StyletronProvider value={engine} debug={debug} debugAfterHydration>
