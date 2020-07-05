@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-const WithImageLoading = () => {
+const WithImageLoading = ({ src, alt, className }) => {
   const [componentState, setComponentState] = useState({
     imageStatus: "loading"
   });
