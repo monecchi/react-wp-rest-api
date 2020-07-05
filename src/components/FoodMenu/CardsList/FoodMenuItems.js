@@ -148,6 +148,7 @@ export class FoodMenuItems extends Component {
               flexDir="column"
               h="100%"
               p={{ xs: "0.75rem", md: "0.75rem", lg: "1.5rem", xl: "1.5rem" }}
+              bg="white"
               border="1px solid"
               borderColor="gray200"
               shadow="3"
@@ -201,7 +202,10 @@ export class FoodMenuItems extends Component {
     return (
       <>
         <Col size={{ xs: 6, md: 4, lg: 3, xl: 3 }} key={id}>
-           <Div m={{ b: { xs: "1rem", lg: "0" } }} className="food-card food-card--vertical">
+          <Div
+            m={{ b: { xs: "1rem", lg: "0" } }}
+            className="store-card store-card--vertical"
+          >
             <Div
               d="flex"
               flexDir="column"
