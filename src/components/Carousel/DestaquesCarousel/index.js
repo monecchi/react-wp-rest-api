@@ -89,7 +89,7 @@ const DestaquesCarousel = (...props) => {
             <Link to="/promocoes">
               <figure className={"highlights-carousel__figure"}>
                 <img
-                  data-flickity-lazyload="https://cdn.jsdelivr.net/gh/monecchi/react-wp-rest-api@master/assets/images/ifood-capas-almoco10.png"
+                  data-flickity-lazyload="https://cdn.jsdelivr.net/gh/monecchi/react-wp-rest-api@master/src/assets/images/ifood-capas-almoco10.png"
                   alt="Almoço bom e barato"
                   className="highlights-carousel__image"
                 />
@@ -103,7 +103,7 @@ const DestaquesCarousel = (...props) => {
             <a href="#">
               <figure className={"highlights-carousel__figure"}>
                 <img
-                  data-flickity-lazyload="https://cdn.jsdelivr.net/gh/monecchi/react-wp-rest-api@master/assets/images/ifood-bebidas-50-2.png"
+                  data-flickity-lazyload="https://cdn.jsdelivr.net/gh/monecchi/react-wp-rest-api@master/src/assets/images/ifood-bebidas-50-2.png"
                   alt="Almoço bom e barato"
                   className="highlights-carousel__image"
                 />
