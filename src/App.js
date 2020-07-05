@@ -116,63 +116,78 @@ class App extends Component {
 
   render() {
     return (
-        <ThemeProvider theme={theme}>
-          <StyleReset />
+      <ThemeProvider theme={theme}>
+        <StyleReset />
 
-          <NavbarIfood />
+        <NavbarIfood />
 
-          <main className="main-layout">
-            <div className="home-page">
-              <section className={"bg-light py-4"}>
-                <div className="highlights-carousel">
-                  <div className="highlights-carousel__wrapper">
-                    {/*<div className="carousel__wrapper">*/}
-                    <DestaquesCarousel />
-                    {/*</div>*/}
-                  </div>
+        <main className="main-layout">
+          <div className="home-page">
+          
+            <section className={"bg-light py-4"}>
+              <div className="highlights-carousel">
+                <div className="highlights-carousel__wrapper">
+                  {/*<div className="carousel__wrapper">*/}
+                  <DestaquesCarousel />
+                  {/*</div>*/}
                 </div>
-              </section>
+              </div>
+            </section>
 
-              <Div tag="section" id="restaurants" p={{ t: "3rem" }}>
-                <Container>
-                  <Text
-                    textSize="paragraph"
-                    textColor="medium"
-                    m={{ b: "0.25rem" }}
-                  >
-                    Unidades Meu Rancho Pizzaria
-                  </Text>
-                  <Text
-                    tag="h5"
-                    textSize="subheader"
-                    textWeight="500"
-                    fontFamily="secondary"
-                    m={{ b: "0.35rem" }}
-                  >
-                    Nossas Lojas
-                  </Text>
-                  <Div
-                    p={{ b: "6rem" }}
-                    border={{ b: "1px solid" }}
-                    borderColor="gray300"
-                  >
-                    <Row>
-                      <RestaurantsList />
-                    </Row>
-                  </Div>
-                </Container>
-              </Div>
+            <Div
+              tag="section"
+              id="restaurants"
+              p={{ t: "2rem" }}
+              className="container-pb"
+            >
+              <Container>
+                <Text textSize="paragraph" textColor="medium">
+                  Unidades Meu Rancho Pizzaria
+                </Text>
+                <Text
+                  tag="h5"
+                  textSize="subheader"
+                  textWeight="500"
+                  fontFamily="secondary"
+                  p={{ b: "1.25rem" }}
+                >
+                  Nossas Lojas
+                </Text>
+                <Div
+                  p={{ b: "1.25rem" }}
+                  border={{ b: "1px solid" }}
+                  borderColor="gray300"
+                >
+                  <Row className="stores-row">
+                    <RestaurantsList />
+                  </Row>
+                </Div>
+              </Container>
+            </Div>
 
-              <Container className="stores-card__container">
-                <p className="mt-3 mb-1">do Cardápio</p>
-                <h6 className="text-muted mb-4">Pizzas e outras delícias</h6>
-                <Row className="dishes-row" p={{ l: "0", r: "0" }}>
+            <Div tag="section" id="cardapio-home" className="container-pb">
+              <Container>
+                <Text textSize="paragraph" textColor="medium">
+                  do Cardápio
+                </Text>
+                <Text
+                  tag="h5"
+                  textSize="subheader"
+                  textWeight="500"
+                  fontFamily="secondary"
+                  p={{ b: "1.25rem" }}
+                >
+                  Pizzas e outras delícias
+                </Text>
+                <Row className="dishes-row">
                   <FoodMenu />
                 </Row>
               </Container>
-            </div>
-          </main>
-        </ThemeProvider>
+            </Div>
+
+          </div>
+        </main>
+      </ThemeProvider>
     );
   }
 }

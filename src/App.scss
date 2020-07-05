@@ -18,6 +18,55 @@
   }
 }
 
+.slice {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+
+  &.slice-xs {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+
+  &.slice-sm {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+
+  &.slice-md {
+    padding-top: 2.5rem;
+    padding-bottom: 2.5rem;
+  }
+
+  &.slice-lg {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+
+    &.slice-xl {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
+
+}
+
+.container-pb {
+    padding-bottom: 1.5rem;
+}
+.container-pt {
+  padding-top: 1.5rem;
+}
+// Containers padding bottom until reaching 768px
+@media only screen and (min-width: 768px) {
+
+  .container-pb {
+     padding-bottom: 3.5rem;
+  }
+  .container-pt {
+    padding-top: 3.5rem;
+  }
+
+}
+
 .bg-brand {
   background-color: #FC0E36 !important;
 }
