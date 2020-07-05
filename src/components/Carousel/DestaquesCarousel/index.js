@@ -112,6 +112,8 @@ const DestaquesCarousel = (...props) => {
           </div>
         </div>
 
+        
+
         <div className="carousel-cell">
           <div className="highlights-carousel__container">
             <a href="#">
