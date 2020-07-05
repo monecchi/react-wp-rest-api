@@ -46,12 +46,13 @@ const theme = {
     containerMaxWidth: {
       xl: "1366px"
     },
+    gutterWidth: "16px",
     breakpoints: {
       xs: 0,
       sm: 576,
       md: 768,
       lg: 992, // 992
-      xl: 1200
+      xl: 1440 // 1200
     }
   },
   textSize: {
@@ -142,12 +143,7 @@ class App extends Component {
                 </div>
               </section>
 
-              <Div
-                tag="section"
-                id="restaurants"
-                p={{ t: "3rem" }}
-                className="stores-card__container"
-              >
+              <Div tag="section" id="restaurants" p={{ t: "3rem" }}>
                 <Container>
                   <Text
                     textSize="paragraph"
