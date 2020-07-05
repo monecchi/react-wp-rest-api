@@ -103,7 +103,7 @@ const DestaquesCarousel = (...props) => {
             <a href="#">
               <figure className={"highlights-carousel__figure"}>
                 <img
-                  data-flickity-lazyload="https://raw.githubusercontent.com/monecchi/react-wp-rest-api/master/src/assets/images/ifood-bebidas-50-2.png"
+                  data-flickity-lazyload="https://raw.githubusercontent.com/monecchi/react-wp-rest-api/master/src/assets/images/ifood-bebidas.png"
                   alt="Almoço bom e barato"
                   className="highlights-carousel__image"
                 />
