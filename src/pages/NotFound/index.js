@@ -61,7 +61,17 @@ class NotFound extends Component {
                   voltar
                 </Link>
 
-
+                <Link
+                  className="btn btn--default btn--size-m page-not-found__actions--button"
+                  role="button"
+                  target=""
+                  rel=""
+                  to="/lista-restaurantes"
+                >
+                  <Text tag="span" hoverTextColor="white" classNane="btn__label">
+                    Voltar para o início
+                  </Text>
+                </Link>
 
                 <Button
                   w="auto"

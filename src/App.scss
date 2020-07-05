@@ -198,6 +198,13 @@ svg {
 // Resets
 //
 
+// ifood button resets
+.btn:hover {
+  &.btn--default {
+    color: #fff !important;
+  }
+}
+
 a:hover {
     color: #FC0E36;
     text-decoration: none !important;
