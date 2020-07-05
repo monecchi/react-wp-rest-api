@@ -30,64 +30,78 @@ function WithListLoading(Component) {
           num => (
             (Id = num),
             (
-              <Col
-                size={{ xs: 12, sm: 6, lg: 3 }}
-                className="store-card"
-                key={Id}
-              >
+              <Col size={{ xs: 6, md: 6, lg: 4, xl: 4 }} key={Id}>
                 <Div
-                  bg="white"
-                  d="flex"
-                  flexDir="column"
-                  w="26.5rem"
-                  m={{ b: "1rem" }}
-                  p="1.5rem"
-                  rounded="sm"
-                  shadow="2"
-                  hoverShadow="3"
+                  m={{ b: { xs: "1rem", lg: "0" } }}
+                  className="store-card store-card--vertical"
                 >
-                  <Div flexGrow="1">
-                    <Div
-                      d="flex"
-                      justify="center"
-                      align="center"
-                      m={{ t: "auto", r: "auto", b: "1rem", l: "auto" }}
-                    />
-                    <Skeleton
-                      duration={3}
-                      style={{
-                        width: "160px",
-                        height: "1.8rem",
-                        marginBottom: "0.5rem"
-                      }}
-                    />
-                    <Skeleton
-                      style={{ height: "0.9rem", marginBottom: "0.5rem" }}
-                      count={2}
-                      duration={3}
-                    />
-                    <Skeleton
-                      style={{
-                        width: "120px",
-                        height: "1.8rem",
-                        marginBottom: "0.5rem",
-                        borderRadius: "1000rem"
-                      }}
-                      duration={3}
-                    />
-                    <Skeleton
-                      style={{ display: "block", width: "140px", height: "0.9rem", marginBottom: "0.5rem" }}
-                      duration={3}
-                    />
-                    <Skeleton
-                      style={{
-                        width: "140px",
-                        height: "2.5rem",
-                        marginBottom: "0.5rem",
-                        borderRadius: "0.35rem"
-                      }}
-                      duration={3}
-                    />
+                  <Div
+                    d="flex"
+                    flexDir="column"
+                    h="100%"
+                    p={{
+                      xs: "0.75rem",
+                      md: "0.75rem",
+                      lg: "1.5rem",
+                      xl: "1.5rem"
+                    }}
+                    bg="white"
+                    border="1px solid"
+                    borderColor="gray200"
+                    shadow="3"
+                    hoverShadow="4"
+                    rounded="sm"
+                    m={{ b: { xs: "1.3rem", lg: "1.3rem" } }}
+                    className="food-card__wrapper"
+                  >
+                    <Div flexGrow="1">
+                      <Div
+                        d="flex"
+                        justify="center"
+                        align="center"
+                        m={{ t: "auto", r: "auto", b: "1rem", l: "auto" }}
+                      />
+                      <Skeleton
+                        duration={3}
+                        style={{
+                          width: "160px",
+                          height: "1.8rem",
+                          marginBottom: "0.5rem"
+                        }}
+                      />
+                      <Skeleton
+                        style={{ height: "0.9rem", marginBottom: "0.5rem" }}
+                        count={2}
+                        duration={3}
+                      />
+                      <Skeleton
+                        style={{
+                          width: "120px",
+                          height: "1.8rem",
+                          marginBottom: "0.5rem",
+                          borderRadius: "1000rem"
+                        }}
+                        duration={3}
+                      />
+                      <Skeleton
+                        style={{
+                          display: "block",
+                          width: "140px",
+                          height: "0.9rem",
+                          marginBottom: "0.5rem"
+                        }}
+                        duration={3}
+                      />
+                      <Skeleton
+                        style={{
+                          width: "140px",
+                          height: "2.5rem",
+                          marginBottom: "0.5rem",
+                          borderRadius: "0.35rem"
+                        }}
+                        duration={3}
+                      />
+                    </Div>
                   </Div>
                 </Div>
               </Col>
