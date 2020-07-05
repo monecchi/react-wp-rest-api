@@ -101,8 +101,8 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      name: "Nossas Lojas",
-      customClass: "text-muted"
+      name: "Pizzaria Meu Rancho",
+      loadedClass: "is-loaded"
     };
   }
 
@@ -123,7 +123,7 @@ class App extends Component {
 
         <main className="main-layout">
           <div className="home-page">
-          
+
             <section className={"bg-light py-4"}>
               <div className="highlights-carousel">
                 <div className="highlights-carousel__wrapper">
