@@ -110,6 +110,10 @@ class App extends Component {
     document.getElementsByTagName("body")[0].className = "scroll-smooth";
   }
 
+  componentDidUpdate() {
+    document.getElementsByTagName("body")[0].className = "scroll-smooth";
+  }
+
   componentWillUnmount() {
     document.getElementsByTagName("body")[0].className = "";
   }

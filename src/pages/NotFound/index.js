@@ -3,9 +3,6 @@ import { Link } from "react-router-dom";
 
 // Atomize
 import {
-  ThemeProvider,
-  DefaultTheme,
-  StyleReset,
   Div,
   Container,
   Row,
@@ -14,14 +11,16 @@ import {
   Anchor,
   Button,
   Text,
-  Icon
+  Icon,
+  Image,
+  Modal
 } from "atomize";
 
 // Bootstrap stuff
-import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
-import Button from "react-bootstrap/Button";
+//import Container from "react-bootstrap/Container";
+//import Row from "react-bootstrap/Row";
+//import Col from "react-bootstrap/Col";
+//import Button from "react-bootstrap/Button";
 
 // Custom components import
 import NavbarIfood from "../../components/Navbar/NavbarIfood.js"; // custom component uses Bootstrap navbar
@@ -42,7 +41,7 @@ class NotFound extends Component {
         <NavbarIfood />
         <Container>
           <Row>
-            <Col sm={12}>
+            <Col size={12}>
               <div className="d-flex w-100 flex-column justify-content-center align-items-center py-4">
                 <div className="">
                   <h1
@@ -61,6 +60,21 @@ class NotFound extends Component {
                 <Link to="/" className="btn btn-danger">
                   voltar
                 </Link>
+
+
+
+                <Button
+                  w="auto"
+                  textColor="brand"
+                  hoverTextColor="white"
+                  bg="softDanger"
+                  hoverBg="brandHover"
+                  rounded="sm"
+                  m={"1rem"}
+                >
+                  <Icon name="LongLeft" color="brand" />
+                  Voltar
+                </Button>
               </div>
             </Col>
           </Row>
