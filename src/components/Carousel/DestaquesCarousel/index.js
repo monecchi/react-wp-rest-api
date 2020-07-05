@@ -112,7 +112,19 @@ const DestaquesCarousel = (...props) => {
           </div>
         </div>
 
-        
+        <div className="carousel-cell">
+          <div className="highlights-carousel__container">
+            <a href="#">
+              <figure className={"highlights-carousel__figure"}>
+                <img
+                  data-flickity-lazyload="https://raw.githubusercontent.com/monecchi/react-wp-rest-api/master/src/assets/images/promo-chicken-bacon.png"
+                  alt="Oferta Chicken & Bacon"
+                  className="highlights-carousel__image"
+                />
+              </figure>
+            </a>
+          </div>
+        </div>
 
         <div className="carousel-cell">
           <div className="highlights-carousel__container">
