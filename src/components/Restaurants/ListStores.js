@@ -4,22 +4,21 @@ import axios from "axios";
 
 const apiURL = "https://pizzariameurancho.com.br/wp-json/mrp/v1";
 
-const fetcher = url => fetch(url).then(res => res.json());
+//const fetcher = url => fetch(url).then(res => res.json()); // fetch api
+const fetcher = url => axios.get(url).then(res => res.data); // axios
 
 // get single store data
-const getStore = (slug) => {
+const getStore = slug => {
   const url = apiURL;
 
-  const { data, error } = useSWR(apiURL+`/stores/${slug}`, fetcher);
+  const { data, error } = useSWR(url+`/stores/${slug}`, fetcher);
 
-  if(this.slug) {
-    return {
-      store: data,
-      isLoading: !error && !data,
-      isError: error,
-    };
-  }
-}
+  return {
+    store: data[0],
+    isLoading: !error && !data,
+    isError: error
+  };
+};
 
 // get al stores data
 function getStores() {
@@ -33,15 +32,12 @@ function getStores() {
   };
 }
 
-
-function StoreProfile({slug}) {
-  let slug = "betim";
-  const { store, isLoading, isError } = getStore("betim");
+function StoreProfile({ slug }) {
+  const slug = "betim";
+  const { store, isLoading, isError } = getStore(slug);
   if (isLoading) return <div>Carregando...</div>;
   if (isError) return <div>Erro ao carregar Restaurante</div>;
-  return <div>Olá {store.slug.address_city}!</div>;
+  return <div>Olá {store[0[slug].address_city}!</div>;
 }
 
-export default getStore;
 export default StoreProfile;
-
