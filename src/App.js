@@ -98,7 +98,7 @@ import List from "./components/RestaurantsList";
 import withListLoading from "./components/RestaurantsList";
 
 // Component using swr
-import StoreProfile from "./components/Restaurants";
+import StoreProfile from "./components/Restaurants/ListStores.js";
 
 class App extends Component {
   constructor() {
@@ -130,7 +130,6 @@ class App extends Component {
 
         <main className="main-layout">
           <div className="home-page">
-
             <section className={"bg-light py-4"}>
               <div className="highlights-carousel">
                 <div className="highlights-carousel__wrapper">
@@ -167,6 +166,9 @@ class App extends Component {
                 >
                   <Row className="stores-row">
                     <RestaurantsList />
+                    <Div d="flex" w="100%">
+                      <StoreProfile />
+                    </Div>
                   </Row>
                 </Div>
               </Container>
@@ -188,13 +190,10 @@ class App extends Component {
                 </Text>
                 <Row className="dishes-row">
                   <FoodMenu />
-                  <Div d="flex" w="100%">
-                  <StoreProfile />
-                  </Div>
+                  <Div d="flex" w="100%" />
                 </Row>
               </Container>
             </Div>
-
           </div>
         </main>
       </ThemeProvider>
