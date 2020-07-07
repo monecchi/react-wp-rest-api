@@ -24,7 +24,7 @@ import {
 import Skeleton from "react-loading-skeleton";
 
 // Normalize html
-import renderHTML from "../../../../data/";
+import RenderHTML from "../../../data/htmlRender.js";
 
 // Food item image placeholder
 let ImgPlaceholder =
@@ -126,6 +126,12 @@ export class FoodMenuItems extends Component {
     const precos = [];
     precos = dish_prices;
     //console.log(precos);
+
+    // decode render html - https://stackoverflow.com/questions/42361689/implement-html-entity-decode-in-react-js
+    const render__HTML = rawHTML =>
+      React.createElement("div", {
+        dangerouslySetInnerHTML: { __html: rawHTML }
+      });
 
     //console.log(id);
 
@@ -240,7 +246,7 @@ export class FoodMenuItems extends Component {
                   m={{ b: "0.5rem" }}
                 >
                   {/*{title.rendered}*/}
-                  {renderHTML(title.rendered)}
+                  {<RenderHTML(title.rendered)}
                 </Div>
 
                 {/*<Div
@@ -249,7 +255,7 @@ export class FoodMenuItems extends Component {
                   m={{ b: "1rem" }}
                   className="text-ellipsis"
                 >
-                  {renderHTML(excerpt.rendered)}
+                  {RenderHTML(excerpt.rendered)}
                 </Div>*/}
 
                 <Div textSize="caption" textColor="medium" m={{ b: "0.45rem" }}>

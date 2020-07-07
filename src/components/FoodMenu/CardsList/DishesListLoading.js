@@ -22,9 +22,10 @@ import Skeleton from "react-loading-skeleton";
 
 function DishesListLoading(Component) {
   return function DishesLoadingComponent({ isLoading, ...props }) {
+    const allFoods = this.props.foods;
     if (!isLoading) return <Component {...props} />;
     const Id = "";
-    
+    console.log(allFoods);
     return (
       <>
         {[1, 2, 3].map(
