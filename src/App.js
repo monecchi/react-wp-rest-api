@@ -167,7 +167,7 @@ class App extends Component {
                   <Row className="stores-row">
                     <RestaurantsList />
                     <Div d="flex" w="100%">
-                      <StoreProfile />
+                      <StoreProfile slug="raul" />
                     </Div>
                   </Row>
                 </Div>
