@@ -185,6 +185,8 @@ class App extends Component {
                 </Text>
                 <Row className="dishes-row">
                   <FoodMenu />
+                  <Div d="flex" w="100%">
+                  </Div>
                 </Row>
               </Container>
             </Div>
