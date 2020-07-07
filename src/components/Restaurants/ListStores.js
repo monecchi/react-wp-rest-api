@@ -34,7 +34,7 @@ function getStores() {
 }
 
 
-function StoreProfile({store}) {
+function StoreProfile({slug}) {
   let slug = "betim";
   const { store, isLoading, isError } = getStore("betim");
   if (isLoading) return <div>Carregando...</div>;
