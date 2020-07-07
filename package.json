@@ -23,7 +23,8 @@
     "redux": "^2.0.0 || ^3.0.0 || ^4.0.0-0",
     "styletron-engine-atomic": "1.4.6",
     "styletron-react": "^5.2.7",
-    "styletron-standard": "^3.0.4"
+    "styletron-standard": "^3.0.4",
+    "swr": "^0.2.3"
   },
   "scripts": {
     "start": "react-scripts start",
