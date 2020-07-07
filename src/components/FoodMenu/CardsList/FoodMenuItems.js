@@ -23,6 +23,9 @@ import {
 //
 import Skeleton from "react-loading-skeleton";
 
+// Normalize html
+import renderHTML from "../../../../data/";
+
 // Food item image placeholder
 let ImgPlaceholder =
   "https://raw.githubusercontent.com/monecchi/react-wp-rest-api/master/src/assets/images/mr-pattern-light.png";
@@ -123,12 +126,6 @@ export class FoodMenuItems extends Component {
     const precos = [];
     precos = dish_prices;
     //console.log(precos);
-
-    // decode render html - https://stackoverflow.com/questions/42361689/implement-html-entity-decode-in-react-js
-    const renderHTML = rawHTML =>
-      React.createElement("div", {
-        dangerouslySetInnerHTML: { __html: rawHTML }
-      });
 
     //console.log(id);
 

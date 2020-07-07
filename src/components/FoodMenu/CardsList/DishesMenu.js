@@ -20,7 +20,7 @@ import {
 import Skeleton from "react-loading-skeleton";
 
 import List from "./List";
-import dishesListLoading from "./withListLoading";
+import DishesListLoading from "./DishesListLoading";
 
 //
 // Functional components using React Hooks, don't need "this.state"
@@ -32,26 +32,27 @@ const DishesMenuList = (props) => {
 
   const [componentState, setComponentState] = useState({
     loading: false,
-    stores: null
+    foods: null,
+    per_page: 25
   });
 
   useEffect(() => {
     setComponentState({ loading: true });
 
-    const apiUrl = "https://pizzariameurancho.com.br/wp-json/mrp/v1/stores/";
+    const apiUrl = `https://pizzariameurancho.com.br/wp-json/wp/v2/food_menu/?per_page=${componentState.per_page}`;
 
     axios
       .get(apiUrl)
       .then(res => {
-        const allStores = res.data;
-        setComponentState({ loading: false, stores: allStores });
+        const allfoods = res.data;
+        setComponentState({ loading: false, foods: allfoods });
       })
       .catch(err => console.log(err));
   }, [setComponentState]);
 
   return (
     <>
-    <DishesListLoading isLoading={componentState.loading} stores={componentState.stores} />
+    <DishesListLoading isLoading={componentState.loading} foods={componentState.foods} />
     </>
   );
 };
