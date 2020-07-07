@@ -1,6 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
+// Slides mock DestaquesCarousel
+import { homeslides } from './dataArrays';
+
+import { getCategoryName } from '../../data/MockDataAPI';
+
 // Import Flickity
 import Flickity from "react-flickity-component";
 

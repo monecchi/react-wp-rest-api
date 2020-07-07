@@ -10,7 +10,7 @@ import "flickity/css/flickity.css";
 import "./styles.scss";
 
 // Carousel Loading Skeleton Component
-import WithLoadingCarousel from "./Loading";
+//import WithLoadingCarousel from "./Loading";
 
 // Flickity options
 const flickityOptions = {
@@ -45,9 +45,10 @@ if (matchMedia("screen and (min-width: 1200px)").matches) {
 // Featured Carousel Component
 //
 const DestaquesCarousel = (...props) => {
+
   props.options = flickityOptions;
 
-  const CarouselsLoading = WithLoadingCarousel();
+  //const CarouselsLoading = WithLoadingCarousel();
 
   const [componentState, setComponentState] = useState({
     loading: false,
@@ -55,14 +56,21 @@ const DestaquesCarousel = (...props) => {
   });
 
   useEffect(() => {
-    this.flkty.on("lazyLoad", function(event, cellElement) {
-      var img = event.target;
-      console.log(event.type, img.src);
+    
+    //this.flkty.on("lazyLoad", function(event, cellElement) {
+      //var img = event.target;
+      //console.log(event.type, img.src);
 
-      if (img.src) {
-        setComponentState({ loading: true, loadingClass: "ph-loading" });
-      }
-    });
+      //if (img.src) {
+        //setComponentState({ loading: true, loadingClass: "ph-loading" });
+      //}
+
+    //});
+
+    if (this.flkty) {
+      setComponentState({ loading: true, loadingClass: "ph-loading" });
+    }
+
   }, [setComponentState]);
 
   return (
@@ -81,7 +89,7 @@ const DestaquesCarousel = (...props) => {
             <Link to="/promocoes">
               <figure className={"highlights-carousel__figure"}>
                 <img
-                  data-flickity-lazyload="https://cdn.jsdelivr.net/gh/monecchi/react-wp-rest-api@master/assets/images/ifood-capas-almoco10.png"
+                  data-flickity-lazyload="https://raw.githubusercontent.com/monecchi/react-wp-rest-api/master/src/assets/images/ifood-capas-almoco10.png"
                   alt="Almoço bom e barato"
                   className="highlights-carousel__image"
                 />
@@ -95,7 +103,7 @@ const DestaquesCarousel = (...props) => {
             <a href="#">
               <figure className={"highlights-carousel__figure"}>
                 <img
-                  data-flickity-lazyload="https://cdn.jsdelivr.net/gh/monecchi/react-wp-rest-api@master/assets/images/ifood-bebidas-50-2.png"
+                  data-flickity-lazyload="https://raw.githubusercontent.com/monecchi/react-wp-rest-api/master/src/assets/images/ifood-bebidas.png"
                   alt="Almoço bom e barato"
                   className="highlights-carousel__image"
                 />
@@ -109,7 +117,21 @@ const DestaquesCarousel = (...props) => {
             <a href="#">
               <figure className={"highlights-carousel__figure"}>
                 <img
-                  data-flickity-lazyload="https://cdn.jsdelivr.net/gh/monecchi/react-wp-rest-api@master/assets/images/ifood-capas-novas-selecao-ifood.png"
+                  data-flickity-lazyload="https://raw.githubusercontent.com/monecchi/react-wp-rest-api/master/src/assets/images/chicken-bacon-promo.png"
+                  alt="Oferta Chicken & Bacon"
+                  className="highlights-carousel__image"
+                />
+              </figure>
+            </a>
+          </div>
+        </div>
+
+        <div className="carousel-cell">
+          <div className="highlights-carousel__container">
+            <a href="#">
+              <figure className={"highlights-carousel__figure"}>
+                <img
+                  data-flickity-lazyload="https://raw.githubusercontent.com/monecchi/react-wp-rest-api/master/src/assets/images/ifood-capas-novas-selecao-ifood.png"
                   alt="Almoço bom e barato"
                   className="highlights-carousel__image"
                 />
@@ -123,7 +145,7 @@ const DestaquesCarousel = (...props) => {
             <a href="#">
               <figure className={"highlights-carousel__figure"}>
                 <img
-                  data-flickity-lazyload="https://cdn.jsdelivr.net/gh/monecchi/react-wp-rest-api@master/assets/images/mercado_ifood.png"
+                  data-flickity-lazyload="https://raw.githubusercontent.com/monecchi/react-wp-rest-api/master/src/assets/images/mercado_ifood.png"
                   alt="Almoço bom e barato"
                   className="highlights-carousel__image"
                 />
