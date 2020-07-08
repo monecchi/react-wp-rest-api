@@ -26,14 +26,14 @@ function WithListLoading(Component) {
     const Id = "";
     return (
       <>
-        {[1, 2, 3].map(
-          num => (
+        {[1,2,3].map(
+         num => (
             (Id = num),
             (
               <Col size={{ xs: 6, md: 6, lg: 4, xl: 4 }} key={Id}>
                 <Div
                   m={{ b: { xs: "1rem", lg: "0" } }}
-                  className="restaurant-card restaurant-card-vertical"
+                  className="restaurant-card--loading"
                 >
                   <Div
                     d="flex"
@@ -52,7 +52,7 @@ function WithListLoading(Component) {
                     hoverShadow="4"
                     rounded="sm"
                     m={{ b: { xs: "1.3rem", lg: "1.3rem" } }}
-                    className="restaurant-card__wrapper"
+                    className="restaurant-card__wrapper--loading"
                   >
                     <Div flexGrow="1">
                       <Div
