@@ -2,23 +2,6 @@ import React, { Component, useEffect, useState } from "react";
 import useSWR from "swr";
 import axios from "axios";
 
-// Atomize
-import {
-  Image,
-  Container,
-  Row,
-  Col,
-  Div,
-  Tag,
-  Anchor,
-  Button,
-  Text,
-  Icon,
-  Modal
-} from "atomize";
-
-// react-loading-skeleton
-import Skeleton from "react-loading-skeleton";
 
 import List from "./List";
 import withListLoading from "./withListLoading";
