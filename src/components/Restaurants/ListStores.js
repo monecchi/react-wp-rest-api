@@ -1,7 +1,29 @@
 import React, { Component, useEffect, useState } from "react";
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 import useSWR from "swr";
 import axios from "axios";
+
+// Atomize
+import {
+  Div,
+  Container,
+  Row,
+  Col,
+  Tag,
+  Anchor,
+  Button,
+  Text,
+  Icon,
+  Image,
+  Modal
+} from "atomize";
+
+// react-loading-skeleton
+import Skeleton from "react-loading-skeleton";
+
+//
+// Restaurants Listing
+//
 
 const apiURL = "https://pizzariameurancho.com.br/wp-json/mrp/v1";
 
@@ -9,10 +31,10 @@ const apiURL = "https://pizzariameurancho.com.br/wp-json/mrp/v1";
 const fetcher = url => axios.get(url).then(res => res.data); // axios
 
 // get single store data
-const getStore = (slug) => {
+const getStore = slug => {
   const url = apiURL;
 
-  const { data, error } = useSWR(url+`/stores/${slug}`, fetcher);
+  const { data, error } = useSWR(url + `/stores/${slug}`, fetcher);
 
   return {
     store: data,
@@ -22,10 +44,13 @@ const getStore = (slug) => {
 };
 
 // get al stores data
-function getStores() {
-  const { data, error } = useSWR(`/stores/`, fetcher, {
+const getStores = () => {
+  const url = apiURL;
+
+  const { data, error } = useSWR(url + `/stores/`, fetcher, {
     refreshInterval: 1000
   });
+
   return {
     stores: data,
     isLoading: !error && !data,
@@ -34,12 +59,11 @@ function getStores() {
 }
 
 /**
- * StoreProfile Component
- * 
- * Get a Single Restaurant (store) profile card
- * @parameter (slug) * required
- * @use getStore()
- * @return array (store)
+ * StoreProfiles Component
+ *
+ * Get All Restaurants (stores) details card
+ * @return array (stores)
+ * @usage (Component) <StoreProfiles slug="betim" />
  */
 const StoreProfile = ({ slug }) => {
   const { store, isLoading, isError } = getStore(slug);
@@ -51,6 +75,27 @@ const StoreProfile = ({ slug }) => {
   if (isLoading) return <div>Carregando...</div>;
   if (isError) return <div>Erro ao carregar Restaurante</div>;
   return <div>Olá {singleStore[slug].address_city}!</div>;
-}
+};
+
+/**
+ * StoreProfile Component
+ *
+ * Get a Single Restaurant (store) details card
+ * @property {object} slug * required
+ * @property {function} getStore(slug)
+ * @return array (store)
+ * @usage (Component) <StoreProfile slug="betim" />
+ */
+const StoreProfile = ({ slug }) => {
+  const { store, isLoading, isError } = getStore(slug);
+  const { singleStore } = [];
+  if (store) {
+    singleStore = store[0];
+    //console.log(singleStore);
+  }
+  if (isLoading) return <div>Carregando...</div>;
+  if (isError) return <div>Erro ao carregar Restaurante</div>;
+  return <div>Olá {singleStore[slug].address_city}!</div>;
+};
 
 export default StoreProfile;
