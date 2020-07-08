@@ -60,7 +60,7 @@ const RestaurantCardsListing = props => {
         let isOpenLabel = aberto == 1 ? "Aberto" : "Fechado";
         //console.log(store);
         return (
-          <Col size={{ xs: 6, md: 6, lg: 4, xl: 4 }} key={store.id}>
+          <Col size={{ xs: 6, md: 4, lg: 4, xl: 4 }} key={store.id}>
             <Div
               m={{ b: { xs: "1rem", lg: "0" } }}
               className="store-card store-card--vertical"

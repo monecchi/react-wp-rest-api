@@ -24,7 +24,7 @@ const RestaurantCardsSkeleton = (FC = () => {
         num => (
           (Id = num),
           (
-            <Col size={{ xs: 6, md: 6, lg: 4, xl: 4 }} key={Id}>
+            <Col size={{ xs: 6, md: 4, lg: 4, xl: 4 }} key={Id}>
               <Div
                 m={{ b: { xs: "1rem", lg: "0" } }}
                 className="store-card store-card--loading"
