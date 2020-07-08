@@ -28,14 +28,15 @@ const List = (props) => {
     <>
       {stores.map(store => {
         const city = store.slug;
-        let tagBg = store[city].is_open == 1 ? "softSuccess" : "softDanger";
-        let isOpenLabel = store[city].is_open == 1 ? "Aberto" : "Fechado";
+        let aberto = store[city].is_open;
+        let tagBg = aberto == 1 ? "softSuccess" : "softDanger";
+        let isOpenLabel = aberto == 1 ? "Aberto" : "Fechado";
         //console.log(store);
         return (
           <Col size={{ xs: 6, md: 6, lg: 4, xl: 4 }} key={store.id}>
             <Div
               m={{ b: { xs: "1rem", lg: "0" } }}
-              className="restaurant-card restaurant-card--vertical"
+              className="store-card store-card---vertical"
             >
               <Div
                 d="flex"
@@ -49,7 +50,7 @@ const List = (props) => {
                 hoverShadow="4"
                 rounded="sm"
                 m={{ b: { xs: "1.3rem", lg: "1.3rem" } }}
-                className="restaurant-card"
+                className="store-card-__wrapper"
               >
                 <Text
                   tag="h5"

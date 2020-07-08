@@ -18,6 +18,26 @@
   }
 }
 
+//
+// Restaurants (stores) Cards
+//
+
+.store-card--closed {
+    background: #f6f5f5;
+    opacity: 0.7;
+}
+.store-card--closed .restaurant-name {
+    color: #666565;
+}
+
+.marmita-minitag--grayscale {
+    background-color: #f5f0eb;
+    color: #a6a5a5;
+}
+
+//
+// Section paddings
+//
 .slice {
   padding-top: 3rem;
   padding-bottom: 3rem;
@@ -159,39 +179,6 @@ svg {
         color: #32325d;
         font-weight: 700;
     }
-}
-
-// .card-deck group like .card-group but cards are not connected
-.card-deck {
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-direction: column;
-  flex-direction: column;
-}
-
-.card-deck .card {
-  margin-bottom: 15px
-}
-
-@media (min-width: 576px) {
-  .card-deck {
-    -ms-flex-flow:row wrap;
-    flex-flow: row wrap;
-    margin-right: -15px;
-    margin-left: -15px;
-  }
-
-  .card-deck .card {
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex: 1 0 0%;
-    flex: 1 0 0%;
-    -ms-flex-direction: column;
-    flex-direction: column;
-    margin-right: 15px;
-    margin-bottom: 0;
-    margin-left: 15px
-  }
 }
 
 //

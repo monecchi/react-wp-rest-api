@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, FC, Suspense } from "react";
 import { getStores } from "./fetchStoreData";
 
 // Atomize
@@ -13,6 +13,10 @@ import {
   Text,
   Icon
 } from "atomize";
+
+// react-loading-skeleton
+import Skeleton from "react-loading-skeleton";
+import RestaurantCardsSkeleton from "./CardsLoading";
 
 //
 // Restaurants Listing Cards Component
@@ -34,9 +38,10 @@ const RestaurantCardsListing = props => {
     allStores = stores;
     //console.log(allStores);
   }
-  if (!stores) return <div>Carregando...</div>;
-  if (isLoading )
+  //if (!stores) return <div>Carregando...</div>;
   if (isError) return <div>Erro ao carregar Restaurante</div>;
+  if (!stores) return <RestaurantCardsSkeleton />
+
   return (
     <>
       {allStores.map(store => {
