@@ -201,7 +201,7 @@ export class FoodMenuItems extends Component {
         <Col size={{ xs: 6, md: 4, lg: 3, xl: 3 }} key={id}>
           <Div
             m={{ b: { xs: "1rem", lg: "0" } }}
-            className="store-card store-card--vertical"
+            className="food-card food-card--vertical"
           >
             <Div
               d="flex"

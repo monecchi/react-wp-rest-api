@@ -413,3 +413,8 @@ button[bg]:hover {
 
 // Animation custom
 @import "./assets/scss/utilities/Animations";
+
+.food-card .food-card__wrapper {
+    animation: 300ms MovingFadeIn;
+}
+

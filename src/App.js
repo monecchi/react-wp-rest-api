@@ -168,8 +168,6 @@ class App extends Component {
                 >
                   <Row className="stores-row">
                     {/*<RestaurantsList />*/}
-                    {/*<RestaurantCard slug="betim" />*/}
-                    <RestaurantCard slug="betim" />
                     <RestaurantCardsListing />
                   </Row>
                 </Div>
@@ -194,6 +192,37 @@ class App extends Component {
                   <FoodMenu />
                   <Div d="flex" w="100%" />
                 </Row>
+              </Container>
+            </Div>
+
+            <Div
+              tag="section"
+              id="ultimos-restaurantes"
+              p={{ t: "2rem" }}
+              className="container-pb"
+            >
+              <Container>
+                <Text textSize="paragraph" textColor="medium">
+                  Abertos há pouco
+                </Text>
+                <Text
+                  tag="h5"
+                  textSize="subheader"
+                  textWeight="500"
+                  fontFamily="secondary"
+                  p={{ b: "1.25rem" }}
+                >
+                  Meu Rancho
+                </Text>
+                <Div
+                  p={{ b: "1.25rem" }}
+                  border={{ b: "1px solid" }}
+                  borderColor="gray300"
+                >
+                  <Row className="stores-row">
+                    <RestaurantCard slug="betim" />
+                  </Row>
+                </Div>
               </Container>
             </Div>
           </div>
