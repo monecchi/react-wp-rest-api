@@ -167,7 +167,7 @@ class App extends Component {
                   borderColor="gray300"
                 >
                   <Row className="stores-row">
-                    <RestaurantsList />
+                    {/*<RestaurantsList />*/}
                     <Div d="flex" w="100%">
                       {/*<RestaurantCard slug="betim" />*/}
                       <RestaurantCardsListing />

@@ -21,7 +21,7 @@ import Skeleton from "react-loading-skeleton";
 import RestaurantCardsSkeleton from "./CardsLoading";
 
 // Custom loading skeleton
-import RestaurantCardsSkeleton from "./CardsLoading";
+import RestaurantsEmptyList from "./EmptyList";
 
 //
 // Restaurants Listing Cards Component
@@ -43,9 +43,13 @@ const RestaurantCardsListing = props => {
     allStores = stores;
     //console.log(allStores);
   }
-  //if (!stores) return <div>Carregando...</div>;
+
+  stores = [];
+
   if (isError) return <div>Erro ao carregar Restaurante</div>;
-  if (!stores || stores.length === 0) return <RestaurantCardsSkeleton />;
+  if (isLoading) return <RestaurantCardsSkeleton />;
+  //if (!stores || stores.length === 0) return <RestaurantCardsSkeleton />;
+  if (!stores || stores.length === 0) return <RestaurantsEmptyList />;
 
   return (
     <>

@@ -1,7 +1,7 @@
 import React from "react";
 
 // RestaurantsEmptyList svg component
-import RestaurantsListEmpty from "./compnents/UI/Illustratios/EmptyState/RestaurantsEmptyList";
+import RestaurantsListEmpty from "../../components/UI/Illustrations/EmptyState/RestaurantsListEmpty";
 
 // Atomize
 import {
@@ -18,21 +18,33 @@ import {
 
 const RestaurantsEmptyList = () => {
   return (
-    <span className="restaurants-list__empty">
-      <div className="restaurant-empty-list">
-        <div className="animated-svg">
-          <span className="icon-marmita icon-marmita--[object Object]">
-          <RestaurantsListEmpty />
-          </span>
-        </div>
-        <span className="restaurant-empty-list__title" tabIndex={0}>
+    <Div tag="span" w="100%" className="restaurants-list__empty">
+      <Div
+        d="flex"
+        w="100%"
+        flexDir="column"
+        justify="center"
+        align="center"
+        m={{ t: "1.2rem" }}
+        className="restaurant-empty-list"
+      >
+        <Div tag="span" d="inline-block" className="animated-svg">
+           <Div tag="span" d="inline-block" pos="relative"className="empty-state-icon">
+            <RestaurantsListEmpty />
+          </Div>
+        </Div>
+        <Text
+          tag="span"
+          m={{ t: "1.2rem", b: "0.35rem" }}
+          className="restaurant-empty-list__title"
+        >
           Nenhuma loja encontrada.
-        </span>
-        <span className="restaurant-empty-list__description" tabIndex={0}>
+        </Text>
+        <span className="restaurant-empty-list__description">
           Edite os seus filtros ou limpe todos para voltar.
         </span>
-      </div>
-    </span>
+      </Div>
+    </Div>
   );
 };
 
