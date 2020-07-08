@@ -97,8 +97,10 @@ import RestaurantsList from "./components/RestaurantsList/RestaurantsList";
 import List from "./components/RestaurantsList";
 import withListLoading from "./components/RestaurantsList";
 
-// Component using swr
-import RestaurantCard from "./components/Restaurants/";
+// Single Restaurant Card Component
+import RestaurantCard from "./components/Restaurants/Card";
+// All Restaurants Listing Cards
+import RestaurantCardsListing from "./components/Restaurants/CardsListing";
 
 class App extends Component {
   constructor() {
@@ -167,7 +169,8 @@ class App extends Component {
                   <Row className="stores-row">
                     <RestaurantsList />
                     <Div d="flex" w="100%">
-                      <RestaurantCard slug="raul" />
+                      <RestaurantCard slug="betim" />
+                      <RestaurantCardsListing />
                     </Div>
                   </Row>
                 </Div>

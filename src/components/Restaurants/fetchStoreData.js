@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from 'react';
 import useSWR from "swr";
 import axios from "axios";
 
@@ -11,17 +11,16 @@ let apiURL = "https://pizzariameurancho.com.br/wp-json/mrp/v1";
 //const fetcher = url => fetch(url).then(res => res.json()); // with fetch()
 const fetcher = url => axios.get(url).then(res => res.data); // with axios
 
-
 /**
  * Get a Single Restaurant Data
  * @param {string} slug (string) *required
  * @usage getStore("betim")
  * @return (object) store
  */
-const getStore = (slug) => {
+export const getStore = (slug) => {
   const url = apiURL;
 
-  const { data, error } = useSWR(url+`/stores/${slug}`, fetcher);
+  const { data, error } = useSWR(url + `/stores/${slug}`, fetcher);
 
   return {
     store: data,
@@ -36,10 +35,10 @@ const getStore = (slug) => {
  * @usage getStores()
  * @return (object) stores
  */
-const getStores = () => {
+export const getStores = () => {
   const url = apiURL;
 
-  const { data, error } = useSWR(url+`/stores/`, fetcher, {
+  const { data, error } = useSWR(url + `/stores/`, fetcher, {
     refreshInterval: 1000
   });
 
@@ -48,6 +47,4 @@ const getStores = () => {
     isLoading: !error && !data,
     isError: error
   };
-}
-
-export default { getStore, getStores };
+};
