@@ -29,7 +29,7 @@ const RestaurantsEmptyList = () => {
         className="restaurant-empty-list"
       >
         <Div tag="span" d="inline-block" className="animated-svg">
-           <Div tag="span" d="inline-block" pos="relative"className="empty-state-icon">
+           <Div tag="span" className="icon-marmita empty-state-icon">
             <RestaurantsListEmpty />
           </Div>
         </Div>
