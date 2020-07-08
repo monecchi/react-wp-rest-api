@@ -1,25 +1,6 @@
-import React, { Component, useEffect, useState } from "react";
-import PropTypes from "prop-types";
+import React from "react";
 import useSWR from "swr";
 import axios from "axios";
-
-// Atomize
-import {
-  Div,
-  Container,
-  Row,
-  Col,
-  Tag,
-  Anchor,
-  Button,
-  Text,
-  Icon,
-  Image,
-  Modal
-} from "atomize";
-
-// react-loading-skeleton
-import Skeleton from "react-loading-skeleton";
 
 //
 // Restaurants Listing
