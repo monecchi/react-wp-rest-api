@@ -33,7 +33,7 @@ function WithListLoading(Component) {
               <Col size={{ xs: 6, md: 6, lg: 4, xl: 4 }} key={Id}>
                 <Div
                   m={{ b: { xs: "1rem", lg: "0" } }}
-                  className="store-card store-card--vertical"
+                  className="restaurant-card restaurant-card-vertical"
                 >
                   <Div
                     d="flex"
@@ -52,7 +52,7 @@ function WithListLoading(Component) {
                     hoverShadow="4"
                     rounded="sm"
                     m={{ b: { xs: "1.3rem", lg: "1.3rem" } }}
-                    className="food-card__wrapper"
+                    className="restaurant-card__wrapper"
                   >
                     <Div flexGrow="1">
                       <Div

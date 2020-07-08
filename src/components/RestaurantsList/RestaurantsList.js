@@ -23,7 +23,7 @@ const RestaurantsList = (props) => {
     setComponentState({ loading: true });
 
     const apiUrl = "https://pizzariameurancho.com.br/wp-json/mrp/v1/stores/";
-
+    
     axios
       .get(apiUrl)
       .then(res => {

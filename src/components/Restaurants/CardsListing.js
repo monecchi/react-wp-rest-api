@@ -35,6 +35,7 @@ const RestaurantCardsListing = props => {
     //console.log(allStores);
   }
   if (!stores) return <div>Carregando...</div>;
+  if (isLoading )
   if (isError) return <div>Erro ao carregar Restaurante</div>;
   return (
     <>
