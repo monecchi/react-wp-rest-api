@@ -15,21 +15,21 @@ import {
 } from "atomize";
 
 //
-// Restaurants Listing Cards
+// Restaurants Listing Cards Component
 //
 
 /**
  * StoreProfile Component
  *
- * Get a Single Restaurant (store) details card
- * @property {object} slug * required
- * @property {function} getStore(slug)
- * @return array (store)
- * @usage (Component) <StoreProfile slug="betim" />
+ * Get All Restaurant (stores) Listing Cards
+ * @use (function) getStores()
+ * @usage (component) <RestaurantCardsListing />
  */
-const RestaurantCardsListing = () => {
-  const { stores, isLoading, isError } = getStores();
+const RestaurantCardsListing = props => {
   const allStores = [];
+
+  const { stores, isLoading, isError } = getStores();
+
   if (stores) {
     allStores = stores;
     //console.log(allStores);
@@ -38,8 +38,8 @@ const RestaurantCardsListing = () => {
   if (isError) return <div>Erro ao carregar Restaurante</div>;
   return (
     <>
-      {stores.map(store => {
-        const city = store.slug;
+      {allStores.map(store => {
+        let city = store.slug;
         let tagBg = store[city].is_open == 1 ? "softSuccess" : "softDanger";
         let isOpenLabel = store[city].is_open == 1 ? "Aberto" : "Fechado";
         //console.log(store);
