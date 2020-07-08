@@ -2,51 +2,13 @@ import React from "react";
 import useSWR from "swr";
 import axios from "axios";
 
+import { getStore } from './fetchStoreData';
+
 //
-// Restaurants Listing
+// Single Restaurant Details Card
 //
 
-const apiURL = "https://pizzariameurancho.com.br/wp-json/mrp/v1";
-
-//const fetcher = url => fetch(url).then(res => res.json()); // fetch api
-const fetcher = url => axios.get(url).then(res => res.data); // axios
-
-// get single store data
-const getStore = slug => {
-  const url = apiURL;
-
-  const { data, error } = useSWR(url + `/stores/${slug}`, fetcher);
-
-  return {
-    store: data,
-    isLoading: !error && !data,
-    isError: error
-  };
-};
-
-// get al stores data
-const getStores = () => {
-  const url = apiURL;
-
-  const { data, error } = useSWR(url + `/stores/`, fetcher, {
-    refreshInterval: 1000
-  });
-
-  return {
-    stores: data,
-    isLoading: !error && !data,
-    isError: error
-  };
-}
-
-/**
- * StoreProfiles Component
- *
- * Get All Restaurants (stores) details card
- * @return array (stores)
- * @usage (Component) <StoreProfiles slug="betim" />
- */
-const StoreProfile = ({ slug }) => {
+const RestaurantCard = ({ slug }) => {
   const { store, isLoading, isError } = getStore(slug);
   const { singleStore } = [];
   if (store) {
