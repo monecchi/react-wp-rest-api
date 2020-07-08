@@ -8,7 +8,7 @@ import axios from "axios";
 
 let apiURL = "https://pizzariameurancho.com.br/wp-json/mrp/v1";
 
-// const fetcher = url => fetch(url).then(res => res.json()); // with fetch()
+//const fetcher = url => fetch(url).then(res => res.json()); // with fetch()
 const fetcher = url => axios.get(url).then(res => res.data); // with axios
 
 

@@ -41,4 +41,4 @@ const StoreProfile = ({ slug }) => {
   return <div>Olá {singleStore[slug].address_city}!</div>;
 };
 
-export default StoreProfile;
+export default RestaurantCard;
