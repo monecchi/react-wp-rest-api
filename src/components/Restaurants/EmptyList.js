@@ -18,15 +18,14 @@ import {
 
 const RestaurantsEmptyList = () => {
   return (
-    <Div tag="span" w="100%" className="restaurants-list__empty">
+    <Div tag="span" w="100%" className="restaurants-list--empty">
       <Div
         d="flex"
         w="100%"
         flexDir="column"
         justify="center"
         align="center"
-        m={{ t: "1.2rem" }}
-        className="restaurant-empty-list"
+        className="empty-list"
       >
         <Div tag="span" d="inline-block" className="animated-svg">
            <Div tag="span" className="icon-marmita empty-state-icon">
@@ -41,7 +40,7 @@ const RestaurantsEmptyList = () => {
           Nenhuma loja encontrada.
         </Text>
         <span className="restaurant-empty-list__description">
-          Edite os seus filtros ou limpe todos para voltar.
+          Edite e limpe os filtros ou recarregue a página.
         </span>
       </Div>
     </Div>

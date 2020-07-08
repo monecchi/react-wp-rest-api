@@ -44,7 +44,7 @@ const RestaurantCardsListing = props => {
     //console.log(allStores);
   }
 
-  stores = [];
+  // stores = []; // force store empty to check if isError works
 
   if (isError) return <div>Erro ao carregar Restaurante</div>;
   if (isLoading) return <RestaurantCardsSkeleton />;
@@ -55,14 +55,15 @@ const RestaurantCardsListing = props => {
     <>
       {allStores.map(store => {
         let city = store.slug;
-        let tagBg = store[city].is_open == 1 ? "softSuccess" : "softDanger";
-        let isOpenLabel = store[city].is_open == 1 ? "Aberto" : "Fechado";
+        let aberto = store[city].is_open;
+        let tagBg = aberto == 1 ? "softSuccess" : "softDanger";
+        let isOpenLabel = aberto == 1 ? "Aberto" : "Fechado";
         //console.log(store);
         return (
           <Col size={{ xs: 6, md: 6, lg: 4, xl: 4 }} key={store.id}>
             <Div
               m={{ b: { xs: "1rem", lg: "0" } }}
-              className="food-card food-card--vertical"
+              className="store-card store-card--vertical"
             >
               <Div
                 d="flex"
@@ -71,18 +72,18 @@ const RestaurantCardsListing = props => {
                 p={{ xs: "0.75rem", md: "0.75rem", lg: "1.5rem", xl: "1.5rem" }}
                 bg="white"
                 border="1px solid"
-                borderColor="gray200"
-                shadow="3"
-                hoverShadow="4"
+                borderColor={ aberto == 1 ? "gray200" : "#e1e1e1" }
+                shadow={ aberto == 1 ? "3" : "0" }
+                hoverShadow={ aberto == 1 ? "4" : "0" }
                 rounded="sm"
                 m={{ b: { xs: "1.3rem", lg: "1.3rem" } }}
-                className="food-card__wrapper"
+                className={ aberto == 1 ? "store-card__wrapper" : "store-card__wrapper store-card--closed" }
               >
                 <Text
                   tag="h5"
                   textSize="h5"
                   m={{ b: "1rem" }}
-                  className="text-capitalize"
+                  className="restaurant-name text-capitalize"
                 >
                   {store.slug}
                 </Text>
