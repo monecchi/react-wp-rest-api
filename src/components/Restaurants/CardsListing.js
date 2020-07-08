@@ -16,6 +16,11 @@ import {
 
 // react-loading-skeleton
 import Skeleton from "react-loading-skeleton";
+
+// Custom loading skeleton
+import RestaurantCardsSkeleton from "./CardsLoading";
+
+// Custom loading skeleton
 import RestaurantCardsSkeleton from "./CardsLoading";
 
 //
@@ -40,7 +45,7 @@ const RestaurantCardsListing = props => {
   }
   //if (!stores) return <div>Carregando...</div>;
   if (isError) return <div>Erro ao carregar Restaurante</div>;
-  if (!stores) return <RestaurantCardsSkeleton />
+  if (!stores || stores.length === 0) return <RestaurantCardsSkeleton />;
 
   return (
     <>

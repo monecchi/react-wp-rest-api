@@ -169,7 +169,7 @@ class App extends Component {
                   <Row className="stores-row">
                     <RestaurantsList />
                     <Div d="flex" w="100%">
-                      <RestaurantCard slug="betim" />
+                      {/*<RestaurantCard slug="betim" />*/}
                       <RestaurantCardsListing />
                     </Div>
                   </Row>

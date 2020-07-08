@@ -1,5 +1,8 @@
 import React from "react";
 
+// RestaurantsEmptyList svg component
+import RestaurantsListEmpty from "./compnents/UI/Illustratios/EmptyState/RestaurantsEmptyList";
+
 // Atomize
 import {
   Div,
@@ -19,6 +22,7 @@ const RestaurantsEmptyList = () => {
       <div className="restaurant-empty-list">
         <div className="animated-svg">
           <span className="icon-marmita icon-marmita--[object Object]">
+          <RestaurantsListEmpty />
           </span>
         </div>
         <span className="restaurant-empty-list__title" tabIndex={0}>
