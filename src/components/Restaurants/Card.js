@@ -22,20 +22,27 @@ const RestaurantCard = ({ slug }) => {
   const { store, isLoading, isError } = getStore(slug);
   const { singleStore } = [];
 
-  if (store) {
-    singleStore = store[0];
-    let { city } = singleStore.slug;
-    let aberto = store[city].is_open;
-    //console.log(singleStore);
-  }
   if (isLoading) return <div>Carregando...</div>;
   if (isError) return <div>Erro ao carregar Restaurante</div>;
+
+  let city = "";
+  let aberto = undefined;
+
+  if (store && store) {
+    singleStore = store[0];
+    let city = singleStore.slug;
+    let aberto = singleStore[city].is_open;
+  }
   return (
-    <div>
+    <div className="restaurant-recent-list">
       <a
-        className={aberto == 1 ? "restaurant-simple-card" : "restaurant-simple-card restaurant-simple-card--closed"}
+        className={
+          aberto == 1
+            ? "restaurant-simple-card"
+            : "restaurant-simple-card restaurant-simple-card--closed"
+        }
         role="link"
-        href={"/"+singleStore[slug]}
+        href={"/lojas/" + singleStore[slug].current_city}
         key={singleStore[slug].id}
       >
         <div className="restaurant-logo-container">
@@ -49,12 +56,21 @@ const RestaurantCard = ({ slug }) => {
           <div className="restaurant-name">
             {"Meu Rancho " + singleStore[slug].address_city}
           </div>
-          <div
-            className="restaurant-delivery-time"
-            aria-label="De 23 a 33 minutos"
-          >
-            23-33 min
-          </div>
+
+          {aberto == 1 ? (
+            <div
+              className="restaurant-delivery-time"
+              aria-label="De 23 a 33 minutos"
+            >
+              23-33 min
+            </div>
+          ) : (
+            <div className="restaurant-tag">
+              <span className="marmita-minitag marmita-minitag--grayscale">
+                Fechado
+              </span>
+            </div>
+          )}
         </div>
       </a>
     </div>

@@ -169,6 +169,7 @@ class App extends Component {
                   <Row className="stores-row">
                     {/*<RestaurantsList />*/}
                     {/*<RestaurantCard slug="betim" />*/}
+                    <RestaurantCard slug="betim" />
                     <RestaurantCardsListing />
                   </Row>
                 </Div>

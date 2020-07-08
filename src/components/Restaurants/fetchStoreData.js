@@ -21,6 +21,10 @@ const fetcher = (...args) => fetch(...args).then(res => res.json()); // default 
 export const getStore = slug => {
   const url = apiURL;
 
+  if (!this.slug) {
+    slug = "betim";
+  }
+
   const { data, error } = useSWR(url + `/stores/${slug}`, fetcher);
 
   return {

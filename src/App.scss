@@ -36,6 +36,131 @@
 }
 
 //
+// Restaurant simple card 
+//
+.restaurant-card-empty-icon {
+    display: inline-block;
+    position: relative;
+}
+
+.restaurant-card-empty-icon svg {
+    width: 100%;
+    height: 100%;
+}
+
+.restaurant-simple-card {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: #fff;
+    padding: 19px 20px 16px;
+    text-decoration: none;
+    border-radius: 4px;
+    border: 1px solid #dcdcdc;
+    min-width: 83vw;
+}
+
+.restaurant-simple-card .restaurant-logo-container {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    min-width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: white;
+    overflow: hidden;
+}
+
+@media only screen and (min-width: 960px) {
+    .restaurant-simple-card .restaurant-logo-container {
+        width: 60px;
+        min-width: 60px;
+        height: 60px;
+    }
+}
+
+.restaurant-simple-card .restaurant-logo-container--placeholder {
+    background-color: #dbdad9;
+}
+
+.restaurant-simple-card .restaurant-logo-container--placeholder svg {
+    color: #fff;
+    fill: #fff;
+}
+
+.restaurant-simple-card .restaurant-logo {
+    max-height: 100%;
+}
+
+.restaurant-simple-card .restaurant-info-container {
+    text-align: left;
+    flex-grow: 1;
+    padding-left: 20px;
+    overflow: hidden;
+}
+
+.restaurant-simple-card .restaurant-name {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: flex;
+    font-weight: 400;
+    color: #717171;
+    font-size: 1rem;
+    justify-content: space-between;
+    align-items: baseline;
+    min-width: 0;
+}
+
+.restaurant-simple-card .restaurant-delivery-time {
+    font-weight: 300;
+    color: #a6a5a5;
+    font-size: 0.875rem;
+    line-height: 1.25em;
+    margin-top: 0;
+    margin-bottom: 0.25em;
+}
+
+.restaurant-recent-list .restaurant-simple-card {
+    min-width: 260px;
+}
+
+@media only screen and (max-width: 767px) {
+    .restaurant-recent-list .restaurant-simple-card {
+        width: 80vw;
+    }
+}
+
+@media only screen and (min-width: 960px) {
+    .restaurant-simple-card .restaurant-delivery-time {
+        font-size: 0.875rem;
+        line-height: 1.375em;
+    }
+}
+
+.restaurant-simple-card .restaurant-tag {
+    margin-top: 2px;
+}
+
+.restaurant-simple-card--closed {
+    background: #f6f5f5;
+    opacity: 0.7;
+}
+
+.restaurant-simple-card--closed .restaurant-logo {
+    -webkit-filter: grayscale(1);
+    filter: grayscale(1);
+}
+
+.restaurant-simple-card--closed .restaurant-name {
+    color: #666565;
+}
+
+
+
+//
 // Section paddings
 //
 .slice {
