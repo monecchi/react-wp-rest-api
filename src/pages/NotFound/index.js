@@ -68,7 +68,7 @@ class NotFound extends Component {
                   rel=""
                   to="/lista-restaurantes"
                 >
-                  <Text tag="span" hoverTextColor="white" classNane="btn__label">
+                  <Text tag="span" hoverTextColor="white" className="btn__label">
                     Voltar para o início
                   </Text>
                 </Link>
