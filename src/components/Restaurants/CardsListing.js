@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import useSWR, { mutate } from "swr";
 import { getStores } from "./fetchStoreData";
 
 // Atomize
@@ -52,15 +53,18 @@ const RestaurantCardsListing = props => {
   if (!stores || stores.length === 0) return <RestaurantsEmptyList />;
 
   return (
-    <> 
-     
-    <Div d="flex" flexDir="column" w="100%">
-      {isValidating && (
-        <Icon name="Loading3" size="20px" color="brand" />
-      )}
-      <button onClick={() => mutate()} disabled={isValidating}>
-        Revalidate
-      </button>
+    <>
+    <Div d="flex" flexDir="row" w="100%">
+      <Div d="flex" justify="flex-start">
+        {isValidating && (
+          <Icon name="Loading3" size="20px" color="brand" />
+        )}
+      </Div>
+      <Div d="flex" justify="flex-end">
+        <Button onClick={() => mutate()} disabled={isValidating} cursor="pointer">
+          Atualizar
+        </Button>
+      </Div>
     </Div>
     
       {allStores.map(store => {
