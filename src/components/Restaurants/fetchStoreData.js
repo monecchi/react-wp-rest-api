@@ -12,6 +12,8 @@ const fetcher = (...args) => fetch(...args).then(res => res.json()); // default 
 //const fetcher = url => fetch(url).then(res => res.json()); // with fetch()
 //const fetcher = url => axios.get(url).then(res => res.data); // with axios
 
+
+
 /**
  * Get a Single Restaurant Data
  * @param {string} slug (string) *required
@@ -39,14 +41,12 @@ export const getStore = slug => {
 
  * @usage getStores()
  * @return (object) stores
- * refreshInterval: 180000 // 3 min
+ * refreshInterval: 180000 // 3 min - e.g fetches data on every 3 minutes
  */
 export const getStores = () => {
   const url = apiURL;
 
-  const { data, error, isValidating, mutate } = useSWR(url + `/stores/`, fetcher, {
-    
-  });
+  const { data, error, isValidating, mutate } = useSWR(url+'/stores/', fetcher, { revalidateOnFocus: true});
 
   return {
     stores: data,
@@ -56,3 +56,15 @@ export const getStores = () => {
     mutate
   };
 };
+
+/**
+ * Update get Stores
+ */
+export const updategetStores = () => {
+  const url = apiURL;
+
+  document.cookie = 'token='+url+'/stores/'+'; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;'
+
+  mutate(url+'/stores/');
+
+}

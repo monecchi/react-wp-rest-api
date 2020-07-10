@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import useSWR, { mutate } from "swr";
-import { getStores } from "./fetchStoreData";
+import useSWR from "swr";
+import { getStores, updategetStores } from "./fetchStoreData";
 
 // Atomize
 import {
@@ -35,6 +35,7 @@ import RestaurantsEmptyList from "./EmptyList";
  * @use (function) getStores()
  * @usage (component) <RestaurantCardsListing />
  */
+
 const RestaurantCardsListing = props => {
   const allStores = [];
 
@@ -52,8 +53,11 @@ const RestaurantCardsListing = props => {
   //if (!stores || stores.length === 0) return <RestaurantCardsSkeleton />;
   if (!stores || stores.length === 0) return <RestaurantsEmptyList />;
 
+  const { url } = "https://pizzariameurancho.com.br/wp-json/mrp/v1";
+
   return (
     <>
+    
     <Div d="flex" flexDir="row" w="100%">
       <Div d="flex" justify="flex-start">
         {isValidating && (
@@ -61,7 +65,7 @@ const RestaurantCardsListing = props => {
         )}
       </Div>
       <Div d="flex" justify="flex-end">
-        <Button onClick={() => mutate()} disabled={isValidating} cursor="pointer">
+        <Button onClick={() => updategetStores()} disabled={isValidating} cursor="pointer">
           Atualizar
         </Button>
       </Div>

@@ -17,14 +17,15 @@ import {
 import Skeleton from "react-loading-skeleton";
 
 const RestaurantCardsSkeleton = () => {
-  const { Id } = "";
+  const storesCount = [1, 2, 3];
+  const storeId = "";
   return (
     <>
-      {[1, 2, 3].map(
+      {storesCount.map(
         num => (
-          (Id = num),
+          (storeId = num),
           (
-            <Col size={{ xs: 6, md: 4, lg: 4, xl: 4 }} key={Id}>
+            <Col size={{ xs: 6, md: 4, lg: 4, xl: 4 }} key={storeId}>
               <Div
                 m={{ b: { xs: "1rem", lg: "0" } }}
                 className="store-card store-card--loading"
