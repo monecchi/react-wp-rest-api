@@ -1,4 +1,4 @@
-import React, { FC, Component } from "react";
+import React, { Component } from "react";
 
 // Atomize
 import {
@@ -16,7 +16,7 @@ import {
 // React Loading Skeleton
 import Skeleton from "react-loading-skeleton";
 
-const RestaurantCardsSkeleton = (FC = () => {
+const RestaurantCardsSkeleton = () => {
   const { Id } = "";
   return (
     <>
@@ -104,6 +104,6 @@ const RestaurantCardsSkeleton = (FC = () => {
       )}
     </>
   );
-});
+};
 
 export default RestaurantCardsSkeleton;

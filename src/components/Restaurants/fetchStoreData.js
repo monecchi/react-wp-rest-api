@@ -39,17 +39,20 @@ export const getStore = slug => {
 
  * @usage getStores()
  * @return (object) stores
+ * refreshInterval: 180000 // 3 min
  */
 export const getStores = () => {
   const url = apiURL;
 
-  const { data, error } = useSWR(url + `/stores/`, fetcher, {
-    refreshInterval: 1000
+  const { data, error, isValidating, mutate } = useSWR(url + `/stores/`, fetcher, {
+    
   });
 
   return {
     stores: data,
     isLoading: !error && !data,
-    isError: error
+    isError: error,
+    isValidating,
+    mutate
   };
 };

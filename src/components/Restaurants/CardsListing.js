@@ -1,4 +1,4 @@
-import React, { Component, FC, Suspense } from "react";
+import React, { Component } from "react";
 import { getStores } from "./fetchStoreData";
 
 // Atomize
@@ -37,7 +37,7 @@ import RestaurantsEmptyList from "./EmptyList";
 const RestaurantCardsListing = props => {
   const allStores = [];
 
-  const { stores, isLoading, isError } = getStores();
+  const { stores, isLoading, isError, isValidating, mutate } = getStores();
 
   if (stores) {
     allStores = stores;
@@ -52,7 +52,17 @@ const RestaurantCardsListing = props => {
   if (!stores || stores.length === 0) return <RestaurantsEmptyList />;
 
   return (
-    <>
+    <> 
+     
+    <Div d="flex" flexDir="column" w="100%">
+      {isValidating && (
+        <Icon name="Loading3" size="20px" color="brand" />
+      )}
+      <button onClick={() => mutate()} disabled={isValidating}>
+        Revalidate
+      </button>
+    </Div>
+    
       {allStores.map(store => {
         let city = store.slug;
         let aberto = store[city].is_open;
