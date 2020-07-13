@@ -25,13 +25,13 @@ const RestaurantCard = ({ slug }) => {
   if (isLoading) return <div>Carregando...</div>;
   if (isError) return <div>Erro ao carregar Restaurante</div>;
 
-  let city = "";
-  let aberto = undefined;
+  let city = store[0].slug || "betim";
+  let aberto = 0;
 
   if (store && store) {
     singleStore = store[0];
-    let city = singleStore.slug;
-    let aberto = singleStore[city].is_open;
+    city = singleStore.slug;
+    aberto = singleStore[city].is_open;
   }
   return (
     <div className="restaurant-recent-list">

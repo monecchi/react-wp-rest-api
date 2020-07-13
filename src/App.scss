@@ -158,6 +158,48 @@
     color: #666565;
 }
 
+//
+// Cardapio load more button
+//
+
+.restaurants-list__load-more-container {
+    padding: 0 20px;
+    width: 100%;
+    max-width: 1366px !important;
+    margin: auto;
+    padding: 0 30px;
+    margin: 36px auto;
+}
+
+@media only screen and (min-width: 1248px) {
+    .restaurants-list__load-more-container {
+        padding: 0 40px 0 48px;
+    }
+}
+
+@media only screen and (min-width: 960px) {
+    .restaurants-list__load-more-container {
+        padding: 0 30px;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    .restaurants-list__load-more-container {
+        display: block;
+        padding: 0 20px;
+    }
+}
+
+.restaurants-list__load-more {
+    background: transparent;
+    border: 1px solid #eaeaea;
+    font-size: 1rem;
+    font-weight: normal;
+}
+
+.restaurants-list__load-more:hover:enabled {
+    background: #eaeaea;
+}
 
 
 //

@@ -23,35 +23,69 @@ export class FoodMenu extends Component {
     super(props);
     this.state = {
       foods: [],
-      isLoaded: false,
-      perPage: 25,
+      loading: false,
+      per_page: 25,
+      totalItems: 100,
+      paged: 1,
       showModal: false
     };
+
+    this.loadMore = this.loadMore.bind(this);
+  }
+
+  loadMore() {
+    this.setState(prev => {
+      return { per_page: prev.per_page + 16 };
+    });
   }
 
   componentDidMount() {
+    this.setState({ loading: true });
     axios
       .get(
-        `https://pizzariameurancho.com.br/wp-json/wp/v2/food_menu/?per_page=${this.state.perPage}`
+        `https://pizzariameurancho.com.br/wp-json/wp/v2/food_menu/?per_page=${
+          this.state.totalItems
+        }`
       )
-      .then(
-        res =>
+      .then(res => {
+        console.log(res),
           this.setState({
             foods: res.data,
-            isLoaded: true
-          })
+            paged: res.headers["x-wp-totalpages"],
+            loading: false
+          });
         //this.setState({ isLoaded: true })}
-      )
+      })
       .catch(err => console.log(err));
   }
 
   render() {
-    const { foods, isLoaded, showModal } = this.state;
+    const { foods, loading, per_page, paged, showModal } = this.state;
     //console.log(this.state);
     return (
       <>
-        {foods &&
-          foods.map(food => <FoodMenuItems key={food.id} food={food} />)}
+        {this.state.foods.slice(0, this.state.per_page).map((food, index) => {
+          return <FoodMenuItems key={food.id} food={food} />;
+        })}
+
+        {this.state.per_page < this.state.foods.length && (
+          <>
+            <div class="restaurants-list__load-more-container">
+              <button
+                type="button"
+                role="button"
+                onClick={this.loadMore}
+                aria-label="Ver mais items do cardápio"
+                color="white"
+                target=""
+                rel=""
+                className="btn btn--default btn--white btn--size-m btn--full-width restaurants-list__load-more"
+              >
+                Mais items do Cardápio
+              </button>
+            </div>
+          </>
+        )}
       </>
     );
   }

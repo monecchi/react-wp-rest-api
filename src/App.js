@@ -190,7 +190,6 @@ class App extends Component {
                 </Text>
                 <Row className="dishes-row">
                   <FoodMenu />
-                  <Div d="flex" w="100%" />
                 </Row>
               </Container>
             </Div>

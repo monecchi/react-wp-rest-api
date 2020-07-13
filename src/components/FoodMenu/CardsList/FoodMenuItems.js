@@ -27,13 +27,12 @@ import Skeleton from "react-loading-skeleton";
 import renderHTML from "../../../data/htmlRender.js";
 
 // Food item image placeholder
-let ImgPlaceholder =
-  "https://raw.githubusercontent.com/monecchi/react-wp-rest-api/master/src/assets/images/mr-pattern-light.png";
+let ImgPlaceholder = "https://raw.githubusercontent.com/monecchi/react-wp-rest-api/master/src/assets/images/mr-pattern-light.png";
 
 //
 // Modal
 //
-const ModalSize = ({ isOpen, onClose }) => {
+const FoodItemModal = ({ isOpen, onClose }) => {
   return (
     <Modal isOpen={isOpen} onClose={onClose} rounded="md" maxW="48rem">
       <Icon
@@ -72,7 +71,7 @@ export class FoodMenuItems extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isLoaded: false,
+      loading: false,
       showModal: false
     };
   }
@@ -82,12 +81,14 @@ export class FoodMenuItems extends Component {
   };
 
   componentDidMount() {
+    
     const {
       id,
       title,
       excerpt,
       slug,
       menu_order,
+      featured_image_src,
       dish_prices
     } = this.props.food;
 
@@ -107,7 +108,7 @@ export class FoodMenuItems extends Component {
         id: res[0].id,
         imgUrl: res[0].data.featured_image_src.thumbnail,
         ingredients: res[1].data,
-        isLoaded: true
+        loading: true
       });
     });
   }
@@ -119,12 +120,19 @@ export class FoodMenuItems extends Component {
       excerpt,
       slug,
       menu_order,
-      dish_prices
+      dish_prices,
     } = this.props.food;
-    const { imgUrl, ingredients, isLoaded, showModal } = this.state;
+
+    const { imgUrl, ingredients, loading, showModal } = this.state;
 
     const precos = [];
-    precos = dish_prices;
+    precos = dish_prices || [];
+
+    const fromPreco = "";
+
+    for (const p = 0; p < precos.length; p++) {
+      fromPreco = precos[i][0].preco;
+    }
     //console.log(precos);
 
     //console.log(id);
@@ -136,7 +144,7 @@ export class FoodMenuItems extends Component {
 
     const bgImg = imgUrl ? imgUrl : ImgPlaceholder;
 
-    if (!isLoaded) {
+    if (!loading) {
       return (
         <Col size={{ xs: 6, md: 4, lg: 3, xl: 3 }} key={id}>
           <Div m={{ b: { xs: "1rem", lg: "1.2rem" } }}>
@@ -326,7 +334,11 @@ export class FoodMenuItems extends Component {
                     data-test-id="dish-card-price"
                   >
                     <span className="dish-card__price--discount">
-                      {precos[0].preco} R$ 16,50
+                      {
+                        fromPreco == "" 
+                        ? "R$ 16,50"
+                        : fromPreco
+                      }
                     </span>
                     <span className="dish-card__price--original">R$ 23,00</span>
                   </span>
@@ -347,7 +359,7 @@ export class FoodMenuItems extends Component {
           </Div>
         </Col>
 
-        <ModalSize
+        <FoodItemModal
           isOpen={showModal}
           onClose={() => this.setState({ showModal: false })}
         />
