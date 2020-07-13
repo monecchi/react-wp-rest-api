@@ -130,3 +130,33 @@ export function getRecipesByRecipeName(recipeName) {
   });
   return recipesArray;
 }
+
+// Get slides by type (aka category)
+export const getSlidesByType = async (type) => {
+  const sliderType = type.toLowerCase();
+  const slidesArray = [];
+  homeslides.map(data => {
+    if (data.type.toLowerCase().includes(sliderType)) {
+      slidesArray.push(data);
+    }
+  });
+  return slidesArray;
+};
+
+export const getSlidesByType = async (type) => {
+  try {
+    
+  const sliderType = type.toLowerCase();
+  const slidesArray = [];
+  homeslides.map(data => {
+    if (data.type.toLowerCase().includes(sliderType)) {
+      slidesArray.push(data);
+    }
+  });
+
+  return slidesArray;
+
+  } catch (err) {
+      console.log(err);
+  }
+};

@@ -2,9 +2,9 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 // Slides mock DestaquesCarousel
-import { homeslides } from './dataArrays';
+//import { homeslides } from '../../../data/dataArrays';
 
-import { getCategoryName } from '../../data/MockDataAPI';
+import { getSlidesByType } from '../../../data/MockDataAPI';
 
 // Import Flickity
 import Flickity from "react-flickity-component";
@@ -56,25 +56,19 @@ const DestaquesCarousel = (...props) => {
   //const CarouselsLoading = WithLoadingCarousel();
 
   const [componentState, setComponentState] = useState({
-    loading: false,
-    loadingClass: ""
+    loading: false
   });
 
   useEffect(() => {
-    
-    //this.flkty.on("lazyLoad", function(event, cellElement) {
-      //var img = event.target;
-      //console.log(event.type, img.src);
 
-      //if (img.src) {
-        //setComponentState({ loading: true, loadingClass: "ph-loading" });
-      //}
-
-    //});
-
-    if (this.flkty) {
-      setComponentState({ loading: true, loadingClass: "ph-loading" });
-    }
+    const allSlides = getSlidesByType("promo").then(response => {
+        const slidesHome = [];
+        if(response) {
+          slidesHome = response
+        }
+        console.log(slidesHome);
+        setComponentState({ loading: true });
+    });
 
   }, [setComponentState]);
 
