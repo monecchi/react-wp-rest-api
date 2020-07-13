@@ -70,7 +70,7 @@ export class FoodMenu extends Component {
 
         {this.state.per_page < this.state.foods.length && (
           <>
-            <div class="restaurants-list__load-more-container">
+            <Div d="flex" w="100%">
               <button
                 type="button"
                 role="button"
@@ -83,7 +83,7 @@ export class FoodMenu extends Component {
               >
                 Mais items do Cardápio
               </button>
-            </div>
+            </Div>
           </>
         )}
       </>

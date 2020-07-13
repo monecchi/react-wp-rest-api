@@ -70,6 +70,7 @@ const FoodItemModal = ({ isOpen, onClose }) => {
 export class FoodMenuItems extends Component {
   constructor(props) {
     super(props);
+    const food = this.props.food;
     this.state = {
       loading: false,
       showModal: false
@@ -81,7 +82,9 @@ export class FoodMenuItems extends Component {
   };
 
   componentDidMount() {
-    
+
+    const food = this.props.food;
+
     const {
       id,
       title,
@@ -89,6 +92,7 @@ export class FoodMenuItems extends Component {
       slug,
       menu_order,
       featured_image_src,
+      thumbnail,
       dish_prices
     } = this.props.food;
 
@@ -102,12 +106,12 @@ export class FoodMenuItems extends Component {
     // "food tags" ingredients endpoint
     //https://pizzariameurancho.com.br/wp-json/wp/v2/ingrediente?post=822
 
-    Promise.all([getDishes, getIngredients]).then(res => {
+    Promise.all([getIngredients]).then(res => {
       console.log(res);
       this.setState({
         id: res[0].id,
-        imgUrl: res[0].data.featured_image_src.thumbnail,
-        ingredients: res[1].data,
+        //imgUrl: res[0].data.featured_image_src.thumbnail,
+        ingredients: res[0].data,
         loading: true
       });
     });
@@ -120,10 +124,16 @@ export class FoodMenuItems extends Component {
       excerpt,
       slug,
       menu_order,
+      featured_image_src,
       dish_prices,
     } = this.props.food;
 
     const { imgUrl, ingredients, loading, showModal } = this.state;
+
+    
+    const food = this.props.food;
+    const img_url = food.featured_image_src.thumbnail;
+    console.log(img_url);
 
     const precos = [];
     precos = dish_prices || [];
@@ -142,11 +152,11 @@ export class FoodMenuItems extends Component {
       return <> </>;
     }
 
-    const bgImg = imgUrl ? imgUrl : ImgPlaceholder;
+    const bgImg = img_url ? img_url : ImgPlaceholder; //imgUrl ? imgUrl : ImgPlaceholder;
 
     if (!loading) {
       return (
-        <Col size={{ xs: 6, md: 4, lg: 3, xl: 3 }} key={id}>
+        <Col size={{ xs: 6, md: 4, lg: 3, xl: 3 }} key={fid}>
           <Div m={{ b: { xs: "1rem", lg: "1.2rem" } }}>
             <Div
               d="flex"
@@ -230,8 +240,8 @@ export class FoodMenuItems extends Component {
                   d="flex"
                   className="food-pic"
                   bgImg={bgImg}
-                  bgSize={imgUrl ? "cover" : "300%"}
-                  bgPos={imgUrl ? "center" : "28% 35%"}
+                  bgSize={img_url ? "cover" : "300%"}
+                  bgPos={img_url ? "center" : "28% 35%"}
                   w="6rem"
                   h="6rem"
                   m={{ t: "auto", r: "auto", b: "1rem", l: "auto" }}
