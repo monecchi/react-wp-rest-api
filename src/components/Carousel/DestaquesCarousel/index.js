@@ -78,9 +78,9 @@ const DestaquesCarousel = (...props) => {
   // loading state
   const { isLoading } = componentState.loading;
 
-  if( isLoading ) {
-    return "Loading...";
-  }
+  //if( isLoading ) {
+    //return "Loading...";
+  //}
 
   return (
     <>
