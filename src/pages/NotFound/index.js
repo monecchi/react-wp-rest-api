@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 
 // Atomize
 import {
+  ThemeProvider,
+  DefaultTheme,
   Div,
   Container,
   Row,
@@ -28,14 +30,16 @@ import ManWithFork from "../../components/UI/Illustrations/EmptyState/ManWithFor
 import MeuSvg from "../components/UI/Illustrations/mr-not-found-fork.svg";
 
 class NotFound extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
-      title: "Não Encontrado"
+      isLoading: false
     };
   }
 
   render() {
+    const { isLoading } = this.state;
+
     return (
       <div>
         <NavbarIfood />
@@ -68,7 +72,11 @@ class NotFound extends Component {
                   rel=""
                   to="/lista-restaurantes"
                 >
-                  <Text tag="span" hoverTextColor="white" className="btn__label">
+                  <Text
+                    tag="span"
+                    hoverTextColor="white"
+                    className="btn__label"
+                  >
                     Voltar para o início
                   </Text>
                 </Link>
@@ -85,6 +93,39 @@ class NotFound extends Component {
                   <Icon name="LongLeft" color="brand" />
                   Voltar
                 </Button>
+
+                <Text m={{ b: "0.5rem" }}>Brand Buttons</Text>
+                <Div d="flex" w="100%" p={{ t: "1rem", b: "1rem" }}>
+                  <Button
+                    onClick={() => this.setState({ isLoading: true })}
+                    disabled={isLoading}
+                    w="100%"
+                    prefix={
+                      <Icon
+                        name={isLoading ? "Loading" : "Search"}
+                        pos="absolute"
+                        top="50%"
+                        left="1rem"
+                        transform="translateY(-50%)"
+                        size="18px"
+                        color="white"
+                        m={{ r: "0.5rem" }}
+                      />
+                    }
+                    textColor="#ea1d2c"
+                    hoverTextColor="white"
+                    bg="white"
+                    hoverBg="brand"
+                    border="1px solid"
+                    borderColor="#eaeaea"
+                    hoverBorderColor="brand"
+                    rounded="sm"
+                    p={{ l: "3rem", r: "2rem" }}
+                    m={{ b: "2rem" }}
+                  >
+                    Mais items do Cardápio
+                  </Button>
+                </Div>
               </div>
             </Col>
           </Row>

@@ -60,7 +60,7 @@ export class FoodMenu extends Component {
   }
 
   render() {
-    const { foods, loading, per_page, paged, showModal } = this.state;
+    const { foods, food, loading, per_page, paged, showModal } = this.state;
     //console.log(this.state);
     return (
       <>

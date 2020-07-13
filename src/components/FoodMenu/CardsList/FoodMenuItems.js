@@ -156,7 +156,7 @@ export class FoodMenuItems extends Component {
 
     if (!loading) {
       return (
-        <Col size={{ xs: 6, md: 4, lg: 3, xl: 3 }} key={fid}>
+        <Col size={{ xs: 6, md: 4, lg: 3, xl: 3 }} key={food.id}>
           <Div m={{ b: { xs: "1rem", lg: "1.2rem" } }}>
             <Div
               d="flex"
