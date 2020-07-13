@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 // Slides mock DestaquesCarousel
 //import { homeslides } from '../../../data/dataArrays';
 
-import { getSlidesByType } from '../../../data/MockDataAPI';
+import { getSlidesByType } from '../../../data/MockDataAPI'; // function to get mock data locally
 
 // Import Flickity
 import Flickity from "react-flickity-component";
@@ -59,10 +59,11 @@ const DestaquesCarousel = (...props) => {
     loading: false
   });
 
+  const slidesHome = [];
+
   useEffect(() => {
 
     const allSlides = getSlidesByType("promo").then(response => {
-        const slidesHome = [];
         if(response) {
           slidesHome = response
         }
@@ -70,7 +71,16 @@ const DestaquesCarousel = (...props) => {
         setComponentState({ loading: true });
     });
 
+     setComponentState({ loading: false });
+
   }, [setComponentState]);
+
+  // loading state
+  const { isLoading } = componentState.loading;
+
+  if( isLoading ) {
+    return "Loading...";
+  }
 
   return (
     <>
@@ -83,6 +93,11 @@ const DestaquesCarousel = (...props) => {
         static // default false
         flickityRef={c => (this.flkty = c)}
       >
+      {slidesHome && slidesHome.map(slide => {
+
+        {slide.title}
+
+      })}
         <div className="carousel-cell">
           <div className="highlights-carousel__container ph-item">
             <Link to="/promocoes">
