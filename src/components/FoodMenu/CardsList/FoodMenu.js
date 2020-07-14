@@ -64,7 +64,8 @@ export class FoodMenu extends Component {
             paged: this.loadMore,
             totalItems: res.headers["x-wp-total"],
             loading: false
-          });
+          }),
+          url = this.state.apiUrl + `?per_page=${this.state.per_page}&page=${this.state.paged}`;
       })
       .catch(err => console.log(err));
   }
