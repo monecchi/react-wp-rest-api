@@ -24,7 +24,7 @@ export class FoodMenu extends Component {
     this.state = {
       foods: [],
       loading: false,
-      per_page: 25,
+      per_page: 25 - 1,
       totalItems: 50,
       pagesTotal: null,
       error: "",
@@ -39,7 +39,7 @@ export class FoodMenu extends Component {
 
   getPosts() {
     const { page, per_page, apiUrl } = this.state;
-    this.setState({ loading: false });
+    this.setState({ loading: true });
 
     return axios.get(apiUrl + `?per_page=${per_page}&page=` + page).then(
       response => {
@@ -114,31 +114,18 @@ export class FoodMenu extends Component {
 
     return (
       <>
-        {foods.map((food, index) => {
+        {/*{foods.map((food, index) => {*/}
+        {/*{foods.slice(0, this.state.totalItems).map((food, index) => {*/}
+        {foods && foods.map((food, index) => {
           return <FoodMenuItems key={food.id} food={food} />;
         })}
 
         {/* this.state.per_page < this.state.foods.length &&*/}
         {page <= pagesTotal && foods.length && (
           <>
-            <Div d="flex" w="100%">
-              <button
-                type="button"
-                role="button"
-                onClick={this.loadMore}
-                aria-label="Ver mais items do cardápio"
-                color="white"
-                target=""
-                rel=""
-                className="btn btn--default btn--white btn--size-m btn--full-width restaurants-list__load-more"
-              >
-                Mais items do Cardápio
-              </button>
-            </Div>
-
             <Div d="flex" w="100%" p={{ t: "1rem", b: "1rem" }}>
               <Button
-                onClick={() => this.loadMore() }
+                onClick={() => this.loadMore()}
                 disabled={this.state.loading}
                 w="100%"
                 prefix={
@@ -168,7 +155,7 @@ export class FoodMenu extends Component {
                 m={{ b: "2rem" }}
                 transition
               >
-                {this.state.loading ? "Carregando" : "Mais items do Cardápio"} 
+                {this.state.loading ? "Carregando" : "Mais items do Cardápio"}
               </Button>
             </Div>
           </>

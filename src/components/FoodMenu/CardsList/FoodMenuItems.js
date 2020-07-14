@@ -27,7 +27,8 @@ import Skeleton from "react-loading-skeleton";
 import renderHTML from "../../../data/htmlRender.js";
 
 // Food item image placeholder
-let ImgPlaceholder = "https://raw.githubusercontent.com/monecchi/react-wp-rest-api/master/src/assets/images/mr-pattern-light.png";
+let ImgPlaceholder =
+  "https://raw.githubusercontent.com/monecchi/react-wp-rest-api/master/src/assets/images/mr-pattern-light.png";
 
 //
 // Modal
@@ -72,7 +73,8 @@ export class FoodMenuItems extends Component {
     super(props);
     const food = this.props.food;
     this.state = {
-      loading: false,
+      ingredients: [],
+      loading: true,
       showModal: false
     };
   }
@@ -82,42 +84,35 @@ export class FoodMenuItems extends Component {
   };
 
   componentDidMount() {
+    const { food, id } = this.props.food;
 
-    const food = this.props.food;
-
-    const {
-      id,
-      title,
-      excerpt,
-      slug,
-      menu_order,
-      featured_image_src,
-      thumbnail,
-      dish_prices
-    } = this.props.food;
-
+    // Single food menu item url
     const getDishes = axios.get(
       `https://pizzariameurancho.com.br/wp-json/wp/v2/food_menu/${id}`
     );
+
+    // Single food menu item "food_tag" taxonomy (ingredients) url
     const getIngredients = axios.get(
       `https://pizzariameurancho.com.br/wp-json/wp/v2/ingrediente?post=${id}`
     );
 
-    // "food tags" ingredients endpoint
-    //https://pizzariameurancho.com.br/wp-json/wp/v2/ingrediente?post=822
-
-    Promise.all([getIngredients]).then(res => {
-      console.log(res);
+    Promise.all([getIngredients]).then(response => {
+      //console.log(response);
       this.setState({
-        id: res[0].id,
-        //imgUrl: res[0].data.featured_image_src.thumbnail,
-        ingredients: res[0].data,
-        loading: true
+        ingredients: response[0].data,
+        loading: false
       });
     });
   }
 
+  getFoodPic() {
+
+  }
+
   render() {
+
+    const food = this.props.food;
+
     const {
       id,
       title,
@@ -125,18 +120,13 @@ export class FoodMenuItems extends Component {
       slug,
       menu_order,
       featured_image_src,
-      dish_prices,
+      dish_prices
     } = this.props.food;
 
-    const { imgUrl, ingredients, loading, showModal } = this.state;
+    const { ingredients, loading, showModal } = this.state;
 
-    
-    const food = this.props.food;
-
-    const foodId = food.id;
-
-    const img_url = food.featured_image_src.thumbnail;
-    console.log(img_url);
+    const imgUrl = food.featured_image_src.thumbnail;
+    console.log(imgUrl);
 
     const precos = [];
     precos = dish_prices || [];
@@ -150,16 +140,25 @@ export class FoodMenuItems extends Component {
 
     //console.log(id);
 
+    const foodImg = imgUrl ? imgUrl : ImgPlaceholder; //imgUrl ? imgUrl : ImgPlaceholder;
+
+    const foodPic = (foodImg, attr) => {
+      if(loading) {
+        attr = bgImg={foodImg}
+      } else {
+        attr = bg="#eee"
+      }
+      return attr;
+    }
+
     // hide items if slug is "vazio" or "empty"
     if ((slug && slug == "vazio") || (slug && slug == "empty")) {
       return <> </>;
     }
 
-    const bgImg = img_url ? img_url : ImgPlaceholder; //imgUrl ? imgUrl : ImgPlaceholder;
-
-    if (!loading) {
+    if (loading) {
       return (
-        <Col size={{ xs: 6, md: 4, lg: 3, xl: 3 }} key={foodId}>
+        <Col size={{ xs: 6, md: 4, lg: 3, xl: 3 }} key={food.id}>
           <Div m={{ b: { xs: "1rem", lg: "1.2rem" } }}>
             <Div
               d="flex"
@@ -219,7 +218,7 @@ export class FoodMenuItems extends Component {
 
     return (
       <>
-        <Col size={{ xs: 6, md: 4, lg: 3, xl: 3 }} key={foodId}>
+        <Col size={{ xs: 6, md: 4, lg: 3, xl: 3 }} key={food.id}>
           <Div
             m={{ b: { xs: "1rem", lg: "1.2rem" } }}
             className="food-card food-card--vertical"
@@ -241,11 +240,11 @@ export class FoodMenuItems extends Component {
               <Div flexGrow="1">
                 <Div
                   d="flex"
-                  className="food-pic"
-                  bgImg={bgImg}
-                  bgSize={img_url ? "cover" : "300%"}
-                  bgPos={img_url ? "center" : "28% 35%"}
-                  bg="#eee"
+                  className={"food-pic"}
+                  bgImg={foodImg}
+                  bgSize={imgUrl ? "cover" : "300%"}
+                  bgPos={imgUrl ? "center" : "28% 35%"}
+                  {...(loading ? {bg: "#eee"} : {} )}
                   w="6rem"
                   h="6rem"
                   m={{ t: "auto", r: "auto", b: "1rem", l: "auto" }}
@@ -315,7 +314,11 @@ export class FoodMenuItems extends Component {
                       31,
                       36
                     ].map(num => (
-                      <Text key={num.toString()} textSize="caption" textColor="success700">
+                      <Text
+                        key={num.toString()}
+                        textSize="caption"
+                        textColor="success700"
+                      >
                         {num === menu_order ? "Mais pedido" : ""}
                       </Text>
                     ))}
@@ -348,11 +351,7 @@ export class FoodMenuItems extends Component {
                     data-test-id="dish-card-price"
                   >
                     <span className="dish-card__price--discount">
-                      {
-                        fromPreco == "" 
-                        ? "R$ 16,50"
-                        : fromPreco
-                      }
+                      {fromPreco == "" ? "R$ 16,50" : fromPreco}
                     </span>
                     <span className="dish-card__price--original">R$ 23,00</span>
                   </span>
