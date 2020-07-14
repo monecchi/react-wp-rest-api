@@ -53,7 +53,7 @@ export class FoodMenu extends Component {
       });
    
     //const url = this.state.apiUrl + `?per_page=${this.state.per_page}`;
-    const url = this.state.apiUrl + `?per_page=${this.state.per_page}&page=${this.state.paged}`;
+    let url = this.state.apiUrl + `?per_page=${this.state.per_page}&page=${this.state.paged}`;
 
     axios
       .get(url)
@@ -61,10 +61,10 @@ export class FoodMenu extends Component {
         console.log(res),
           this.setState({
             foods: res.data,
+            paged: this.loadMore,
             totalItems: res.headers["x-wp-total"],
             loading: false
           });
-
       })
       .catch(err => console.log(err));
   }
@@ -73,7 +73,7 @@ export class FoodMenu extends Component {
     const { foods, food, loading, per_page, paged, showModal } = this.state;
     //console.log(this.state);
 
-    const maxPages = paged;
+    const maxPages = 10;
     return (
       <>
         {this.state.foods.slice(0, this.state.per_page).map((food, index) => {
