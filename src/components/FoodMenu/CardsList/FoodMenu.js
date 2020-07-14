@@ -61,7 +61,8 @@ export class FoodMenu extends Component {
         //console.log(res),
           this.setState({
             foods: res.data,
-            totalItems: res.headers["x-wp-total"],
+            paged: Number(res.headers["x-wp-totalpages"]),
+            totalItems:  Number(res.headers["x-wp-total"]),
             loading: false
           });
       })
@@ -69,10 +70,11 @@ export class FoodMenu extends Component {
   }
 
   render() {
-    const { foods, food, loading, per_page, paged, showModal } = this.state;
+    const { foods, food, loading, per_page, paged, totalItems, showModal } = this.state;
     //console.log(this.state);
 
     const maxPages = 10;
+
     return (
       <>
         {this.state.foods.slice(0, this.state.per_page).map((food, index) => {
