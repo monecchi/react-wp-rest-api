@@ -12,7 +12,7 @@ const debug =
 // Create a client engine instance for Styletron
 const engine = new Styletron();
 
-// Atomize them
+// Atomize theming
 import {
   ThemeProvider,
   DefaultTheme,

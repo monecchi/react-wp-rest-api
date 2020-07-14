@@ -112,6 +112,7 @@ class NotFound extends Component {
                         m={{ r: "0.5rem" }}
                       />
                     }
+                    textSize="1.2rem"
                     textColor="#ea1d2c"
                     hoverTextColor="white"
                     bg="white"
@@ -119,9 +120,11 @@ class NotFound extends Component {
                     border="1px solid"
                     borderColor="#eaeaea"
                     hoverBorderColor="brand"
+                    h="3rem"
                     rounded="sm"
                     p={{ l: "3rem", r: "2rem" }}
                     m={{ b: "2rem" }}
+                    transition
                   >
                     Mais items do Cardápio
                   </Button>
