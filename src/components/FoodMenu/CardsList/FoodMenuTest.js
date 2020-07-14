@@ -18,14 +18,14 @@ import {
 
 import FoodMenuItems from "./FoodMenuItems";
 
-export class FoodMenu extends Component {
+export class FoodMenuTest extends Component {
   constructor(props) {
     super(props);
     this.state = {
       foods: [],
       loading: false,
       per_page: 25,
-      totalItems: 50,
+      totalItems: 25,
       pagesTotal: null,
       error: "",
       page: 1,
@@ -36,12 +36,14 @@ export class FoodMenu extends Component {
     this.getPosts = this.getPosts.bind(this);
     this.loadMore = this.loadMore.bind(this);
   }
-
-  getPosts() {
+  
+    getPosts() {
     const { page, per_page, apiUrl } = this.state;
     this.setState({ loading: false });
 
-    return axios.get(apiUrl + `?per_page=${per_page}&page=` + page).then(
+    return axios.get(
+      apiUrl + `?per_page=${per_page}&page=`+page
+    ).then(
       response => {
         const { foods, page } = this.state;
         this.setState({
@@ -62,30 +64,32 @@ export class FoodMenu extends Component {
   }
 
   loadMore() {
-    this.getPosts();
+
+    this.loadMore();
     //this.getPosts().then(() => {
-    /**
-     * Check to see if content loaded is
-     * greater than the height of the screen,
-     * if not load next page of data.
-     */
-    //const node = this.scrollBox;
-    //if (window.innerHeight > node.offsetTop + node.offsetHeight) {
-    //this.loadMore();
-    //}
+      /**
+       * Check to see if content loaded is
+       * greater than the height of the screen,
+       * if not load next page of data.
+       */
+      //const node = this.scrollBox;
+      //if (window.innerHeight > node.offsetTop + node.offsetHeight) {
+        //this.loadMore();
+      //}
     //});
   }
 
   //loadMore() {
-  //const { page } = this.state;
-  //this.setState(prev => {
-  //return { page: prev.page + 1 };
-  //return { per_page: prev.per_page + 16 };
-  //});
+    //const { page } = this.state;
+    //this.setState(prev => {
+      //return { page: prev.page + 1 };
+      //return { per_page: prev.per_page + 16 };
+    //});
   //}
 
   componentDidMount() {
-    this.getPosts();
+
+    this.loadMore();
 
     //this.setState({ loading: true });
 
@@ -114,7 +118,7 @@ export class FoodMenu extends Component {
 
     return (
       <>
-        {foods.map((food, index) => {
+        {this.state.foods.slice(0, this.state.per_page).map((food, index) => {
           return <FoodMenuItems key={food.id} food={food} />;
         })}
 
@@ -135,42 +139,6 @@ export class FoodMenu extends Component {
                 Mais items do Cardápio
               </button>
             </Div>
-
-            <Div d="flex" w="100%" p={{ t: "1rem", b: "1rem" }}>
-              <Button
-                onClick={() => this.loadMore() }
-                disabled={this.state.loading}
-                w="100%"
-                prefix={
-                  <Icon
-                    name={this.state.loading ? "Loading" : "Search"}
-                    d={this.state.loading ? "block" : "none"}
-                    pos="absolute"
-                    top="50%"
-                    left="1rem"
-                    transform="translateY(-50%)"
-                    size="18px"
-                    color="white"
-                    m={{ r: "0.5rem" }}
-                  />
-                }
-                textSize="1rem"
-                textColor="#ea1d2c"
-                hoverTextColor="white"
-                bg="white"
-                hoverBg="brand"
-                border="1px solid"
-                borderColor="#eaeaea"
-                hoverBorderColor="brand"
-                h="3rem"
-                rounded="sm"
-                p={{ l: "3rem", r: "2rem" }}
-                m={{ b: "2rem" }}
-                transition
-              >
-                {this.state.loading ? "Carregando" : "Mais items do Cardápio"} 
-              </Button>
-            </Div>
           </>
         )}
       </>
@@ -178,4 +146,4 @@ export class FoodMenu extends Component {
   }
 }
 
-export default FoodMenu;
+export default FoodMenuTest;

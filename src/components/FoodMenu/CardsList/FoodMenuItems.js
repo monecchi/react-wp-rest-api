@@ -245,6 +245,7 @@ export class FoodMenuItems extends Component {
                   bgImg={bgImg}
                   bgSize={img_url ? "cover" : "300%"}
                   bgPos={img_url ? "center" : "28% 35%"}
+                  bg="#eee"
                   w="6rem"
                   h="6rem"
                   m={{ t: "auto", r: "auto", b: "1rem", l: "auto" }}
