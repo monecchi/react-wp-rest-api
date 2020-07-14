@@ -103,6 +103,7 @@ class NotFound extends Component {
                     prefix={
                       <Icon
                         name={isLoading ? "Loading" : "Search"}
+                        d={isLoading ? "block" : "none"}
                         pos="absolute"
                         top="50%"
                         left="1rem"
@@ -112,7 +113,7 @@ class NotFound extends Component {
                         m={{ r: "0.5rem" }}
                       />
                     }
-                    textSize="1.2rem"
+                    textSize="1rem"
                     textColor="#ea1d2c"
                     hoverTextColor="white"
                     bg="white"
@@ -126,7 +127,7 @@ class NotFound extends Component {
                     m={{ b: "2rem" }}
                     transition
                   >
-                    Mais items do Cardápio
+                    {isLoading ? "Carregando" : "Mais items do Cardápio"} 
                   </Button>
                 </Div>
               </div>

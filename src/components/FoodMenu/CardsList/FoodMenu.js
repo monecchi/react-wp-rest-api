@@ -25,8 +25,9 @@ export class FoodMenu extends Component {
       foods: [],
       loading: false,
       per_page: 25,
-      totalItems: 100,
+      totalItems: 25,
       paged: 1,
+      apiUrl: "https://pizzariameurancho.com.br/wp-json/wp/v2/food_menu/",
       showModal: false
     };
 
@@ -35,26 +36,35 @@ export class FoodMenu extends Component {
 
   loadMore() {
     this.setState(prev => {
-      return { per_page: prev.per_page + 16 };
+      return { paged: prev.paged + 1 };
+      //return { per_page: prev.per_page + 16 };
     });
   }
 
   componentDidMount() {
     this.setState({ loading: true });
+
+    const wpTotal = async () => axios
+      .get(`https://pizzariameurancho.com.br/wp-json/wp/v2/food_menu/`)
+      .then(res => {
+        const itemsTotal = res.headers["x-wp-total"];
+        const pagesTotal = res.headers["x-wp-totalpages"];
+         this.setState({ totalItems: Number(itemsTotal) });
+      });
+   
+    //const url = this.state.apiUrl + `?per_page=${this.state.per_page}`;
+    const url = this.state.apiUrl + `?per_page=${this.state.per_page}&page=${this.state.paged}`;
+
     axios
-      .get(
-        `https://pizzariameurancho.com.br/wp-json/wp/v2/food_menu/?per_page=${
-          this.state.totalItems
-        }`
-      )
+      .get(url)
       .then(res => {
         console.log(res),
           this.setState({
             foods: res.data,
-            paged: res.headers["x-wp-totalpages"],
+            totalItems: res.headers["x-wp-total"],
             loading: false
           });
-        //this.setState({ isLoaded: true })}
+
       })
       .catch(err => console.log(err));
   }
@@ -62,13 +72,16 @@ export class FoodMenu extends Component {
   render() {
     const { foods, food, loading, per_page, paged, showModal } = this.state;
     //console.log(this.state);
+
+    const maxPages = paged;
     return (
       <>
         {this.state.foods.slice(0, this.state.per_page).map((food, index) => {
           return <FoodMenuItems key={food.id} food={food} />;
         })}
 
-        {this.state.per_page < this.state.foods.length && (
+        {/* this.state.per_page < this.state.foods.length &&*/}
+        {this.state.paged < maxPages && this.state.foods.length && (
           <>
             <Div d="flex" w="100%">
               <button
