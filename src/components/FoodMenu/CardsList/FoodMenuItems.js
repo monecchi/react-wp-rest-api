@@ -132,6 +132,9 @@ export class FoodMenuItems extends Component {
 
     
     const food = this.props.food;
+
+    const foodId = food.id;
+
     const img_url = food.featured_image_src.thumbnail;
     console.log(img_url);
 
@@ -156,7 +159,7 @@ export class FoodMenuItems extends Component {
 
     if (!loading) {
       return (
-        <Col size={{ xs: 6, md: 4, lg: 3, xl: 3 }} key={food.id}>
+        <Col size={{ xs: 6, md: 4, lg: 3, xl: 3 }} key={foodId}>
           <Div m={{ b: { xs: "1rem", lg: "1.2rem" } }}>
             <Div
               d="flex"
@@ -216,7 +219,7 @@ export class FoodMenuItems extends Component {
 
     return (
       <>
-        <Col size={{ xs: 6, md: 4, lg: 3, xl: 3 }} key={id}>
+        <Col size={{ xs: 6, md: 4, lg: 3, xl: 3 }} key={foodId}>
           <Div
             m={{ b: { xs: "1rem", lg: "1.2rem" } }}
             className="food-card food-card--vertical"
@@ -275,7 +278,7 @@ export class FoodMenuItems extends Component {
                   {ingredients.map((ingredient, i) => [
                     i > 0 && ", ",
                     <Div
-                      key={i}
+                      key={ingredient.slug}
                       tag="span"
                       className={"ingredient " + `${ingredient.slug}`}
                     >
@@ -311,7 +314,7 @@ export class FoodMenuItems extends Component {
                       31,
                       36
                     ].map(num => (
-                      <Text textSize="caption" textColor="success700">
+                      <Text key={num.toString()} textSize="caption" textColor="success700">
                         {num === menu_order ? "Mais pedido" : ""}
                       </Text>
                     ))}
@@ -324,7 +327,7 @@ export class FoodMenuItems extends Component {
                     <Div d="flex" h="20px">
                       {[1, 2, 3, 4, 5].map(num => (
                         <Icon
-                          key={num}
+                          key={num.toString()}
                           name="StarSolid"
                           size="14px"
                           color={num === 5 ? "gray400" : "warning700"}
