@@ -75,6 +75,8 @@ const theme = {
     brandRadius: "20px"
   },
   shadows: {
+    xs: "0 .125rem .25rem rgba(18,38,63,.03)",
+    md: "0 0 1.25rem rgba(18,38,63,.08)",
     sm: "0 0.75rem 1.5rem rgba(18,38,63,.03)",
     lg_hover: "0 1rem 3rem rgba(31,45,61,.125)"
   },

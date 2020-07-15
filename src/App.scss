@@ -466,6 +466,13 @@ button[bg]:hover {
     }
 }
 
+// React Loading Skeleton custom styles
+
+.react-loading-skeleton {
+  background-color: #f5f6fa !important;
+  background-image: linear-gradient(90deg,#f5f6fa,#fdfdff,#f5f6fa)!important; 
+}
+
 //
 // loading skeleton
 // see https://github.com/zalog/placeholder-loading

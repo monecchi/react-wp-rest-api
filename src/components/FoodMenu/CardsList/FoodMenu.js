@@ -126,8 +126,8 @@ export class FoodMenu extends Component {
           <>
             <Div d="flex" w="100%" p={{ t: "1rem", b: "1rem" }}>
               <Button
-                onClick={() => this.loadMore()}
-                disabled={this.state.loading}
+                textSize="1rem"
+                textColor="#ea1d2c"
                 w="100%"
                 prefix={
                   <Icon
@@ -142,19 +142,20 @@ export class FoodMenu extends Component {
                     m={{ r: "0.5rem" }}
                   />
                 }
-                textSize="1rem"
-                textColor="#ea1d2c"
                 hoverTextColor="white"
                 bg="white"
                 hoverBg="brand"
                 border="1px solid"
                 borderColor="#eaeaea"
                 hoverBorderColor="brand"
-                h="3rem"
                 rounded="sm"
+                h="3rem"
                 p={{ l: "3rem", r: "2rem" }}
                 m={{ b: "2rem" }}
-                transition
+                transition="all"
+                onClick={() => this.loadMore()}
+                disabled={this.state.loading}
+                style={{"outline": "0"}}
               >
                 {this.state.loading ? "Carregando" : "Mais items do Cardápio"}
               </Button>

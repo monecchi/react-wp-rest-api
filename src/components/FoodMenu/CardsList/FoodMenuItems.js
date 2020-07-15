@@ -166,14 +166,14 @@ export class FoodMenuItems extends Component {
 
        <Col size={{ xs: 6, md: 4, lg: 3, xl: 3 }} key={food.id}>
           <Div
+            h="auto"
             m={{ b: { xs: "1rem", lg: "1.3rem" } }}
             p="0"
-            h="auto"
             bg="white"
             border="1px solid"
             borderColor="#eff2f7"
-            shadow="sm"
-            hoverShadow="lg_hover"
+            shadow="xs"
+            hoverShadow="md"
             rounded="sm"
             className="food-card food-card--vertical"
           >
@@ -182,7 +182,6 @@ export class FoodMenuItems extends Component {
               flexDir="column"
               h="100%"
               p={{ xs: "0.75rem", md: "0.75rem", lg: "1.5rem", xl: "1.5rem" }}
-              bg="white"
               rounded="sm"
               m={{ b: { xs: "1.3rem", lg: "1.3rem" } }}
               cursor="pointer"

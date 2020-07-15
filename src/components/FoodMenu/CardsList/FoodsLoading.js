@@ -20,18 +20,27 @@ const FoodItemsLoading = (food, ...props) => {
   return (
     <>
       <Col size={{ xs: 6, md: 4, lg: 3, xl: 3 }} key={food.id}>
-        <Div m={{ b: { xs: "1rem", lg: "1.2rem" } }}>
+        <Div
+          h="auto"
+          m={{ b: { xs: "1rem", lg: "1.3rem" } }}
+          p="0"
+          bg="white"
+          border="1px solid"
+          borderColor="#eff2f7"
+          shadow="sm"
+          hoverShadow="lg_hover"
+          rounded="sm"
+        >
           <Div
             d="flex"
             flexDir="column"
             h="100%"
             p={{ xs: "0.75rem", md: "0.75rem", lg: "1.5rem", xl: "1.5rem" }}
-            bg="white"
-            border="1px solid"
-            borderColor="gray200"
-            shadow="sm"
-            hoverShadow="lg_hover"
             rounded="sm"
+            m={{ b: { xs: "1.3rem", lg: "1.3rem" } }}
+            cursor="pointer"
+            className="food-card__wrapper"
+            transition="all"
           >
             <Div flexGrow="1">
               <Div
