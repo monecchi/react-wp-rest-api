@@ -16,7 +16,7 @@ import {
 // React Loading Skeleton
 import Skeleton from "react-loading-skeleton";
 
-const RestaurantCardsSkeleton = ({ storesCount, ...props }) => {
+const RestaurantCardsSkeleton = () => {
   const storesCount = [1, 2, 3];
   const storeId = "";
   return (
