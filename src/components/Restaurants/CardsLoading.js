@@ -22,7 +22,7 @@ const RestaurantCardsSkeleton = ({ storesCount, ...props }) => {
   return (
     <>
       {storesCount.map(
-        (num, index) => (
+        num => (
           (storeId = num),
           (
             <Col size={{ xs: 6, md: 4, lg: 4, xl: 4 }} key={num.toString()}>
