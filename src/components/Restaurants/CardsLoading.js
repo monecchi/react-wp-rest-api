@@ -16,9 +16,8 @@ import {
 // React Loading Skeleton
 import Skeleton from "react-loading-skeleton";
 
-const RestaurantCardsSkeleton = (storesCount, ...props) => {
-  storesCount = props.storeCount;
-  //const storesCount = [1, 2, 3];
+const RestaurantCardsSkeleton = ({ storesCount, ...props ) => {
+  const storesCount = [1, 2, 3];
   const storeId = "";
   return (
     <>
@@ -26,7 +25,7 @@ const RestaurantCardsSkeleton = (storesCount, ...props) => {
         (num, index) => (
           (storeId = num),
           (
-            <Col size={{ xs: 6, md: 4, lg: 4, xl: 4 }} key={num.toString}>
+            <Col size={{ xs: 6, md: 4, lg: 4, xl: 4 }} key={num.toString()}>
               <Div
                 m={{ b: { xs: "1rem", lg: "0" } }}
                 className="store-card store-card--loading"
