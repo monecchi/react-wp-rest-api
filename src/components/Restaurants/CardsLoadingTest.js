@@ -1,32 +1,25 @@
 import React, { Component } from "react";
 
 // Atomize
-import {
-  Div,
-  Container,
-  Row,
-  Col,
-  Tag,
-  Anchor,
-  Button,
-  Text,
-  Icon
-} from "atomize";
+import { Div, Col } from "atomize";
 
 // React Loading Skeleton
 import Skeleton from "react-loading-skeleton";
 
-const RestaurantCardsSkeleton = (storesCount, ...props) => {
-  storesCount = props.storeCount;
-  //const storesCount = [1, 2, 3];
+//
+// Restaurant Card Loading Skeleton
+//
+
+const RestaurantCardsSkeleton = ({storesCount}, ...props) => {
+
   const storeId = "";
   return (
     <>
-      {storesCount.map(
-        (num, index) => (
-          (storeId = num),
-          (
-            <Col size={{ xs: 6, md: 4, lg: 4, xl: 4 }} key={num.toString}>
+      { storesCount &&
+        storesCount.map(num => {
+          //console.log(store);
+          return (
+            <Col size={{ xs: 6, md: 4, lg: 4, xl: 4 }} key={num}>
               <Div
                 m={{ b: { xs: "1rem", lg: "0" } }}
                 className="store-card store-card--loading"
@@ -44,8 +37,8 @@ const RestaurantCardsSkeleton = (storesCount, ...props) => {
                   bg="white"
                   border="1px solid"
                   borderColor="gray200"
-                  shadow="3"
-                  hoverShadow="4"
+                  shadow="md"
+                  hoverShadow="lg_hover"
                   rounded="sm"
                   m={{ b: { xs: "1.3rem", lg: "1.3rem" } }}
                   className="store-card-loading__wrapper"
@@ -101,9 +94,8 @@ const RestaurantCardsSkeleton = (storesCount, ...props) => {
                 </Div>
               </Div>
             </Col>
-          )
-        )
-      )}
+          );
+        })}
     </>
   );
 };

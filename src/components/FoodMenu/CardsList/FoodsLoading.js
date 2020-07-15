@@ -16,7 +16,7 @@ class IsFoodItemsLoading extends Component {
   }
 }
 
-const FoodItemsLoading = (food, ...props) => {
+const FoodItemsLoading = ({food, ...props}) => {
   return (
     <>
       <Col size={{ xs: 6, md: 4, lg: 3, xl: 3 }} key={food.id}>

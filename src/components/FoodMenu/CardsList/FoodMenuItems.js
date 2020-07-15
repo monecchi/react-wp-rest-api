@@ -37,6 +37,7 @@ let ImgPlaceholder =
 //
 const FoodItemModal = ({ isOpen, onClose }) => {
   return (
+    <>
     <Modal isOpen={isOpen} onClose={onClose} rounded="md" maxW="48rem">
       <Icon
         name="Cross"
@@ -64,6 +65,7 @@ const FoodItemModal = ({ isOpen, onClose }) => {
         </Button>
       </Div>
     </Modal>
+    </>
   );
 };
 
@@ -162,7 +164,8 @@ export class FoodMenuItems extends Component {
 
     return (
       <>
-        {!loading ? (
+      {/* Not loading */}
+      {!loading ? (
 
        <Col size={{ xs: 6, md: 4, lg: 3, xl: 3 }} key={food.id}>
           <Div
@@ -324,8 +327,9 @@ export class FoodMenuItems extends Component {
         </Col>
         
         ) : (
-          <FoodItemsLoading food={food} />
-  
+          <>
+            <FoodItemsLoading food={food} />
+          </>
         )}
       </>
     );

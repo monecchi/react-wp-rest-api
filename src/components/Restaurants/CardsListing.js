@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, useEffect, useState } from "react";
 import useSWR from "swr";
 import { getStores, updategetStores } from "./fetchStoreData";
 
@@ -36,20 +36,37 @@ import RestaurantsEmptyList from "./EmptyList";
  * @usage (component) <RestaurantCardsListing />
  */
 
-const RestaurantCardsListing = props => {
-  const allStores = [];
+const RestaurantCardsListing = (props) => {
 
   const { stores, isLoading, isError, isValidating, mutate } = getStores();
 
+  const { allStores, storesCount } = [];
+
+  const [componentState, setComponentState] = useState({
+     storesCount: []
+  });
+
   if (stores) {
     allStores = stores;
+    storesCount = Object.keys(allStores); // retorna um array enumerado
+    console.log(storesCount);
     //console.log(allStores);
   }
+
+    useEffect(() => {
+
+      setComponentState({ storesCount: storesCount });
+
+    }, [storesCount, setComponentState]);
 
   // stores = []; // force store empty to check if isError works
 
   if (isError) return <div>Erro ao carregar Restaurante</div>;
-  if (isLoading) return <RestaurantCardsSkeleton />;
+
+  if (isLoading) {
+    return <RestaurantCardsSkeleton storesCount={componentState.storesCount} />;
+  }
+
   //if (!stores || stores.length === 0) return <RestaurantCardsSkeleton />;
   if (!stores || stores.length === 0) return <RestaurantsEmptyList />;
 
@@ -57,20 +74,21 @@ const RestaurantCardsListing = props => {
 
   return (
     <>
-    
-    <Div d="flex" flexDir="row" w="100%">
-      <Div d="flex" justify="flex-start">
-        {isValidating && (
-          <Icon name="Loading3" size="20px" color="brand" />
-        )}
+      <Div d="flex" flexDir="row" w="100%">
+        <Div d="flex" justify="flex-start">
+          {isValidating && <Icon name="Loading3" size="20px" color="brand" />}
+        </Div>
+        <Div d="flex" justify="flex-end">
+          <Button
+            onClick={() => updategetStores()}
+            disabled={isValidating}
+            cursor="pointer"
+          >
+            Atualizar
+          </Button>
+        </Div>
       </Div>
-      <Div d="flex" justify="flex-end">
-        <Button onClick={() => updategetStores()} disabled={isValidating} cursor="pointer">
-          Atualizar
-        </Button>
-      </Div>
-    </Div>
-    
+
       {allStores.map(store => {
         let city = store.slug;
         let aberto = store[city].is_open;
@@ -90,12 +108,16 @@ const RestaurantCardsListing = props => {
                 p={{ xs: "0.75rem", md: "0.75rem", lg: "1.5rem", xl: "1.5rem" }}
                 bg="white"
                 border="1px solid"
-                borderColor={ aberto == 1 ? "gray200" : "#e1e1e1" }
-                shadow={ aberto == 1 ? "sm" : "0" }
-                hoverShadow={ aberto == 1 ? "lg_hover" : "0" }
+                borderColor={aberto == 1 ? "gray200" : "#e1e1e1"}
+                shadow={aberto == 1 ? "md" : "0"}
+                hoverShadow={aberto == 1 ? "lg_hover" : "0"}
                 rounded="sm"
                 m={{ b: { xs: "1.3rem", lg: "1.3rem" } }}
-                className={ aberto == 1 ? "store-card__wrapper" : "store-card__wrapper store-card--closed" }
+                className={
+                  aberto == 1
+                    ? "store-card__wrapper"
+                    : "store-card__wrapper store-card--closed"
+                }
                 transition="all"
               >
                 <Text
