@@ -23,6 +23,8 @@ import {
 //
 import Skeleton from "react-loading-skeleton";
 
+import FoodItemsLoading from "./FoodsLoading";
+
 // Normalize html
 import renderHTML from "../../../data/htmlRender.js";
 
@@ -105,17 +107,13 @@ export class FoodMenuItems extends Component {
     });
   }
 
-  getFoodPic() {
-
-  }
-
   render() {
-
     const food = this.props.food;
 
     const {
       id,
       title,
+      name,
       excerpt,
       slug,
       menu_order,
@@ -143,84 +141,40 @@ export class FoodMenuItems extends Component {
     const foodImg = imgUrl ? imgUrl : ImgPlaceholder; //imgUrl ? imgUrl : ImgPlaceholder;
 
     const foodPic = (foodImg, attr) => {
-      if(loading) {
-        attr = bgImg={foodImg}
+      if (loading) {
+        attr = bgImg = { foodImg };
       } else {
-        attr = bg="#eee"
+        attr = bg = "#eee";
       }
       return attr;
-    }
+    };
+
+    const getFoodPic = () => {
+      const food = this.props.food;
+      const foodpic = foodImg;
+      return foodpic;
+    };
 
     // hide items if slug is "vazio" or "empty"
     if ((slug && slug == "vazio") || (slug && slug == "empty")) {
       return <> </>;
     }
 
-    if (loading) {
-      return (
-        <Col size={{ xs: 6, md: 4, lg: 3, xl: 3 }} key={food.id}>
-          <Div m={{ b: { xs: "1rem", lg: "1.2rem" } }}>
-            <Div
-              d="flex"
-              flexDir="column"
-              h="100%"
-              p={{ xs: "0.75rem", md: "0.75rem", lg: "1.5rem", xl: "1.5rem" }}
-              bg="white"
-              border="1px solid"
-              borderColor="gray200"
-              shadow="3"
-              hoverShadow="4"
-              rounded="sm"
-            >
-              <Div flexGrow="1">
-                <Div
-                  d="flex"
-                  justify="center"
-                  align="center"
-                  m={{ t: "auto", r: "auto", b: "1rem", l: "auto" }}
-                >
-                  <Skeleton
-                    circle={true}
-                    height={"6rem"}
-                    width={"6rem"}
-                    duration={3}
-                    style={{
-                      marginTop: "auto",
-                      marginRight: "auto",
-                      marginBottom: "1rem",
-                      marginleft: "auto"
-                    }}
-                  />
-                </Div>
-                <Skeleton
-                  style={{ height: "1.2rem", marginBottom: "0.5rem" }}
-                />
-                <Skeleton
-                  style={{ height: "1.8rem", marginBottom: "1.5rem" }}
-                />
-                <Skeleton
-                  style={{ height: "0.9rem", marginBottom: "0.5rem" }}
-                  count={2}
-                />
-                <Skeleton
-                  style={{
-                    width: "40%",
-                    marginTop: "1rem",
-                    marginBottom: "0.75rem"
-                  }}
-                />
-              </Div>
-            </Div>
-          </Div>
-        </Col>
-      );
-    }
-
     return (
       <>
-        <Col size={{ xs: 6, md: 4, lg: 3, xl: 3 }} key={food.id}>
+        {!loading ? (
+
+       <Col size={{ xs: 6, md: 4, lg: 3, xl: 3 }} key={food.id}>
           <Div
-            m={{ b: { xs: "1rem", lg: "1.2rem" } }}
+            m={{ b: { xs: "1rem", lg: "1.3rem" } }}
+            p="0"
+            h="auto"
+            bg="white"
+            border="1px solid"
+            borderColor="#eff2f7"
+            shadow="sm"
+            hoverShadow="lg_hover"
+            rounded="sm"
             className="food-card food-card--vertical"
           >
             <Div
@@ -229,22 +183,20 @@ export class FoodMenuItems extends Component {
               h="100%"
               p={{ xs: "0.75rem", md: "0.75rem", lg: "1.5rem", xl: "1.5rem" }}
               bg="white"
-              border="1px solid"
-              borderColor="gray200"
-              shadow="3"
-              hoverShadow="4"
               rounded="sm"
               m={{ b: { xs: "1.3rem", lg: "1.3rem" } }}
+              cursor="pointer"
               className="food-card__wrapper"
+              transition="all"
             >
               <Div flexGrow="1">
                 <Div
                   d="flex"
                   className={"food-pic"}
-                  bgImg={foodImg}
+                  bgImg={getFoodPic()}
                   bgSize={imgUrl ? "cover" : "300%"}
                   bgPos={imgUrl ? "center" : "28% 35%"}
-                  {...(loading ? {bg: "#eee"} : {} )}
+                  {...(!foodImg ? { bg="#eee" } : {})}
                   w="6rem"
                   h="6rem"
                   m={{ t: "auto", r: "auto", b: "1rem", l: "auto" }}
@@ -261,7 +213,7 @@ export class FoodMenuItems extends Component {
                   m={{ b: "0.5rem" }}
                 >
                   {/*{title.rendered}*/}
-                  {renderHTML(title.rendered)}
+                  {name ? renderHTML(name) : renderHTML(title.rendered)}
                 </Div>
 
                 {/*<Div
@@ -371,11 +323,11 @@ export class FoodMenuItems extends Component {
             </Div>
           </Div>
         </Col>
-
-        <FoodItemModal
-          isOpen={showModal}
-          onClose={() => this.setState({ showModal: false })}
-        />
+        
+        ) : (
+          <FoodItemsLoading food={food} />
+  
+        )}
       </>
     );
   }

@@ -7,7 +7,7 @@ import { Provider as StyletronProvider, DebugEngine } from "styletron-react";
 import { Client as Styletron } from "styletron-engine-atomic";
 
 const debug =
-  process.env.NODE_ENV === "production" ? void 0 : new DebugEngine();
+  process.env.NODE_ENV === "development" ? void 0 : new DebugEngine();
 
 // Create a client engine instance for Styletron
 const engine = new Styletron();
@@ -73,7 +73,14 @@ const theme = {
   },
   rounded: {
     brandRadius: "20px"
-  }
+  },
+  shadows: {
+    sm: "0 0.75rem 1.5rem rgba(18,38,63,.03)",
+    lg_hover: "0 1rem 3rem rgba(31,45,61,.125)"
+  },
+  transition: {
+    all: "background-color .1s ease, color .1s ease, box-shadow .1s ease, transform .1s ease"
+  },
 };
 
 // App

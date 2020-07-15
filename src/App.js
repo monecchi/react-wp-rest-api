@@ -120,7 +120,7 @@ class App extends Component {
 
             <Div tag="section" id="cardapio-home" className="container-pb">
               <Container>
-                <Text textSize="paragraph" textColor="medium">
+                <Text textSize="paragraph" textColor="medium" p={{ t: "3rem" }}>
                   do Cardápio
                 </Text>
                 <Text

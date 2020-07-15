@@ -23,6 +23,7 @@ export class FoodMenu extends Component {
     super(props);
     this.state = {
       foods: [],
+      ifood_menu: [],
       loading: false,
       per_page: 25 - 1,
       totalItems: 50,
@@ -41,15 +42,38 @@ export class FoodMenu extends Component {
     const { page, per_page, apiUrl } = this.state;
     this.setState({ loading: true });
 
-    return axios.get(apiUrl + `?per_page=${per_page}&page=` + page).then(
+    let merchantID = "442ea04f-571b-4af6-8666-ea62bb63c1d8";
+
+    const getRestaurantMenu = axios.get(
+      apiUrl + `?per_page=${per_page}&page=` + page
+    );
+
+    // restaurant ifood items
+    const getiFoodDishes = axios.get(
+      `https://wsloja.ifood.com.br/ifood-ws-v3/restaurants/${merchantID}/menu`,
+      {
+        headers: {
+          "Accept-Language": "pt-BR,pt;q=0.8,en-US;q=0.5,en;q=0.3",
+          "secret_key": "9ef4fb4f-7a1d-4e0d-a9b1-9b82873297d8",
+          "access_key": "69f181d5-0046-4221-b7b2-deef62bd60d5"
+        }
+      }
+    );
+
+    return Promise.all([getRestaurantMenu, getiFoodDishes]).then(
       response => {
-        const { foods, page } = this.state;
+        console.log(response);
+        const { foods, ifood_menu, page } = this.state;
         this.setState({
-          foods: foods.concat(response.data),
+          foods: foods.concat(response[0].data),
           loading: false,
-          pagesTotal: Number(response.headers["x-wp-totalpages"]),
-          page: page + 1
+          pagesTotal: Number(response[0].headers["x-wp-totalpages"]),
+          page: page + 1,
+          ifood_menu: response[1].data.data.menu,
+          loading: false
         });
+
+        this.foods.concat(this.state.ifood_menu);
       },
       error => {
         this.setState({
@@ -59,6 +83,8 @@ export class FoodMenu extends Component {
         });
       }
     );
+
+
   }
 
   loadMore() {
@@ -90,19 +116,22 @@ export class FoodMenu extends Component {
     //this.setState({ loading: true });
 
     const wpTotal = async () => {
-      return axios.get(`https://pizzariameurancho.com.br/wp-json/wp/v2/food_menu/`);
-    }
-      
+      return axios.get(
+        `https://pizzariameurancho.com.br/wp-json/wp/v2/food_menu/`
+      );
+    };
+
     wpTotal().then(res => {
-        const itemsTotal = res.headers["x-wp-total"];
-        const pagesTotal = res.headers["x-wp-totalpages"];
-        this.setState({ totalItems: Number(itemsTotal) });
+      const itemsTotal = res.headers["x-wp-total"];
+      const pagesTotal = res.headers["x-wp-totalpages"];
+      this.setState({ totalItems: Number(itemsTotal) });
     });
   }
 
   render() {
     const {
       foods,
+      ifood_menu,
       food,
       loading,
       per_page,
@@ -117,9 +146,10 @@ export class FoodMenu extends Component {
       <>
         {/*{foods.map((food, index) => {*/}
         {/*{foods.slice(0, this.state.totalItems).map((food, index) => {*/}
-        {foods && foods.map((food, index) => {
-          return <FoodMenuItems key={food.id} food={food} />;
-        })}
+        {foods &&
+          foods.map((food, index) => {
+            return <FoodMenuItems key={food.id} food={food} />;
+          })}
 
         {/* this.state.per_page < this.state.foods.length &&*/}
         {page <= pagesTotal && foods.length && (
