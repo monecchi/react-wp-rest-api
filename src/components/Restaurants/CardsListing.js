@@ -42,29 +42,30 @@ const RestaurantCardsListing = (props) => {
 
   const { allStores, storesCount } = [];
 
-  const [componentState, setComponentState] = useState({
-     storesCount: []
-  });
+  //const [componentState, setComponentState] = useState({
+     //storesCount: []
+  //});
 
   if (stores) {
     allStores = stores;
-    storesCount = Object.keys(allStores); // retorna um array enumerado
-    console.log(storesCount);
+    //storesCount = Object.keys(allStores); // retorna um array enumerado
+    //console.log(storesCount);
     //console.log(allStores);
   }
 
-    useEffect(() => {
+  //useEffect(() => {
 
-      setComponentState({ storesCount: storesCount });
+   // setComponentState({ storesCount: storesCount });
 
-    }, [storesCount, setComponentState]);
+  //}, [storesCount, setComponentState]);
 
   // stores = []; // force store empty to check if isError works
 
   if (isError) return <div>Erro ao carregar Restaurante</div>;
 
   if (isLoading) {
-    return <RestaurantCardsSkeleton storesCount={componentState.storesCount} />;
+    return <RestaurantCardsSkeleton />;
+    //return <RestaurantCardsSkeleton storesCount={componentState.storesCount} />;
   }
 
   //if (!stores || stores.length === 0) return <RestaurantCardsSkeleton />;
