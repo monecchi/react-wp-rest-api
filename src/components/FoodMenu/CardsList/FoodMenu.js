@@ -24,7 +24,7 @@ export class FoodMenu extends Component {
     this.state = {
       foods: [],
       loading: false,
-      per_page: 25 - 1,
+      per_page: 25,
       totalItems: 50,
       pagesTotal: null,
       error: "",
@@ -43,6 +43,7 @@ export class FoodMenu extends Component {
 
     return axios.get(apiUrl + `?per_page=${per_page}&page=` + page).then(
       response => {
+        console.log(response);
         const { foods, page } = this.state;
         this.setState({
           foods: foods.concat(response.data),

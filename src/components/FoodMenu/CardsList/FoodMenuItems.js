@@ -215,7 +215,7 @@ export class FoodMenuItems extends Component {
                   m={{ b: "0.5rem" }}
                 >
                   {/*{title.rendered}*/}
-                  {name ? renderHTML(name) : renderHTML(title.rendered)}
+                  <Text tag="h2" textSize="title" textAlign="center" className="food-item__title" style={{ lineHeight: "1.8rem"}}>{name ? renderHTML(name) : renderHTML(title.rendered)}</Text>
                 </Div>
 
                 {/*<Div
