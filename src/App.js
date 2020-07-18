@@ -92,7 +92,7 @@ class App extends Component {
               p={{ t: "2rem" }}
               className="container-pb"
             >
-              <Container>
+              <Container id="restaurants-container">
                 <Text textSize="paragraph" textColor="medium">
                   Unidades Meu Rancho Pizzaria
                 </Text>
@@ -119,7 +119,7 @@ class App extends Component {
             </Div>
 
             <Div tag="section" id="cardapio-home" className="container-pb">
-              <Container>
+              <Container id="restaurants-dishes">
                 <Text textSize="paragraph" textColor="medium" p={{ t: "3rem" }}>
                   do Cardápio
                 </Text>
@@ -144,7 +144,7 @@ class App extends Component {
               p={{ t: "2rem" }}
               className="container-pb"
             >
-              <Container>
+              <Container id="restaurants-container">
                 <Text textSize="paragraph" textColor="medium">
                   Abertos há pouco
                 </Text>

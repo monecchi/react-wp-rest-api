@@ -36,14 +36,13 @@ import RestaurantsEmptyList from "./EmptyList";
  * @usage (component) <RestaurantCardsListing />
  */
 
-const RestaurantCardsListing = (props) => {
-
+const RestaurantCardsListing = props => {
   const { stores, isLoading, isError, isValidating, mutate } = getStores();
 
   const { allStores, storesCount } = [];
 
   //const [componentState, setComponentState] = useState({
-     //storesCount: []
+  //storesCount: []
   //});
 
   if (stores) {
@@ -55,7 +54,7 @@ const RestaurantCardsListing = (props) => {
 
   //useEffect(() => {
 
-   // setComponentState({ storesCount: storesCount });
+  // setComponentState({ storesCount: storesCount });
 
   //}, [storesCount, setComponentState]);
 
@@ -75,20 +74,26 @@ const RestaurantCardsListing = (props) => {
 
   return (
     <>
-      <Div d="flex" flexDir="row" w="100%">
-        <Div d="flex" justify="flex-start">
-          {isValidating && <Icon name="Loading3" size="20px" color="brand" />}
+        <Div d="flex" flexDir="row" w="100%">
+          <Div p={{ b: "1rem", t: "0" }} className="section-header">
+
+              <Div tag="span">
+                {isValidating && (
+                  <Icon name="Loading3" size="20px" color="brand" />
+                )}
+              </Div>
+        
+            <a
+              onClick={(e) => { e.preventDefault(), updategetStores()} }
+              disabled={isValidating}
+              className="section-header__see-more"
+              aria-label="Ver mais"
+              href="#"
+            >
+              atualizar
+            </a>
+          </Div>
         </Div>
-        <Div d="flex" justify="flex-end">
-          <Button
-            onClick={() => updategetStores()}
-            disabled={isValidating}
-            cursor="pointer"
-          >
-            Atualizar
-          </Button>
-        </Div>
-      </Div>
 
       {allStores.map(store => {
         let city = store.slug;
