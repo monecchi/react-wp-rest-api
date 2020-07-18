@@ -162,13 +162,20 @@
 // Section headers
 //
 
+.action-header {
+  display: flex;
+}
+.push {
+    margin-left: auto;
+}
+
 .section-header {
     display: grid;
     grid-template: 1fr / 1fr 60px;
     align-items: center;
     width: 100%;
     justify-content: center;
-    padding: 20px 20px 10px;
+    padding: 0 1.5rem 1rem 1.5rem;
 }
 
 @media only screen and (min-width: 768px) {

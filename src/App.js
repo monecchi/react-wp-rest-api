@@ -71,9 +71,8 @@ class App extends Component {
   render() {
     return (
       <>
-
         <NavbarIfood />
-
+        
         <main className="main-layout">
           <div className="home-page">
             <section className={"bg-light py-4"}>
@@ -101,16 +100,16 @@ class App extends Component {
                   textSize="subheader"
                   textWeight="500"
                   fontFamily="secondary"
-                  p={{ b: "1.25rem" }}
+                  p={{ b: "1rem" }}
                 >
                   Nossas Lojas
                 </Text>
                 <Div
-                  p={{ b: "1.25rem" }}
+                  p={{ b: "1rem" }}
                   border={{ b: "1px solid" }}
                   borderColor="gray300"
                 >
-                  <Row className="stores-row">
+                  
                     {/*<RestaurantsList />*/}
                     <RestaurantCardsListing />
                   </Row>

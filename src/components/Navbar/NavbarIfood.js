@@ -2,6 +2,12 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import logo from "../../components/UI/logo/meurancho-logo-red.min.svg";
 
+// Atomize
+import {
+  Div,
+  Container,
+  Row
+} from "atomize";
 
 class NavbarIfood extends Component {
   constructor() {

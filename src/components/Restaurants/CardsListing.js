@@ -74,26 +74,25 @@ const RestaurantCardsListing = props => {
 
   return (
     <>
-        <Div d="flex" flexDir="row" w="100%">
-          <Div p={{ b: "1rem", t: "0" }} className="section-header">
-
-              <Div tag="span">
-                {isValidating && (
-                  <Icon name="Loading3" size="20px" color="brand" />
-                )}
-              </Div>
-        
-            <a
-              onClick={(e) => { e.preventDefault(), updategetStores()} }
-              disabled={isValidating}
-              className="section-header__see-more"
-              aria-label="Ver mais"
-              href="#"
-            >
-              atualizar
-            </a>
-          </Div>
+      <Div d="flex" flexDir="row" w="100%" p={{ b: "1rem", t: "0" }}>
+        <Div tag="span" m="0" p="0">
+          {isValidating && <Icon name="Loading3" size="2rem" color="brand" />}
         </Div>
+
+        <Div className="push">
+          <a
+            onClick={e => {
+              e.preventDefault(), updategetStores();
+            }}
+            disabled={isValidating}
+            className="section-header__see-more"
+            aria-label="Ver mais"
+            href="#"
+          >
+            atualizar
+          </a>
+        </Div>
+      </Div>
 
       {allStores.map(store => {
         let city = store.slug;
@@ -104,27 +103,31 @@ const RestaurantCardsListing = props => {
         return (
           <Col size={{ xs: 6, md: 4, lg: 4, xl: 4 }} key={store.id}>
             <Div
-              m={{ b: { xs: "1rem", lg: "0" } }}
-              className="store-card store-card--vertical"
+              h="auto"
+              m={{ b: { xs: "1rem", lg: "1.3rem" } }}
+              p="0"
+              bg="white"
+              border="1px solid"
+              borderColor={aberto == 1 ? "gray200" : "#e1e1e1"}
+              shadow={aberto == 1 ? "md" : "0"}
+              hoverShadow={aberto == 1 ? "lg_hover" : "0"}
+              rounded="sm"
+              className={
+                aberto == 1
+                  ? "store-card__wrapper"
+                  : "store-card__wrapper store-card--closed"
+              }
             >
               <Div
                 d="flex"
                 flexDir="column"
                 h="100%"
                 p={{ xs: "0.75rem", md: "0.75rem", lg: "1.5rem", xl: "1.5rem" }}
-                bg="white"
-                border="1px solid"
-                borderColor={aberto == 1 ? "gray200" : "#e1e1e1"}
-                shadow={aberto == 1 ? "md" : "0"}
-                hoverShadow={aberto == 1 ? "lg_hover" : "0"}
                 rounded="sm"
-                m={{ b: { xs: "1.3rem", lg: "1.3rem" } }}
-                className={
-                  aberto == 1
-                    ? "store-card__wrapper"
-                    : "store-card__wrapper store-card--closed"
-                }
+                m="0"
+                cursor="pointer"
                 transition="all"
+                className="store-card__content"
               >
                 <Text
                   tag="h5"
