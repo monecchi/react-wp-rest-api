@@ -2,7 +2,7 @@
 // Atomize theme configuraion
 //
 
-export const theme = {
+const theme = {
   fontFamily: {
     primary:
       '"SF Pro Text",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji"',
@@ -67,3 +67,5 @@ export const theme = {
     all: "background-color .1s ease, color .1s ease, box-shadow .1s ease, transform .1s ease"
   },
 };
+
+export default theme;
