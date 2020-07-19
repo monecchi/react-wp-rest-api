@@ -461,9 +461,14 @@ svg {
 
 // ifood button resets
 .btn:hover {
+  outline: 0;
   &.btn--default {
     color: #fff !important;
   }
+}
+
+button:disabled:hover, .btn:disabled:hover {
+  border: none;
 }
 
 a:hover {

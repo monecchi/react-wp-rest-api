@@ -11046,9 +11046,7 @@
     -webkit-transform: scale(0);
     transform: scale(0);
     border-radius: 0;
-    transition: border-radius 100ms ease 100ms, -webkit-transform 200ms ease;
     transition: transform 200ms ease, border-radius 100ms ease 100ms;
-    transition: transform 200ms ease, border-radius 100ms ease 100ms, -webkit-transform 200ms ease;
 }
 
 .complete-address__favorite.btn::before {
@@ -12355,9 +12353,7 @@
     -webkit-transform: scale(0);
     transform: scale(0);
     border-radius: 0;
-    transition: border-radius 100ms ease 900ms, -webkit-transform 1000ms ease;
     transition: transform 1000ms ease, border-radius 100ms ease 900ms;
-    transition: transform 1000ms ease, border-radius 100ms ease 900ms, -webkit-transform 1000ms ease;
 }
 
 .address-search-list .btn-address--simple::before {

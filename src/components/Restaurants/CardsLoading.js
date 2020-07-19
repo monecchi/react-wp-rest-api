@@ -26,28 +26,28 @@ const RestaurantCardsSkeleton = () => {
           (storeId = num),
           (
             <Col size={{ xs: 6, md: 4, lg: 4, xl: 4 }} key={num}>
-              <Div
-                m={{ b: { xs: "1rem", lg: "0" } }}
-                className="store-card store-card--loading"
-              >
+            <Div
+              h="auto"
+              m={{ b: { xs: "1rem", lg: "1.3rem" } }}
+              p="0"
+              bg="white"
+              border="1px solid"
+              borderColor="gray200"
+              shadow="xs"
+              hoverShadow="md"
+              rounded="sm"
+              className="store-card__wrapper"
+            >
                 <Div
                   d="flex"
                   flexDir="column"
                   h="100%"
-                  p={{
-                    xs: "0.75rem",
-                    md: "0.75rem",
-                    lg: "1.5rem",
-                    xl: "1.5rem"
-                  }}
-                  bg="white"
-                  border="1px solid"
-                  borderColor="gray200"
-                  shadow="3"
-                  hoverShadow="4"
+                  p={{ xs: "0.75rem", md: "0.75rem", lg: "1.5rem", xl: "1.5rem" }}
                   rounded="sm"
-                  m={{ b: { xs: "1.3rem", lg: "1.3rem" } }}
-                  className="store-card-loading__wrapper"
+                  m="0"
+                  cursor="pointer"
+                  transition="all"
+                  className="store-card__content"
                 >
                   <Div flexGrow="1">
                     <Div

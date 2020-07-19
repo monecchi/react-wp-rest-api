@@ -109,10 +109,10 @@ class App extends Component {
                   border={{ b: "1px solid" }}
                   borderColor="gray300"
                 >
-                  
+                <Row>
                     {/*<RestaurantsList />*/}
                     <RestaurantCardsListing />
-                  </Row>
+                </Row>
                 </Div>
               </Container>
             </Div>
