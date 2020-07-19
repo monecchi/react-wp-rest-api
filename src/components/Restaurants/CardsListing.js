@@ -110,7 +110,7 @@ const RestaurantCardsListing = props => {
               border="1px solid"
               borderColor={aberto == 1 ? "gray200" : "#e1e1e1"}
               shadow={aberto == 1 ? "xs" : "0"}
-              hoverShadow={aberto == 1 ? "lg_hover" : "0"}
+              hoverShadow={aberto == 1 ? "m" : "0"}
               rounded="sm"
               className={
                 aberto == 1

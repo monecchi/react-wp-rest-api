@@ -34,7 +34,7 @@ const RestaurantCardsSkeleton = () => {
               border="1px solid"
               borderColor="gray200"
               shadow="xs"
-              hoverShadow="md"
+              hoverShadow="none"
               rounded="sm"
               className="store-card__wrapper"
             >
@@ -71,7 +71,7 @@ const RestaurantCardsSkeleton = () => {
                     />
                     <Skeleton
                       style={{
-                        width: "120px",
+                        width: "100px",
                         height: "1.8rem",
                         marginBottom: "0.5rem",
                         borderRadius: "1000rem"
