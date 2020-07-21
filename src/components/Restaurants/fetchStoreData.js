@@ -27,7 +27,7 @@ export const getStore = slug => {
     slug = "betim";
   }
 
-  const { data, error } = useSWR(url + `/stores/${slug}`, fetcher);
+  const { data, error } = useSWR(url+`/stores/${slug}`+'/', fetcher);
 
   return {
     store: data,

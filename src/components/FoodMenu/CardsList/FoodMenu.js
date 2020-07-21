@@ -104,7 +104,6 @@ export class FoodMenu extends Component {
   render() {
     const {
       foods,
-      food,
       loading,
       per_page,
       pagesTotal,

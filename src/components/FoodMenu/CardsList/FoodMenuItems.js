@@ -35,7 +35,7 @@ let ImgPlaceholder =
 //
 // Modal
 //
-const FoodItemModal = ({ isOpen, onClose }) => {
+export const FoodItemModal = ({ fisOpen, onClose }) => {
   return (
     <>
     <Modal isOpen={isOpen} onClose={onClose} rounded="md" maxW="48rem">
@@ -48,8 +48,11 @@ const FoodItemModal = ({ isOpen, onClose }) => {
         onClick={onClose}
         cursor="pointer"
       />
+      <Text tag="h2">
+        {food.title.rendered}
+      </Text>
       <Text p={{ l: "0.5rem", t: "0.25rem" }} m={{ b: "2rem" }}>
-        This modal has maxW of 48rem
+        {food.excerpt.rendered}
       </Text>
       <Div d="flex" justify="flex-end">
         <Button
@@ -75,11 +78,11 @@ const FoodItemModal = ({ isOpen, onClose }) => {
 export class FoodMenuItems extends Component {
   constructor(props) {
     super(props);
-    const food = this.props.food;
     this.state = {
       ingredients: [],
       loading: true,
-      showModal: false
+      showModal: false,
+      selectedSize: "32rem"
     };
   }
 
@@ -123,7 +126,7 @@ export class FoodMenuItems extends Component {
       dish_prices
     } = this.props.food;
 
-    const { ingredients, loading, showModal } = this.state;
+    const { ingredients, loading, showModal, selectedSize } = this.state;
 
     const imgUrl = food.featured_image_src.thumbnail;
     console.log(imgUrl);
@@ -312,7 +315,13 @@ export class FoodMenuItems extends Component {
                 </Div>
               </Div>
 
-              <Link to={""} className="food-item__see-more">
+              <a className="food-item__see-more"
+                  onClick={() =>
+                    this.setState({
+                      showModal: true,
+                      selectedSize: "48rem"
+                  })
+            }>
                 <Text
                   textColor="brand"
                   hoverTextColor="brandHover"
@@ -321,7 +330,26 @@ export class FoodMenuItems extends Component {
                 >
                   Ver Mais
                 </Text>
-              </Link>
+              </a>
+
+                        <Button
+            bg="info700"
+            hoverBg="info600"
+            m={{ r: "0.5rem" }}
+            onClick={() =>
+              this.setState({ showModal: true, selectedSize: "48rem" })
+            }
+          >
+            Open 48rem width modal
+          </Button>
+
+          <FoodItemModal
+            food={food}
+            maxW={selectedSize}
+            isOpen={showModal}
+            onClose={() => this.setState({ showModal: false })}
+          />
+
             </Div>
           </Div>
         </Col>
