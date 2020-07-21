@@ -35,7 +35,7 @@ let ImgPlaceholder =
 //
 // Modal
 //
-export const FoodItemModal = ({ fisOpen, onClose }) => {
+export const FoodItemModal = ({ food, isOpen, onClose }) => {
   return (
     <>
     <Modal isOpen={isOpen} onClose={onClose} rounded="md" maxW="48rem">

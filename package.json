@@ -17,6 +17,7 @@
     "react-flickity-component": "3.5.0",
     "react-is": ">= 16.8.0",
     "react-loading-skeleton": "2.1.1",
+    "react-modal": "^3.11.2",
     "react-redux": "^7.2.0",
     "react-router-dom": "5.2.0",
     "react-transition-group": ">= 4",
