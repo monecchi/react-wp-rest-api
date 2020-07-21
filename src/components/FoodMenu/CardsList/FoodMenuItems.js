@@ -26,7 +26,7 @@ import Skeleton from "react-loading-skeleton";
 import FoodItemsLoading from "./FoodsLoading";
 
 // Normalize html
-import renderHTML from "../../../data/htmlRender.js";
+import renderHTML from "../../util/htmlRender.js";
 
 // Food item image placeholder
 let ImgPlaceholder =
@@ -38,7 +38,7 @@ let ImgPlaceholder =
 export const FoodItemModal = ({ food, isOpen, onClose }) => {
   return (
     <>
-    <Modal isOpen={isOpen} onClose={onClose} rounded="md" maxW="48rem">
+    <Modal isOpen={isOpen} onClose={onClose} align="center" rounded="md" maxW="48rem">
       <Icon
         name="Cross"
         pos="absolute"
@@ -52,7 +52,7 @@ export const FoodItemModal = ({ food, isOpen, onClose }) => {
         {food.title.rendered}
       </Text>
       <Text p={{ l: "0.5rem", t: "0.25rem" }} m={{ b: "2rem" }}>
-        {food.excerpt.rendered}
+        {food.content.rendered}
       </Text>
       <Div d="flex" justify="flex-end">
         <Button
@@ -332,16 +332,16 @@ export class FoodMenuItems extends Component {
                 </Text>
               </a>
 
-                        <Button
-            bg="info700"
-            hoverBg="info600"
-            m={{ r: "0.5rem" }}
-            onClick={() =>
-              this.setState({ showModal: true, selectedSize: "48rem" })
-            }
-          >
-            Open 48rem width modal
-          </Button>
+              <Button
+                bg="info700"
+                hoverBg="info600"
+                m={{ r: "0.5rem" }}
+                onClick={() =>
+                  this.setState({ showModal: true, selectedSize: "48rem" })
+                }
+              >
+                Open 48rem width modal
+              </Button>
 
           <FoodItemModal
             food={food}

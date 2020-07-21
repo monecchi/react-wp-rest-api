@@ -25,6 +25,7 @@ import {
 // App
 import App from "./App";
 import Sobre from "./pages/Sobre";
+import FoodSingle from "./pages/FoodMenuSingle";
 import NotFound from "./pages/NotFound";
 //import registerServiceWorker from './registerServiceWorker';
 
@@ -38,6 +39,7 @@ ReactDOM.render(
   <BrowserRouter>
       <Switch>
         <Route path="/" exact={true} component={App} />
+        <Route path="/cardapio/:id" component={FoodSingle} />
         <Route path="/sobre" component={Sobre} />
         <Route path="*" component={NotFound} />
       </Switch>
