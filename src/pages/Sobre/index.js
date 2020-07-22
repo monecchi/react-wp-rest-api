@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import useSWR from "swr";
 import { Link } from "react-router-dom";
 
 // Atomize
@@ -21,8 +22,32 @@ import {
 // Theme Custom Components
 import NavbarIfood from "../../components/Navbar/NavbarIfood"; // iFood like navbar
 
-class Sobre extends Component {
-  render() {
+// Define page slug 
+
+const slug = "meu-rancho-pizzaria";
+
+const rest_url = "https://pizzariameurancho.com.br/wp-json/wp/v2/pages";
+
+const fetcher = (...args) => fetch(...args).then(res => res.json()); // default fetcher with fetch
+
+const useGetPage = (slug) => {
+  const { data, error, isValidating, mutate } = useSWR(rest_url + `?slug=${slug}`, fetcher,{ revalidateOnFocus: true });
+
+  return {
+    page: data,
+    isLoading: !error && !data,
+    isError: error,
+    isValidating
+  };
+};
+
+
+const Sobre = ({slug}) => {
+
+  const { page, isLoading, isError, isValidating, mutate } = useGetPage(slug);
+  if (isLoading) return (<p>Loading...</p>);
+  if (isError) return "<p>Failed to retrieve page data...</p>"
+
     return (
       <>
         <NavbarIfood />
@@ -128,7 +153,6 @@ class Sobre extends Component {
         </Div>
       </>
     );
-  }
 }
 
 export default Sobre;
