@@ -585,7 +585,10 @@ button[bg]:hover {
 //
 
 // Importing the Bootstrap SCSS
-@import "~bootstrap/scss/bootstrap";
+//@import "~bootstrap/scss/bootstrap";
+
+// Bootstrap Utilities
+@import "./assets/scss/vendor/bootstrap/Bootstrap";
 
 // iFood styles
 @import "./assets/scss/vendor/ifood/Ifood";
