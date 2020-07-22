@@ -65,19 +65,18 @@ export const useGetRestaurants = () => {
     stores: data,
     isLoading: !error && !data,
     isError: error,
-    isValidating,
-    mutate
+    isValidating
   };
 };
 
 /**
  * Update get Stores
  */
-export const updategetStores = () => {
-  const url = apiURL;
+export const updategetStores = (key) => {
+  let mutate_key = apiURL + key;
 
-  document.cookie = 'token='+url+'/stores/'+'; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;'
+  document.cookie = 'token='+mutate_key+'; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;'
 
-  mutate(url+'/stores/');
+  mutate(mutate_key);
 
 }

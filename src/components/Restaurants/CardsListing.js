@@ -1,5 +1,4 @@
 import React, { Component, useEffect, useState } from "react";
-import useSWR from "swr";
 import { getStores, updategetStores } from "./fetchStoreData";
 
 // Atomize
@@ -70,8 +69,6 @@ const RestaurantCardsListing = props => {
   //if (!stores || stores.length === 0) return <RestaurantCardsSkeleton />;
   if (!stores || stores.length === 0) return <RestaurantsEmptyList />;
 
-  const { url } = "https://pizzariameurancho.com.br/wp-json/mrp/v1";
-
   return (
     <>
       <Div d="flex" flexDir="row" w="100%" p={{ b: "1rem", t: "0" }}>
@@ -82,7 +79,7 @@ const RestaurantCardsListing = props => {
         <Div className="push">
           <a
             onClick={e => {
-              e.preventDefault(), updategetStores();
+              e.preventDefault(), updategetStores('/stores/');
             }}
             disabled={isValidating}
             className="section-header__see-more"
@@ -110,7 +107,7 @@ const RestaurantCardsListing = props => {
               border="1px solid"
               borderColor={aberto == 1 ? "gray200" : "#e1e1e1"}
               shadow={aberto == 1 ? "xs" : "0"}
-              hoverShadow={aberto == 1 ? "m" : "0"}
+              hoverShadow={aberto == 1 ? "md" : "0"}
               rounded="sm"
               className={
                 aberto == 1
