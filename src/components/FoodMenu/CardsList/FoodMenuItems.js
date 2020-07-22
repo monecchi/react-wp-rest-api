@@ -129,7 +129,7 @@ export class FoodMenuItems extends Component {
     const { ingredients, loading, showModal, selectedSize } = this.state;
 
     const imgUrl = food.featured_image_src.thumbnail;
-    console.log(imgUrl);
+    //console.log(imgUrl);
 
     const precos = [];
     precos = dish_prices || [];
@@ -195,13 +195,14 @@ export class FoodMenuItems extends Component {
               transition="all"
             >
               <Div flexGrow="1">
+                {/*bg={...(!foodImg ? { bg="#eee" } : {})}*/}
                 <Div
                   d="flex"
                   className={"food-pic"}
                   bgImg={getFoodPic()}
                   bgSize={imgUrl ? "cover" : "300%"}
                   bgPos={imgUrl ? "center" : "28% 35%"}
-                  {...(!foodImg ? { bg="#eee" } : {})}
+                  bg={ !foodImg ? "#eee" : ""}
                   w="6rem"
                   h="6rem"
                   m={{ t: "auto", r: "auto", b: "1rem", l: "auto" }}
