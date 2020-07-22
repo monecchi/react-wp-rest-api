@@ -1,4 +1,5 @@
 import React, { Component, useEffect, useState } from "react";
+import useSWR from "swr";
 import { getStores, useGetRestaurants, updategetStores } from "./fetchStoreData";
 
 // Atomize
@@ -66,6 +67,8 @@ const RestaurantCardsListing = props => {
     //return <RestaurantCardsSkeleton storesCount={componentState.storesCount} />;
   }
 
+  let apiURL = "https://pizzariameurancho.com.br/wp-json/mrp/v1";
+
   //if (!stores || stores.length === 0) return <RestaurantCardsSkeleton />;
   if (!stores || stores.length === 0) return <RestaurantsEmptyList />;
 
@@ -79,7 +82,7 @@ const RestaurantCardsListing = props => {
         <Div className="push">
           <a
             onClick={e => {
-              e.preventDefault(), updategetStores('/stores/');
+              e.preventDefault(), updategetStores(`/stores/`);
             }}
             disabled={isValidating}
             className="section-header__see-more"
