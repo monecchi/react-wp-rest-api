@@ -72,7 +72,7 @@ export const useGetRestaurants = () => {
 /**
  * Update get Stores
  */
-export const updategetStores = (key) => {
+export const updategetStores = ({ key, data }) => {
   let mutate_key = apiURL + key;
 
   document.cookie = 'token='+mutate_key+'; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;'

@@ -1,5 +1,5 @@
 import React, { Component, useEffect, useState } from "react";
-import { getStores, updategetStores } from "./fetchStoreData";
+import { getStores, useGetRestaurants, updategetStores } from "./fetchStoreData";
 
 // Atomize
 import {
@@ -36,7 +36,7 @@ import RestaurantsEmptyList from "./EmptyList";
  */
 
 const RestaurantCardsListing = props => {
-  const { stores, isLoading, isError, isValidating, mutate } = getStores();
+  const { stores, isLoading, isError, isValidating, mutate } = useGetRestaurants(); //getStores();
 
   const { allStores, storesCount } = [];
 
