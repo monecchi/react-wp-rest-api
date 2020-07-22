@@ -25,6 +25,7 @@ class Sobre extends Component {
   render() {
     return (
       <>
+        <NavbarIfood />
         <Div tag="section" p={{ t: { xs: "6rem", md: "10rem" } }}>
           <Container d="flex" flexDir="column" align="center">
             <Text
