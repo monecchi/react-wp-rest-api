@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import useSWR from "swr";
 import { Link } from "react-router-dom";
+import renderHTML from "../../components/util/htmlRender";
 
 // Atomize
 import {
@@ -22,15 +23,24 @@ import {
 // Theme Custom Components
 import NavbarIfood from "../../components/Navbar/NavbarIfood"; // iFood like navbar
 
-// Define page slug 
-
-const slug = "meu-rancho-pizzaria";
-
+//
+// Retrieve page data
+//
 const rest_url = "https://pizzariameurancho.com.br/wp-json/wp/v2/pages";
 
 const fetcher = (...args) => fetch(...args).then(res => res.json()); // default fetcher with fetch
 
+let slug = "";
+
+//
+// useGetPage function hook (swr)
+//
 const useGetPage = (slug) => {
+
+  if (!this.slug) {
+    slug = "meu-rancho-pizzaria";
+  }
+
   const { data, error, isValidating, mutate } = useSWR(rest_url + `?slug=${slug}`, fetcher,{ revalidateOnFocus: true });
 
   return {
@@ -41,18 +51,66 @@ const useGetPage = (slug) => {
   };
 };
 
+//
+// Hero Image Component
+//
+export const HeroImageStatic = ({data, ...options}) => {
 
+  if(!this.options) {
+    this.options = {
+      borderRadius: "md"
+    }
+  }
+
+  if(data)
+  return (
+    <>
+    <Row d="flex" w="100%" p={{ b: "1.5rem" }}>
+        <Div
+          bgImg={data[0].featured_image_src.original}
+          bgSize="cover"
+          bgPos="center"
+          w="100%"
+          h="640px"
+          rounded={this.options.borderRadius}
+        >
+        <Text
+          tag="h2"
+          color="white"
+          p={{ b: "0.75rem" }}
+        >
+        { data[0].title.rendered }
+        </Text>
+        </Div>
+    </Row>
+    </>
+  );
+}
+
+////
+// Page About Component
+////
 const Sobre = ({slug}) => {
 
-  const { page, isLoading, isError, isValidating, mutate } = useGetPage(slug);
+  if (!this.slug) {
+    slug = "meu-rancho-pizzaria";
+  }
+
+  const { page, isLoading, isError } = useGetPage(slug);
+
   if (isLoading) return (<p>Loading...</p>);
   if (isError) return "<p>Failed to retrieve page data...</p>"
+
+  if(page) {
+    const { title, slug, status } = page[0];
+  }
 
     return (
       <>
         <NavbarIfood />
         <Div tag="section" p={{ t: { xs: "3rem", md: "4rem" } }}>
           <Container d="flex" flexDir="column" align="center">
+          <HeroImageStatic data={page} />
             <Text
               tag="h1"
               textWeight="500"
@@ -61,7 +119,7 @@ const Sobre = ({slug}) => {
               fontFamily="secondary"
               m={{ b: "1rem" }}
             >
-              Meu Rancho Pizzaria
+              { title.rendered }
             </Text>
             <Text
               tag="h2"
@@ -149,6 +207,19 @@ const Sobre = ({slug}) => {
                 pos="relative"
               />
             </Div>
+          </Container>
+          <Container>
+            <Text
+              tag="div"
+              textWeight="400"
+              textSize="body"
+              textAlign="center"
+              fontFamily="secondary"
+              textColor="medium"
+              m={{ b: "2.5rem" }}
+            >
+              {renderHTML(page[0].content.rendered)}
+            </Text>
           </Container>
         </Div>
       </>
