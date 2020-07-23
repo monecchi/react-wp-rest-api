@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, Suspense } from "react"; 
 import { useGetStore } from "./fetchStoreData";
 
 // Atomize
@@ -32,9 +32,13 @@ const RestaurantCard = ({ slug }) => {
 
   if (isError)
     return (
-      <div className="restaurants-list__container">
+      <div className="restaurants-list__error">
         <div className="restaurants-list__error-wrapper">
-          Erro ao carregar Restaurante
+          <div className="restaurant-card__wrapper">
+            <div className="restaurant-card">
+              Erro ao carregar Restaurante
+            </div>
+          </div>
         </div>
       </div>
     );
@@ -45,6 +49,7 @@ const RestaurantCard = ({ slug }) => {
     let aberto = restaurant[city].is_open;
     //console.log(restaurant);
   }
+  
   return (
     <a
       className={

@@ -21,7 +21,7 @@ const fetcher = (...args) => fetch(...args).then(res => res.json()); // default 
  */
 export const useGetStore = (slug) => {
 
-  const { data, error, isValidating, mutate } = useSWR(apiURL+`${slug}`+'/', fetcher);
+  const { data, error, isValidating, mutate } = useSWR(apiURL+`${slug}`+'/', fetcher); // { suspense: true }
 
   return {
     store: data,
@@ -30,6 +30,19 @@ export const useGetStore = (slug) => {
     isValidating
   };
 };
+
+export const useGetStoreSuspense = (slug) => {
+
+  const { data, error, isValidating, mutate } = useSWR(apiURL+`${slug}`+'/', fetcher, { suspense: true }); 
+
+  return {
+    store: data,
+    isLoading: !error && !data,
+    isError: error,
+    isValidating
+  };
+};
+
 
 /**
  * Get All Restaurant Data

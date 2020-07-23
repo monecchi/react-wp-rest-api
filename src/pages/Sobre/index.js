@@ -38,11 +38,7 @@ const fetcher = (...args) => fetch(...args).then(res => res.json()); // default 
 // useGetPage function hook (swr)
 //
 const useGetPage = slug => {
-  const { data, error, isValidating, mutate } = useSWR(
-    rest_url + `?slug=${slug}`,
-    fetcher,
-    { revalidateOnFocus: true }
-  );
+  const { data, error, isValidating, mutate } = useSWR(rest_url + `?slug=${slug}`, fetcher, { revalidateOnFocus: true });
 
   return {
     page: data,
