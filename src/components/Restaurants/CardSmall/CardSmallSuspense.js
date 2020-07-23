@@ -18,21 +18,47 @@ import {
 import "./CardSmall/styles.scss";
 
 //
-// Single Restaurant Details Card
+// Error Boundary
 //
 
-const RestaurantCard = ({ slug }) => {
-  const { store, isLoading, isError, isValidating } = useGetStore(slug);
-  if (isLoading)
-    return (
-      <div>
-        <p>Loading...</p>
-      </div>
-    );
+// Error boundaries currently have to be classes.
+export class ErrorBoundary extends React.Component {
+  state = { hasError: false, error: null };
+  static getDerivedStateFromError(error) {
+    return {
+      hasError: true,
+      error
+    };
+  }
+  render() {
+    if (this.state.hasError) {
+      return this.props.fallback;
+    }
+    return this.props.children;
+  }
+}
 
-  if (!isError)
-    return (
-      <div className="restaurants-list__error">
+
+//
+// Single Restaurant Details Card
+// SWR Suspense mode
+// @ see: https://swr.vercel.app/docs/suspense
+//
+
+
+const RestaurantCard = ({ slug }) => {
+
+  const { store } = useGetStoreSuspense(slug); // with suspense: true data (store) is never undefined
+
+  if (store) {
+    const restaurant = store[0];
+    let city = restaurant.slug || "betim";
+    let aberto = restaurant[city].is_open;
+    //console.log(restaurant);
+  }
+  return (
+    <ErrorBoundary fallback={
+    <div className="restaurants-list__error">
         <div className="restaurants-list__error-wrapper">
           <div className="restaurant-card__wrapper">
             <div className="restaurant-card">
@@ -41,16 +67,8 @@ const RestaurantCard = ({ slug }) => {
           </div>
         </div>
       </div>
-    );
-
-  if (store) {
-    const restaurant = store[0];
-    let city = restaurant.slug || "betim";
-    let aberto = restaurant[city].is_open;
-    //console.log(restaurant);
-  }
-
-  return (
+    }>
+    <Suspense fallback={<h1>Loading...</h1>}>
     <a
       className={
         aberto == 1
@@ -113,7 +131,7 @@ const RestaurantCard = ({ slug }) => {
         )}
       </div>
     </a>
+  </Suspense>
+  </ErrorBoundary>
   );
 };
-
-export default RestaurantCard;
