@@ -6,7 +6,7 @@ import axios from "axios";
 // Restaurants data fetching ( axios + swr )
 //
 
-let apiURL = "https://pizzariameurancho.com.br/wp-json/mrp/v1";
+let apiURL = "https://pizzariameurancho.com.br/wp-json/mrp/v1/stores/";
 
 const fetcher = (...args) => fetch(...args).then(res => res.json()); // default fetcher with fetch
 //const fetcher = url => fetch(url).then(res => res.json()); // with fetch()
@@ -19,19 +19,15 @@ const fetcher = (...args) => fetch(...args).then(res => res.json()); // default 
  * @usage getStore("betim")
  * @return (object) store
  */
-export const getStore = slug => {
-  const url = apiURL;
+export const useGetStore = (slug) => {
 
-  if (!this.slug) {
-    slug = "betim";
-  }
-
-  const { data, error } = useSWR(url+`/stores/${slug}`+'/', fetcher);
+  const { data, error, isValidating, mutate } = useSWR(apiURL+`${slug}`+'/', fetcher);
 
   return {
     store: data,
     isLoading: !error && !data,
-    isError: error
+    isError: error,
+    isValidating
   };
 };
 
@@ -59,7 +55,7 @@ export const getStores = () => {
 export const useGetRestaurants = () => {
   const url = apiURL;
 
-  const { data, error, isValidating, mutate } = useSWR(url+'/stores/', fetcher, { revalidateOnFocus: true});
+  const { data, error, isValidating, mutate } = useSWR(apiURL, fetcher, { revalidateOnFocus: true});
 
   return {
     stores: data,
@@ -72,11 +68,10 @@ export const useGetRestaurants = () => {
 /**
  * Update get Stores
  */
-export const updategetStores = (key) => {
-  let mutate_key = apiURL + key;
+export const updategetStores = (mutate_key) => {
 
   document.cookie = 'token='+mutate_key+'; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;'
 
-  mutate(mutate_key);
+  return mutate(mutate_key);
 
 }

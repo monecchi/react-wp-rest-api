@@ -321,8 +321,8 @@ export class FoodMenuItems extends Component {
                     this.setState({
                       showModal: true,
                       selectedSize: "48rem"
-                  })
-            }>
+                  })}
+                >
                 <Text
                   textColor="brand"
                   hoverTextColor="brandHover"
@@ -333,23 +333,12 @@ export class FoodMenuItems extends Component {
                 </Text>
               </a>
 
-              <Button
-                bg="info700"
-                hoverBg="info600"
-                m={{ r: "0.5rem" }}
-                onClick={() =>
-                  this.setState({ showModal: true, selectedSize: "48rem" })
-                }
-              >
-                Open 48rem width modal
-              </Button>
-
-          <FoodItemModal
-            food={food}
-            maxW={selectedSize}
-            isOpen={showModal}
-            onClose={() => this.setState({ showModal: false })}
-          />
+              <FoodItemModal
+                food={food}
+                maxW={selectedSize}
+                isOpen={showModal}
+                onClose={() => this.setState({ showModal: false })}
+              />
 
             </Div>
           </Div>

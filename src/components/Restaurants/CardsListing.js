@@ -82,7 +82,7 @@ const RestaurantCardsListing = props => {
         <Div className="push">
           <a
             onClick={e => {
-              e.preventDefault(), updategetStores(`/stores/`);
+              e.preventDefault(), updategetStores(apiURL+"/stores/");
             }}
             disabled={isValidating}
             className="section-header__see-more"

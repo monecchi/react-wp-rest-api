@@ -116,7 +116,7 @@ export class FoodMenu extends Component {
     return (
       <>
         {/*{foods.map((food, index) => {*/}
-        {/*{foods.slice(0, this.state.totalItems).map((food, index) => {*/}
+        {/*{foods.slice(0, this.state.totalItems).map((food, index) => {  })}*/}
         {foods && foods.map((food, index) => {
           return <FoodMenuItems key={food.id} food={food} />;
         })}

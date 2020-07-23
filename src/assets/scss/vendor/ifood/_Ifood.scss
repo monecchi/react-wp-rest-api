@@ -971,6 +971,46 @@
     }
 }
 
+
+@media only screen and (min-width: 768px) {
+    .merchants-carousel {
+        width: 100%;
+        max-width: 1366px !important;
+        margin: auto;
+        padding: 0 30px;
+        margin-bottom: 64px;
+    }
+}
+
+.merchants-carousel .carousel__controller--left {
+    left: -18px;
+    top: 40px;
+}
+
+.merchants-carousel .carousel__controller--right {
+    right: -18px;
+    top: 40px;
+}
+
+.merchants-carousel .marmita-scrollbox {
+    height: auto;
+}
+
+.merchants-carousel .marmita-scrollbox__wrapper {
+    padding: 10px 0 16px;
+}
+
+.merchants-carousel__restaurant-card {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+}
+
+@media only screen and (min-width: 768px) {
+    .merchants-carousel__restaurant-card {
+        grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+    }
+}
+
 .marmita-collapse--open {
     .marmita-collapse__title>.icon-marmita {
         transform: rotateX(180deg);
