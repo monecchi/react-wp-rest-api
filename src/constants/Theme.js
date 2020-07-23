@@ -33,7 +33,8 @@ const theme = {
   },
   textSize: {
     size: {
-      body: "1rem",
+      body: "14px",
+      paragraph: "16px",
       display3: "48px"
     },
     height: {

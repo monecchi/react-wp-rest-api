@@ -38,7 +38,11 @@ const fetcher = (...args) => fetch(...args).then(res => res.json()); // default 
 // useGetPage function hook (swr)
 //
 const useGetPage = slug => {
-  const { data, error, isValidating, mutate } = useSWR(rest_url + `?slug=${slug}`, fetcher, { revalidateOnFocus: true });
+  const { data, error, isValidating, mutate } = useSWR(
+    rest_url + `?slug=${slug}`,
+    fetcher,
+    { revalidateOnFocus: true }
+  );
 
   return {
     page: data,
@@ -51,24 +55,27 @@ const useGetPage = slug => {
 // Hero Image Component
 //
 
-export const HeroImage = ({ slug },  ...options) => {
-
+export const HeroImage = ({ slug }, ...options) => {
   const { page, isLoading, isError } = useGetPage(slug);
 
   return (
-    <HeroImageStatic page={page} isLoading={isLoading} isError={isError} options={options} />
+    <HeroImageStatic
+      page={page}
+      isLoading={isLoading}
+      isError={isError}
+      options={options}
+    />
   );
 };
 
 export const HeroImageStatic = ({ page, isLoading, isError }, ...options) => {
-
   if (!this.options) {
     this.options = {
       borderRadius: "md",
       height: "340px"
     };
   }
-  
+
   if (isLoading)
     return (
       <Row d="flex" w="100%">
@@ -159,17 +166,17 @@ const Sobre = ({ slug }) => {
   if (isError) return "<p>Failed to retrieve page data...</p>";
 
   if (page) {
-    const regex = /(<([^>@{}]+)>)/ig;
+    const regex = /(<([^>@{}]+)>)/gi;
     const { title, slug, status, content } = page[0];
   }
-  const page_content = content.rendered.replace(regex, '');
+  const page_content = content.rendered.replace(regex, "");
 
   return (
     <>
       <NavbarIfood />
       <Div tag="section" p={{ t: { xs: "3rem", md: "4rem" } }}>
         <Container d="flex" flexDir="column" align="center">
-          <HeroImage slug={slug} /> 
+          <HeroImage slug={slug} />
           <Text
             tag="h1"
             textWeight="500"
@@ -190,8 +197,8 @@ const Sobre = ({ slug }) => {
             textColor="medium"
             m={{ b: "2.5rem" }}
           >
-            Desde 1996, apaixonados por esse delicioso alimento, aprimoramos
-            receitas para servir pizzas e massas com o gostinho especial que
+            Desde 1996, apaixonados por preparar alimentos, aprimoramos
+            receitas para criar pizzas e massas com o gostinho especial que
             toda cozinha mineira tem.
           </Text>
 
@@ -249,50 +256,77 @@ const Sobre = ({ slug }) => {
         p={{ t: { xs: "3rem", md: "6rem" } }}
         overflow="hidden"
       >
-        <Container>
-          <Div
-            d="flex"
-            justify="center"
-            p={{ b: "10.5rem" }}
-            border={{ b: "1px solid" }}
-            borderColor="gray300"
-          >
-            <Div
-              minW={{ xs: "100%", md: "44rem", lg: "59rem" }}
-              d="flex"
-              align="center"
-              flexDir="column"
-              h={{ xs: "auto", md: "21rem", lg: "20rem" }}
-              pos="relative"
-            />
-          <div className="restaurants-list__container">
-            <div className="carousel__container">
-              <div className="carousel__wrapper">
-                <div className="carousel__slide">
-                  <RestaurantCard slug="betim" />
-                  <RestaurantCard slug="contagem" />
-                  <RestaurantCard slug="raul" />
-                </div>
-              </div>
-            </div>
-          </div>
-          </Div>
-        </Container>
+
         <Container>
 
-          <Text textColor="medium" textSize="body" m={{ b: "1rem" }}>
-            The default theme font size present in atomize are <Tag>tiny</Tag>,{" "}
+        <div className="restaurants-list__container">
+          <RestaurantCard slug="betim" />
+          <RestaurantCard slug="contagem" />
+          <RestaurantCard slug="raul" />
+        </div>
+
+          {/* renderHTML( content.rendered ) */}
+          <Text
+            tag="h4"
+            textSize="caption"
+            textAlign="center"
+            m={{ b: "1rem" }}
+          >
+            Um pouco sobre a gente
+          </Text>
+          <Text tag="h5" textAlign="center" m={{ b: "1rem" }}>
+            Meu Rancho Pizzaria ® - Desde 1996.
           </Text>
           <Text
-            tag="div"
-            textWeight="400"
+            tag="p"
             textSize="paragraph"
             textAlign="center"
-            fontFamily="secondary"
-            textColor="medium"
-            m={{ b: "2.5rem" }}
+            m={{ b: "1rem" }}
           >
-            { renderHTML( content.rendered ) }
+            Acreditamos que tudo aquilo que comemos deveria ser preparado por
+            quem realmente se importa com os alimentos, com o frescor e
+            qualidade dos ingredientes certos, e principalmente que se importe
+            em oferecer uma excelente experiência de alimentação.
+          </Text>
+          <Text
+            tag="p"
+            textSize="paragraph"
+            textAlign="center"
+            m={{ b: "1rem" }}
+          >
+            Na Pizzaria Meu Rancho somos apaixonados pelo que fazemos, e claro,
+            por pizza! Para nós, entregar essa experiência é algo natural, pois
+            faz parte da nossa essência criar receitas e sabores que respeitam o
+            paladar dos nossos clientes. No preparo das nossas receitas,
+            colocamos toda essa paixão e comprometimento totais com a qualidade
+            de produto e serviço prestado, em favor de uma experiência única e
+            memorável para nossos clientes.
+          </Text>
+          <Text
+            tag="p"
+            textSize="paragraph"
+            textAlign="center"
+            m={{ b: "1rem" }}
+          >
+            A marca Meu Rancho® reflete a origem interiorana de seus
+            proprietários, irmãos e sócios naturais da cidade de Bicuíba – MG e
+            homenageia sua infância, equanto cresciam num simpático rancho da
+            família. Em 1996, impulsionados pela paixão por esse delicioso
+            alimento que conhecemos por pizza, os irmãos decidiram aprimorar
+            receitas para criar seus próprios sabores e comercializar pizzas e
+            massas com o gostinho especial que toda cozinha mineira tem. A marca
+            da Pizzaria traz em sua composição o ícone de uma ferradura, que
+            simboliza boa sorte e representa o esforço e o trabalho, pois é um
+            objeto usado por animais dedicados à atividades árduas, como o
+            cavalo e o boi, comumente designados à tarefas às vezes primordiais
+            para a sobrevivência de pequenas cidades do interior. É por essa
+            razão, que o símbolo da ferradura também está relacionado à
+            prosperidade e fertilidade. Atualmente, a Pizzaria Meu Rancho é o
+            resultado de muito esforço e trabalho em equipe de pessoas que
+            trazem consigo valores como a honestidade, cordialidade,
+            comprometimento, e excelência naquilo que fazem. Estes valores são
+            colocados em prática todos os dias para oferecer aos nossos clientes
+            produtos e atendimento de altíssima qualidade e bom gosto.
           </Text>
         </Container>
       </Div>

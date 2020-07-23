@@ -324,6 +324,7 @@ export class FoodMenuItems extends Component {
                   })}
                 >
                 <Text
+                  tag="span"
                   textColor="brand"
                   hoverTextColor="brandHover"
                   textWeight="500"

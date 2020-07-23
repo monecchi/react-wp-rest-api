@@ -38,7 +38,7 @@ hr {
     overflow: visible;
 }
 
-p {
+p.spaced {
     margin-top: 0;
     margin-bottom: 1rem !important;
     line-height: 1.8 !important;
@@ -705,5 +705,9 @@ button[bg]:hover {
 
 .food-card .food-card__wrapper {
     animation: 300ms MovingFadeIn;
+}
+
+.food-card__wrapper {
+  padding-bottom: 0 !important;
 }
 
