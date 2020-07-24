@@ -17,6 +17,7 @@ import {
   Icon
 } from "atomize";
 
+
 // Restaurants (stores) WP REST API data
 //import RestaurantStores from "./Restaurant";
 

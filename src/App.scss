@@ -113,13 +113,15 @@ pre, code {
 // Custom Containers
 //
 
+.home-page {
+    margin-top: 80px;
+}
+
 @media only screen and (min-width: 960px) {
   .home-page {
     margin: 0;
   }
 }
-
-
 
 .stores-card__container {
     padding: 0 20px;
