@@ -17,13 +17,6 @@ import {
   Icon
 } from "atomize";
 
-
-
-// Bootstrap
-//import Container from "react-bootstrap/Container";
-//import Row from "react-bootstrap/Row";
-//import Col from "react-bootstrap/Col";
-
 // Restaurants (stores) WP REST API data
 //import RestaurantStores from "./Restaurant";
 
