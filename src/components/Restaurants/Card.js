@@ -30,7 +30,7 @@ const RestaurantCard = ({ slug }) => {
       </div>
     );
 
-  if (!isError)
+  if (isError)
     return (
       <div className="restaurants-list__error">
         <div className="restaurants-list__error-wrapper">
