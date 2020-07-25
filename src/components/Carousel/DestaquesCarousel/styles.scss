@@ -2,6 +2,17 @@
 // Flickity Carousel Custom Styles
 //
 
+.carousel {
+  width: 100%;
+  a {
+    text-decoration: none;
+    &:hover, &:focus {
+      text-decoration: none;
+      outline: 0;
+    }
+  }
+}
+
 .carousel__slide {
   width: 100%;
 }
