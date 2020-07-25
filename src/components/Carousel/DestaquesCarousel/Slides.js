@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 // Import Flickity
 import Flickity from "react-flickity-component";
 
-// Flickity css
+// Flickity default css
 import "flickity/css/flickity.css";
 // Component custom scss
 import "./styles.scss";

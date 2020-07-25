@@ -1,5 +1,5 @@
 //
-// Flickity Carousel Custom Styles mixed with styles from iFood
+// Flickity Carousel Custom Styles
 //
 
 .carousel__slide {
@@ -21,47 +21,6 @@
         height: 140px;
         margin-right: 10px;
     }
-    .highlights-carousel__figure {
-        height: 140px;
-    }  
-}
-
-//
-// Fade in carousel image when loaded
-//
-.highlights-carousel__image {
-  transition: opacity 0.4s;
-  opacity: 0;
-  min-width: 140px;
-}
-
-.highlights-carousel__image.flickity-lazyloaded,
-.highlights-carousel__image.flickity-lazyerror {
-  opacity: 1;
-}
-
-.highlights-carousel__figure {
-    height: 140px;
-    margin: 0;
-    overflow: hidden;
-    position: relative;
-    border-radius: 4px;
-}
-
-@media only screen and (min-width: 768px) {
-  .highlights-carousel__figure {
-      height: 200px;
-  }
-}
-
-.highlights-carousel__figure img {
-    transform: none;
-}
-
-@media only screen and (min-width: 960px) {
-  .highlights-carousel__figure img {
-      transform: none;
-  }
 }
 
 //
@@ -106,4 +65,164 @@
     top: 35%;
     width: 30%;
     height: 30%;
+}
+
+// End flickity custom
+
+//
+// Mix ifood classes with flickity to Fade in carousel image when loaded
+//
+.highlights-carousel__image {
+  transition: opacity 0.4s;
+  opacity: 0;
+  min-width: 140px;
+}
+
+.highlights-carousel__image.flickity-lazyloaded,
+.highlights-carousel__image.flickity-lazyerror {
+  opacity: 1;
+}
+
+.highlights-carousel__figure {
+    height: 140px;
+    margin: 0;
+    overflow: hidden;
+    position: relative;
+    border-radius: 4px;
+}
+
+
+.highlights-carousel__figure img {
+    transform: none;
+}
+
+@media only screen and (min-width: 960px) {
+  .highlights-carousel__figure img {
+      transform: none;
+  }
+}
+
+
+//
+// Carousel styles borrowed from ifood.com.br
+//
+
+@media only screen and (max-width: 767px) {
+    .highlights-carousel__figure {
+        height: 140px;
+    }  
+}
+
+@media only screen and (min-width: 768px) {
+    .highlights-carousel {
+        padding: 0 1.2rem;
+    }
+    .highlights-carousel__figure {
+        height: 200px;
+    }
+}
+
+@media only screen and (min-width: 960px) {
+    .highlights-carousel {
+        width: 100%;
+        max-width: 1366px !important;
+        margin: auto;
+        padding: 0 1.5rem;
+    }
+}
+
+.highlights-carousel__container {
+    display: flex;
+    flex-direction: column;
+}
+
+.highlights-carousel a {
+    text-decoration: none;
+}
+
+.highlights-carousel__figure {
+    height: 140px;
+    margin: 0;
+    overflow: hidden;
+    position: relative;
+    border-radius: 4px;
+}
+
+@media only screen and (min-width: 768px) {
+    .highlights-carousel__figure {
+        height: 200px;
+    }
+}
+
+.highlights-carousel__figure img {
+    left: 0;
+    top: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    -o-object-fit: cover;
+    object-fit: cover;
+    -webkit-transform: none;
+    transform: none;
+}
+
+@media only screen and (min-width: 960px) {
+    .highlights-carousel__figure img {
+        left: 0;
+        top: 0;
+        display: block;
+        width: 100%;
+        height: 100%;
+        -o-object-fit: cover;
+        object-fit: cover;
+        -webkit-transform: none;
+        transform: none;
+    }
+}
+
+.highlights-carousel__wrapper {
+    width: 100%;
+    padding: 0;
+    margin-bottom: 1rem;
+}
+
+@media only screen and (min-width: 960px) {
+    .highlights-carousel__wrapper {
+        margin-bottom: 1.5rem;
+    }
+}
+
+//
+// Not being used in favor of flickity buttons
+//
+.highlights-carousel .carousel__controller--left {
+    transform: translateY(-32px) rotateZ(90deg);
+}
+
+@media only screen and (min-width: 768px) {
+    .highlights-carousel .carousel__controller--left {
+        transform: translateY(-18px) rotateZ(90deg);
+    }
+}
+
+@media only screen and (min-width: 960px) {
+    .highlights-carousel .carousel__controller--left {
+        left: -25px;
+    }
+}
+
+.highlights-carousel .carousel__controller--right {
+    transform: translateY(-32px) rotateZ(-90deg);
+}
+
+@media only screen and (min-width: 768px) {
+    .highlights-carousel .carousel__controller--right {
+        transform: translateY(-18px) rotateZ(-90deg);
+    }
+}
+
+@media only screen and (min-width: 960px) {
+    .highlights-carousel .carousel__controller--right {
+        right: -25px;
+    }
 }
