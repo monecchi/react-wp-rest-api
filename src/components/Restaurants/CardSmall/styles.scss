@@ -92,6 +92,7 @@
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: 12px;
+    margin: 0 0 60px;
 }
 
 @media only screen and (min-width: 560px) {
