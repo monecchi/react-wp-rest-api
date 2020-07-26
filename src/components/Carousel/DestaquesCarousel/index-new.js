@@ -49,7 +49,7 @@ if (matchMedia("screen and (min-width: 1200px)").matches) {
 //
 // Featured Carousel Component
 //
-const DestaquesCarousel = () => {
+const DestaquesCarouselNew = () => {
 
   //const CarouselsLoading = WithLoadingCarousel();
 
@@ -103,4 +103,4 @@ const DestaquesCarousel = () => {
   );
 };
 
-export default DestaquesCarousel;
+export default DestaquesCarouselNew;

@@ -44,7 +44,7 @@ if (matchMedia("screen and (min-width: 1200px)").matches) {
 //
 // Featured Carousel Component
 //
-const DestaquesCarousel = (...props) => {
+const DestaquesCarouselOther = (...props) => {
 
   props.options = flickityOptions;
 
@@ -159,4 +159,4 @@ const DestaquesCarousel = (...props) => {
   );
 };
 
-export default DestaquesCarousel;
+export default DestaquesCarouselOther;

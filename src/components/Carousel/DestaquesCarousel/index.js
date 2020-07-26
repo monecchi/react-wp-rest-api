@@ -49,7 +49,7 @@ if (matchMedia("screen and (min-width: 1200px)").matches) {
 //
 // Featured Carousel Component
 //
-const DestaquesCarousel = (...props) => {
+const DestaquesCarouselHome = (...props) => {
 
   props.options = flickityOptions;
 
@@ -78,9 +78,9 @@ const DestaquesCarousel = (...props) => {
   // loading state
   const { isLoading } = componentState.loading;
 
-  //if( isLoading ) {
-    //return "Loading...";
-  //}
+  if( isLoading ) {
+    return "Loading...";
+  }
 
   return (
     <>
@@ -173,4 +173,4 @@ const DestaquesCarousel = (...props) => {
   );
 };
 
-export default DestaquesCarousel;
+export default DestaquesCarouselHome;
