@@ -16,7 +16,8 @@ export const homeslides = [
     id: 1,
     slug: "bebidas-50-off",
     title: "Bebidas com 50% Off",
-    description: "Delivery de Bebidas com até 50% de desconto para pedidos pelo Telefone",
+    description:
+      "Delivery de Bebidas com até 50% de desconto para pedidos pelo Telefone",
     type: "promo",
     url: "#",
     photo_url:
