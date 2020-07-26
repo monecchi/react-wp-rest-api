@@ -32,9 +32,9 @@ import FoodMenu from "./components/FoodMenu/CardsList/FoodMenu";
 //
 // Restaurants (stores) listing components
 //
-import RestaurantsList from "./components/RestaurantsList/RestaurantsList";
-import List from "./components/RestaurantsList";
-import withListLoading from "./components/RestaurantsList";
+//import RestaurantsList from "./components/RestaurantsList/RestaurantsList";
+//import List from "./components/RestaurantsList";
+//import withListLoading from "./components/RestaurantsList";
 
 // Single Restaurant Card Component
 import RestaurantCard from "./components/Restaurants/Card";

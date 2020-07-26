@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 // Slides mock DestaquesCarousel
 //import { homeslides } from '../../../data/dataArrays';
 
-import { getSlidesByType } from '../../../data/MockDataAPI'; // function to get mock data locally
+import { getSlidesByType } from "../../../data/MockDataAPI"; // function to get mock data locally
 
 // Import Flickity
 import Flickity from "react-flickity-component";
@@ -49,8 +49,7 @@ if (matchMedia("screen and (min-width: 1200px)").matches) {
 //
 // Featured Carousel Component
 //
-const DestaquesCarouselHome = (...props) => {
-
+const DestaquesCarousel = ({ ...props }) => {
   props.options = flickityOptions;
 
   //const CarouselsLoading = WithLoadingCarousel();
@@ -62,23 +61,21 @@ const DestaquesCarouselHome = (...props) => {
   const slidesHome = [];
 
   useEffect(() => {
-
     const allSlides = getSlidesByType("promo").then(response => {
-        if(response) {
-          slidesHome = response
-        }
-        console.log(slidesHome);
-        setComponentState({ loading: true });
+      if (response) {
+        slidesHome = response;
+      }
+      console.log(slidesHome);
+      setComponentState({ loading: true });
     });
 
-     setComponentState({ loading: false });
-
+    setComponentState({ loading: false });
   }, [setComponentState]);
 
   // loading state
   const { isLoading } = componentState.loading;
 
-  if( isLoading ) {
+  if (isLoading) {
     return "Loading...";
   }
 
@@ -93,11 +90,12 @@ const DestaquesCarouselHome = (...props) => {
         static // default false
         flickityRef={c => (this.flkty = c)}
       >
-      {slidesHome && slidesHome.map(slide => {
-
-        {slide.title}
-
-      })}
+        {slidesHome &&
+          slidesHome.map(slide => {
+            {
+              slide.title;
+            }
+          })}
         <div className="carousel-cell">
           <div className="highlights-carousel__container ph-item">
             <Link to="/promocoes">
@@ -173,4 +171,4 @@ const DestaquesCarouselHome = (...props) => {
   );
 };
 
-export default DestaquesCarouselHome;
+export default DestaquesCarousel;
