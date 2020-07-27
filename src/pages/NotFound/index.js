@@ -27,7 +27,7 @@ import {
 // Custom components import
 import NavbarIfood from "../../components/Navbar/NavbarIfood.js"; // custom component uses Bootstrap navbar
 import ManWithFork from "../../components/UI/Illustrations/EmptyState/ManWithFork";
-import MeuSvg from "../..components/UI/Illustrations/mr-not-found-fork.svg";
+//import MeuSvg from "../../components/UI/Illustrations/mr-not-found-fork.svg";
 
 class NotFound extends Component {
   constructor(props) {
