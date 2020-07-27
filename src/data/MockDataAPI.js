@@ -132,7 +132,7 @@ export function getRecipesByRecipeName(recipeName) {
 }
 
 // Get slides by type (aka category)
-export const getSlidesByType = async (type) => {
+export const getSlidesByTypeCat = async (type) => {
   const sliderType = type.toLowerCase();
   const slidesArray = [];
   homeslides.map(data => {
