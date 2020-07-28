@@ -1,6 +1,6 @@
-import { Text } from 'react';
-import React, { Component } from 'react';
-import { homeslides, categories, ingredients } from './dataArrays';
+import { Text } from "react";
+import React, { Component } from "react";
+import { homeslides, categories, ingredients } from "./dataArrays";
 import axios from "axios";
 
 export function getCategoryById(categoryId) {
@@ -132,7 +132,7 @@ export function getRecipesByRecipeName(recipeName) {
 }
 
 // Get slides by type (aka category)
-export const getSlidesByTypeCat = async (type) => {
+export const getSlidesByTypeCat = async type => {
   const sliderType = type.toLowerCase();
   const slidesArray = [];
   homeslides.map(data => {
@@ -143,9 +143,23 @@ export const getSlidesByTypeCat = async (type) => {
   return slidesArray;
 };
 
-export const getSlidesByType = async (type) => {
+export const getSlidesByType = async type => {
   try {
-    
+    const sliderType = type.toLowerCase();
+    const slidesArray = [];
+    homeslides.map(data => {
+      if (data.type.toLowerCase().includes(sliderType)) {
+        slidesArray.push(data);
+      }
+    });
+
+    return slidesArray;
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+export const findSlidesByType = async (type) => {
   const sliderType = type.toLowerCase();
   const slidesArray = [];
   homeslides.map(data => {
@@ -153,10 +167,6 @@ export const getSlidesByType = async (type) => {
       slidesArray.push(data);
     }
   });
-
-  return slidesArray;
-
-  } catch (err) {
-      console.log(err);
-  }
+  //return slidesArray;
+  return new Promise( resolve => { resolve(slidesArray) } )
 };

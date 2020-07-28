@@ -44,31 +44,20 @@ if (matchMedia("screen and (min-width: 1200px)").matches) {
 //
 // Featured Carousel Component
 //
-const DestaquesCarouselOther = (...props) => {
+const HomeCarousel = (...props) => {
 
   props.options = flickityOptions;
 
   //const CarouselsLoading = WithLoadingCarousel();
 
   const [componentState, setComponentState] = useState({
-    loading: false,
-    loadingClass: ""
+    loading: false
   });
 
   useEffect(() => {
-    
-    //this.flkty.on("lazyLoad", function(event, cellElement) {
-      //var img = event.target;
-      //console.log(event.type, img.src);
-
-      //if (img.src) {
-        //setComponentState({ loading: true, loadingClass: "ph-loading" });
-      //}
-
-    //});
 
     if (this.flkty) {
-      setComponentState({ loading: true, loadingClass: "ph-loading" });
+      setComponentState({ loading: true });
     }
 
   }, [setComponentState]);
@@ -154,9 +143,8 @@ const DestaquesCarouselOther = (...props) => {
           </div>
         </div>
       </Flickity>
-      {/*<CarouselsLoading isLoading={componentState.loading} />*/}
     </>
   );
 };
 
-export default DestaquesCarouselOther;
+export default HomeCarousel;

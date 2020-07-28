@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 // Slides mock DestaquesCarousel
 import { homeslides } from "../../../data/dataArrays";
 
-//import { getSlidesByType } from '../../../data/MockDataAPI'; // function to get mock data locally
+import { getSlidesByType, findSlidesByType } from '../../../data/MockDataAPI'; // function to get mock data locally
 
 // Import Flickity
 import Flickity from "react-flickity-component";
@@ -60,7 +60,7 @@ const DestaquesCarouselNew = () => {
   const slidesHome = [];
 
   useEffect(() => {
-    getSlidesByType("promo").then(response => {
+    findSlidesByType("promo").then(response => {
       allSlides = response;
       setComponentState({ loading: true, slides: allSlides });
     });
