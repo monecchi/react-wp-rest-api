@@ -1,11 +1,8 @@
-import React, { Component, useEffect, useState } from "react";
+import React, { Component } from "react";
 import { Link } from "react-router-dom";
 
 // Atomize
 import {
-  ThemeProvider,
-  DefaultTheme,
-  StyleReset,
   Div,
   Container,
   Row,
@@ -28,6 +25,7 @@ import "./App.scss";
 import NavbarIfood from "./components/Navbar/NavbarIfood"; // iFood alike custom Navbar
 import DestaquesCarousel from "./components/Carousel/DestaquesCarousel"; // Featured Carousel Items (Flickity)
 import FoodMenu from "./components/FoodMenu/CardsList/FoodMenu";
+import FooterSlim from "./components/Footer/Slim";
 
 //
 // Restaurants (stores) listing components
@@ -51,15 +49,15 @@ class App extends Component {
   }
 
   componentDidMount() {
-    document.getElementsByTagName("body")[0].className = "scroll-smooth";
+   //document.getElementsByTagName("body")[0].className = "scroll-smooth";
   }
 
   componentDidUpdate() {
-    document.getElementsByTagName("body")[0].className = "scroll-smooth";
+    //document.getElementsByTagName("body")[0].className = "scroll-smooth";
   }
 
   componentWillUnmount() {
-    document.getElementsByTagName("body")[0].className = "";
+    //document.getElementsByTagName("body")[0].className = "";
   }
 
   render() {
@@ -161,6 +159,7 @@ class App extends Component {
                 </Div>
               </Container>
             </Div>
+            <FooterSlim />
           </div>
         </main>
       </>

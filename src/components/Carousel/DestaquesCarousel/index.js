@@ -1,11 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
-// Slides mock DestaquesCarousel
-import { homeslides } from '../../../data/dataArrays';
-
-import { getSlidesByType, findSlidesByType } from "../../../data/MockDataAPI"; // function to get mock data locally
-
 // Import Flickity
 import Flickity from "react-flickity-component";
 
@@ -14,8 +9,10 @@ import "flickity/css/flickity.css";
 // Component custom scss
 import "./styles.scss";
 
-// Carousel Loading Skeleton Component
-//import WithLoadingCarousel from "./Loading";
+// Slides data mock
+//import { homeslides } from "../../../data/dataArrays";
+
+import { findSlidesByType } from "../../../data/MockDataAPI"; // function to get mock data locally
 
 // Flickity options
 const flickityOptions = {
@@ -55,19 +52,16 @@ const DestaquesCarousel = ({ ...props }) => {
   //const CarouselsLoading = WithLoadingCarousel();
 
   const [componentState, setComponentState] = useState({
-    loading: false,
+    loading: true,
     slides: []
   });
 
   useEffect(() => {
-
-    const allSlides = findSlidesByType("promo").then( response => {
+    const allSlides = findSlidesByType("promo").then(response => {
       //console.log(response);
-      setComponentState({ loading: false, slides: response });
-      //console.log(componentState.slides);
-    })
-
-  }, []);
+      setComponentState({ loading: false, slides: slides.concat(response) });
+    });
+  }, [setComponentState]);
 
   //const slides = homeslides;
 
@@ -90,25 +84,24 @@ const DestaquesCarousel = ({ ...props }) => {
         static // default false
         flickityRef={c => (this.flkty = c)}
       >
-
         {slides &&
           slides.map(slide => {
-            return(
-            <div className="carousel-cell" key={slide.id}>
-              <div className="highlights-carousel__container ph-item">
-                <Link to={slide.url}>
-                  <figure className={"highlights-carousel__figure"}>
-                    <img
-                      data-flickity-lazyload={slide.photo_url}
-                      alt={slide.title}
-                      className="highlights-carousel__image"
-                    />
-                  </figure>
-                </Link>
+            return (
+              <div className="carousel-cell" key={slide.id}>
+                <div className="highlights-carousel__container ph-item">
+                  <Link to={slide.url}>
+                    <figure className={"highlights-carousel__figure"}>
+                      <img
+                        data-flickity-lazyload={slide.photo_url}
+                        alt={slide.title}
+                        className="highlights-carousel__image"
+                      />
+                    </figure>
+                  </Link>
+                </div>
               </div>
-            </div>);
+            );
           })}
-
       </Flickity>
       {/*<CarouselsLoading isLoading={componentState.loading} />*/}
     </>

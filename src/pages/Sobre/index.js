@@ -39,7 +39,11 @@ const fetcher = (...args) => fetch(...args).then(res => res.json()); // default 
 // useGetPage function hook (swr)
 //
 const useGetPage = slug => {
-  const { data, error, isValidating, mutate } = useSWR(rest_url + `?slug=${slug}`, fetcher, { revalidateOnFocus: true });
+  const { data, error, isValidating, mutate } = useSWR(
+    rest_url + `?slug=${slug}`,
+    fetcher,
+    { revalidateOnFocus: true }
+  );
 
   return {
     page: data,
@@ -163,10 +167,8 @@ const Sobre = ({ slug }) => {
   if (isError) return "<p>Failed to retrieve page data...</p>";
 
   if (page) {
-    const regex = /(<([^>@{}]+)>)/gi;
     const { title, slug, status, content } = page[0];
   }
-  const page_content = content.rendered.replace(regex, "");
 
   return (
     <>
@@ -194,9 +196,9 @@ const Sobre = ({ slug }) => {
             textColor="medium"
             m={{ b: "2.5rem" }}
           >
-            Desde 1996, apaixonados por preparar alimentos, aprimoramos
-            receitas para criar pizzas e massas com o gostinho especial que
-            toda cozinha mineira tem.
+            Desde 1996, apaixonados por preparar alimentos, aprimoramos receitas
+            para criar pizzas e massas com o gostinho especial que toda cozinha
+            mineira tem.
           </Text>
 
           <Div
@@ -253,14 +255,12 @@ const Sobre = ({ slug }) => {
         p={{ t: { xs: "3rem", md: "6rem" } }}
         overflow="hidden"
       >
-
         <Container>
-
-        <div className="restaurants-list__container">
-          <RestaurantCard slug="betim" />
-          <RestaurantCard slug="contagem" />
-          <RestaurantCard slug="raul" />
-        </div>
+          <div className="restaurants-list__container">
+            <RestaurantCard slug="betim" />
+            <RestaurantCard slug="contagem" />
+            <RestaurantCard slug="raul" />
+          </div>
 
           {/* renderHTML( content.rendered ) */}
           <Text
@@ -308,22 +308,31 @@ const Sobre = ({ slug }) => {
             A marca Meu Rancho® reflete a origem interiorana de seus
             proprietários, irmãos e sócios naturais da cidade de Bicuíba – MG e
             homenageia sua infância, equanto cresciam num simpático rancho da
-            família. Em 1996, impulsionados pela paixão por esse delicioso
-            alimento que conhecemos por pizza, os irmãos decidiram aprimorar
-            receitas para criar seus próprios sabores e comercializar pizzas e
-            massas com o gostinho especial que toda cozinha mineira tem. A marca
-            da Pizzaria traz em sua composição o ícone de uma ferradura, que
-            simboliza boa sorte e representa o esforço e o trabalho, pois é um
-            objeto usado por animais dedicados à atividades árduas, como o
-            cavalo e o boi, comumente designados à tarefas às vezes primordiais
-            para a sobrevivência de pequenas cidades do interior. É por essa
-            razão, que o símbolo da ferradura também está relacionado à
-            prosperidade e fertilidade. Atualmente, a Pizzaria Meu Rancho é o
-            resultado de muito esforço e trabalho em equipe de pessoas que
-            trazem consigo valores como a honestidade, cordialidade,
-            comprometimento, e excelência naquilo que fazem. Estes valores são
-            colocados em prática todos os dias para oferecer aos nossos clientes
-            produtos e atendimento de altíssima qualidade e bom gosto.
+            família.
+          </Text>
+          <Text
+            tag="p"
+            textSize="paragraph"
+            textAlign="center"
+            m={{ b: "1rem" }}
+          >
+            Em 1996, impulsionados pela paixão por esse delicioso alimento que
+            conhecemos por pizza, os irmãos decidiram aprimorar receitas para
+            criar seus próprios sabores e comercializar pizzas e massas com o
+            gostinho especial que toda cozinha mineira tem.
+          </Text>
+          <Text
+            tag="p"
+            textSize="paragraph"
+            textAlign="center"
+            m={{ b: "1rem" }}
+          >
+            Atualmente, a Pizzaria Meu Rancho é o resultado de muito esforço e
+            trabalho em equipe de pessoas que trazem consigo valores como a
+            honestidade, cordialidade, comprometimento, e excelência naquilo que
+            fazem. Estes valores são colocados em prática todos os dias para
+            oferecer aos nossos clientes produtos e atendimento de altíssima
+            qualidade e bom gosto.
           </Text>
         </Container>
       </Div>

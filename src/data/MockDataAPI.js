@@ -159,7 +159,7 @@ export const getSlidesByType = async type => {
   }
 };
 
-export const findSlidesByType = async (type) => {
+export const findSlidesByType = async type => {
   const sliderType = type.toLowerCase();
   const slidesArray = [];
   homeslides.map(data => {
@@ -168,5 +168,7 @@ export const findSlidesByType = async (type) => {
     }
   });
   //return slidesArray;
-  return new Promise( resolve => { resolve(slidesArray) } )
+  return new Promise((resolve, reject) => {
+    resolve(slidesArray).catch(err => {reject(err)});
+  });
 };
