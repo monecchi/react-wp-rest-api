@@ -26,6 +26,7 @@ import Skeleton from "react-loading-skeleton";
 // Theme Custom Components
 import NavbarIfood from "../../components/Navbar/NavbarIfood"; // iFood like navbar
 import RestaurantCard from "../../components/Restaurants/Card"; // Simple Restaurant Card Component
+import FooterSlim from "../../components/Footer/Slim/";
 
 //
 // Retrieve page data
@@ -326,6 +327,7 @@ const Sobre = ({ slug }) => {
           </Text>
         </Container>
       </Div>
+      <FooterSlim />
     </>
   );
 };
