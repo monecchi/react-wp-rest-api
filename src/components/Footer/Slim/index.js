@@ -35,11 +35,13 @@ const FooterSlim = () => (
       m={{ t: "3rem", b: "0" }}
     >
       <Container>
-        <Div d="flex" align="center" justify="center" flexDir="column">
-          <Text tag="p" textWeight="400" textAlign="center" m={{ b: "1rem" }}>
-            <CurrentYear /> Meu Rancho Pizzaria ® - Todos os direitos reservados
-          </Text>
-          <Div d="flex" align="center" justify="center">
+        <Div d="flex" align="center" justify="between" flexDir={{ xs: "column", md: "row", lg: "row"}}>
+          <Div d="flex" justify="flex-start">
+            <Text tag="p" textWeight="400" textAlign="center" m={{ b: "1rem" }}>
+              <CurrentYear /> Meu Rancho Pizzaria ® - Todos os direitos reservados
+            </Text>
+          </Div>
+          <Div d="flex" align="center" justify={{ xs: "center", md: "flex-end", lg: "flex-end"}} m={{ l: { md: "auto", lg: "auto", xs: "0" } }}>
             {mediaLinks.map((link, index) => (
               <Anchor href={link.link} target="_blank" key={index}>
                 <Icon
