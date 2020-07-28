@@ -44,12 +44,13 @@ class App extends Component {
     super();
     this.state = {
       name: "Pizzaria Meu Rancho",
-      loadedClass: "is-loaded"
+      loaded: false
     };
   }
 
   componentDidMount() {
    //document.getElementsByTagName("body")[0].className = "scroll-smooth";
+    this.setState({ loaded: true });
   }
 
   componentDidUpdate() {
