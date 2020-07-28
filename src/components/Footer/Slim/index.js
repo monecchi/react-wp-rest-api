@@ -3,6 +3,8 @@ import React from "react";
 // Atomize
 import { Div, Container, Anchor, Text, Icon } from "atomize";
 
+const CurrentYear = () => <span>{new Date().getFullYear()}</span>;
+
 const mediaLinks = [
   {
     icon: "Instagram",
@@ -32,15 +34,10 @@ const FooterSlim = () => (
       p="1.5rem"
       m={{ t: "3rem", b: "0" }}
     >
-    <Container>
+      <Container>
         <Div d="flex" align="center" justify="center" flexDir="column">
-          <Text
-            tag="p"
-            textWeight="400"
-            textAlign="center"
-            m={{ b: "1rem" }}
-          >
-            Pizzaria Meu Rancho - Todos os direitos reservados
+          <Text tag="p" textWeight="400" textAlign="center" m={{ b: "1rem" }}>
+            <CurrentYear /> Meu Rancho Pizzaria ® - Todos os direitos reservados
           </Text>
           <Div d="flex" align="center" justify="center">
             {mediaLinks.map((link, index) => (
