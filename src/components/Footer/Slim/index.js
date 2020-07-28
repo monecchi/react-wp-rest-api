@@ -4,7 +4,7 @@ import React from "react";
 import { Div, Container, Text, Icon } from "atomize";
 
 const FooterSlim = () => (
-  <Div tag="footer" shadow="inset_sm">
+  <Div tag="footer" shadow="inset_top_sm">
     <Div
       d="flex"
       flexDir="row"

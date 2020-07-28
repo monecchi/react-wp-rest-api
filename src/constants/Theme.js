@@ -64,7 +64,8 @@ const theme = {
     md: "0 0 1.25rem rgba(18,38,63,.08)",
     sm: "0 0.75rem 1.5rem rgba(18,38,63,.03)",
     lg_hover: "0 1rem 3rem rgba(31,45,61,.125)",
-    inset_sm: "inset 0 -1px 0 #dcdcdc"
+    inset_sm: "inset 0 -1px 0 #dcdcdc",
+    inset_top_sm: "inset 0 1px 0 #dcdcdc"
   },
   transition: {
     all: "background-color .1s ease, color .1s ease, box-shadow .1s ease, transform .1s ease"
