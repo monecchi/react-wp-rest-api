@@ -26,6 +26,7 @@ import NavbarIfood from "./components/Navbar/NavbarIfood"; // iFood alike custom
 import DestaquesCarousel from "./components/Carousel/DestaquesCarousel"; // Featured Carousel Items (Flickity)
 import FoodMenu from "./components/FoodMenu/CardsList/FoodMenu";
 import FooterSlim from "./components/Footer/Slim";
+import Preloader from "./components/Preloader";
 
 //
 // Restaurants (stores) listing components
@@ -44,28 +45,41 @@ class App extends Component {
     super();
     this.state = {
       name: "Pizzaria Meu Rancho",
-      loaded: false
+      loading: true
     };
+
+    document.getElementsByTagName("body")[0].classList.add("ready");
   }
 
   componentDidMount() {
    //document.getElementsByTagName("body")[0].className = "scroll-smooth";
-    this.setState({ loaded: true });
+    setTimeout(() => { 
+      this.setState({ loading: false })
+      document.getElementsByTagName("body")[0].classList.add("loaded");
+    }, 1000)
   }
 
   componentDidUpdate() {
     //document.getElementsByTagName("body")[0].className = "scroll-smooth";
+    //document.getElementsByTagName("body")[0].classList.remove("loaded");
   }
 
   componentWillUnmount() {
     //document.getElementsByTagName("body")[0].className = "";
+    document.getElementsByTagName("body")[0].classList.remove("loaded");
   }
 
   render() {
+    const { loading } = this.state;
+
+    if(loading) {
+      //return <><Preloader /></>;
+    }
+    
     return (
       <>
         <NavbarIfood />
-        
+        <Preloader />
         <main className="main-layout">
           <div className="home-page">
             <section className={"bg-light py-4"}>

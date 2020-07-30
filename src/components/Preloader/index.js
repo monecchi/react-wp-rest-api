@@ -1,13 +1,17 @@
 import React from "react";
 import "./styles.scss";
 
-import { Div, Icon } from "atomize";
+import {
+  Div,
+  Text,
+  Icon
+} from "atomize";
 
 const Preloader = () => {
   return (
-    <div class="preloader loader">
-      <Icon name="Loading3" size="20px" />
-    </div>
+    <Div className="preloader">
+      <Icon name="Loading3" size="2rem" color="brand" pos="absolute" top="50%" left="auto"/>
+    </Div>
   );
 };
 
