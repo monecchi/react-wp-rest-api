@@ -1,6 +1,5 @@
-import React, { Component, useEffect, useState } from "react";
-import useSWR from "swr";
-import { getStores, useGetRestaurants, updategetStores } from "./fetchStoreData";
+import React from "react";
+import { useGetRestaurants, updategetStores } from "./fetchStoreData";
 
 // Atomize
 import {
@@ -32,25 +31,18 @@ import RestaurantsEmptyList from "./EmptyList";
  * StoreProfile Component
  *
  * Get All Restaurant (stores) Listing Cards
- * @use (function) getStores()
+ * @use (function) useGetRestaurants()
  * @usage (component) <RestaurantCardsListing />
  */
 
 const RestaurantCardsListing = props => {
-  const { stores, isLoading, isError, isValidating, mutate } = useGetRestaurants(); //getStores();
+  const { stores, isLoading, isError, isValidating, mutate } = useGetRestaurants();
 
   const { allStores, storesCount } = [];
 
   //const [componentState, setComponentState] = useState({
   //storesCount: []
   //});
-
-  if (stores) {
-    allStores = stores;
-    //storesCount = Object.keys(allStores); // retorna um array enumerado
-    //console.log(storesCount);
-    //console.log(allStores);
-  }
 
   //useEffect(() => {
 
@@ -81,9 +73,8 @@ const RestaurantCardsListing = props => {
 
         <Div className="push">
           <a
-            onClick={e => {
-              e.preventDefault(), updategetStores(apiURL+"/stores/");
-            }}
+            // eslint-disable-next-line
+            onClick={e => { e.preventDefault(), updategetStores(apiURL + "/stores/") }}
             disabled={isValidating}
             className="section-header__see-more"
             aria-label="Ver mais"
@@ -94,7 +85,7 @@ const RestaurantCardsListing = props => {
         </Div>
       </Div>
 
-      {allStores.map(store => {
+      {stores.map(store => {
         let city = store.slug;
         let aberto = store[city].is_open;
         let tagBg = aberto == 1 ? "softSuccess" : "softDanger";

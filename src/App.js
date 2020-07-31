@@ -1,17 +1,17 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+//import { Link } from "react-router-dom";
 
 // Atomize
 import {
   Div,
   Container,
   Row,
-  Col,
-  Tag,
-  Anchor,
-  Button,
+  //Col,
+  //Tag,
+  //Anchor,
+  //Button,
   Text,
-  Icon
+  //Icon
 } from "atomize";
 
 
@@ -79,7 +79,7 @@ class App extends Component {
     return (
       <>
         <NavbarIfood />
-        <Preloader />
+        <Preloader isLoading={loading} />
         <main className="main-layout">
           <div className="home-page">
             <section className={"bg-light py-4"}>

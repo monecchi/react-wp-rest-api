@@ -1,28 +1,20 @@
-import React, { Component, useState } from "react";
-import { Link } from "react-router-dom";
+import React, { Component } from "react";
+//import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import axios from "axios";
 
 // Atomize
 import {
   Div,
-  Container,
-  Row,
   Col,
-  Tag,
-  Anchor,
   Button,
   Text,
   Icon,
-  Image,
+  //Image,
   Modal
 } from "atomize";
 
-//
-// react-loading-skeleton
-//
-import Skeleton from "react-loading-skeleton";
-
+// Food Items Loading Component
 import FoodItemsLoading from "./FoodsLoading";
 
 // Normalize html
@@ -33,7 +25,7 @@ let ImgPlaceholder =
   "https://raw.githubusercontent.com/monecchi/react-wp-rest-api/master/src/assets/images/mr-pattern-light.png";
 
 //
-// Modal
+// Modal atomize
 //
 export const FoodItemModal = ({ food, isOpen, onClose }) => {
   return (
@@ -91,16 +83,19 @@ export class FoodMenuItems extends Component {
   };
 
   componentDidMount() {
-    const { food, id } = this.props.food;
+    // Cancel async request on unmount with axios
+    this.axiosCancelSource = axios.CancelToken.source()
+    
+    const { id } = this.props.food;
 
     // Single food menu item url
     const getDishes = axios.get(
-      `https://pizzariameurancho.com.br/wp-json/wp/v2/food_menu/${id}`
+      `https://pizzariameurancho.com.br/wp-json/wp/v2/food_menu/${id}`, { cancelToken: this.axiosCancelSource.token }
     );
 
     // Single food menu item "food_tag" taxonomy (ingredients) url
     const getIngredients = axios.get(
-      `https://pizzariameurancho.com.br/wp-json/wp/v2/ingrediente?post=${id}`
+      `https://pizzariameurancho.com.br/wp-json/wp/v2/ingrediente?post=${id}`, { cancelToken: this.axiosCancelSource.token }
     );
 
     Promise.all([getIngredients]).then(response => {
@@ -110,6 +105,13 @@ export class FoodMenuItems extends Component {
         loading: false
       });
     });
+  }
+
+  // Cancel async request on unmount with axios
+  // https://www.thetopsites.net/article/52465307.shtml
+  componentWillUnmount () {
+    console.warn('firing component unmount')
+    this.axiosCancelSource.cancel('Component unmounted.')
   }
 
   render() {
@@ -128,31 +130,22 @@ export class FoodMenuItems extends Component {
 
     const { ingredients, loading, showModal, selectedSize } = this.state;
 
-    const imgUrl = food.featured_image_src.thumbnail;
+    const imgUrl = featured_image_src.thumbnail;
     //console.log(imgUrl);
 
     const precos = [];
-    precos = dish_prices || [];
+    precos.fill(dish_prices);
 
-    const fromPreco = "";
+    let fromPreco = "";
 
     for (const p = 0; p < precos.length; p++) {
-      fromPreco = precos[i][0].preco;
+      fromPreco = precos[p][0].preco;
     }
     //console.log(precos);
 
     //console.log(id);
 
     const foodImg = imgUrl ? imgUrl : ImgPlaceholder; //imgUrl ? imgUrl : ImgPlaceholder;
-
-    const foodPic = (foodImg, attr) => {
-      if (loading) {
-        attr = bgImg = { foodImg };
-      } else {
-        attr = bg = "#eee";
-      }
-      return attr;
-    };
 
     const getFoodPic = () => {
       const food = this.props.food;

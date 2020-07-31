@@ -3,14 +3,20 @@ import "./styles.scss";
 
 import {
   Div,
-  Text,
+  //Text,
   Icon
 } from "atomize";
 
-const Preloader = () => {
+const Preloader = (props) => {
+  const { isLoading } = props;
+
+  if(!isLoading) {
+    return <></>;
+  }
+
   return (
     <Div className="preloader">
-      <Icon name="Loading3" size="2rem" color="brand" pos="absolute" top="50%" left="auto"/>
+      <Icon name="Loading3" size="2.5rem" color="brand" pos="absolute" top="50%" left="auto"/>
     </Div>
   );
 };

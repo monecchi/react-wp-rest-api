@@ -1,27 +1,21 @@
-import React, { Component } from "react";
+import React from "react";
 import useSWR from "swr";
 import { Link } from "react-router-dom";
-import renderHTML from "../../components/util/htmlRender";
+//import renderHTML from "../../components/util/htmlRender";
 
 // Atomize
 import {
-  ThemeProvider,
-  DefaultTheme,
   Div,
   Container,
   Row,
-  Col,
-  Tag,
   Anchor,
   Button,
   Text,
-  Icon,
-  Image,
-  Modal
+  Icon
 } from "atomize";
 
 // react-loading-skeleton
-import Skeleton from "react-loading-skeleton";
+//import Skeleton from "react-loading-skeleton";
 
 // Theme Custom Components
 import NavbarIfood from "../../components/Navbar/NavbarIfood"; // iFood like navbar
@@ -69,9 +63,9 @@ export const HeroImage = ({ slug }, ...options) => {
   );
 };
 
-export const HeroImageStatic = ({ page, isLoading, isError }, ...options) => {
-  if (!this.options) {
-    this.options = {
+export const HeroImageStatic = ({ page, isLoading, isError, ...options }) => {
+  if (!options) {
+    options = {
       borderRadius: "md",
       height: "340px"
     };
@@ -105,10 +99,10 @@ export const HeroImageStatic = ({ page, isLoading, isError }, ...options) => {
             bgSize="cover"
             bgPos="center"
             w="100%"
-            h={this.options.height}
+            h={options.height}
             justify="center"
             align="center"
-            rounded={this.options.borderRadius}
+            rounded={options.borderRadius}
             m={{ b: "60px" }}
           >
             <Div justify="center" p="1rem">
@@ -131,12 +125,11 @@ export const HeroImageStatic = ({ page, isLoading, isError }, ...options) => {
 };
 
 ////
-// Page About Component
+// About Page Component
 ////
 const Sobre = ({ slug }) => {
-  if (!this.slug) {
-    slug = "meu-rancho-pizzaria";
-  }
+
+  slug = "meu-rancho-pizzaria";
 
   const { page, isLoading, isError } = useGetPage(slug);
 

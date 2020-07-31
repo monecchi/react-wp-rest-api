@@ -1,6 +1,6 @@
 import React, { Component, useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import axios from "axios";
+//import { Link } from "react-router-dom";
+//import axios from "axios";
 
 const FoodSingle = () => {
   const [food, setFood] = useState({
@@ -11,12 +11,12 @@ const FoodSingle = () => {
   // Load single post
   const loadFood = async ({id}) => {
 
-    const response 
+    const response = null;
 
   };
 
   useEffect(() => {
-    const { id } = this.props.id;
+    const { id } = food.id;
   }, []);
 
   return (

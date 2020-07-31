@@ -1,7 +1,4 @@
-import { Text } from "react";
-import React, { Component } from "react";
-import { homeslides, categories, ingredients } from "./dataArrays";
-import axios from "axios";
+import { homeslides, categories, recipes, ingredients } from "./dataArrays";
 
 export function getCategoryById(categoryId) {
   let category;

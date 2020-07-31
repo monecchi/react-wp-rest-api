@@ -1,4 +1,4 @@
-import React, { Component, Suspense } from "react"; 
+import React from "react"; 
 import { useGetStore } from "./fetchStoreData";
 
 // Atomize
@@ -43,14 +43,17 @@ const RestaurantCard = ({ slug }) => {
       </div>
     );
 
-  if (store) {
-    const restaurant = store[0];
-    let city = restaurant.slug || "betim";
-    let aberto = restaurant[city].is_open;
+  let restaurant = [];
+  let city = "betim";
+  let aberto = 0;
+  if (store && store.length >= 0) {
+    restaurant = store[0];
     //console.log(restaurant);
   }
 
   return (
+     city = restaurant.slug || "betim",
+     aberto = restaurant[city].is_open,
     <a
       className={
         aberto == 1

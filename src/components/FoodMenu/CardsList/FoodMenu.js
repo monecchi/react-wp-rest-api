@@ -3,17 +3,17 @@ import axios from "axios";
 
 // Atomize
 import {
-  Image,
-  Container,
-  Row,
-  Col,
+  //Image,
+  //Container,
+  //Row,
+  //Col,
   Div,
-  Tag,
-  Anchor,
+  //Tag,
+  //Anchor,
   Button,
-  Text,
+  //Text,
   Icon,
-  Modal
+  //Modal
 } from "atomize";
 
 import FoodMenuItems from "./FoodMenuItems";
@@ -23,6 +23,7 @@ export class FoodMenu extends Component {
     super(props);
     this.state = {
       foods: [],
+      posts: [],
       loading: false,
       per_page: 25 - 1,
       totalItems: 50,
@@ -38,13 +39,12 @@ export class FoodMenu extends Component {
   }
 
   getPosts() {
-    const { page, per_page, apiUrl } = this.state;
+    const { foods, page, per_page, apiUrl } = this.state;
     this.setState({ loading: true });
 
     return axios.get(apiUrl + `?per_page=${per_page}&page=` + page).then(
       response => {
         console.log(response);
-        const { foods, per_page, page, pagesTotal } = this.state;
         this.setState({
           foods: foods.concat(response.data),
           loading: false,
@@ -85,6 +85,7 @@ export class FoodMenu extends Component {
   //});
   //}
 
+
   componentDidMount() {
     this.getPosts();
 
@@ -93,17 +94,18 @@ export class FoodMenu extends Component {
     const wpTotal = async () => {
       return axios.get(`https://pizzariameurancho.com.br/wp-json/wp/v2/food_menu/`);
     }
-      
+
     wpTotal().then(res => {
-        const itemsTotal = res.headers["x-wp-total"];
-        const pagesTotal = res.headers["x-wp-totalpages"];
-        this.setState({ totalItems: Number(itemsTotal) });
+      const itemsTotal = res.headers["x-wp-total"];
+      const pagesTotal = res.headers["x-wp-totalpages"];
+      this.setState({ totalItems: Number(itemsTotal) });
     });
   }
 
   render() {
     const {
       foods,
+      posts,
       loading,
       per_page,
       pagesTotal,
@@ -155,7 +157,7 @@ export class FoodMenu extends Component {
                 transition="all"
                 onClick={() => this.loadMore()}
                 disabled={this.state.loading}
-                style={{"outline": "0"}}
+                style={{ "outline": "0" }}
               >
                 {this.state.loading ? "Carregando" : "Mais items do Cardápio"}
               </Button>

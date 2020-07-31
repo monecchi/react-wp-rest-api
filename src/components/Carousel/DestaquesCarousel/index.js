@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { Link } from "react-router-dom";
 
 // Import Flickity
@@ -46,10 +46,36 @@ if (matchMedia("screen and (min-width: 1200px)").matches) {
 //
 // Featured Carousel Component
 //
+
+class Carousel extends React.Component {
+
+  componentDidMount = () => {
+    // You can register events in componentDidMount hook
+    this.flkty.on('settle', () => {
+      console.log(`current index is ${this.flkty.selectedIndex}`)
+    })
+  }
+
+  myCustomNext = () => {
+    // You can use Flickity API
+    this.flkty.next()
+  }
+
+  render() {
+    return (
+      <>
+      <Flickity flickityRef={c => this.flkty = c}>
+        <img src="/images/placeholder.png"/>
+        <img src="/images/placeholder.png"/>
+        <img src="/images/placeholder.png"/>
+      </Flickity>
+      </>
+    )
+  }
+}
+
 const DestaquesCarousel = ({ ...props }) => {
   props.options = flickityOptions;
-
-  //const CarouselsLoading = WithLoadingCarousel();
 
   const [componentState, setComponentState] = useState({
     loading: true,
@@ -63,7 +89,8 @@ const DestaquesCarousel = ({ ...props }) => {
     });
   }, [setComponentState]);
 
-  //const slides = homeslides;
+  // const carouselRef = useRef(null);
+  // this.flkty = null;
 
   const { loading, slides } = componentState;
 
@@ -82,7 +109,8 @@ const DestaquesCarousel = ({ ...props }) => {
         disableImagesLoaded={false} // default false
         reloadOnUpdate // default false
         static // default false
-        flickityRef={c => (this.flkty = c)}
+        //ref={ carouselRef }
+        //flickityRef={c => (this.flkty = c)}
       >
         {slides &&
           slides.map(slide => {

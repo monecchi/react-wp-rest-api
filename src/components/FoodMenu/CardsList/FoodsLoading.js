@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 
 // Atomize
 import { Div, Col } from "atomize";
@@ -10,13 +10,7 @@ import Skeleton from "react-loading-skeleton";
 // Food Items Loading Component
 //
 
-class IsFoodItemsLoading extends Component {
-  constructor() {
-    super();
-  }
-}
-
-const FoodItemsLoading = ({ food, ...props }) => {
+const FoodItemsLoading = ({ food }) => {
   return (
     <>
       <Col size={{ xs: 6, md: 4, lg: 3, xl: 3 }} key={food.id}>

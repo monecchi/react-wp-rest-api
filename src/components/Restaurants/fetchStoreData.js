@@ -51,7 +51,7 @@ export const useGetStoreSuspense = (slug) => {
  * @return (object) stores
  * refreshInterval: 180000 // 3 min - e.g fetches data on every 3 minutes
  */
-export const getStores = () => {
+export const useGetStores = () => {
   const url = apiURL;
 
   const { data, error, isValidating, mutate } = useSWR(url+'/stores/', fetcher, { revalidateOnFocus: true});
