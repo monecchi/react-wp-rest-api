@@ -41,45 +41,38 @@ import RestaurantCard from "./components/Restaurants/Card";
 import RestaurantCardsListing from "./components/Restaurants/CardsListing";
 
 class App extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       name: "Pizzaria Meu Rancho",
       loading: true
     };
-
-    document.getElementsByTagName("body")[0].classList.add("ready");
   }
 
   componentDidMount() {
-   //document.getElementsByTagName("body")[0].className = "scroll-smooth";
     setTimeout(() => { 
       this.setState({ loading: false })
-      document.getElementsByTagName("body")[0].classList.add("loaded");
     }, 1000)
+    document.getElementsByTagName("body")[0].classList.add("ready");
   }
 
   componentDidUpdate() {
-    //document.getElementsByTagName("body")[0].className = "scroll-smooth";
+    //document.getElementsByTagName("body")[0].classList.add("loaded")
     //document.getElementsByTagName("body")[0].classList.remove("loaded");
   }
 
   componentWillUnmount() {
     //document.getElementsByTagName("body")[0].className = "";
-    document.getElementsByTagName("body")[0].classList.remove("loaded");
+    //document.getElementsByTagName("body")[0].classList.remove("loaded");
   }
 
   render() {
     const { loading } = this.state;
-
-    if(loading) {
-      //return <><Preloader /></>;
-    }
     
     return (
       <>
         <NavbarIfood />
-        <Preloader isLoading={loading} />
+        <Preloader loader="Loading3" color="brand" size="2.5rem" duration={1} isLoading={loading}>
         <main className="main-layout">
           <div className="home-page">
             <section className={"bg-light py-4"}>
@@ -177,6 +170,7 @@ class App extends Component {
             <FooterSlim />
           </div>
         </main>
+        </Preloader>
       </>
     );
   }

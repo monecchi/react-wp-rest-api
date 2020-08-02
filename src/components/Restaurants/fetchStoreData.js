@@ -1,6 +1,6 @@
-import React, { Component, useEffect, useState } from "react";
+//import React, { Component, useEffect, useState } from "react";
 import useSWR, { mutate } from "swr";
-import axios from "axios";
+//import axios from "axios";
 
 //
 // Restaurants data fetching ( axios + swr )
@@ -19,7 +19,7 @@ const fetcher = (...args) => fetch(...args).then(res => res.json()); // default 
  * @usage getStore("betim")
  * @return (object) store
  */
-export const useGetStore = (slug) => {
+export const useGetSingleRestaurant = (slug) => {
 
   const { data, error, isValidating, mutate } = useSWR(apiURL+`${slug}`+'/', fetcher); // { suspense: true }
 
@@ -27,11 +27,12 @@ export const useGetStore = (slug) => {
     store: data,
     isLoading: !error && !data,
     isError: error,
-    isValidating
+    isValidating,
+    mutate
   };
 };
 
-export const useGetStoreSuspense = (slug) => {
+export const useGetRestaurantSuspense = (slug) => {
 
   const { data, error, isValidating, mutate } = useSWR(apiURL+`${slug}`+'/', fetcher, { suspense: true }); 
 
@@ -51,19 +52,6 @@ export const useGetStoreSuspense = (slug) => {
  * @return (object) stores
  * refreshInterval: 180000 // 3 min - e.g fetches data on every 3 minutes
  */
-export const useGetStores = () => {
-  const url = apiURL;
-
-  const { data, error, isValidating, mutate } = useSWR(url+'/stores/', fetcher, { revalidateOnFocus: true});
-
-  return {
-    stores: data,
-    isLoading: !error && !data,
-    isError: error,
-    isValidating,
-    mutate
-  };
-};
 
 export const useGetRestaurants = () => {
   const url = apiURL;
@@ -74,14 +62,15 @@ export const useGetRestaurants = () => {
     stores: data,
     isLoading: !error && !data,
     isError: error,
-    isValidating
+    isValidating,
+    mutate
   };
 };
 
 /**
  * Update get Stores
  */
-export const updategetStores = (mutate_key) => {
+export const updateRestaurant = (mutate_key) => {
 
   document.cookie = 'token='+mutate_key+'; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;'
 

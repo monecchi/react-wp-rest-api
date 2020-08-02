@@ -317,6 +317,7 @@
         font-size: 0.75rem;
         font-weight: bold;
         display: flex;
+        margin-right: 0.25rem;
         align-items: center;
         line-height: 9px;
 
@@ -336,6 +337,33 @@
         svg {
             height: 13px;
         }
+    }
+    
+}
+
+// Card Loading State styles
+.restaurant-card__wrapper {
+    &.restaurant-card_loading {
+
+        .restaurant-card__info, .restaurant-rating {
+            color: #666565;
+        }
+
+        .restaurant-card__info {
+            .restaurant-rating {
+                font-size: 0.75rem;
+                font-weight: bold;
+                display: flex;
+                align-items: center;
+                line-height: 9px;
+        
+                svg {
+                    color: #eee;
+                    fill: #eee;
+                }
+            }
+        }
+
     }
 }
 

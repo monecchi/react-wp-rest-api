@@ -42,10 +42,6 @@ body {
 
     }
 
-    &:not(.loaded) {
-        overflow: hidden;
-    }
-
     &.loaded > {
         #root div {
             &.preloader {

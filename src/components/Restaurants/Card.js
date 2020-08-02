@@ -1,46 +1,94 @@
-import React from "react"; 
-import { useGetStore } from "./fetchStoreData";
+import React from "react";
+import { useGetSingleRestaurant, updateRestaurant } from "./fetchStoreData";
 
 // Atomize
-import {
-  Div,
-  Container,
-  Row,
-  Col,
-  Tag,
-  Anchor,
-  Button,
-  Text,
-  Icon
-} from "atomize";
 
 // Component Styles
 import "./CardSmall/styles.scss";
+
+// react-loading-skeleton
+import Skeleton from "react-loading-skeleton";
 
 //
 // Single Restaurant Details Card
 //
 
 const RestaurantCard = ({ slug }) => {
-  const { store, isLoading, isError, isValidating } = useGetStore(slug);
-  if (isLoading)
+  const { store, isLoading, isError, isValidating } = useGetSingleRestaurant(slug);
+
+  let apiURL = `https://pizzariameurancho.com.br/wp-json/mrp/v1/stores/${slug}`;
+
+  if (isLoading) 
     return (
-      <div>
-        <p>Loading...</p>
-      </div>
+      <a className={"restaurant-card__wrapper restaurant-card_loading"} role="link" tabIndex={0} href={null}>
+        <div className="restaurant-card">
+          <div className="restaurant-card__figure loading">
+            <Skeleton
+              style={{ width: "85px", height: "85px", borderRadius: "4px" }}
+            />
+          </div>
+          <h3>
+            <div className="restaurant-card__header">
+              <span className="restaurant-name">
+                <Skeleton
+                  style={{ height: "18px", lineHeight: "1rem" }}
+                />
+              </span>
+            </div>
+            <div className="restaurant-card__info">
+              <span
+                aria-label="Avaliação: 4.8"
+                tabIndex={0}
+                className="restaurant-rating"
+              >
+                <span className="icon-marmita icon-marmita--star">
+                  <Skeleton style={{ width: "80px", height: "18px", lineHeight: "1rem" }} />
+                </span>
+              </span>
+            </div>
+          </h3>
+
+          <div className="restaurant-card__footer">
+            <Skeleton
+              style={{ height: "0.9rem", width: "40px", marginBottom: "0" }}
+            />
+            <div className="restaurant-card__delivery-fee default">
+              <Skeleton
+                style={{ height: "0.9rem", width: "40px", marginBottom: "0" }}
+              />
+            </div>
+          </div>
+        </div>
+      </a>
     );
 
   if (isError)
     return (
-      <div className="restaurants-list__error">
-        <div className="restaurants-list__error-wrapper">
-          <div className="restaurant-card__wrapper">
-            <div className="restaurant-card">
-              Erro ao carregar Restaurante
-            </div>
+      <a className={"restaurant-card__wrapper restaurant-card_error"} role="button" tabIndex={0} href={null} onClick={()=>{ updateRestaurant(apiURL) }}>
+        <div className="restaurant-card">
+          <div className="restaurant-card__figure">
+            <div
+              style={{ width: "85px", height: "85px", borderRadius: "4px", backgroundColor: "#eee" }}
+            />
           </div>
+          <h3>
+            <div className="restaurant-card__header">
+              <span className="restaurant-name">
+                ...
+                </span>
+            </div>
+            <div className="restaurant-card__info">
+              <span
+                aria-label="Erro ao carregar restaurante"
+                tabIndex={0}
+                className="error-message"
+              >
+                <span className="icon-marmita">Erro ao carregar Restaurante</span>
+              </span>
+            </div>
+          </h3>
         </div>
-      </div>
+      </a>
     );
 
   let restaurant = [];
@@ -52,8 +100,8 @@ const RestaurantCard = ({ slug }) => {
   }
 
   return (
-     city = restaurant.slug || "betim",
-     aberto = restaurant[city].is_open,
+    city = restaurant.slug || "betim",
+    aberto = restaurant[city].is_open,
     <a
       className={
         aberto == 1
@@ -96,24 +144,24 @@ const RestaurantCard = ({ slug }) => {
                 </svg>
               </span>
               4.8
-            </span>{" "}
+            </span>
             • Pizzaria • 1,0 km
           </div>
         </h3>
         {aberto == 1 ? (
           <div className="restaurant-card__footer">
-            38-48 min •{" "}
+          38-48 min •
             <div className="restaurant-card__delivery-fee default">
               Entrega R$ 3.90
             </div>
           </div>
         ) : (
-          <div className="restaurant-tag">
-            <span className="marmita-minitag marmita-minitag--grayscale">
-              Fechado
+            <div className="restaurant-tag">
+              <span className="marmita-minitag marmita-minitag--grayscale">
+                Fechado
             </span>
-          </div>
-        )}
+            </div>
+          )}
       </div>
     </a>
   );

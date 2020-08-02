@@ -1,5 +1,5 @@
 import React from "react";
-import { useGetRestaurants, updategetStores } from "./fetchStoreData";
+import { useGetRestaurants, updateRestaurant } from "./fetchStoreData";
 
 // Atomize
 import {
@@ -36,7 +36,7 @@ import RestaurantsEmptyList from "./EmptyList";
  */
 
 const RestaurantCardsListing = props => {
-  const { stores, isLoading, isError, isValidating, mutate } = useGetRestaurants();
+  const { stores, isLoading, isError, isValidating } = useGetRestaurants();
 
   const { allStores, storesCount } = [];
 
@@ -74,7 +74,7 @@ const RestaurantCardsListing = props => {
         <Div className="push">
           <a
             // eslint-disable-next-line
-            onClick={e => { e.preventDefault(), updategetStores(apiURL + "/stores/") }}
+            onClick={() => { updateRestaurant(apiURL + "/stores/") }}
             disabled={isValidating}
             className="section-header__see-more"
             aria-label="Ver mais"

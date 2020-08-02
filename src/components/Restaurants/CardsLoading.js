@@ -17,8 +17,8 @@ import {
 import Skeleton from "react-loading-skeleton";
 
 const RestaurantCardsSkeleton = () => {
-  const storesCount = [];
-  storesCount.push([1, 2, 3]);
+  let storesCount = [];
+  storesCount = [1, 2, 3];
   let storeId = "";
   return (
     <>

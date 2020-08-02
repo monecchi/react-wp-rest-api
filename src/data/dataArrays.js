@@ -29,7 +29,7 @@ export const homeslides = [
     title: "Chicken & Bacon",
     description: "Deliciosa Pizza Chicken & Bacon com precinho especial",
     type: "promo",
-    url: "/sobre",
+    url: "sobre",
     photo_url:
       "https://raw.githubusercontent.com/monecchi/react-wp-rest-api/master/src/assets/images/chicken-bacon-promo.png"
   },
