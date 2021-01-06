@@ -5,7 +5,7 @@
   "dependencies": {
     "@callstack/react-theme-provider": ">= 3.0.0",
     "atomize": "^1.0.26",
-    "axios": "0.19.2",
+    "axios": "0.21.1",
     "bootstrap": "4.5.0",
     "flickity": "2.2.1",
     "prop-types": "15.7.2",
