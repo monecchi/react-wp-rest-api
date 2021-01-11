@@ -85,7 +85,7 @@ const RestaurantCardsListing = props => {
         </Div>
       </Div>
 
-      {stores.map(store => {
+      {stores && stores.map(store => {
         let city = store.slug;
         let aberto = store[city].is_open;
         let tagBg = aberto == 1 ? "softSuccess" : "softDanger";
